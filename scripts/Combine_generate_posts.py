@@ -11,9 +11,9 @@ from googleapiclient.discovery import build
 
 # ---------------- CONFIG ----------------
 KEYWORDS_FILE = "keywords.txt"
-POSTS_DIR = "docs/_posts"
-IMAGES_DIR = "assets/images"
-SITE_DOMAIN = "https://ur-lawyer.github.io"
+POSTS_DIR = "_posts"
+IMAGES_DIR = "images"
+SITE_DOMAIN = "https://langchain-tutorials.github.io"
 TEXT_MODEL = "gemini-2.5-flash"
 FREEPIK_ENDPOINT = "https://api.freepik.com/v1/ai/text-to-image/flux-dev"
 IMAGE_QUALITY = 80
@@ -22,7 +22,7 @@ IMAGE_MAX_HEIGHT = 1080
 OPTIMIZE_IMAGE = True
 
 # How many posts to generate per run (default: 1)
-# Examples: 1 =  posts/day | 2 = 8 posts/day | 3 = 12 posts/day
+# Examples: 1 = 4 posts/day | 2 = 8 posts/day | 3 = 12 posts/day
 POSTS_PER_RUN = 1  # Change to 2 or 3 for faster content generation
 
 os.makedirs(POSTS_DIR, exist_ok=True)

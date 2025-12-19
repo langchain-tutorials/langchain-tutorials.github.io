@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]     # ✅ run immediately on push
   schedule:
-    - cron: "0 */12 * * *"    # ✅ every 12 hours
+    - cron: "0 */3 * * *"    # ✅ every 3 hours
   workflow_dispatch:         # ✅ manual trigger
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_PERSON_ID: ${{ secrets.LINKEDIN_PERSON_ID }}
         run: |
-        #   python scripts/generate_posts.py
+         # python scripts/generate_posts.py
 
       - name: Commit & Push changes
         run: |
@@ -48,7 +48,7 @@ jobs:
 
           git add _posts/ images/ keywords.txt
 
-          TITLES=$(git diff --cached --name-only | grep "docs/_posts/" | sed 's#.*/##' | sed 's/.md//' | tr '\n' ',')
+          TITLES=$(git diff --cached --name-only | grep "_posts/" | sed 's#.*/##' | sed 's/.md//' | tr '\n' ',')
 
           git commit -m "${TITLES:-new post}" || exit 0
           git push origin master

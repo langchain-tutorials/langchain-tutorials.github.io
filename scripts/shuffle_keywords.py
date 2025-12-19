@@ -31,7 +31,7 @@ def shuffle_keywords_file():
         print(f"📁 Current directory: {os.getcwd()}")
         print(f"📁 Script location: {script_dir}")
         print(f"\n💡 Please run from repository root:")
-        print(f"   cd ur-lawyer.github.io")
+        print(f"   cd langchain-tutorials.github.io")
         print(f"   python scripts/shuffle_keywords.py")
         print(f"\n   Or place this script in the same folder as keywords.txt")
         return
@@ -81,7 +81,7 @@ def shuffle_keywords_file():
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("🔀 Keyword Shuffler for ur-lawyer.github.io")
+    print("🔀 Keyword Shuffler for langchain-tutorials.github.io")
     print("=" * 70)
     shuffle_keywords_file()
     print("=" * 70)

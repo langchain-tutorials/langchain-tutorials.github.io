@@ -13,8 +13,7 @@ write an SEO-optimised blog on the title {title}. using the Focus keyword {focus
 use the following
 
 Rules:
-- Simple English, but professional guide tone
-- this article is for will be published on https://langchain-tutorials.github.io.
+- Simple English, Professional guide tone
 - Don't write more than 3 sentences per paragraph, changes paragraph after 3 sentences
 - Use "you" to address the reader
 - if need use legal websites link to refer to legal information
@@ -73,20 +72,18 @@ def create_custom_front_matter(title, focus_kw, permalink):
     escaped_title = title.replace('"', '\\"')
     
     # Generate description (you can make this dynamic)
-    description = f"Learn about {focus_kw} and make informed decisions."
+    description = f"generated description in 160 characters for article title {title}"
     
     # Create front matter
-    front_matter = f"""
-    ---
-    layout: post
-    title: "{escaped_title}"
-    description: "{description}"
-    author: Mary
-    tags: [{focus_kw}]
-    featured: false
-    image: '/images/{permalink}.webp'
-    ---
-    """
+    front_matter = f"""---
+layout: post
+title: "{escaped_title}"
+description: "{description}"
+author: Mary
+tags: [{focus_kw}]
+featured: false
+image: '/images/{permalink}.webp'
+---"""
     
     return front_matter
 
