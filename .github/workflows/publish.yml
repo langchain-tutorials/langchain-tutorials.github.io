@@ -46,9 +46,9 @@ jobs:
           git config user.name "gemini-blog-bot"
           git config user.email "bot@github.com"
 
-          git add _posts/ images/ keywords.txt
+          git add docs/_posts/ docs/assets/images/ keywords.txt
 
-          TITLES=$(git diff --cached --name-only | grep "_posts/" | sed 's#.*/##' | sed 's/.md//' | tr '\n' ',')
+          TITLES=$(git diff --cached --name-only | grep "docs/_posts/" | sed 's#.*/##' | sed 's/.md//' | tr '\n' ',')
 
           git commit -m "${TITLES:-new post}" || exit 0
           git push origin master

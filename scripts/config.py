@@ -3,8 +3,8 @@ import os
 
 # File paths
 KEYWORDS_FILE = "keywords.txt"
-POSTS_DIR = "_posts"
-IMAGES_DIR = "images"
+POSTS_DIR = "docs/_posts"
+IMAGES_DIR = "docs/assets/images"
 
 # Site settings
 SITE_DOMAIN = "https://langchain-tutorials.github.io"

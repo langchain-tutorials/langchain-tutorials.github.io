@@ -11,8 +11,8 @@ from googleapiclient.discovery import build
 
 # ---------------- CONFIG ----------------
 KEYWORDS_FILE = "keywords.txt"
-POSTS_DIR = "_posts"
-IMAGES_DIR = "images"
+POSTS_DIR = "docs/_posts"
+IMAGES_DIR = "docs/assets/images"
 SITE_DOMAIN = "https://langchain-tutorials.github.io"
 TEXT_MODEL = "gemini-2.5-flash"
 FREEPIK_ENDPOINT = "https://api.freepik.com/v1/ai/text-to-image/flux-dev"
