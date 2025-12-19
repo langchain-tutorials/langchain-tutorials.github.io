@@ -23,18 +23,18 @@ Simply run `bundle update` if you're using Bundler (have a `Gemfile`) or `gem up
 When using Bundler you can downgrade or lock the theme to a specific release ([tag][tag]), branch, or commit. Instead of `gem "minimal-mistakes-jekyll"` you'd add the following to your `Gemfile`:
 
 ```ruby
-gem "minimal-mistakes-jekyll", :git => "https://github.com/mmistakes/minimal-mistakes.git", :tag => "{{ site.data.theme.version }}"
+gem "minimal-mistakes-jekyll", :git => "https://github.com/mmistakes.git", :tag => "{{ site.data.theme.version }}"
 ```
 
-  [tag]: https://github.com/mmistakes/minimal-mistakes/tags
+  [tag]: https://github.com/mmistakes/tags
 
 For more information on [installing gems from Git repositories](https://bundler.io/guides/git.html) consult Bundler's documentation.
 
 ## Remote theme
 
-When setting `remote_theme: "mmistakes/minimal-mistakes@{{ site.data.theme.version }}"` in your `_config.yml` you may also optionally specify a branch, [tag][tag], or commit to use by appending an @ and the Git ref.
+When setting `remote_theme: "mmistakes@{{ site.data.theme.version }}"` in your `_config.yml` you may also optionally specify a branch, [tag][tag], or commit to use by appending an @ and the Git ref.
 
-For example, you can roll back to release 4.8.1 with `mmistakes/minimal-mistakes@4.8.1` or a specific commit with `mmistakes/minimal-mistakes@bbf3cbc5fd64a3e1885f3f99eb90ba92af84063d`). For a complete list of theme versions consult the [releases page](https://github.com/mmistakes/minimal-mistakes/releases).
+For example, you can roll back to release 4.8.1 with `mmistakes@4.8.1` or a specific commit with `mmistakes@bbf3cbc5fd64a3e1885f3f99eb90ba92af84063d`). For a complete list of theme versions consult the [releases page](https://github.com/mmistakes/releases).
 
 To update the theme on GitHub Pages you'll need to push up a commit to force a rebuild. An empty commit works well if you don't have anything to push at the moment:
 

@@ -9,8 +9,8 @@ body:
         - Verify you have the latest versions of Jekyll and Minimal Mistakes
           installed by running `bundle update`.
         - Thoroughly read the theme's documentation at
-          https://langchain-tutorials.github.io/minimal-mistakes/docs/quick-start-guide/
-        - Search all issues at https://github.com/mmistakes/minimal-mistakes/issues
+          https://langchain-tutorials.github.io/docs/quick-start-guide/
+        - Search all issues at https://github.com/mmistakes/issues
           for solutions and to avoid duplication.
         - Ask for help at https://talk.jekyllrb.com/
 

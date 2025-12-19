@@ -1,9 +1,9 @@
 # main links
 main:
   - title: "Quick-Start Guide"
-    url: https://langchain-tutorials.github.io/minimal-mistakes/docs/quick-start-guide/
+    url: https://langchain-tutorials.github.io/docs/quick-start-guide/
   # - title: "About"
-  #   url: https://langchain-tutorials.github.io/minimal-mistakes/about/
+  #   url: https://langchain-tutorials.github.io/about/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"

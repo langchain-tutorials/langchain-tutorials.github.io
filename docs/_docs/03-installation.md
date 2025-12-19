@@ -16,7 +16,7 @@ If you plan to host with GitHub Pages be sure to properly setup [**jekyll-remote
 
 **3.** For those who'd like to make substantial edits to the theme, download as a ZIP file to customize.
 
-[<i class="fas fa-download"></i> Download Minimal Mistakes Theme](https://github.com/mmistakes/minimal-mistakes/archive/master.zip){: .btn .btn--success}
+[<i class="fas fa-download"></i> Download Minimal Mistakes Theme](https://github.com/mmistakes/archive/master.zip){: .btn .btn--success}
 
 **ProTip:** Be sure to remove `/docs` and `/test` if you forked or downloaded Minimal Mistakes. These folders contain documentation and test pages for the theme and you probably don't want them littering up in your repo.
 {: .notice--info}
@@ -89,7 +89,7 @@ group :jekyll_plugins do
 end
 ```
 
-**ProTip:** To be bleeding edge install the latest (unreleased) version of Minimal Mistakes by adding this line to your `Gemfile`: `gem "minimal-mistakes-jekyll", :github => "mmistakes/minimal-mistakes"`.
+**ProTip:** To be bleeding edge install the latest (unreleased) version of Minimal Mistakes by adding this line to your `Gemfile`: `gem "minimal-mistakes-jekyll", :github => "mmistakes"`.
 {: .notice--info}
 
 To maintain a local Jekyll environment in sync with GitHub Pages replace the `gem "jekyll"` line with `gem "github-pages", group: :jekyll_plugins` and run the following:

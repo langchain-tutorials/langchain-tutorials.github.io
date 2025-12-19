@@ -1,6 +1,6 @@
-# [Minimal Mistakes Jekyll theme](https://langchain-tutorials.github.io/minimal-mistakes/)
+# [Minimal Mistakes Jekyll theme](https://langchain-tutorials.github.io/)
 
-[![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE)
+[![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/mmistakes/master/LICENSE)
 [![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D%203.7-blue.svg)](https://jekyllrb.com/)
 
 Minimal Mistakes is a flexible two-column Jekyll theme, perfect for building personal sites, blogs, and portfolios. As the name implies, styling is purposely minimalistic to be enhanced and customized by you :smile:.
@@ -11,7 +11,7 @@ Minimal Mistakes is a flexible two-column Jekyll theme, perfect for building per
 
 [![Minimal Mistakes live preview][2]][1]
 
-[1]: https://langchain-tutorials.github.io/minimal-mistakes/
+[1]: https://langchain-tutorials.github.io/
 [2]: screenshot.png (live preview)
 
 ![layout examples](screenshot-layouts.png)
@@ -24,7 +24,7 @@ Minimal Mistakes is a flexible two-column Jekyll theme, perfect for building per
 - Nine different skins (color variations).
 - Several responsive layout options (single, archive index, search, splash, and paginated home page).
 - Optimized for search engines with support for [Twitter Cards](https://dev.twitter.com/cards/overview) and [Open Graph](http://ogp.me/) data.
-- Optional [header images](https://langchain-tutorials.github.io/minimal-mistakes/docs/layouts/#headers), [custom sidebars](https://langchain-tutorials.github.io/minimal-mistakes/docs/layouts/#sidebars), [table of contents](https://langchain-tutorials.github.io/minimal-mistakes/docs/helpers/#table-of-contents), [galleries](https://langchain-tutorials.github.io/minimal-mistakes/docs/helpers/#gallery), related posts, [breadcrumb links](https://langchain-tutorials.github.io/minimal-mistakes/docs/configuration/#breadcrumb-navigation-beta), [navigation lists](https://langchain-tutorials.github.io/minimal-mistakes/docs/helpers/#navigation-list), and more.
+- Optional [header images](https://langchain-tutorials.github.io/docs/layouts/#headers), [custom sidebars](https://langchain-tutorials.github.io/docs/layouts/#sidebars), [table of contents](https://langchain-tutorials.github.io/docs/helpers/#table-of-contents), [galleries](https://langchain-tutorials.github.io/docs/helpers/#gallery), related posts, [breadcrumb links](https://langchain-tutorials.github.io/docs/configuration/#breadcrumb-navigation-beta), [navigation lists](https://langchain-tutorials.github.io/docs/helpers/#navigation-list), and more.
 - Commenting support (powered by [Disqus](https://disqus.com/), [Facebook](https://developers.facebook.com/docs/plugins/comments), Google+, [Discourse](https://www.discourse.org/), static-based via [Staticman](https://staticman.net/), [utterances](https://utteranc.es/), and [giscus](https://giscus.app/)).
 - [Google Analytics](https://www.google.com/analytics/) support.
 - UI localized text in English (default), Arabic (عربي), Brazilian Portuguese (Português brasileiro), Bulgarian, Catalan, Chinese, Czech, Danish, Dutch, Finnish, French (Français), German (Deutsch), Greek, Hebrew, Hindi (हिंदी), Hungarian, Indonesian, Irish (Gaeilge), Italian (Italiano), Japanese, Kiswahili, Korean, Malayalam, Myanmar (Burmese), Nepali (Nepalese), Norwegian (Norsk), Persian (فارسی), Polish, Punjabi (ਪੰਜਾਬੀ), Romanian, Russian, Slovak, Spanish (Español), Swedish, Thai, Turkish (Türkçe), Ukrainian (Українська) and Vietnamese.
@@ -35,15 +35,15 @@ This theme comes in nine different skins (in addition to the default one).
 
 | `air` | `contrast` | `dark` |
 | --- | --- | --- |
-| [![air skin](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/air-skin-archive.png)](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/air-skin-archive-large.png) | [![contrast skin](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/contrast-skin-archive.png)](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/contrast-skin-archive-large.png) | [![dark skin](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/dark-skin-archive.png)](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/dark-skin-archive-large.png) |
+| [![air skin](https://langchain-tutorials.github.io/assets/images/air-skin-archive.png)](https://langchain-tutorials.github.io/assets/images/air-skin-archive-large.png) | [![contrast skin](https://langchain-tutorials.github.io/assets/images/contrast-skin-archive.png)](https://langchain-tutorials.github.io/assets/images/contrast-skin-archive-large.png) | [![dark skin](https://langchain-tutorials.github.io/assets/images/dark-skin-archive.png)](https://langchain-tutorials.github.io/assets/images/dark-skin-archive-large.png) |
 
 | `dirt` | `mint` | `sunrise` |
 | --- | --- | --- |
-| [![dirt skin](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/dirt-skin-archive.png)](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/dirt-skin-archive-large.png) | [![mint skin](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/mint-skin-archive.png)](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/mint-skin-archive-large.png) | [![sunrise skin](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/sunrise-skin-archive.png)](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/sunrise-skin-archive-large.png) |
+| [![dirt skin](https://langchain-tutorials.github.io/assets/images/dirt-skin-archive.png)](https://langchain-tutorials.github.io/assets/images/dirt-skin-archive-large.png) | [![mint skin](https://langchain-tutorials.github.io/assets/images/mint-skin-archive.png)](https://langchain-tutorials.github.io/assets/images/mint-skin-archive-large.png) | [![sunrise skin](https://langchain-tutorials.github.io/assets/images/sunrise-skin-archive.png)](https://langchain-tutorials.github.io/assets/images/sunrise-skin-archive-large.png) |
 
 | `aqua` | `neon` | `plum` |
 | --- | --- | --- |
-| [![aqua skin](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/aqua-skin-archive.png)](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/aqua-skin-archive-large.png) | [![neon skin](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/neon-skin-archive.png)](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/neon-skin-archive-large.png) | [![plum skin](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/plum-skin-archive.png)](https://langchain-tutorials.github.io/minimal-mistakes/assets/images/plum-skin-archive-large.png) |
+| [![aqua skin](https://langchain-tutorials.github.io/assets/images/aqua-skin-archive.png)](https://langchain-tutorials.github.io/assets/images/aqua-skin-archive-large.png) | [![neon skin](https://langchain-tutorials.github.io/assets/images/neon-skin-archive.png)](https://langchain-tutorials.github.io/assets/images/neon-skin-archive-large.png) | [![plum skin](https://langchain-tutorials.github.io/assets/images/plum-skin-archive.png)](https://langchain-tutorials.github.io/assets/images/plum-skin-archive-large.png) |
 
 ## Demo pages
 
@@ -59,14 +59,14 @@ This theme comes in nine different skins (in addition to the default one).
 
 Additional sample posts are available under [posts archive][year-archive] on the demo site. Source files for these (and the entire demo site) can be found in [`/docs`](docs).
 
-[header-image-post]: https://langchain-tutorials.github.io/minimal-mistakes/layout-header-image-text-readability/
-[gallery-post]: https://langchain-tutorials.github.io/minimal-mistakes/post%20formats/post-gallery/
-[html-tags-post]: https://langchain-tutorials.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/
-[syntax-post]: https://langchain-tutorials.github.io/minimal-mistakes/markup-syntax-highlighting/
-[sample-collection]: https://langchain-tutorials.github.io/minimal-mistakes/recipes/chocolate-chip-cookies/
-[categories-archive]: https://langchain-tutorials.github.io/minimal-mistakes/categories/
-[tags-archive]: https://langchain-tutorials.github.io/minimal-mistakes/tags/
-[year-archive]: https://langchain-tutorials.github.io/minimal-mistakes/year-archive/
+[header-image-post]: https://langchain-tutorials.github.io/layout-header-image-text-readability/
+[gallery-post]: https://langchain-tutorials.github.io/post%20formats/post-gallery/
+[html-tags-post]: https://langchain-tutorials.github.io/markup/markup-html-tags-and-formatting/
+[syntax-post]: https://langchain-tutorials.github.io/markup-syntax-highlighting/
+[sample-collection]: https://langchain-tutorials.github.io/recipes/chocolate-chip-cookies/
+[categories-archive]: https://langchain-tutorials.github.io/categories/
+[tags-archive]: https://langchain-tutorials.github.io/tags/
+[year-archive]: https://langchain-tutorials.github.io/year-archive/
 
 ## Installation
 
@@ -121,7 +121,7 @@ To install:
    bundle
    ```
 
-4. Add `remote_theme: "mmistakes/minimal-mistakes@4.27.3"` to your `_config.yml` file. Remove any other `theme:` or `remote_theme:` entry.
+4. Add `remote_theme: "mmistakes@4.27.3"` to your `_config.yml` file. Remove any other `theme:` or `remote_theme:` entry.
 
 <!--
   Dev note: The version number is currently hard-coded in these files:
@@ -135,7 +135,7 @@ To install:
 
   The following files should also be regenerated:
 
-    - _includes/copyright.html, _includes/copyright.js, _sass/minimal-mistakes/_copyright.scss
+    - _includes/copyright.html, _includes/copyright.js, _sass/_copyright.scss
       (Run `bundle exec rake clean` then `bundle exec rake copyright` - all three references `package.json`)
     - assets/js/main.min.js (Run `bundle exec rake js`, references `_includes/copyright.js`)
 
@@ -151,11 +151,11 @@ To install:
 
 ## Usage
 
-For detailed instructions on how to configure, customize, add/migrate content, and more read the [theme's documentation](https://langchain-tutorials.github.io/minimal-mistakes/docs/quick-start-guide/).
+For detailed instructions on how to configure, customize, add/migrate content, and more read the [theme's documentation](https://langchain-tutorials.github.io/docs/quick-start-guide/).
 
 ## Contributing
 
-Found a typo in the documentation or interested in [fixing a bug](https://github.com/mmistakes/minimal-mistakes/issues)? Then by all means [submit an issue](https://github.com/mmistakes/minimal-mistakes/issues/new) or [pull request](https://help.github.com/articles/using-pull-requests/). If this is your first pull request, it may be helpful to read up on the [GitHub Flow](https://guides.github.com/introduction/flow/) first.
+Found a typo in the documentation or interested in [fixing a bug](https://github.com/mmistakes/issues)? Then by all means [submit an issue](https://github.com/mmistakes/issues/new) or [pull request](https://help.github.com/articles/using-pull-requests/). If this is your first pull request, it may be helpful to read up on the [GitHub Flow](https://guides.github.com/introduction/flow/) first.
 
 For help with using the theme or general Jekyll support questions, please use the [Jekyll Talk forums](https://talk.jekyllrb.com/).
 

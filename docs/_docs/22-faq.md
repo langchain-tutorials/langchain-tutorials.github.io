@@ -8,7 +8,7 @@ last_modified_at: '2024-04-24T00:51:32+08:00'
 toc: false
 ---
 
-This page is still under construction. Meanwhile, check out existing [issues](https://github.com/mmistakes/minimal-mistakes/issues) and [discussions](https://github.com/mmistakes/minimal-mistakes/discussions) to see if your question has already been asked before.
+This page is still under construction. Meanwhile, check out existing [issues](https://github.com/mmistakes/issues) and [discussions](https://github.com/mmistakes/discussions) to see if your question has already been asked before.
 {: .notice--primary }
 
 - `'require': cannot load such file -- webrick (LoadError)`

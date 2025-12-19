@@ -6,7 +6,7 @@ last_modified_at: 2018-11-25T19:47:43-05:00
 toc: true
 ---
 
-The theme's `assets/css/main.css` file is built from several SCSS partials located in [`_sass/`](https://github.com/mmistakes/minimal-mistakes/tree/master/_sass) and is structured as follows:
+The theme's `assets/css/main.css` file is built from several SCSS partials located in [`_sass/`](https://github.com/mmistakes/tree/master/_sass) and is structured as follows:
 
 ```bash
 minimal-mistakes
@@ -53,7 +53,7 @@ To override the default [Sass](http://sass-lang.com/guide) (located in theme's
 
 2. Copy from this repo.
 
-   - Copy the contents of [assets/css/main.scss](https://github.com/mmistakes/minimal-mistakes/blob/master/assets/css/main.scss)
+   - Copy the contents of [assets/css/main.scss](https://github.com/mmistakes/blob/master/assets/css/main.scss)
      to `<your_project>`.
    - Customize what you want inside `<your_project/assets/css/main.scss`.
 
@@ -102,7 +102,7 @@ Sans-serif fonts have been used for most of the type, with serifs reserved for c
 
 Not a fan of the refreshed typography of the theme and want to revert back an older version? Easy enough.
 
-**1.** Add this Google Fonts script to [`_includes/head/custom.html`](https://github.com/mmistakes/minimal-mistakes/blob/master/_includes/head/custom.html):
+**1.** Add this Google Fonts script to [`_includes/head/custom.html`](https://github.com/mmistakes/blob/master/_includes/head/custom.html):
 
 ```html
 <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700,400italic" rel="stylesheet" type="text/css">

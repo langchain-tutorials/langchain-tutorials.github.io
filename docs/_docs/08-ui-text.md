@@ -7,7 +7,7 @@ last_modified_at: 2021-05-11T10:22:55-04:00
 
 Text for UI elements, `_layouts`, and `_includes` grouped together as a set of translation keys. This is by no means a full-on i18n solution, but it does help make customizing theme text a bit easier.
 
-The English[^yaml-anchors] main keys in [`_data/ui-text.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml) are translated in the following languages:
+The English[^yaml-anchors] main keys in [`_data/ui-text.yml`](https://github.com/mmistakes/blob/master/_data/ui-text.yml) are translated in the following languages:
 
 - Arabic (عربي)
 - Brazilian Portuguese (Português brasileiro)
