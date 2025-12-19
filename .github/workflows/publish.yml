@@ -39,7 +39,7 @@ jobs:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_PERSON_ID: ${{ secrets.LINKEDIN_PERSON_ID }}
         run: |
-          python scripts/generate_posts.py
+        #   python scripts/generate_posts.py
 
       - name: Commit & Push changes
         run: |
