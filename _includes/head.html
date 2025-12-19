@@ -22,8 +22,15 @@
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
 
 <!-- onesignal push notification setup -->
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer></script>
-<script src="/scripts/onesignal_setup.js" defer></script>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "20670296-bbf3-4fe9-b176-9dedd50004ee",
+    });
+  });
+</script>
 
 <!-- Place in <head> tag --> <script async defer src="https://cdn.affonso.io/js/pixel.min.js" data-affonso="cmjcx1yyr0041e9kgzze0oonw" data-cookie_duration="30"> </script>
 
