@@ -25,6 +25,7 @@ Rules:
 - Write more than 1500 words
 - Write in Jekyll markdown format  artile filename extension .md only
 - Naturally include focused & semantic keywords
+- do not add any front matter or meta data
 """
     
     print("🤖 Generating article with Gemini...")
@@ -75,7 +76,8 @@ def create_custom_front_matter(title, focus_kw, permalink):
     description = f"Learn about {focus_kw} and make informed decisions."
     
     # Create front matter
-    front_matter = f"""---
+    front_matter = f"""
+    ---
     layout: post
     title: "{escaped_title}"
     description: "{description}"
@@ -83,7 +85,8 @@ def create_custom_front_matter(title, focus_kw, permalink):
     tags: [{focus_kw}]
     featured: false
     image: '/images/{permalink}.webp'
-    ---"""
+    ---
+    """
     
     return front_matter
 
