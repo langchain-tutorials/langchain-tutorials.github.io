@@ -8,7 +8,7 @@
 # Theme Settings
 #
 # Review documentation to determine if you should use `theme` or `remote_theme`
-# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
+# https://langchain-tutorials.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "mmistakes/minimal-mistakes@4.26.2"
@@ -24,9 +24,9 @@ name                     : "LangChain Tutorials"
 description              : "Learn LangChain, LangGraph, and AI Agents with step-by-step tutorials, code examples, and production-ready guides for developers."
 url                      : "https://langchain-tutorials.github.io"
 baseurl                  : ""
-repository               : "langchain-tutorials/langchain-tutorials.github.io"
+repository               : "langchain-tutorials.github.io"
 teaser                   : "/assets/images/teaser-default.jpg"
-logo                     : "/docs/assets/images/site-logo.webp"
+logo                     : "/assets/images/site-logo.webp"
 masthead_title           : "LangChain Tutorials"
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200

@@ -122,7 +122,7 @@ _Example:_ `description: "A flexible Jekyll theme for your blog or site with a m
 
 ### Site URL
 
-The base hostname and protocol for your site. If you're hosting on GitHub Pages this will be something like `url: "https://mmistakes.github.io"` or `url: "https://mademistakes.com"` if you have a custom domain name.
+The base hostname and protocol for your site. If you're hosting on GitHub Pages this will be something like `url: "https://langchain-tutorials.github.io"` or `url: "https://mademistakes.com"` if you have a custom domain name.
 
 GitHub Pages now [forces `https://` for new sites](https://help.github.com/articles/securing-your-github-pages-site-with-https/) so be mindful of that when setting your URL to avoid mixed-content warnings.
 
@@ -133,7 +133,7 @@ GitHub Pages now [forces `https://` for new sites](https://help.github.com/artic
 
 This little option causes all kinds of confusion in the Jekyll community. If you're not hosting your site as a GitHub Pages Project or in a subfolder (eg: `/blog`), then don't mess with it.
 
-In the case of the Minimal Mistakes demo site it's hosted on GitHub at <https://mmistakes.github.io/minimal-mistakes>. To correctly set this base path I'd use `url: "https://mmistakes.github.io"` and `baseurl: "/minimal-mistakes"`.
+In the case of the Minimal Mistakes demo site it's hosted on GitHub at <https://langchain-tutorials.github.io/minimal-mistakes>. To correctly set this base path I'd use `url: "https://langchain-tutorials.github.io"` and `baseurl: "/minimal-mistakes"`.
 
 For more information on how to properly use `site.url` and `site.baseurl` as intended by the Jekyll maintainers, check [Parker Moore's post on the subject](https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/).
 
@@ -627,7 +627,7 @@ lunr:
 
 #### Algolia
 
-For faster and more relevant search ([see demo](https://mmistakes.github.io/minimal-mistakes-algolia-search/)):
+For faster and more relevant search ([see demo](https://langchain-tutorials.github.io/minimal-mistakes-algolia-search/)):
 
 1. Add the [`jekyll-algolia`](https://github.com/algolia/jekyll-algolia) gem to your `Gemfile`, in the `:jekyll_plugins` section.
 

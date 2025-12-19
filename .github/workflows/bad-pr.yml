@@ -26,7 +26,7 @@ jobs:
           comment: |
             **You have created a Pull Request to the wrong repository.** This is the repository for [Minimal Mistakes][1], the free Jekyll theme. See [GitHub Docs: About pull requests][2] if you need help.
 
-              [1]: https://mmistakes.github.io/minimal-mistakes/
+              [1]: https://langchain-tutorials.github.io/
               [2]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
       - uses: sudo-bot/action-pull-request-lock@v1.0.5
         with:
