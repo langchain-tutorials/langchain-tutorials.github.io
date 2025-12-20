@@ -114,7 +114,7 @@ analytics:
 # Site Author
 author:
   name             : "Coding Rhodes"
-  avatar           : "/assets/images/Author-codingRhodes.webp.webp"
+  avatar           : "/assets/images/Author-codingRhodes.webp"
   bio              : "Teaching developers to build production-ready AI agents with **LangChain** & **LangGraph**. New tutorials every week."
   location         : "Online"
   email            : CodingRhodes@gmail.com
