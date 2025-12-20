@@ -11,7 +11,7 @@ toc_sticky: true
 toc_icon: "list-ul"
 tags: [langgraph tutorial 2026]
 featured: true
-image: 'assets/images/langgraph-tutorial-2026-beginners-guide.webp'
+image: '/assets/images/langgraph-tutorial-2026-beginners-guide.webp'
 ---
 
 ## Welcome to LangGraph Tutorial 2026: Building Smart AI Agents!
