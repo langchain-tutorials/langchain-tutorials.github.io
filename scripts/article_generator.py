@@ -21,7 +21,7 @@ Rules:
 - Include practical examples related to {focus_kw}
 - Use H2 and H3, h4, h5, h6 headings, no H1
 - Use lists, tables, snippets, and other data formats
-- Write more than 1500 words
+- Write more than 2000 words
 - Write in Jekyll markdown format  artile filename extension .md only
 - Naturally include focused & semantic keywords
 - do not add any front matter or meta data
