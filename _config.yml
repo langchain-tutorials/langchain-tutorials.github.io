@@ -113,11 +113,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "LangChain Tutorials"
-  avatar           : "/assets/images/Author-coding.webp"
+  name             : "Coding Rhodes"
+  avatar           : "/assets/images/Author-codingRhodes.webp.webp"
   bio              : "Teaching developers to build production-ready AI agents with **LangChain** & **LangGraph**. New tutorials every week."
   location         : "Online"
-  email            :
+  email            : CodingRhodes@gmail.com
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
