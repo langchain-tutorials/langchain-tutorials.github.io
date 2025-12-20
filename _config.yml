@@ -288,7 +288,7 @@ defaults:
       toc_sticky: true # Sticky TOC - Better UX
       toc_label: "Tutorial Contents"
       toc_icon: "list-ul"
-      classes: wide # Wider layout for code examples
+      # classes: wide # Wider layout for code examples
   # _pages
   - scope:
       path: "_pages"
@@ -296,7 +296,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      classes: wide
+      # classes: wide
 
 ---
 
