@@ -13,7 +13,7 @@
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "mmistakes@4.26.2"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
-
+sticky_sidebar        : true # true, false (default)
 # Site Settings
 locale                   : "en-US"
 rtl                      : false # true, false (default) # turns direction of the page into right to left for RTL languages
