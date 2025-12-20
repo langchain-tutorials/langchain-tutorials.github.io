@@ -1,464 +1,218 @@
 ---
-layout: single
-title: "LangChain Quick Start Guide"
-excerpt: "Complete beginner's guide to getting started with LangChain - Learn how to build AI-powered applications in minutes"
-permalink: /docs/langchain-quick-start
+title: "Quick-Start Guide"
+permalink: /docs/quick-start-guide/
+excerpt: "How to quickly install and setup Minimal Mistakes for use with GitHub Pages."
+last_modified_at: 2021-06-07T08:48:05-04:00
+redirect_from:
+  - /theme-setup/
 toc: true
 ---
 
-# 🚀 LangChain Quick Start Guide
+Minimal Mistakes has been developed as a [Gem-based theme](http://jekyllrb.com/docs/themes/) for easier use, and 100% compatible with GitHub Pages when used as a remote theme.
 
-Welcome to the complete quick start guide for LangChain! This tutorial will get you building AI-powered applications in under 15 minutes.
+**If you enjoy this theme, please consider [sponsoring me](https://github.com/sponsors/mmistakes) to continue developing and maintaining it.**
 
-## 📚 Table of Contents
+[!["Buy Me A Coffee"](https://user-images.githubusercontent.com/1376749/120938564-50c59780-c6e1-11eb-814f-22a0399623c5.png)](https://www.buymeacoffee.com/mmistakes)
 
-1. [What is LangChain?](#what-is-langchain)
-2. [Installation](#installation)
-3. [Your First LangChain App](#your-first-app)
-4. [Core Concepts](#core-concepts)
-5. [Common Use Cases](#use-cases)
-6. [Next Steps](#next-steps)
+[![Support via PayPal](https://cdn.jsdelivr.net/gh/twolfson/paypal-github-button@1.0.0/dist/button.svg)](https://www.paypal.me/mmistakes)
+{: style="margin-top: 0.5em;"}
 
----
+## Installing the theme
 
-## 🤔 What is LangChain? {#what-is-langchain}
+If you're running Jekyll v3.7+ and self-hosting you can quickly install the theme as a Ruby gem.
 
-LangChain is a framework for developing applications powered by language models. It helps you:
+[^structure]: See [**Structure** page]({{ "/docs/structure/" | relative_url }}) for a list of theme files and what they do.
 
-- Connect LLMs to your data sources
-- Chain multiple LLM calls together
-- Build conversational AI agents
-- Create RAG (Retrieval Augmented Generation) systems
-- Integrate with vector databases
+**ProTip:** Be sure to remove `/docs` and `/test` if you forked Minimal Mistakes. These folders contain documentation and test pages for the theme and you probably don't want them littering up your repo.
+{: .notice--info}
 
-**Think of it as:** The bridge between your data and AI models like GPT-4, Claude, or Llama.
+**Note:** The theme uses the [jekyll-include-cache](https://github.com/benbalter/jekyll-include-cache) plugin which will need to be installed in your `Gemfile` and added to the `plugins` array of `_config.yml`. Otherwise you'll throw `Unknown tag 'include_cached'` errors at build.
+{: .notice--warning}
 
----
+### Gem-based method
 
-## 💻 Installation {#installation}
+With Gem-based themes, directories such as the `assets`, `_layouts`, `_includes`, and `_sass` are stored in the theme’s gem, hidden from your immediate view. This allows for easier installation and updating as you don't have to manage any of the theme files. 
 
-### Prerequisites
+To install as a Gem-based theme:
 
-- Python 3.8 or higher
-- pip package manager
-- An API key (OpenAI, Anthropic, or other LLM provider)
+1. Add the following to your `Gemfile`:
 
-### Install LangChain
+   ```ruby
+   gem "minimal-mistakes-jekyll"
+   ```
 
-```bash
-# Install core LangChain
-pip install langchain
+2. Fetch and update bundled gems by running the following [Bundler](https://bundler.io/) command:
 
-# Install OpenAI integration
-pip install langchain-openai
+   ```bash
+   bundle
+   ```
 
-# Install community integrations (optional)
-pip install langchain-community
+3. Set the `theme` in your project's Jekyll `_config.yml` file:
 
-# Install for document loading
-pip install pypdf chromadb
-```
+   ```yaml
+   theme: minimal-mistakes-jekyll
+   ```
 
-### Set Up API Keys
+To update the theme run `bundle update`.
 
-```bash
-# Set your OpenAI API key
-export OPENAI_API_KEY='your-api-key-here'
+### Remote theme method
 
-# Or create a .env file
-echo "OPENAI_API_KEY=your-api-key-here" > .env
-```
+Remote themes are similar to Gem-based themes, but do not require `Gemfile` changes or whitelisting making them ideal for sites hosted with GitHub Pages.
 
----
+To install as a remote theme:
 
-## 🎯 Your First LangChain App {#your-first-app}
+1. Create/replace the contents of your `Gemfile` with the following:
 
-### Example 1: Simple Text Generation
+   ```ruby
+   source "https://rubygems.org"
 
-```python
-from langchain_openai import ChatOpenAI
-from langchain.schema import HumanMessage
+   gem "github-pages", group: :jekyll_plugins
+   gem "jekyll-include-cache", group: :jekyll_plugins
+   ```
 
-# Initialize the model
-llm = ChatOpenAI(temperature=0.7, model="gpt-3.5-turbo")
+2. Add `jekyll-include-cache` to the `plugins` array of your `_config.yml`.
 
-# Create a message
-message = HumanMessage(content="Write a haiku about programming")
+3. Fetch and update bundled gems by running the following [Bundler](https://bundler.io/) command:
 
-# Get response
-response = llm.invoke([message])
-print(response.content)
-```
+   ```bash
+   bundle
+   ```
 
-**Output:**
-```
-Code flows like water
-Logic builds bridges of thought
-Bugs teach us patience
-```
+4. Add `remote_theme: "mmistakes/minimal-mistakes@{{ site.data.theme.version }}"` to your `_config.yml` file. Remove any other `theme:` or `remote_theme:` entry.
 
-### Example 2: Prompt Templates
+You may also optionally specify a branch, [tag](https://github.com/mmistakes/minimal-mistakes/tags), or commit to use by appending an @ and the Git ref (e.g., `mmistakes/minimal-mistakes@4.9.0` or `mmistakes/minimal-mistakes@bbf3cbc5fd64a3e1885f3f99eb90ba92af84063d`). This is useful when rolling back to older versions of the theme. If you don't specify a Git ref, the latest on `master` will be used.
 
-```python
-from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
-
-# Create a prompt template
-prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful coding assistant."),
-    ("user", "Explain {concept} in simple terms.")
-])
-
-# Initialize model
-llm = ChatOpenAI(model="gpt-3.5-turbo")
-
-# Create chain
-chain = prompt | llm
-
-# Run the chain
-response = chain.invoke({"concept": "recursion"})
-print(response.content)
-```
-
-### Example 3: Simple Chain
-
-```python
-from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
-from langchain.output_parsers import StrOutputParser
-
-# Create components
-prompt = ChatPromptTemplate.from_template("Tell me a joke about {topic}")
-llm = ChatOpenAI(model="gpt-3.5-turbo")
-output_parser = StrOutputParser()
-
-# Chain them together
-chain = prompt | llm | output_parser
-
-# Run the chain
-result = chain.invoke({"topic": "programming"})
-print(result)
-```
+**Looking for an example?** Use the [Minimal Mistakes remote theme starter](https://github.com/mmistakes/mm-github-pages-starter/generate) for the quickest method of getting a GitHub Pages hosted site up and running. Generate a new repository from the starter, replace sample content with your own, and configure as needed.
+{: .notice--info}
 
 ---
 
-## 🧩 Core Concepts {#core-concepts}
+**Note:** Your Jekyll site should be viewable immediately at <http://USERNAME.github.io>. If it's not, you can force a rebuild by **Customizing Your Site** (see below for more details).
+{: .notice--warning}
 
-### 1. **Models**
+If you're hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than **USERNAME.github.io** and create a `gh-pages` branch off of `master`. For more details on how to set things up check [GitHub's documentation](https://help.github.com/articles/user-organization-and-project-pages/).
 
-LangChain supports multiple LLM providers:
+<figure>
+  <img src="{{ '/assets/images/mm-gh-pages.gif' | relative_url }}" alt="creating a new branch on GitHub">
+</figure>
 
-```python
-# OpenAI
-from langchain_openai import ChatOpenAI
-llm = ChatOpenAI(model="gpt-4")
+You can also install the theme by copying all of the theme files[^structure] into your project.
 
-# Anthropic Claude
-from langchain_anthropic import ChatAnthropic
-llm = ChatAnthropic(model="claude-3-opus-20240229")
+To do so fork the [Minimal Mistakes theme](https://github.com/mmistakes/minimal-mistakes/fork), then rename the repo to **USERNAME.github.io** --- replacing **USERNAME** with your GitHub username.
 
-# Local models (Ollama)
-from langchain_community.llms import Ollama
-llm = Ollama(model="llama2")
+<figure>
+  <img src="{{ '/assets/images/mm-theme-fork-repo.png' | relative_url }}" alt="fork Minimal Mistakes">
+</figure>
+
+**GitHub Pages Alternatives:** Looking to host your site for free and install/update the theme painlessly? [Netlify][netlify-jekyll], [GitLab Pages][gitlab-jekyll], and [Continuous Integration (CI) services][ci-jekyll] have you covered. In most cases all you need to do is connect your repository to them, create a simple configuration file, and install the theme following the [Ruby Gem Method](#ruby-gem-method) above.
+{: .notice--info}
+
+[netlify-jekyll]: https://www.netlify.com/blog/2015/10/28/a-step-by-step-guide-jekyll-3.0-on-netlify/
+[gitlab-jekyll]: https://about.gitlab.com/2016/04/07/gitlab-pages-setup/
+[ci-jekyll]: https://jekyllrb.com/docs/deployment/automated/#continuous-integration-service
+
+### Remove the Unnecessary
+
+If you forked or downloaded the `minimal-mistakes-jekyll` repo you can safely remove the following folders and files:
+
+- `.editorconfig`
+- `.gitattributes`
+- `.github`
+- `/docs`
+- `/test`
+- `CHANGELOG.md`
+- `minimal-mistakes-jekyll.gemspec`
+- `README.md`
+- `screenshot-layouts.png`
+- `screenshot.png`
+
+**Note:** If forking the theme be sure to update `Gemfile` as well. The one found at the root of the project is for building the theme's Ruby gem and is missing dependencies. To properly setup a [`Gemfile`](https://github.com/mmistakes/minimal-mistakes/blob/master/docs/Gemfile) with the theme, consult the "[Install Dependencies](https://mmistakes.github.io/minimal-mistakes/docs/installation/#install-dependencies)" section.
+{: .notice--warning}
+
+## Setup Your Site
+
+Depending on the path you took installing Minimal Mistakes you'll setup things a little differently.
+
+**ProTip:** The source code and content files for this site can be found in the [`/docs` folder](https://github.com/mmistakes/minimal-mistakes/tree/master/docs) if you want to copy or learn from them.
+{: .notice--info}
+
+### Starting Fresh
+
+Starting with an empty folder and `Gemfile` you'll need to copy or re-create this [default `_config.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_config.yml) file. For a full explanation of every setting be sure to read the [**Configuration**]({{ "/docs/configuration/" | relative_url }}) section.
+
+From `v4.5.0` onwards, Minimal Mistakes theme-gem comes bundled with the necessary data files for localization.
+They will be picked up automatically if you have the [`jekyll-data`](https://github.com/ashmaroli/jekyll-data) plugin installed.
+If you're hosting on GitHub Pages, you can copy the [`_data/ui-text.yml`][ui-text.yml] file into your repository for the localization feature to work.
+
+You'll need to create and edit these data files to customize them:
+
+- [`_data/ui-text.yml`][ui-text.yml] - UI text [documentation]({{ "/docs/ui-text/" | relative_url }})
+- [`_data/navigation.yml`][navigation.yml] - navigation [documentation]({{ "/docs/navigation/" | relative_url }})
+
+  [ui-text.yml]: https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml
+  [navigation.yml]: https://github.com/mmistakes/minimal-mistakes/blob/master/_data/navigation.yml
+
+### Starting from `jekyll new`
+
+Scaffolding out a site with the `jekyll new` command requires you to modify a few files that it creates.
+
+Edit `_config.yml`. Then:
+
+- Replace `<site root>/index.md` with a modified [Minimal Mistakes `index.html`](https://github.com/mmistakes/minimal-mistakes/blob/master/index.html). Be sure to enable pagination if using the [`home` layout]({{ "/docs/layouts/#home-page" | relative_url }}) by adding the necessary lines to **_config.yml**.
+- Change `layout: post` in `_posts/0000-00-00-welcome-to-jekyll.markdown` to `layout: single`.
+- Remove `about.md`, or at the very least change `layout: page` to `layout: single` and remove references to `icon-github.html` (or [copy to your `_includes`](https://github.com/jekyll/minima/tree/master/_includes) if using it).
+
+### Migrating to Gem Version
+
+If you're migrating a site already using Minimal Mistakes and haven't customized any of the theme files things upgrading will be easier for you.
+
+Start by removing the following folders and any files within them: 
+
+```terminal
+├── _includes
+├── _layouts
+├── _sass
+├── assets
+|  ├── css
+|  ├── fonts
+|  └── js
 ```
 
-### 2. **Prompts**
+You won't need these anymore as they're bundled with the theme gem --- unless you intend to [override them](https://jekyllrb.com/docs/themes/#overriding-theme-defaults).
 
-Structure your inputs effectively:
+**Note:** When clearing out the `assets` folder be sure to leave any files you've added and need. This includes images, CSS, or JavaScript that aren't already [bundled in the theme](https://github.com/mmistakes/minimal-mistakes/tree/master/assets). 
+{: .notice--warning}
 
-```python
-from langchain.prompts import PromptTemplate
+From `v4.5.0` onwards, the default language files are read-in automatically via the [`jekyll-data`](https://github.com/ashmaroli/jekyll-data) plugin if it's installed. For sites hosted with GitHub Pages, you still need to copy the [`_data/ui-text.yml`][ui-text.yml] file because the `jekyll-data` plugin [is unsupported on GitHub Pages](https://docs.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll#plugins).
 
-# Simple template
-template = "Write a {adjective} story about {subject}"
-prompt = PromptTemplate.from_template(template)
+If you customized any of these files leave them alone, and only remove the untouched ones. If done correctly your modified versions should [override](https://jekyllrb.com/docs/themes/#overriding-theme-defaults) the versions bundled with the theme and be used by Jekyll instead.
 
-# Chat template
-from langchain.prompts import ChatPromptTemplate
+#### Update Gemfile
 
-chat_prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a {role}"),
-    ("user", "{user_input}"),
-])
+Replace `gem "github-pages` or `gem "jekyll"` with `gem "jekyll", "~> 3.5"`. You'll need the latest version of Jekyll[^update-jekyll] for Minimal Mistakes to work and load all of the theme's assets properly, this line forces Bundler to do that.
+
+[^update-jekyll]: You could also run `bundle update jekyll` to update Jekyll.
+
+Add the Minimal Mistakes theme gem: 
+
+```ruby
+gem "minimal-mistakes-jekyll"
 ```
 
-### 3. **Chains**
+When finished your `Gemfile` should look something like this:
 
-Connect components together:
+```ruby
+source "https://rubygems.org"
 
-```python
-# Using LCEL (LangChain Expression Language)
-chain = prompt | llm | output_parser
-
-# Sequential chain
-from langchain.chains import LLMChain
-
-chain = LLMChain(llm=llm, prompt=prompt)
-result = chain.run(topic="AI")
+gem "jekyll", "~> 3.7"
+gem "minimal-mistakes-jekyll"
 ```
 
-### 4. **Memory**
+Then run `bundle update` and add `theme: minimal-mistakes-jekyll` to your `_config.yml`.
 
-Add conversation history:
-
-```python
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationChain
-
-memory = ConversationBufferMemory()
-conversation = ConversationChain(
-    llm=llm,
-    memory=memory
-)
-
-# Chat maintains context
-conversation.predict(input="Hi, my name is Alice")
-conversation.predict(input="What's my name?")  # Will remember "Alice"
-```
-
-### 5. **Agents**
-
-Let AI decide what to do:
-
-```python
-from langchain.agents import create_react_agent, AgentExecutor
-from langchain.tools import Tool
-
-# Define tools
-def calculator(query):
-    return eval(query)
-
-tools = [
-    Tool(
-        name="Calculator",
-        func=calculator,
-        description="Useful for math calculations"
-    )
-]
-
-# Create agent
-agent = create_react_agent(llm, tools, prompt)
-agent_executor = AgentExecutor(agent=agent, tools=tools)
-
-# Run agent
-agent_executor.invoke({"input": "What is 25 * 4?"})
-```
+**v4 Breaking Change:** Paths for image headers, overlays, teasers, [galleries]({{ "/docs/helpers/#gallery" | relative_url }}), and [feature rows]({{ "/docs/helpers/#feature-row" | relative_url }}) have changed and now require a full path. Instead of just `image: filename.jpg` you'll need to use the full path eg: `image: /assets/images/filename.jpg`. The preferred location is now `/assets/images/` but can be placed elsewhere or externally hosted. This applies to image references in `_config.yml` and `author.yml` as well.
+{: .notice--danger}
 
 ---
 
-## 💡 Common Use Cases {#use-cases}
-
-### Use Case 1: Document Q&A (RAG)
-
-```python
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
-from langchain.chains import RetrievalQA
-
-# Load documents
-loader = PyPDFLoader("document.pdf")
-documents = loader.load()
-
-# Split into chunks
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=1000,
-    chunk_overlap=200
-)
-chunks = text_splitter.split_documents(documents)
-
-# Create embeddings and vector store
-embeddings = OpenAIEmbeddings()
-vectorstore = Chroma.from_documents(chunks, embeddings)
-
-# Create Q&A chain
-qa_chain = RetrievalQA.from_chain_type(
-    llm=llm,
-    retriever=vectorstore.as_retriever()
-)
-
-# Ask questions
-response = qa_chain.invoke("What is the main topic of this document?")
-print(response['result'])
-```
-
-### Use Case 2: Chatbot with Memory
-
-```python
-from langchain.chains import ConversationChain
-from langchain.memory import ConversationBufferWindowMemory
-
-# Keep last 5 interactions
-memory = ConversationBufferWindowMemory(k=5)
-
-chatbot = ConversationChain(
-    llm=llm,
-    memory=memory,
-    verbose=True
-)
-
-# Continuous conversation
-while True:
-    user_input = input("You: ")
-    if user_input.lower() == "quit":
-        break
-    
-    response = chatbot.predict(input=user_input)
-    print(f"Bot: {response}")
-```
-
-### Use Case 3: Data Analysis Agent
-
-```python
-from langchain.agents import create_pandas_dataframe_agent
-import pandas as pd
-
-# Load data
-df = pd.read_csv("sales_data.csv")
-
-# Create agent
-agent = create_pandas_dataframe_agent(
-    llm,
-    df,
-    verbose=True,
-    allow_dangerous_code=True
-)
-
-# Ask questions about data
-agent.invoke("What are the total sales by region?")
-agent.invoke("Which product has the highest profit margin?")
-```
-
-### Use Case 4: Web Scraping + AI Analysis
-
-```python
-from langchain_community.document_loaders import WebBaseLoader
-from langchain.chains.summarize import load_summarize_chain
-
-# Load web page
-loader = WebBaseLoader("https://example.com/article")
-docs = loader.load()
-
-# Summarize
-chain = load_summarize_chain(llm, chain_type="map_reduce")
-summary = chain.run(docs)
-print(summary)
-```
-
----
-
-## 🎓 Next Steps {#next-steps}
-
-### Beginner Projects
-
-1. **Personal AI Assistant**
-   - Build a chatbot that remembers conversations
-   - Add web search capabilities
-   - Integrate with your calendar
-
-2. **Document Analyzer**
-   - Create a Q&A system for your PDFs
-   - Add summarization features
-   - Export insights to markdown
-
-3. **Content Generator**
-   - Blog post writer with SEO optimization
-   - Social media post scheduler
-   - Email response generator
-
-### Advanced Topics
-
-- **Vector Databases**: Pinecone, Weaviate, Qdrant
-- **Streaming Responses**: Real-time output
-- **Custom Tools**: Build your own agent tools
-- **Multi-agent Systems**: Agents working together
-- **Production Deployment**: LangServe, FastAPI
-
-### Resources
-
-- **Official Docs**: [python.langchain.com](https://python.langchain.com)
-- **GitHub**: [github.com/langchain-ai/langchain](https://github.com/langchain-ai/langchain)
-- **Discord Community**: Join the LangChain Discord
-- **YouTube**: LangChain official channel
-- **Twitter**: @LangChainAI
-
----
-
-## 🛠️ Troubleshooting
-
-### Common Issues
-
-**1. API Key Errors**
-```bash
-# Make sure your key is set
-echo $OPENAI_API_KEY
-
-# Or load from .env
-pip install python-dotenv
-```
-
-**2. Rate Limits**
-```python
-# Add retry logic
-from langchain.llms import OpenAI
-
-llm = OpenAI(
-    max_retries=3,
-    request_timeout=60
-)
-```
-
-**3. Memory Issues with Large Documents**
-```python
-# Use streaming for large docs
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-
-llm = ChatOpenAI(
-    streaming=True,
-    callbacks=[StreamingStdOutCallbackHandler()]
-)
-```
-
----
-
-## 📝 Quick Reference
-
-### Installation Commands
-```bash
-pip install langchain langchain-openai langchain-community
-pip install pypdf chromadb  # For RAG
-pip install pandas  # For data analysis
-```
-
-### Basic Pattern
-```python
-# 1. Import
-from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
-
-# 2. Setup
-llm = ChatOpenAI()
-prompt = ChatPromptTemplate.from_template("{input}")
-
-# 3. Chain
-chain = prompt | llm
-
-# 4. Run
-response = chain.invoke({"input": "Hello!"})
-```
-
----
-
-## 🤝 Get Help
-
-- **Stack Overflow**: Tag `langchain`
-- **GitHub Issues**: Report bugs
-- **Discord**: Real-time help
-- **Twitter**: @LangChainAI
-
----
-
-**Ready to build?** Start with the examples above and experiment! The best way to learn LangChain is by building real projects.
-
-*Last updated: December 2024*
+That's it! If all goes well running `bundle exec jekyll serve` should spin-up your site.
