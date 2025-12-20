@@ -7,7 +7,7 @@ POSTS_DIR = "_posts"
 IMAGES_DIR = "images"
 
 # Site settings
-SITE_DOMAIN = "https://langchain-tutorials.github.io/"
+SITE_DOMAIN = "https://langchain-tutorials.github.io"
 
 # AI Models
 TEXT_MODEL = "gemini-2.5-flash"
