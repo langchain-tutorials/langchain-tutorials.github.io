@@ -27,6 +27,7 @@ baseurl                  : ""
 repository               : "langchain-tutorials.github.io"
 teaser                   : "/assets/images/teaser-default.jpg"
 logo                     : "/assets/images/site-logo.webp"
+favicon                  : "/assets/images/favicon.ico"
 masthead_title           : "LangChain Tutorials"
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
