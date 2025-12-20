@@ -114,7 +114,7 @@ analytics:
 # Site Author
 author:
   name             : "LangChain Tutorials"
-  avatar           : "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/Author-coding.webp"
   bio              : "Teaching developers to build production-ready AI agents with **LangChain** & **LangGraph**. New tutorials every week."
   location         : "Online"
   email            :
