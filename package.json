@@ -5,7 +5,7 @@
   "description": "Minimal Mistakes 2 column Jekyll theme.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mmistakes.git"
+    "url": "https://github.com/mmistakes/minimal-mistakes.git"
   },
   "keywords": [
     "jekyll",
@@ -15,9 +15,9 @@
   "author": "Michael Rose",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mmistakes/issues"
+    "url": "https://github.com/mmistakes/minimal-mistakes/issues"
   },
-  "homepage": "https://langchain-tutorials.github.io/",
+  "homepage": "https://mmistakes.github.io/minimal-mistakes/",
   "engines": {
     "node": ">= 0.10.0"
   },

@@ -8,143 +8,158 @@
 # Theme Settings
 #
 # Review documentation to determine if you should use `theme` or `remote_theme`
-# https://langchain-tutorials.github.io/docs/quick-start-guide/#installing-the-theme
+# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 # theme                  : "minimal-mistakes-jekyll"
-remote_theme           : "mmistakes@4.26.2"
+# remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
-rtl                      : false # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "LangChain Tutorials"
-title_separator          : "|"
-subtitle                 : "Master AI Agents & LangGraph in 2026"
-name                     : "LangChain Tutorials"
-description              : "Learn LangChain, LangGraph, and AI Agents with step-by-step tutorials, code examples, and production-ready guides for developers."
-url                      : "https://langchain-tutorials.github.io"
-baseurl                  : ""
-repository               : "langchain-tutorials.github.io"
-teaser                   : "/assets/images/teaser-default.jpg"
-logo                     : "/assets/images/site-logo.webp"
-masthead_title           : "LangChain Tutorials"
-breadcrumbs              : true # true, false (default)
+rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
+title                    : "Site Title"
+title_separator          : "-"
+subtitle                 : # site tagline that appears below site title in masthead
+name                     : "Your Name"
+description              : "An amazing website."
+url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : # the subpath of your site, e.g. "/blog"
+repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+breadcrumbs              : # true, false (default)
 words_per_minute         : 200
-enable_copy_code_button  : true # IMPORTANT for code tutorials
-copyright                : "LangChain Tutorials"
-copyright_url            : "https://langchain-tutorials.github.io"
+enable_copy_code_button  : # true, false (default)
+copyright                : # "copyright" name, defaults to site.title
+copyright_url            : # "copyright" URL, defaults to site.url
 comments:
-  provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
-    shortname            : "langchain-tutorials" # Create at https://disqus.com
+    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+  discourse:
+    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
+  facebook:
+    # https://developers.facebook.com/docs/plugins/comments
+    appid                :
+    num_posts            : # 5 (default)
+    colorscheme          : # "light" (default), "dark"
   utterances:
-    theme                : "github-light" # "github-light" (default), "github-dark"
-    issue_term           : "pathname" # "pathname" (default)
+    theme                : # "github-light" (default), "github-dark"
+    issue_term           : # "pathname" (default)
   giscus:
     repo_id              : # Shown during giscus setup at https://giscus.app
     category_name        : # Full text name of the category
     category_id          : # Shown during giscus setup at https://giscus.app
-    discussion_term      : "pathname" # "pathname" (default), "url", "title", "og:title"
-    reactions_enabled    : '1' # '1' for enabled (default), '0' for disabled
-    theme                : "light" # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
-    strict               : 0 # 1 for enabled, 0 for disabled (default)
-    input_position       : "bottom" # "top", "bottom" # The comment input box will be placed above or below the comments
-    emit_metadata        : 0 # 1 for enabled, 0 for disabled (default)
-    lang                 : "en" # "en" (default)
-    lazy                 : true # true, false # Loading of the comments will be deferred until the user scrolls near the comments container.
-
+    discussion_term      : # "pathname" (default), "url", "title", "og:title"
+    reactions_enabled    : # '1' for enabled (default), '0' for disabled
+    theme                : # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
+    strict               : # 1 for enabled, 0 for disabled (default)
+    input_position       : # "top", "bottom" # The comment input box will be placed above or below the comments
+    emit_metadata        : # 1 for enabled, 0 for disabled (default) # https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#imetadatamessage
+    lang                 : # "en" (default)
+    lazy                 : # true, false # Loading of the comments will be deferred until the user scrolls near the comments container.
+  staticman:
+    branch               : # "master"
+    endpoint             : # "https://{your Staticman v3 API}/v3/entry/github/"
 reCaptcha:
   siteKey                :
   secret                 :
-
 atom_feed:
   path                   : # blank (default) uses feed.xml
-  hide                   : false # true, false (default)
-
-search                   : true # IMPORTANT: Enable search
-search_full_content      : true # IMPORTANT: Search full article content
-search_provider          : lunr # lunr (default), algolia, google
-
+  hide                   : # true, false (default)
+search                   : # true, false (default)
+search_full_content      : # true, false (default)
+search_provider          : # lunr (default), algolia, google
 lunr:
-  search_within_pages    : true # true, false (default)
-
+  search_within_pages    : # true, false (default)
 algolia:
-  application_id         : # YOUR_APPLICATION_ID (optional - for advanced search)
+  application_id         : # YOUR_APPLICATION_ID
   index_name             : # YOUR_INDEX_NAME
   search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : true # true (default), false
-
+  powered_by             : # true (default), false
 google:
-  search_engine_id       : # YOUR_SEARCH_ENGINE_ID (optional)
-  instant_search         : false # false (default), true
-
-# SEO Related - CRITICAL FOR RANKING
-google_site_verification : DgGLIF5O5HfmP8Jt8kwgFKHHVk7ibvWViy3Iw5Zc7aE
-bing_site_verification   : D949E2F107551F710F1D7CCF92BE9E7E
-naver_site_verification  : naverbcb32f6555dc6f64089179f593e7cba3
+  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
+  instant_search         : # false (default), true
+# SEO Related
+google_site_verification :
+bing_site_verification   :
+naver_site_verification  :
 yandex_site_verification :
 baidu_site_verification  :
 
-
-# Social Sharing - IMPORTANT for virality
+# Social Sharing
 twitter:
-  username               : "langchaintuts" # Create Twitter account
+  username               :
 facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "/assets/images/og-default.jpg" # Default sharing image
+og_image                 : # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : "Organization"
-  name                   : "LangChain Tutorials"
-  links: 
-    - "https://twitter.com/langchaintuts"
-    - "https://github.com/langchain-tutorials"
+  type                   : # Person or Organization (defaults to Person)
+  name                   : # If the user or organization name differs from the site's name
+  links: # An array of links to social media profiles
 
-# Analytics - CRITICAL for tracking
+# Analytics
 analytics:
-  provider               : "google-gtag" # false (default), "google", "google-universal", "google-gtag", "custom"
+  provider               : # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id          : "G-KJG6E00LT8" # Replace with your GA4 tracking ID
-    anonymize_ip         : false # true, false (default)
+    tracking_id          :
+    anonymize_ip         : # true, false (default)
 
 
 # Site Author
 author:
-  name             : "LangChain Tutorials"
-  avatar           : "/assets/images/bio-photo.jpg"
-  bio              : "Teaching developers to build production-ready AI agents with **LangChain** & **LangGraph**. New tutorials every week."
-  location         : "Online"
+  name             : "Your Name"
+  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "I am an **amazing** person."
+  location         : "Somewhere"
   email            :
   links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/langchain-tutorials"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      # url: "mailto:your.name@email.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      # url: "https://your-website.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/langchaintuts"
-    - label: "Subscribe"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "https://langchain-tutorials.github.io/subscribe/"
-    - label: "Discord"
-      icon: "fab fa-fw fa-discord"
-      url: "#" # Add your Discord invite link
+      # url: "https://twitter.com/"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook-square"
+      # url: "https://facebook.com/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      # url: "https://github.com/"
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      # url: "https://instagram.com/"
 
 # Site Footer
 footer:
   links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/langchain-tutorials"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/langchaintuts"
-    - label: "RSS Feed"
-      icon: "fas fa-fw fa-rss-square"
-      url: "https://langchain-tutorials.github.io/feed.xml"
-  since: "2025"
+      # url:
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook-square"
+      # url:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      # url:
+    - label: "GitLab"
+      icon: "fab fa-fw fa-gitlab"
+      # url:
+    - label: "Bitbucket"
+      icon: "fab fa-fw fa-bitbucket"
+      # url:
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      # url:
+  since: "2013"
 
 
 # Reading Files
@@ -177,6 +192,7 @@ exclude:
   - Rakefile
   - README
   - tmp
+  - /docs # ignore Minimal Mistakes /docs
   - /test # ignore Minimal Mistakes /test
 keep_files:
   - .git
@@ -203,10 +219,6 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    block:
-      line_numbers: true
 
 
 # Sass/SCSS
@@ -216,13 +228,35 @@ sass:
 
 
 # Outputting
-permalink: /:title/ # SEO-friendly URLs without categories
-timezone: "Asia/Kolkata" # Your timezone
+permalink: /:categories/:title/
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Pagination with jekyll-paginate
-paginate: 10 # amount of posts to show
+paginate: 5 # amount of posts to show
 paginate_path: /page:num/
+
+# Pagination with jekyll-paginate-v2
+# See https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md#site-configuration
+#   for configuration details
+pagination:
+  # Set enabled to true to use paginate v2
+  # enabled: true
+  debug: false
+  collection: 'posts'
+  per_page: 10
+  permalink: '/page/:num/'
+  title: ':title - page :num'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+  category: 'posts'
+  tag: ''
+  locale: ''
+  trail:
+    before: 2
+    after: 2
+
 
 # Plugins (previously gems:)
 plugins:
@@ -231,7 +265,6 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
-  - jekyll-seo-tag
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -258,6 +291,17 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+# https://github.com/jekyll/jekyll-archives
+# jekyll-archives:
+#   enabled:
+#     - categories
+#     - tags
+#   layouts:
+#     category: archive-taxonomy
+#     tag: archive-taxonomy
+#   permalinks:
+#     category: /categories/:name/
+#     tag: /tags/:name/
 
 
 # HTML Compression
@@ -278,69 +322,6 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
+      comments: # true
       share: true
       related: true
-      show_date: true
-      toc: true # Table of contents - IMPORTANT for tutorials
-      toc_sticky: true # Sticky TOC - Better UX
-      toc_label: "Tutorial Contents"
-      toc_icon: "list-ul"
-      classes: wide # Wider layout for code examples
-  # _pages
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      author_profile: true
-      classes: wide
-
----
-
-## 🎨 **KEY CHANGES EXPLAINED**
-
-### **SEO Optimizations:**
-1. ✅ `remote_theme` enabled for GitHub Pages
-2. ✅ `enable_copy_code_button: true` - Users can copy code easily
-3. ✅ `search: true` - Full-text search enabled
-4. ✅ `breadcrumbs: true` - Better navigation & SEO
-5. ✅ `permalink: /:title/` - Clean URLs (no date/category in URL)
-6. ✅ `toc: true` and `toc_sticky: true` - Table of contents for every post
-7. ✅ Line numbers in code blocks for better readability
-
-### **Branding:**
-
-
-### **User Experience:**
-
----
-
-## 📝 **ACTION ITEMS - Do These Next:**
-
-### **1. Create Google Analytics Account (5 minutes)**
-
-
-### **2. Create Disqus Account (5 minutes)**
-
-### **3. Verify Google Search Console (10 minutes)**
-
-
-### **4. Create Social Media Accounts**
-
-Twitter: langchaintuts
-GitHub: langchain-tutorials
-Discord: Create server for community (optional but recommended)
-
----
-
-## 📁 **CREATE THESE IMAGE FILES**
-
-You need to create an `/assets/images/` folder with these images:
-```
-/assets/images/
-├── bio-photo.jpg (200x200px - your logo/avatar)
-├── logo-88x88.png (88x88px - site logo)
-├── teaser-default.jpg (400x200px - default post thumbnail)
-├── og-default.jpg (1200x630px - social media sharing image)
-└── header-bg.jpg (1920x1080px - homepage header)
