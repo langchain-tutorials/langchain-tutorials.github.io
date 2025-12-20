@@ -2,7 +2,7 @@
 layout: page
 title: "LangChain Quick Start Guide"
 excerpt: "Complete beginner's guide to getting started with LangChain - Learn how to build AI-powered applications in minutes"
-permalink: /docs/quick-start-guide
+permalink: /quick-start-guide
 toc: true
 ---
 
