@@ -11,7 +11,7 @@ toc_sticky: true
 toc_icon: "list-ul"
 tags: [langgraph vs langchain 2026]
 featured: false
-image: '/images/langgraph-vs-langchain-2026.webp'
+image: '/assets/images/langgraph-vs-langchain-2026.webp'
 ---
 
 ## LangGraph vs LangChain 2026: Which Should You Use?
