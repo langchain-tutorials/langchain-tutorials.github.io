@@ -8,10 +8,11 @@ from config import *
 from keywords_handler import get_keyword_row, parse_keyword_row, remove_keyword_from_file, get_keywords_count
 from article_generator import generate_article, generate_image_prompt
 from image_generator import generate_image_freepik
-from google_indexing import submit_to_google_indexing
+from google_indexing import submit_to_google_indexing, check_indexing_status
 from google_sheets_logger import log_to_google_sheets
 from twitter_poster import post_to_twitter
 from linkedin_poster import post_to_linkedin
+from webpushr_notifier import send_blog_post_notification, get_subscriber_count
 
 
 def main():
@@ -146,7 +147,42 @@ def main():
                     indexing_status = f"Failed - {str(e)[:100]}"
                     print(f"⚠️ Indexing failed (non-critical): {e}")
                 
-                # Step 7: Log to Sheets
+                    # Wait for Google's API to update metadata
+                if success:
+                    print(f"\n⏳ Waiting 50 seconds for Check indexing status...")
+                    for remaining in range(WAIT_TIME_BEFORE_INDEXING, 0, -30):
+                        minutes = remaining // 60
+                        seconds = remaining % 60
+                        print(f"⏰ Time remaining: {minutes}m {seconds}s", end='\r')
+                        time.sleep(30)
+                
+                # Step 7: Check indexing status
+                try:
+                    status_result = check_indexing_status(post_url)
+                    
+                    if status_result is None:
+                        print(f"⚠️ Could not verify indexing status - check credentials")
+                        indexing_status += " (Status: Unverified)"
+                        
+                    elif status_result == {} or 'latestUpdate' not in status_result:
+                        print(f"ℹ️ No indexing history found (may take a moment to appear)")
+                        indexing_status += " (Status: Pending)"
+                        
+                    elif status_result.get('latestUpdate', {}).get('type') == 'URL_UPDATED':
+                        notify_time = status_result['latestUpdate']['notifyTime']
+                        print(f"✅ Confirmed in indexing queue at {notify_time}")
+                        indexing_status = "Success (Confirmed in Queue)"
+                        
+                    elif status_result.get('latestUpdate', {}).get('type') == 'URL_DELETED':
+                        notify_time = status_result['latestUpdate']['notifyTime']
+                        print(f"🗑️ URL marked for deletion at {notify_time}")
+                        indexing_status = "Deleted"
+                        
+                except Exception as e:
+                    print(f"⚠️ Error checking indexing status: {e}")
+                    indexing_status += " (Verification Failed)"
+                
+                # Step 8: Log to Sheets
                 print(f"\n{'=' * 60}")
                 print("Step 7: Logging to Google Sheets")
                 print("=" * 60)
@@ -159,7 +195,7 @@ def main():
                 except Exception as e:
                     print(f"⚠️ Sheets logging failed (non-critical): {e}")
                 
-                # Step 8: Post to Twitter
+                # Step 9: Post to Twitter
                 if twitter_content:
                     print(f"\n{'=' * 60}")
                     print("Step 8: Posting to Twitter")
@@ -172,7 +208,7 @@ def main():
                 else:
                     print(f"\n⚠️ No Twitter content provided - skipping Twitter post")
                 
-                # Step 9: Post to LinkedIn
+                # Step 10: Post to LinkedIn
                 if linkedin_content:
                     print(f"\n{'=' * 60}")
                     print("Step 9: Posting to LinkedIn")
@@ -184,8 +220,18 @@ def main():
                         print(f"⚠️ LinkedIn posting failed (non-critical): {e}")
                 else:
                     print(f"\n⚠️ No LinkedIn content provided - skipping LinkedIn post")
+
+                    try:
+                        send_blog_post_notification(title, permalink, focus_kw)
+                    except Exception as e:
+                        print(f"⚠️ Push notification failed (non-critical): {e}")
             
-            # Step 10: Remove keyword after success
+            # Step 11: Remove keyword after success
+            print(f"\n{'=' * 60}")
+            print("Step 11: Removing Keyword from File")
+            print("=" * 60)
+            
+            # Step 12: Remove keyword after success
             print(f"\n{'=' * 60}")
             print("Step 10: Removing Keyword from File")
             print("=" * 60)
