@@ -2,8 +2,16 @@
 title: "LangChain Quick Start Guide"
 excerpt: "Complete beginner's guide to getting started with LangChain - Learn how to build AI-powered applications in minutes"
 permalink: /quick-start-guide
-toc: true
-toc_sticky: true
+layout: single
+author_profile: true
+read_time: true
+comments: true
+share: true
+related: true
+toc: true # Table of contents - IMPORTANT for tutorials
+toc_sticky: true # Sticky TOC - Better UX
+toc_label: "Tutorial Contents"
+toc_icon: "list-ul"
 ---
 
 # 🚀 LangChain Quick Start Guide
