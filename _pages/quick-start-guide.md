@@ -14,7 +14,7 @@ toc_label: "Tutorial Contents"
 toc_icon: "list-ul"
 ---
 
-# 🚀 LangChain Quick Start Guide
+## 🚀 LangChain Quick Start Guide
 
 Welcome to the complete quick start guide for LangChain! This tutorial will get you building AI-powered applications in under 15 minutes.
 
