@@ -83,7 +83,7 @@ def main():
             print(f"\n{'=' * 60}")
             print("Step 1: Generating Article")
             print("=" * 60)
-            article = generate_article(title, focus_kw, permalink, semantic_kw)
+            article = generate_article(title, focus_kw, permalink, semantic_kw, affiliate_links)
             print(f"✅ Article generated ({len(article)} characters)")
             
             # Step 2: Generate image prompt
