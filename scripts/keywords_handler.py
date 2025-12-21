@@ -28,7 +28,7 @@ def get_keyword_row():
 def parse_keyword_row(row):
     """
     Parse keyword row with new format:
-    title | focus_kw | permalink | semantic_kw | affiliate_links | linkedin_content | twitter_content
+    title | focus_kw | permalink | semantic_kw | affiliate_links
     
     Returns:
         dict with all fields or None if invalid
@@ -54,9 +54,7 @@ def parse_keyword_row(row):
                 'focus_kw': parts[1],
                 'permalink': parts[2],
                 'semantic_kw': parts[3],
-                'affiliate_links': parts[4],
-                'linkedin_content': parts[5],
-                'twitter_content': parts[6]
+                'affiliate_links': parts[4]
             }
         else:
             print(f"❌ Invalid format. Expected 4 or 7 fields, got {len(parts)}")
