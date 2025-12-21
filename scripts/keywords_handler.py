@@ -43,11 +43,9 @@ def parse_keyword_row(row):
                 'focus_kw': parts[1],
                 'permalink': parts[2],
                 'semantic_kw': parts[3],
-                'affiliate_links': '',
-                'linkedin_content': '',
-                'twitter_content': ''
+                'affiliate_links': ''
             }
-        elif len(parts) == 7:
+        elif len(parts) == 5:
             # New format with social media
             return {
                 'title': parts[0],
