@@ -131,7 +131,7 @@ author:
       url: "https://langchain-tutorials.github.io/subscribe/"
     - label: "Discord"
       icon: "fab fa-fw fa-discord"
-      url: "#" # Add your Discord invite link
+      url: "https://discord.gg/QhpaC6j4" # Add your Discord invite link
 
 # Site Footer
 footer:
@@ -332,7 +332,7 @@ defaults:
 
 Twitter: langchaintuts
 GitHub: langchain-tutorials
-Discord: Create server for community (optional but recommended)
+Discord: codingrhodes
 
 ---
 

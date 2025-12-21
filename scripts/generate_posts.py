@@ -148,13 +148,13 @@ def main():
                     print(f"⚠️ Indexing failed (non-critical): {e}")
                 
                     # Wait for Google's API to update metadata
-                if success:
-                    print(f"\n⏳ Waiting 50 seconds for Check indexing status...")
-                    for remaining in range(WAIT_TIME_BEFORE_INDEXING, 0, -30):
-                        minutes = remaining // 60
-                        seconds = remaining % 60
-                        print(f"⏰ Time remaining: {minutes}m {seconds}s", end='\r')
-                        time.sleep(30)
+                # if success:
+                #     print(f"\n⏳ Waiting 50 seconds for Check indexing status...")
+                #     for remaining in range(WAIT_TIME_BEFORE_INDEXING, 0, -30):
+                #         minutes = remaining // 60
+                #         seconds = remaining % 60
+                #         print(f"⏰ Time remaining: {minutes}m {seconds}s", end='\r')
+                #         time.sleep(30)
                 
                 # Step 7: Check indexing status
                 try:
