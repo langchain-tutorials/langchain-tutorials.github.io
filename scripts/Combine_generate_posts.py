@@ -86,7 +86,7 @@ description: "article description in less than 160 characters"
 author: Mary
 tags: {focus_kw}
 featured: false
-image as image: '/images/{permalink}.webp'
+image as image: '/assets/images/{permalink}.webp'
 """
     
     print("🤖 Generating article with Gemini...")

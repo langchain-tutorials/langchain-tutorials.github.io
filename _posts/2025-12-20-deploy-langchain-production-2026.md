@@ -11,7 +11,7 @@ toc_sticky: true
 toc_icon: "list-ul"
 tags: [deploy langchain production 2026]
 featured: false
-image: '/images/deploy-langchain-production-2026.webp'
+image: '/assets/images/deploy-langchain-production-2026.webp'
 ---
 
 ## Get Ready to Deploy LangChain Applications to Production in 2026

@@ -11,7 +11,7 @@ toc_sticky: true
 toc_icon: "list-ul"
 tags: [langgraph multi agent 2026]
 featured: false
-image: '/images/langgraph-multi-agent-systems-2026.webp'
+image: '/assets/images/langgraph-multi-agent-systems-2026.webp'
 ---
 
 ### Unlocking the Future of AI: Your Guide to LangGraph Multi-Agent Systems Tutorial 2026

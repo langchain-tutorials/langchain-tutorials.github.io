@@ -11,7 +11,7 @@ toc_sticky: true
 toc_icon: "list-ul"
 tags: [build ai agent langchain 2026]
 featured: false
-image: '/images/build-first-ai-agent-langchain-2026.webp'
+image: '/assets/images/build-first-ai-agent-langchain-2026.webp'
 ---
 
 ## Build Your First AI Agent with LangChain in 15 Minutes (2026 Guide)

@@ -11,7 +11,7 @@ toc_sticky: true
 toc_icon: "list-ul"
 tags: [langchain react agent 2026]
 featured: false
-image: '/images/langchain-react-agent-pattern-2026.webp'
+image: '/assets/images/langchain-react-agent-pattern-2026.webp'
 ---
 
 langchain-react-agent-pattern-explained-with-examples-2026.md

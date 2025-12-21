@@ -88,7 +88,7 @@ toc_sticky: true
 toc_icon: "list-ul"
 tags: [{focus_kw}]
 featured: false
-image: '/images/{permalink}.webp'
+image: '/assets/images/{permalink}.webp'
 ---"""
        
     return front_matter

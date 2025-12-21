@@ -11,7 +11,7 @@ toc_sticky: true
 toc_icon: "list-ul"
 tags: [langchain memory tutorial 2026]
 featured: false
-image: '/images/langchain-memory-tutorial-2026.webp'
+image: '/assets/images/langchain-memory-tutorial-2026.webp'
 ---
 
 ## Introduction to LangChain Memory Tutorial 2026

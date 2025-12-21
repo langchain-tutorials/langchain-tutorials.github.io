@@ -11,7 +11,7 @@ toc_sticky: true
 toc_icon: "list-ul"
 tags: [langchain tools tutorial 2026]
 featured: false
-image: '/images/langchain-tools-agents-2026.webp'
+image: '/assets/images/langchain-tools-agents-2026.webp'
 ---
 
 ## LangChain Tools and Agents 2026: Production-Ready Patterns
