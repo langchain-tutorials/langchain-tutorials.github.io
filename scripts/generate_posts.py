@@ -63,8 +63,6 @@ def main():
         permalink = keyword_data['permalink']
         semantic_kw = keyword_data['semantic_kw']
         affiliate_links = keyword_data['affiliate_links']
-        linkedin_content = keyword_data['linkedin_content']
-        twitter_content = keyword_data['twitter_content']
         
         print(f"✅ Parsed: {title[:60]}...")
         
@@ -196,37 +194,16 @@ def main():
                     print(f"⚠️ Sheets logging failed (non-critical): {e}")
                 
                 # Step 9: Post to Twitter
-                if twitter_content:
-                    print(f"\n{'=' * 60}")
-                    print("Step 8: Posting to Twitter")
-                    print("=" * 60)
-                    
-                    try:
-                        post_to_twitter(title, permalink, twitter_content, affiliate_links)
-                    except Exception as e:
-                        print(f"⚠️ Twitter posting failed (non-critical): {e}")
-                else:
-                    print(f"\n⚠️ No Twitter content provided - skipping Twitter post")
-                
+
                 # Step 10: Post to LinkedIn
-                if linkedin_content:
-                    print(f"\n{'=' * 60}")
-                    print("Step 9: Posting to LinkedIn")
-                    print("=" * 60)
                     
-                    try:
-                        post_to_linkedin(title, permalink, linkedin_content, affiliate_links)
-                    except Exception as e:
-                        print(f"⚠️ LinkedIn posting failed (non-critical): {e}")
-                else:
-                    print(f"\n⚠️ No LinkedIn content provided - skipping LinkedIn post")
+                # Step 11: Send Push Notification
 
                     try:
                         send_blog_post_notification(title, permalink, focus_kw)
                     except Exception as e:
                         print(f"⚠️ Push notification failed (non-critical): {e}")
             
-            # Step 11: Remove keyword after success
             print(f"\n{'=' * 60}")
             print("Step 11: Removing Keyword from File")
             print("=" * 60)

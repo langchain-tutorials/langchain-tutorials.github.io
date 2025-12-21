@@ -38,10 +38,12 @@ layout: default
           {% include page__meta.html %}
         </header>
       {% endunless %}
-        <div class="post-img">
-          <img src="{{ page.image }}" alt="{{page.title}}" class="article-img">
-        </div>
       <section class="page__content" itemprop="text">
+        {% if page.title -%}
+          <div class="post-img">
+            <img src="{{ page.image }}" alt="{{page.title}}" class="article-img">
+          </div>
+        {%- endif %}
         {% if page.toc %}
           <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
             <nav class="toc">

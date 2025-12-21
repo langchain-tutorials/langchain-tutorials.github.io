@@ -6,7 +6,7 @@ import re
 client = genai.Client(api_key=GEMINI_API_KEY)
 
 
-def generate_article(title, focus_kw, permalink, semantic_kw):
+def generate_article(title, focus_kw, permalink, semantic_kw, affiliate_links):
     """Generate SEO-optimized blog article"""
     prompt = f"""
 write an SEO-optimised blog on the title {title}. using the Focus keyword {focus_kw} and using LSI Keywords {semantic_kw}
@@ -19,6 +19,8 @@ Rules:
 - if need use legal websites link to refer to legal information
 - do not highlight keywords
 - Include practical examples related to {focus_kw}
+- also include affiliate links where relevant: {affiliate_links},
+- do internal linking to other blog posts where relevant
 - Use H2 and H3, h4, h5, h6 headings, no H1
 - Use lists, tables, snippets, and other data formats
 - Write more than 2000 words
