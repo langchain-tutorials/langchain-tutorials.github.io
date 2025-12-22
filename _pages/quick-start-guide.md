@@ -14,22 +14,11 @@ toc_label: "Tutorial Contents"
 toc_icon: "list-ul"
 ---
 
-## 🚀 LangChain Quick Start Guide
-
 Welcome to the complete quick start guide for LangChain! This tutorial will get you building AI-powered applications in under 15 minutes.
 
-## 📚 Table of Contents
 
-1. [What is LangChain?](#what-is-langchain)
-2. [Installation](#installation)
-3. [Your First LangChain App](#your-first-app)
-4. [Core Concepts](#core-concepts)
-5. [Common Use Cases](#use-cases)
-6. [Next Steps](#next-steps)
 
----
-
-## 🤔 What is LangChain? {#what-is-langchain}
+## What is LangChain? {#what-is-langchain}
 
 LangChain is a framework for developing applications powered by language models. It helps you:
 
@@ -43,7 +32,7 @@ LangChain is a framework for developing applications powered by language models.
 
 ---
 
-## 💻 Installation {#installation}
+##  Installation {#installation}
 
 ### Prerequisites
 
@@ -79,7 +68,7 @@ echo "OPENAI_API_KEY=your-api-key-here" > .env
 
 ---
 
-## 🎯 Your First LangChain App {#your-first-app}
+## Your First LangChain App {#your-first-app}
 
 ### Example 1: Simple Text Generation
 
@@ -150,7 +139,7 @@ print(result)
 
 ---
 
-## 🧩 Core Concepts {#core-concepts}
+## Core Concepts {#core-concepts}
 
 ### 1. **Models**
 
@@ -254,7 +243,7 @@ agent_executor.invoke({"input": "What is 25 * 4?"})
 
 ---
 
-## 💡 Common Use Cases {#use-cases}
+## Common Use Cases {#use-cases}
 
 ### Use Case 1: Document Q&A (RAG)
 
@@ -356,7 +345,7 @@ print(summary)
 
 ---
 
-## 🎓 Next Steps {#next-steps}
+## Next Steps {#next-steps}
 
 ### Beginner Projects
 
@@ -393,7 +382,7 @@ print(summary)
 
 ---
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -430,7 +419,7 @@ llm = ChatOpenAI(
 
 ---
 
-## 📝 Quick Reference
+## Quick Reference
 
 ### Installation Commands
 ```bash
@@ -458,7 +447,7 @@ response = chain.invoke({"input": "Hello!"})
 
 ---
 
-## 🤝 Get Help
+## Get Help
 
 - **Stack Overflow**: Tag `langchain`
 - **GitHub Issues**: Report bugs

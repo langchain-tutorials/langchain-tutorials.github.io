@@ -1,10 +1,10 @@
 # main links
 main:
-  # - title: "Quick-Start Guide"
-  #   url: https://langchain-tutorials.github.io/quick-start-guide/
-  # - title: "About"
-  #   url: https://langchain-tutorials.github.io/about/
-  # - title: "Sample Posts"
+  - title: "About Us"
+    url: /about
+  - title: "Contact Us"
+    url: /contact
+  # - title: ""
   #   url: /year-archive/
   # - title: "Sample Collections"
   #   url: /collection-archive/
