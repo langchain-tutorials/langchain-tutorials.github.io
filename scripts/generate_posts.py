@@ -10,8 +10,6 @@ from article_generator import generate_article, generate_image_prompt
 from image_generator import generate_image_freepik
 from google_indexing import submit_to_google_indexing, check_indexing_status
 from google_sheets_logger import log_to_google_sheets
-from twitter_poster import post_to_twitter
-from linkedin_poster import post_to_linkedin
 from webpushr_notifier import send_blog_post_notification, get_subscriber_count
 
 

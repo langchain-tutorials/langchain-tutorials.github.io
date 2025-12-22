@@ -457,5 +457,3 @@ response = chain.invoke({"input": "Hello!"})
 ---
 
 **Ready to build?** Start with the examples above and experiment! The best way to learn LangChain is by building real projects.
-
-*Last updated: December 2024*

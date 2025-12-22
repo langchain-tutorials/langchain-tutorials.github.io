@@ -148,5 +148,3 @@ Together, let's build the future of AI applications!
 </div>
 
 ---
-
-*Last updated: December 2024*
