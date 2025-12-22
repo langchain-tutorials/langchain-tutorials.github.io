@@ -535,7 +535,6 @@ Your AI agents might handle sensitive information. Security means protecting thi
 
 For example, if your research team is working with patient data, you need to make sure it's secure. You also need to follow laws like GDPR (General Data Protection Regulation) or CCPA (California Consumer Privacy Act). These laws protect people's private information.
 
-You can find more information about these regulations on official government websites. For GDPR, you can visit the [European Commission's website on GDPR](https://commission.europa.eu/law/system/files/2018-05/gdpr_en.pdf). For CCPA, the [California Attorney General's Office](https://oag.ca.gov/privacy/ccpa) is a good resource. You need to think about how your agents access, process, and store data. Ensuring the privacy of data within your LangGraph multi agent 2026 system is a critical legal and ethical requirement.
 
 #### Deployment
 

@@ -130,7 +130,6 @@ from langchain_community.document_loaders import WebBaseLoader
 
 # Let's load content from a public webpage, for example, a Wikipedia page
 # Always ensure you have the right to scrape content from websites.
-# For general legal information regarding data usage and intellectual property,
 # you might consult resources like official government websites, such as
 # USA.gov (https://www.usa.gov/privacy) for privacy policies.
 url = "https://www.paulgraham.com/greatwork.html" # Example public article

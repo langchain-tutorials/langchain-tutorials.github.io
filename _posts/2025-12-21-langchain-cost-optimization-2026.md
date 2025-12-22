@@ -149,7 +149,6 @@ These are two popular models from OpenAI.
 **When to use GPT-4:**
 *   Tasks requiring deep understanding, complex reasoning, or creative writing.
 *   When accuracy is absolutely critical and small errors are unacceptable.
-*   Legal document analysis (you might refer to legal guidelines for AI usage in sensitive areas, e.g., [European Commission AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)).
 *   Code generation for complex functions.
 
 **When to use GPT-3.5:**

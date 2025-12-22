@@ -647,7 +647,6 @@ The calculator and search tools are great starting points, but you can give your
     *   Connects to a database to fetch or save information.
     Just remember to carefully describe what your custom tool does so the agent knows when to use it!
 *   **Tools for Code Execution:** LangChain has tools that can write and run Python code. This lets your agent perform more complex data analysis or scripting tasks.
-*   **Document Q&A Tools:** Imagine an agent that can read a very long document (like a PDF textbook or a legal report, not legal advice though!) and answer questions about it. LangChain has tools to do this by connecting your agent to a "vector store" which makes documents searchable. For legal information, always refer to official legal resources like those found on government legal websites (e.g., [USA.gov](https://www.usa.gov/laws-regulations), [Gov.uk](https://www.gov.uk/browse/justice/laws-acts-legislation)).
 
 ### Different Agent Types
 
@@ -676,7 +675,6 @@ As you continue to build ai agent langchain 2026 and make them more powerful, it
 *   **Privacy:** If your agent handles personal information, make sure you understand and follow privacy rules and laws. Always secure API keys and user data.
 *   **Transparency:** Try to make your agent's actions understandable. The `verbose=True` setting we used helps a lot with this, showing its thought process.
 *   **Safety:** Design your agent to avoid causing harm. For example, if it controls physical systems, add safeguards.
-*   **Legal Compliance:** Be aware of the legal aspects of AI use. While this guide doesn't provide legal advice, always ensure your applications comply with local and international regulations, especially concerning data usage and automated decision-making. You can consult legal resources like [GDPR official website](https://gdpr-info.eu/) for European regulations or relevant national data protection agencies for local laws.
 
 Thinking about these things from the start helps you build ai agent langchain 2026 that are not only powerful but also safe and good for everyone.
 

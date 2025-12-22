@@ -694,7 +694,6 @@ Here are some best practices and emerging trends to keep in mind:
 *   **Profile and Optimize:** Always monitor your token usage and costs. If you notice memory becoming a bottleneck or too expensive, then explore `ConversationSummaryMemory` or `ConversationBufferWindowMemory` with a smaller `k`.
 *   **Separate Knowledge from Conversation:** For factual recall, use `VectorStoreRetrieverMemory`. Don't try to cram all your application's knowledge into the conversational buffer.
 *   **Modular Design:** Think of memory as a pluggable component. This makes it easier to swap out different memory types or implement custom solutions without changing your entire application logic.
-*   **Security and Privacy:** When storing sensitive information in memory (especially in `production memory patterns`), ensure you comply with data privacy regulations like GDPR or CCPA. For legal information on data privacy, you might refer to official government websites or legal resources (e.g., [European Commission - GDPR](https://commission.europa.eu/law/beta-package-new-approach/data-protection_en), [California Consumer Privacy Act (CCPA)](https://oag.ca.gov/privacy/ccpa)). This means careful thought about what data you store, how long you keep it, and who can access it.
 
 ### Future Trends in LangChain Memory (2026 Perspective):
 

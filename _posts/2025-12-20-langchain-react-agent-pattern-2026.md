@@ -342,8 +342,6 @@ For students, researchers, or business analysts, a ReAct agent can be an invalua
 
 *   **Summarizing complex documents:** Using a "document reader" and "summarization" tools.
 *   **Comparing different sources of information:** By using multiple "search" tools and then `Reasoning` about the differences.
-*   **Finding specific statistics or legal precedents:** Utilizing specialized "legal database" tools (e.g., searching for specific clauses on [LexisNexis](https://www.lexisnexis.com/) or [Westlaw](https://www.westlaw.com/)). While I'm not providing direct legal advice, knowing an agent could access such sites shows its potential.
-*   **Generating reports:** By combining data from various sources and structuring it.
 
 By `2026`, these research agents will be able to perform multi-stage research, cross-referencing information from vast digital libraries.
 
