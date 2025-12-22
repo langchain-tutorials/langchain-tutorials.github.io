@@ -51,6 +51,7 @@ def send_webpushr_notification(title, message, target_url, image_url=None):
             "target_url": target_url,
             "icon": f"{SITE_DOMAIN}/assets/images/site-logo.webp",  # Your site logo
             "auto_hide": 1,  # Auto hide after shown
+            "image": image_url
         }
         
         # Add large image if provided
