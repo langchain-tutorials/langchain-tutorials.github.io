@@ -136,9 +136,10 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/langchain-tutorials"
+    - label: "Privacy Policy"
+      url: "https://langchain-tutorials.github.io/privacy-policy"
+    - label: "Affiliate Disclosure"
+      url: "https://langchain-tutorials.github.io/affilicate-discloser"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/langchaintuts"
