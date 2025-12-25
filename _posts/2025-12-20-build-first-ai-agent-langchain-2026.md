@@ -682,11 +682,11 @@ Thinking about these things from the start helps you build ai agent langchain 20
 
 Dive deeper into LangChain with these tutorials:
 
+- [LangChain Agents with Tools Tutorial: Connect Your AI to Real-World Data](/langchain-agents-connect-real-world-data-tutorial/)
 - [LangChain Memory Tutorial 2026](/langchain-memory-tutorial-2026/)
 - [LangChain Tools Agents 2026](/langchain-tools-agents-2026/)
 - [LangChain React Agent Pattern 2026](/langchain-react-agent-pattern-2026/)
 - [LangGraph vs LangChain 2026: Which Should You Use?](/langgraph-vs-langchain-2026/)
-- [Deploy LangChain Production 2026](/deploy-langchain-production-2026/)
 
 ## Conclusion: You Did It!
 

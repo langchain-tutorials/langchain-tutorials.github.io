@@ -541,11 +541,11 @@ This enables agents to tackle truly multi-faceted problems, much like a project 
 
 Continue your LangChain journey with these tutorials:
 
+- [LangChain Agents with Tools Tutorial: Connect Your AI to Real-World Data](/langchain-agents-connect-real-world-data-tutorial/)
 - [Build Your First AI Agent with LangChain in 15 Minutes (2026 Guide)](/build-first-ai-agent-langchain-2026/)
 - [LangChain Memory Tutorial 2026: Complete Implementation Guide](/langchain-memory-tutorial-2026/)
 - [LangChain React Agent Pattern 2026](/langchain-react-agent-pattern-2026/)
-- [LangChain RAG Tutorial 2026](/langchain-rag-tutorial-2026/)
-- [Deploy LangChain Production 2026](/deploy-langchain-production-2026/)
+- [LangChain RAG Tutorial 2026: Build a Document Q&A System](/langchain-rag-tutorial-2026/)
 
 ### Conclusion
 
