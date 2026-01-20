@@ -196,7 +196,9 @@ def main():
                 # Step 10: Post to LinkedIn
                     
                 # Step 11: Send Push Notification
-                    print("Step 10: Webpusher Notification")
+                    print(f"\n{'=' * 60}")
+                    print("Step 10: Send Push Notification")
+                    print("=" * 60)
 
                     try:
                         send_blog_post_notification(title, permalink, focus_kw)
