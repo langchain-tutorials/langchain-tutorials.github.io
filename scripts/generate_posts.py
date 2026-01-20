@@ -128,55 +128,57 @@ def main():
                     print(f"⏰ Time remaining: {minutes}m {seconds}s", end='\r')
                     time.sleep(30)
                 
-                print(f"\n✅ Wait complete!")
+                    print(f"\n✅ Wait complete!")
+
+                    # Step 11: Send Push Notification
+                    print(f"\n{'=' * 60}")
+                    print("Step 6: Send Push Notification")
+                    print("=" * 60)
+
+                    try:
+                        send_blog_post_notification(title, permalink, focus_kw)
+                    except Exception as e:
+                        print(f"⚠️ Push notification failed (non-critical): {e}")
+            
                 
                 # Step 6: Submit to Google
-                print(f"\n{'=' * 60}")
-                print("Step 6: Submitting to Google")
-                print("=" * 60)
+                # print(f"\n{'=' * 60}")
+                # print("Step 6: Submitting to Google")
+                # print("=" * 60)
                 
-                indexing_status = "Not Attempted"
-                try:
-                    success = submit_to_google_indexing(post_url)
-                    indexing_status = "Success" if success else "Failed - See Logs"
-                except Exception as e:
-                    indexing_status = f"Failed - {str(e)[:100]}"
-                    print(f"⚠️ Indexing failed (non-critical): {e}")
-                
-                    # Wait for Google's API to update metadata
-                # if success:
-                #     print(f"\n⏳ Waiting 50 seconds for Check indexing status...")
-                #     for remaining in range(WAIT_TIME_BEFORE_INDEXING, 0, -30):
-                #         minutes = remaining // 60
-                #         seconds = remaining % 60
-                #         print(f"⏰ Time remaining: {minutes}m {seconds}s", end='\r')
-                #         time.sleep(30)
-                
+                # indexing_status = "Not Attempted"
+                # try:
+                #     success = submit_to_google_indexing(post_url)
+                #     indexing_status = "Success" if success else "Failed - See Logs"
+                # except Exception as e:
+                #     indexing_status = f"Failed - {str(e)[:100]}"
+                #     print(f"⚠️ Indexing failed (non-critical): {e}")
+
                 # Step 7: Check indexing status
-                try:
-                    status_result = check_indexing_status(post_url)
+                # try:
+                #     status_result = check_indexing_status(post_url)
                     
-                    if status_result is None:
-                        print(f"⚠️ Could not verify indexing status - check credentials")
-                        indexing_status += " (Status: Unverified)"
+                #     if status_result is None:
+                #         print(f"⚠️ Could not verify indexing status - check credentials")
+                #         indexing_status += " (Status: Unverified)"
                         
-                    elif status_result == {} or 'latestUpdate' not in status_result:
-                        print(f"ℹ️ No indexing history found (may take a moment to appear)")
-                        indexing_status += " (Status: Pending)"
+                #     elif status_result == {} or 'latestUpdate' not in status_result:
+                #         print(f"ℹ️ No indexing history found (may take a moment to appear)")
+                #         indexing_status += " (Status: Pending)"
                         
-                    elif status_result.get('latestUpdate', {}).get('type') == 'URL_UPDATED':
-                        notify_time = status_result['latestUpdate']['notifyTime']
-                        print(f"✅ Confirmed in indexing queue at {notify_time}")
-                        indexing_status = "Success (Confirmed in Queue)"
+                #     elif status_result.get('latestUpdate', {}).get('type') == 'URL_UPDATED':
+                #         notify_time = status_result['latestUpdate']['notifyTime']
+                #         print(f"✅ Confirmed in indexing queue at {notify_time}")
+                #         indexing_status = "Success (Confirmed in Queue)"
                         
-                    elif status_result.get('latestUpdate', {}).get('type') == 'URL_DELETED':
-                        notify_time = status_result['latestUpdate']['notifyTime']
-                        print(f"🗑️ URL marked for deletion at {notify_time}")
-                        indexing_status = "Deleted"
+                #     elif status_result.get('latestUpdate', {}).get('type') == 'URL_DELETED':
+                #         notify_time = status_result['latestUpdate']['notifyTime']
+                #         print(f"🗑️ URL marked for deletion at {notify_time}")
+                #         indexing_status = "Deleted"
                         
-                except Exception as e:
-                    print(f"⚠️ Error checking indexing status: {e}")
-                    indexing_status += " (Verification Failed)"
+                # except Exception as e:
+                #     print(f"⚠️ Error checking indexing status: {e}")
+                #     indexing_status += " (Verification Failed)"
                 
                 # Step 8: Log to Sheets
                 print(f"\n{'=' * 60}")
@@ -195,16 +197,7 @@ def main():
 
                 # Step 10: Post to LinkedIn
                     
-                # Step 11: Send Push Notification
-                    print(f"\n{'=' * 60}")
-                    print("Step 10: Send Push Notification")
-                    print("=" * 60)
 
-                    try:
-                        send_blog_post_notification(title, permalink, focus_kw)
-                    except Exception as e:
-                        print(f"⚠️ Push notification failed (non-critical): {e}")
-            
             print(f"\n{'=' * 60}")
             print("Step 11: Removing Keyword from File")
             print("=" * 60)
