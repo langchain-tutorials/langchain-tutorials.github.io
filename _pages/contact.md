@@ -66,7 +66,7 @@ We cannot provide:
 
 For general programming questions, we recommend:
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/langchain)
-- [LangChain Discord Community](https://discord.gg/langchain)
+<!-- - [LangChain Discord Community](https://discord.gg/langchain) -->
 
 ---
 
