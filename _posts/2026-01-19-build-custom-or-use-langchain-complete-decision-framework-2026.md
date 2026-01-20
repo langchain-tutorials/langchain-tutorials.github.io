@@ -56,7 +56,7 @@ Think about the main job your AI will do. Will it write stories, summarize long 
 
 Make a list of all the features your project needs. For example, does it need to talk to your company's database, remember past conversations, or work in different languages? Each feature adds to the complexity.
 
-To help you with this, consider using a structured [requirement analysis tool](https://example.com/requirement-tool-affiliate-link) to capture every detail. This ensures nothing important is missed. A good checklist helps you see the whole picture.
+To help you with this, consider using a structured [requirement analysis tool](https://www.atlassian.com/templates/project-management) to capture every detail. This ensures nothing important is missed. A good checklist helps you see the whole picture.
 
 #### Step 2: Assessing Your Team's Superpowers
 
@@ -72,7 +72,7 @@ Every team has different strengths. Some teams are great at deep, technical dive
 
 List your team's skills related to AI development. Do they know Python well, are they familiar with specific LLM frameworks like PyTorch or TensorFlow, or do they have experience with LangChain already? If your team is newer to LLM development, LangChain might be a faster way to get started.
 
-If your team has strong general programming skills but limited deep AI expertise, LangChain can be a huge accelerator. For deeper insights or if you feel stuck, engaging [strategic consulting services](https://example.com/consulting-affiliate-link) can provide expert guidance. You can also sharpen your decision-making abilities with specialized [decision courses](https://example.com/decision-course-affiliate-link).
+If your team has strong general programming skills but limited deep AI expertise, LangChain can be a huge accelerator. For deeper insights or if you feel stuck, engaging [strategic consulting services](https://www.gartner.com/en/information-technology/consulting) can provide expert guidance. You can also sharpen your decision-making abilities with specialized [decision courses](https://www.coursera.org/browse/business/decision-making).
 
 #### Step 3: How Tricky is Your Project?
 
@@ -88,7 +88,7 @@ If your AI needs to understand subtle nuances, handle tricky edge cases, or perf
 
 Does your AI need to connect to many different systems, like your customer database, sales software, and email platform? How unique is the data it will work with? If you have very specific data formats or need to talk to many unusual systems, custom work might be needed.
 
-LangChain offers many integrations, but for highly specialized or proprietary systems, you might need to build custom connectors. For help in mapping out your project's challenges, consider using a [project assessment platform](https://example.com/project-assessment-affiliate-link).
+LangChain offers many integrations, but for highly specialized or proprietary systems, you might need to build custom connectors. For help in mapping out your project's challenges, consider using a [project assessment platform](https://www.atlassian.com/team-playbook).
 
 #### Step 4: The Clock is Ticking: Time and Money
 
@@ -120,7 +120,7 @@ Consider the complexity of the AI logic itself. If you're pushing the boundaries
 
 Will your project need to change a lot in the future? What if new AI models come out next year? Custom code can be harder to update if it's not well-documented or if the original developers leave. LangChain, with its modular design, might make adapting to new technologies easier.
 
-Think about long-term support and who will be maintaining the system. A well-structured framework can simplify future updates. To thoroughly evaluate potential pitfalls, consider a robust [risk evaluation framework](https://example.com/risk-evaluation-affiliate-link).
+Think about long-term support and who will be maintaining the system. A well-structured framework can simplify future updates. To thoroughly evaluate potential pitfalls, consider a robust [risk evaluation framework](https://www.atlassian.com/team-playbook).
 
 #### Step 6: Does it Fit Your Big Plan?
 
@@ -136,7 +136,7 @@ However, if your company builds highly specialized, proprietary technology as a 
 
 Where do you see this AI project in five years? Will it grow into something completely unique, requiring deep customization? Or will it remain a more standardized tool that could benefit from community updates and framework improvements? Your long-term vision impacts your `build custom or use langchain decision`.
 
-For help aligning your project with broader business goals, a [strategic planning tool](https://example.com/strategic-planning-affiliate-link) can be invaluable. You might also benefit from [strategic consulting services](https://example.com/consulting-affiliate-link) to ensure your AI initiative supports your company's future.
+For help aligning your project with broader business goals, a [strategic planning tool](https://www.atlassian.com/templates/project-management) can be invaluable. You might also benefit from [strategic consulting services](https://www.mckinsey.com/capabilities/operations) to ensure your AI initiative supports your company's future.
 
 #### Step 7: Putting It All Together: The Decision Matrix
 
@@ -174,7 +174,7 @@ Not all criteria are equally important. For example, if speed is absolutely crit
 
 Then, multiply your score by the weight for each row. Add up the total weighted scores for "Build Custom" and "Use LangChain." The option with the higher total weighted score gives you a strong indication of the best `build custom or use langchain decision`.
 
-To help you with this, a good [decision framework template](https://example.com/decision-template-affiliate-link) can be incredibly helpful, often available for $39-89. These templates guide you through the process, ensuring no critical factors are overlooked.
+To help you with this, a good [decision framework template](https://www.atlassian.com/templates/project-management) can be incredibly helpful, often available for $39-89. These templates guide you through the process, ensuring no critical factors are overlooked.
 
 ### Practical Examples: Custom vs. LangChain in Action
 
@@ -251,7 +251,7 @@ Building custom is the powerful choice when:
 *   **Complex Integrations**: You need to connect to highly unusual, proprietary, or low-level systems that require bespoke coding.
 *   **Long-Term Vision for Uniqueness**: Your project is expected to evolve in highly custom and specialized ways over time.
 
-In these situations, the initial investment in building custom often pays off in terms of performance, uniqueness, and long-term strategic value. If you're grappling with complex architectural choices, engaging [architecture decision consulting](https://example.com/architecture-consulting-affiliate-link) can provide specialized expert guidance.
+In these situations, the initial investment in building custom often pays off in terms of performance, uniqueness, and long-term strategic value. If you're grappling with complex architectural choices, engaging [architecture decision consulting](https://www.gartner.com/en/information-technology/consulting) can provide specialized expert guidance.
 
 ### What's Next After Your Decision?
 

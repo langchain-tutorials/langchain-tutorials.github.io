@@ -19,7 +19,6 @@ Rules:
 - if need link websites to refer to information
 - do not highlight keywords
 - Include practical examples related to {focus_kw}
-- also include related  affiliate links where relevant: {affiliate_links},
 - do internal linking to other blog posts where relevant
 - Use H2 and H3, h4, h5, h6 headings, no H1
 - Use lists, tables, snippets, and other data formats

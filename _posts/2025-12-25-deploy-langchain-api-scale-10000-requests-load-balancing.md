@@ -301,7 +301,7 @@ This entire setup works together seamlessly to ensure your LangChain API can "ha
 
 Mastering scalability is a continuous journey. There's always more to learn about system design, performance tuning, and advanced architectural patterns. If you're serious about building high-performance, resilient applications with LangChain or any other technology, consider deepening your knowledge.
 
-**Affiliate Link**: For an in-depth understanding of system design and scaling complex applications, check out this comprehensive [Scalability Course ($149-399)](https://example.com/scalability-course-affiliate-link-example). It covers many of the concepts discussed here in greater detail.
+**Affiliate Link**: For an in-depth understanding of system design and scaling complex applications, check out this comprehensive [Scalability Course](https://www.coursera.org/browse/computer-science/software-development). It covers many of the concepts discussed here in greater detail.
 
 ### Conclusion
 

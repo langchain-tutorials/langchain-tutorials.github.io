@@ -136,7 +136,7 @@ documents = [{"page_content": "This is a very long document that discusses many 
 # Experiment with smaller, more focused chunk sizes for better chunking efficiency and potential cost savings.
 # You might want to consider guides on chunking strategies.
 # For example, a chunking strategy guide might recommend different sizes for different content types:
-# [Affiliate Link: Advanced Chunking Strategy Guides - learn to optimize your RAG data preparation! - $39-79] (https://www.example.com/chunking-guide-affiliate)
+# [Affiliate Link: Advanced Chunking Strategy Guides - learn to optimize your RAG data preparation! - $39-79] (https://www.coursera.org/browse/data-science/data-processing)
 text_splitter_optimized = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=50) # Adjust based on your content
 texts_optimized = text_splitter_optimized.split_documents(documents)
 # print(f"Optimized chunks: {len(texts_optimized)}")
@@ -216,7 +216,7 @@ from langchain_openai import ChatOpenAI
 # compressor = LLMChainExtractor.from_llm(ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-0125"))
 
 # For advanced reranking and further retrieval optimization, consider consulting services:
-# [Affiliate Link: Retrieval Efficiency Consulting - Expert help to fine-tune your RAG system!](https://www.example.com/retrieval-consulting-affiliate)
+# [Affiliate Link: Retrieval Efficiency Consulting - Expert help to fine-tune your RAG system!](https://www.gartner.com/en/information-technology/consulting)
 
 # 3. Combine them into a compression retriever
 # compression_retriever = ContextualCompressionRetriever(
@@ -238,14 +238,14 @@ To truly master `langchain rag cost optimization vector`, you need to monitor an
 The first step to saving money is knowing where it's going. You should regularly check the billing dashboards of your embedding providers and vector database services. Pay attention to trends in `Vector database pricing` and `embedding cost reduction`.
 
 Look for sudden spikes in usage or consistently high costs. This information can point you to areas needing optimization. Using a dedicated `vector cost calculator` can help you estimate expenses before deploying new features.
-*   [Affiliate Link: Vector Cost Calculator - Estimate your vector database and embedding expenses!](https://www.example.com/vector-cost-calculator-affiliate)
+*   [Affiliate Link: Vector Cost Calculator - Estimate your vector database and embedding expenses!](https://www.atlassian.com/templates/project-management)
 
 #### Automated Optimization
 
 Some vector databases and embedding services offer features for automated optimization. This might include auto-scaling pods up or down based on traffic, or automatically optimizing indexes. While not all systems have this, it's worth exploring as part of your `langchain rag cost optimization vector` strategy.
 
 For your data preparation, `index optimization tools` can analyze your documents and suggest optimal chunking strategies or metadata structures. This can significantly improve `chunking efficiency` over time.
-*   [Affiliate Link: Index Optimization Tools - Analyze and improve your RAG data indexing!](https://www.example.com/index-optimization-tools-affiliate)
+*   [Affiliate Link: Index Optimization Tools - Analyze and improve your RAG data indexing!](https://www.datadoghq.com/)
 
 For deeper dives into how different RAG setups perform, you might want to read our blog post on [Advanced LangChain RAG Architectures](/blog/advanced-langchain-rag-architectures). Also, understanding how to measure the effectiveness of your changes is key; check out our guide on [Evaluating RAG Performance Metrics](/blog/evaluating-rag-performance-metrics).
 
@@ -299,7 +299,7 @@ Optimizing the costs of your LangChain RAG applications, especially related to v
 Remember, `langchain rag cost optimization vector` is an ongoing process. Regularly monitor your usage, experiment with different configurations, and leverage the tools and services available. Continuous improvement will lead to a more efficient and affordable RAG system.
 
 To dive deeper into mastering RAG applications and advanced optimization techniques, consider exploring specialized courses:
-*   [Affiliate Link: RAG Optimization Courses - Master cost-effective RAG with LangChain! - $149-399] (https://www.example.com/rag-optimization-course-affiliate)
+*   [Affiliate Link: RAG Optimization Courses - Master cost-effective RAG with LangChain! - $149-399] (https://www.coursera.org/browse/computer-science/artificial-intelligence)
 
 You can also find services that help compare different vector databases to ensure you pick the most cost-effective solution for your specific needs:
-*   [Affiliate Link: Database Comparison Services - Find the best vector database for your budget!](https://www.example.com/db-comparison-affiliate)
+*   [Affiliate Link: Database Comparison Services - Find the best vector database for your budget!](https://www.gartner.com/en/information-technology/consulting)

@@ -24,7 +24,7 @@ Think of a smart AI agent like a helpful assistant that can do more than just an
 
 They often need to make choices, like deciding whether to search the internet, use a specific calculator, or ask you for more information. This ability to choose makes them incredibly powerful. We want our agents to show true agent decision making.
 
-An agent's "brain" usually involves a powerful Large Language Model (LLM), like those from OpenAI or Anthropic. These LLMs help the agent understand requests and generate responses. If you want to dive deeper into how these agents work, you might find an [AI agent course](https://example.com/ai-agent-course-advanced-learners) very helpful.
+An agent's "brain" usually involves a powerful Large Language Model (LLM), like those from OpenAI or Anthropic. These LLMs help the agent understand requests and generate responses. If you want to dive deeper into how these agents work, you might find an [AI agent course](https://www.coursera.org/browse/computer-science/artificial-intelligence) very helpful.
 
 ### What Makes an AI Agent "Smart"?
 
@@ -62,13 +62,13 @@ LangGraph is an amazing library that helps you build powerful, stateful AI agent
 
 With LangGraph, you define different "nodes" (which are like steps or actions your agent can take) and then connect them with "edges." These edges can be simple, always leading from one node to the next, or they can be conditional, making your agent truly smart. LangGraph is a fantastic tool for crafting sophisticated agent reasoning paths.
 
-If you are looking for a quick start, you might consider some [agent framework templates](https://example.com/agent-framework-templates-quickstart). These can help you jump right into building with LangGraph.
+If you are looking for a quick start, you might consider some [agent framework templates](https://github.com/langchain-ai/langgraph/tree/main/examples). These can help you jump right into building with LangGraph.
 
 ### Why LangGraph for Conditional Edges?
 
 LangGraph is perfectly designed for implementing smart ai agents conditional edges. It provides a clear and structured way to define these decision points within your agent's workflow. This makes it easier to visualize and manage complex agent behaviors.
 
-It allows you to explicitly state, "If this condition is true, go to Node A; otherwise, go to Node B." This level of control is crucial for building adaptable and effective agents. For running these agents, you will need an [LLM API subscription](https://example.com/openai-anthropic-api) from providers like OpenAI or Anthropic.
+It allows you to explicitly state, "If this condition is true, go to Node A; otherwise, go to Node B." This level of control is crucial for building adaptable and effective agents. For running these agents, you will need an [LLM API subscription](https://openai.com/pricing) from providers like OpenAI or Anthropic.
 
 ### Setting Up Your Environment
 
@@ -129,7 +129,7 @@ This example showcases how smart ai agents conditional edges enable efficient co
 
 First, let's define a simple "web search" tool. For simplicity, we'll use a dummy tool that just pretends to search. In a real application, you'd integrate a search API like Google Search or DuckDuckGo.
 
-We also need our LLM. We'll use OpenAI's `ChatOpenAI` model. If you are interested in powerful models, an [LLM API subscription](https://example.com/openai-anthropic-api) is a must-have.
+We also need our LLM. We'll use OpenAI's `ChatOpenAI` model. If you are interested in powerful models, an [LLM API subscription](https://openai.com/pricing) is a must-have.
 
 ```python
 from typing import List, Annotated, TypedDict
@@ -424,7 +424,7 @@ for s in app_multi_step.stream(inputs_general):
 *   Similarly, the technical support question will be routed to `tech_support_handler`. This demonstrates effective context-aware routing.
 *   The general inquiry will go to `general_handler`. Each routing decision is made dynamically by the smart ai agents conditional edges, showcasing intelligent branching within multi-step agent flows.
 
-This advanced example demonstrates the true power of smart ai agents conditional edges for building sophisticated, context-aware agents. Such agents can handle a wide variety of inputs and respond appropriately, enhancing their overall adaptive agent behavior. You can further enhance these agents by exploring [production agent guides](https://example.com/production-agent-guides) for deployment best practices.
+This advanced example demonstrates the true power of smart ai agents conditional edges for building sophisticated, context-aware agents. Such agents can handle a wide variety of inputs and respond appropriately, enhancing their overall adaptive agent behavior. You can further enhance these agents by exploring [production agent guides](https://python.langchain.com/docs/expression_language/cookbook) for deployment best practices.
 
 ## Deep Dive into Agent Decision Making and Reasoning Paths
 
@@ -442,7 +442,7 @@ For example, an agent might decide: "If I find an answer, great. If not, I'll tr
 
 Every decision an agent makes is based on its current "state." Agent state evaluation involves looking at all the information it has collected so far. This includes the original query, results from tool calls, previous LLM thoughts, and any other relevant data.
 
-Conditional edges constantly perform this evaluation. For instance, in our first example, the decision to call a tool or end was based on checking the `tool_calls` in the LLM's last message, which is part of the agent's state. Understanding and managing this state is key to building complex multi-step agent flows. You can learn more about managing agent states in [agent design patterns ebooks](https://example.com/agent-design-patterns-ebook).
+Conditional edges constantly perform this evaluation. For instance, in our first example, the decision to call a tool or end was based on checking the `tool_calls` in the LLM's last message, which is part of the agent's state. Understanding and managing this state is key to building complex multi-step agent flows. You can learn more about managing agent states in [agent design patterns ebooks](https://refactoring.guru/design-patterns).
 
 ### Enhancing Intelligent Branching
 
@@ -460,7 +460,7 @@ Conditional edges are essential for building agents that can gracefully handle u
 
 What happens if your agent tries to use a tool, and the tool fails? Or if the LLM provides an irrelevant answer? This is where agent fallback strategies come in, and conditional edges are perfect for implementing them.
 
-You can set up an edge that says, "If the tool call returns an error, go to the 'retry_tool' node. If it retries three times and still fails, go to the 'alert_human' node." This creates resilience in your multi-step agent flows. This proactive approach prevents agents from getting stuck and enhances their adaptive agent behavior. [Agent monitoring tools](https://example.com/agent-monitoring-tools) can help you keep an eye on these fallback situations.
+You can set up an edge that says, "If the tool call returns an error, go to the 'retry_tool' node. If it retries three times and still fails, go to the 'alert_human' node." This creates resilience in your multi-step agent flows. This proactive approach prevents agents from getting stuck and enhances their adaptive agent behavior. [Agent monitoring tools](https://www.datadoghq.com/) can help you keep an eye on these fallback situations.
 
 ```python
 # Example of a fallback node
@@ -495,7 +495,7 @@ Your conditional edges don't just have to check the agent's internal state. They
 
 Imagine an agent processing financial transactions. A conditional edge could check a fraud detection API. If the API flags a transaction as suspicious, the agent branches to a "hold_for_review" path. Otherwise, it proceeds with "approve_transaction." This is a sophisticated form of tool selection logic.
 
-This dynamic interaction with external systems significantly broadens the scope of what your smart AI agents can achieve. This kind of intelligent branching, driven by external data, makes your agents incredibly responsive to the real world. You might want to explore specific [intelligent routing services](https://example.com/intelligent-routing-services) for this.
+This dynamic interaction with external systems significantly broadens the scope of what your smart AI agents can achieve. This kind of intelligent branching, driven by external data, makes your agents incredibly responsive to the real world. You might want to explore specific [intelligent routing services](https://www.nginx.com/) for this.
 
 ## Best Practices for Designing Conditional Edges
 
@@ -517,7 +517,7 @@ Poor state management can lead to agents making uninformed or incorrect decision
 
 Just like any code, your conditional edges need thorough testing. Create test cases that explicitly trigger each possible branch. This ensures that your intelligent branching behaves as expected in all scenarios.
 
-Tools specifically designed for [agent testing](https://example.com/agent-testing-tools) can be very helpful here. Automated tests can save a lot of time and catch unexpected behaviors early.
+Tools specifically designed for [agent testing](https://pytest.org/) can be very helpful here. Automated tests can save a lot of time and catch unexpected behaviors early.
 
 ### Handling Edge Cases and Fallbacks
 
@@ -531,4 +531,4 @@ You've now seen how smart ai agents conditional edges are fundamental to buildin
 
 By mastering conditional edges in LangGraph, you can design agents that exhibit sophisticated agent decision making, follow intricate agent reasoning paths, and implement robust agent fallback strategies. The ability to create intelligent branching truly elevates the capabilities of your AI.
 
-Start experimenting with your own smart AI agents and conditional edges today. The possibilities for creating innovative and highly effective AI applications are endless. If you're eager to learn more and build even more complex agents, consider exploring advanced topics in an [AI agent course](https://example.com/ai-agent-course-advanced-learners) or getting started quickly with some [agent framework templates](https://example.com/agent-framework-templates-quickstart). Happy building!
+Start experimenting with your own smart AI agents and conditional edges today. The possibilities for creating innovative and highly effective AI applications are endless. If you're eager to learn more and build even more complex agents, consider exploring advanced topics in an [AI agent course](https://www.udemy.com/topic/artificial-intelligence/) or getting started quickly with some [agent framework templates](https://github.com/langchain-ai/langgraph/tree/main/examples). Happy building!

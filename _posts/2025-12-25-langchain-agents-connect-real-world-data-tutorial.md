@@ -705,10 +705,10 @@ agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 # Example usage
 # Make sure your HubSpot API key has the necessary CRM permissions.
 
-response = agent_executor.invoke({"input": "Create a new contact named 'Jane Doe' with email 'jane.doe@example.com' at 'ACME Corp'."})
+response = agent_executor.invoke({"input": "Create a new contact named 'Jane Doe' with email 'jane.doe@company.com' at 'ACME Corp'."})
 print(response["output"])
 
-response = agent_executor.invoke({"input": "What are the details for the contact with email 'jane.doe@example.com'?"})
+response = agent_executor.invoke({"input": "What are the details for the contact with email 'jane.doe@company.com'?"})
 print(response["output"])
 ```
 
@@ -745,7 +745,7 @@ from langchain_openai import ChatOpenAI
 
 # Set your SendGrid API key and sender email
 os.environ["SENDGRID_API_KEY"] = "YOUR_SENDGRID_API_KEY"
-os.environ["SENDGRID_SENDER_EMAIL"] = "your_verified_sender@example.com"
+os.environ["SENDGRID_SENDER_EMAIL"] = "your_verified_sender@company.com"
 
 @tool
 def send_email_with_sendgrid(to_email: str, subject: str, content: str) -> str:
@@ -793,9 +793,9 @@ agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
 # Example usage
 # Make sure your SendGrid API key is valid and the sender email is verified.
-# Replace 'recipient@example.com' with an actual email you can check.
+# Replace 'contact@company.com' with an actual email you can check.
 
-response = agent_executor.invoke({"input": "Send an email to 'recipient@example.com' with subject 'Meeting Reminder' and content 'Hi, just a friendly reminder about our meeting tomorrow at 10 AM. See you there!'"})
+response = agent_executor.invoke({"input": "Send an email to 'contact@company.com' with subject 'Meeting Reminder' and content 'Hi, just a friendly reminder about our meeting tomorrow at 10 AM. See you there!'"})
 print(response["output"])
 ```
 

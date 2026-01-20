@@ -270,7 +270,7 @@ uvicorn main:app --reload
 
 Now, open your web browser and go to `http://localhost:8000`. You'll see a simple page where you can ask the AI a question and watch its answer stream in!
 
-Feeling like you want to learn more about FastAPI? Check out this excellent [FastAPI course](https://example.com/fastapi-course-affiliate-link) (affiliate link, typically $79-149) to deepen your understanding of building robust APIs.
+Feeling like you want to learn more about FastAPI? Check out this excellent [FastAPI course](https://www.udemy.com/topic/fastapi/) to deepen your understanding of building robust APIs.
 
 #### Flask SSE Streaming: A Simpler Alternative
 
@@ -404,7 +404,7 @@ To run this Flask example, save it as `main_flask.py` and ensure `ai_brain.py` i
 python main_flask.py
 ```
 
-Again, navigate to `http://localhost:8000` in your browser. If you're looking for more Flask knowledge, especially on streaming, check out these helpful [Flask streaming tutorials](https://example.com/flask-streaming-tutorial-affiliate-link) (affiliate link).
+Again, navigate to `http://localhost:8000` in your browser. If you're looking for more Flask knowledge, especially on streaming, check out these helpful [Flask streaming tutorials](https://flask.palletsprojects.com/en/latest/tutorial/).
 
 ### The Client Side: Listening to the Stream
 
@@ -474,7 +474,7 @@ This JavaScript code creates a new `EventSource` object, pointing it to our serv
 
 The good news is that `EventSource` has really good `browser compatibility`. Almost all modern web browsers support it, including Chrome, Firefox, Safari, Edge, and many others. You generally don't have to worry about it not working for most of your users.
 
-If you ever need to test your web application across many different browsers and devices, services like [BrowserStack](https://example.com/browserstack-affiliate-link) (affiliate link) or [LambdaTest](https://example.com/lambdatest-affiliate-link) (affiliate link) can be incredibly useful.
+If you ever need to test your web application across many different browsers and devices, services like [BrowserStack](https://www.browserstack.com/) or [LambdaTest](https://www.lambdatest.com/) can be incredibly useful.
 
 ### Advanced Topics and Best Practices for `langchain sse streaming tutorial`
 
@@ -537,8 +537,8 @@ When building any web application, `security considerations` are vital.
 When your application becomes popular, you'll need to think about `SSE production deployment` and how to handle many users.
 
 *   **Load Balancers and Reverse Proxies:** For SSE to work well with multiple servers, you need a load balancer (like Nginx, HAProxy) that supports "sticky sessions." This means once a client connects to a specific server for their SSE stream, they stick to that same server for the duration of the stream. Without sticky sessions, the client might get connected to different servers, breaking the stream.
-    *   Nginx is a common choice for a reverse proxy and can be configured to manage SSE connections. You can learn more about Nginx setup in many [backend framework guides](https://example.com/backend-framework-guides-affiliate-link) (affiliate link).
-*   **Deployment Platforms:** Cloud providers like AWS, Google Cloud, Azure, or platform-as-a-service (PaaS) like Heroku, Render, Fly.io, or Vercel (for serverless functions) can host your application. When choosing, consider their support for long-lived connections needed for SSE. Many [deployment platforms](https://example.com/deployment-platforms-affiliate-link) (affiliate link) offer robust solutions.
+    *   Nginx is a common choice for a reverse proxy and can be configured to manage SSE connections. You can learn more about Nginx setup in many [backend framework guides](https://www.digitalocean.com/community/tutorials/tag/backend).
+*   **Deployment Platforms:** Cloud providers like AWS, Google Cloud, Azure, or platform-as-a-service (PaaS) like Heroku, Render, Fly.io, or Vercel (for serverless functions) can host your application. When choosing, consider their support for long-lived connections needed for SSE. Many [deployment platforms](https://www.heroku.com/) offer robust solutions.
 *   **Statelessness vs. Statefulness:** SSE connections are somewhat stateful (the server maintains an open connection). Design your application so that any core AI processing logic can be handled by any server instance, only relying on the specific connection for sending the output.
 
 #### Monitoring and Debugging
@@ -554,7 +554,7 @@ Even the best applications need a watchful eye. `Monitoring solutions` and `debu
     curl -H "Accept: text/event-stream" http://localhost:8000/stream_chat -d '{"question": "What is the capital of Japan?"}' -H "Content-Type: application/json" -X POST
     ```
     (Note: `curl` might not render each event on a new line perfectly, but it will show the raw stream).
-    Dedicated [SSE testing tools](https://example.com/sse-testing-tools-affiliate-link) (affiliate link) or browser extensions can provide a more user-friendly view of the events.
+    Dedicated [SSE testing tools](https://www.postman.com/) or browser extensions can provide a more user-friendly view of the events.
 *   **Real-time Monitoring:** For production, integrate with `SSE monitoring solutions` (affiliate link) like DataDog, New Relic, or custom dashboards to track active connections, message rates, and error rates.
 
 ### Practical Use Cases and Ideas
@@ -567,7 +567,7 @@ Now that you're an SSE and LangChain streaming pro, let's think about some cool 
 *   **Code Generation Assistants:** Developers could ask an AI for code snippets, and the AI would stream the code directly into their editor or a web interface.
 *   **Data Analysis Explanations:** If an AI is analyzing data, it could stream its findings and insights as it processes them, rather than waiting for a full report.
 
-You can combine this knowledge with [API framework templates](https://example.com/api-framework-templates-affiliate-link) (affiliate link) to kickstart your projects with pre-built structures.
+You can combine this knowledge with [API framework templates](https://github.com/topics/api-framework) to kickstart your projects with pre-built structures.
 
 ### Conclusion
 

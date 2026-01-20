@@ -682,13 +682,13 @@ user_data: User = client.chat.completions.create(
     model="gpt-4",
     response_model=User, # Tell the LLM to respond with a User object
     messages=[
-        {"role": "user", "content": "Create a user named John Doe, aged 42, with email john.doe@example.com."}
+        {"role": "user", "content": "Create a user named John Doe, aged 42, with email john.doe@company.com."}
     ]
 )
 
 print(user_data.name)  # Output: John Doe
 print(user_data.age)   # Output: 42
-print(user_data.email) # Output: john.doe@example.com
+print(user_data.email) # Output: john.doe@company.com
 
 # If the LLM output is malformed, Instructor will try to fix it or raise an error.
 ```

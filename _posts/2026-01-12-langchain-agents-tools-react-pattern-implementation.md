@@ -395,7 +395,7 @@ For example, you might want to give your agent a specific persona or instruct it
 # For ReAct agents, the prompt often defines the Thought/Action/Observation structure.
 # Customizing it can influence how the agent approaches problems.
 # This often involves delving into the source code or using specialized prompt engineering libraries.
-# For advanced prompt engineering, consider exploring this [AI reasoning courses affiliate link](https://example.com/ai-reasoning-courses)
+# For advanced prompt engineering, consider exploring this [AI reasoning courses](https://www.coursera.org/browse/computer-science/artificial-intelligence)
 ```
 
 Careful prompt engineering can significantly improve the agent's effectiveness and reduce `debugging ReAct agents` time.
@@ -410,7 +410,7 @@ Despite their intelligence, `langchain react pattern agents tools` can sometimes
 4.  **Review LLM Responses:** If the agent consistently makes bad `Thought` decisions, the LLM might be struggling to understand the task or context. This could be due to a poor prompt or the complexity of the query.
 5.  **Handle Parsing Errors:** The `handle_parsing_errors=True` parameter helps, but sometimes you might need to implement custom parsing logic if your LLM often produces malformed outputs that the default parser can't handle.
 
-Debugging is an iterative process. By systematically checking these points, you can quickly identify and fix issues in your `langchain react pattern agents tools`. You can also use `thought tracing tools` for more advanced debugging, found at [thought tracing tools affiliate link](https://example.com/thought-tracing-tools).
+Debugging is an iterative process. By systematically checking these points, you can quickly identify and fix issues in your `langchain react pattern agents tools`. You can also use `thought tracing tools` for more advanced debugging, found at [thought tracing tools](https://www.datadoghq.com/).
 
 #### ReAct Performance Optimization: Making Agents Faster and Smarter
 

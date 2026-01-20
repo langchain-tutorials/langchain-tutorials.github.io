@@ -42,9 +42,9 @@ You need to make sure your staging setup mirrors your production one as closely 
 
 Selecting the right platform is super important for your `rapid deployment process`. You want a service that makes it easy to host your LangChain app, often built with Python. These platforms handle a lot of the tricky server stuff for you. You just upload your code, and they make it run.
 
-*   **Railway.app**: Great for quick setup and scaling. You can get started very fast. [Check out Railway.app for rapid deployments!](https://affiliate.example.com/railway)
-*   **Render**: Another excellent choice for web services and background jobs, perfect for LangChain apps. [Explore Render for seamless deployments!](https://affiliate.example.com/render)
-*   **Fly.io**: Offers global deployment, making your app fast for users everywhere. [Learn more about Fly.io's global reach!](https://affiliate.example.com/flyio)
+*   **Railway.app**: Great for quick setup and scaling. You can get started very fast. [Check out Railway.app for rapid deployments!](https://railway.app/)
+*   **Render**: Another excellent choice for web services and background jobs, perfect for LangChain apps. [Explore Render for seamless deployments!](https://render.com/)
+*   **Fly.io**: Offers global deployment, making your app fast for users everywhere. [Learn more about Fly.io's global reach!](https://fly.io/)
 
 These platforms provide tools that help you manage different environments, like staging and production, easily. This makes managing your `langchain staging to production 48 hours` goal much more achievable. They also handle things like continuous deployment, which means your code updates can go live automatically after testing.
 
@@ -76,7 +76,7 @@ Deployment automation is about making the process of sending your code live repe
 CI/CD is a fancy name for tools that automatically build, test, and deploy your code. For your LangChain app, this means whenever you push new code to your `staging` branch, the system automatically checks it, runs tests, and puts it on your staging server.
 
 Many deployment platforms have built-in CI/CD. If not, tools like GitHub Actions or GitLab CI are great.
-[Learn more about modern CI/CD practices in this comprehensive deployment course!](https://affiliate.example.com/deployment-course-basics) (Affiliate Link: $79-199)
+[Learn more about modern CI/CD practices in this comprehensive deployment course!](https://www.coursera.org/browse/computer-science/software-development)
 
 Here’s a simple idea of how it works:
 
@@ -114,7 +114,7 @@ For a LangChain app, this might involve:
     ```
 *   **Database/Vector Store Connection**: Is your app able to connect to its data sources? For example, can it retrieve an embedding or search a vector database?
 
-You can use simple tools or scripts for this. Some `smoke testing frameworks` even allow you to write these checks as code. [Check out these lightweight smoke testing frameworks for quick validation!](https://affiliate.example.com/smoke-test-frameworks) (Affiliate Link) This basic check is crucial before proceeding to deeper testing.
+You can use simple tools or scripts for this. Some `smoke testing frameworks` even allow you to write these checks as code. [Check out these lightweight smoke testing frameworks for quick validation!](https://pytest.org/en/latest/) This basic check is crucial before proceeding to deeper testing.
 
 ## Hour 19-30: Thorough Testing and Validation
 
@@ -194,7 +194,7 @@ Example Checklist Items for a LangChain App:
 *   [ ] Monitor initial user traffic and error rates.
 *   [ ] Confirm all critical LangChain features are operational.
 
-You can find excellent templates to start with. [Get your comprehensive go-live checklist template here!](https://affiliate.example.com/go-live-checklist) (Affiliate Link: $29-69)
+You can find excellent templates to start with. [Get your comprehensive go-live checklist template here!](https://www.atlassian.com/templates/project-management)
 
 ### H3.3. Rollback Planning
 
@@ -204,7 +204,7 @@ What if something goes wrong during or after deployment? You need a `rollback pl
 *   **Data Rollback**: If your deployment involved database changes, do you have a plan to revert those changes without losing important user data? This might involve database backups.
 *   **Communication**: Who needs to be informed if a rollback is necessary?
 
-Having a clear `rollback planning` strategy reduces stress and limits potential damage if things don't go as planned. [Explore essential rollback tools and strategies for safer deployments!](https://affiliate.example.com/rollback-tools) (Affiliate Link)
+Having a clear `rollback planning` strategy reduces stress and limits potential damage if things don't go as planned. [Explore essential rollback tools and strategies for safer deployments!](https://www.digitalocean.com/community/tutorials/rollback-strategies)
 
 ### H3.4. Go/No-Go Meeting
 
@@ -281,7 +281,7 @@ Don't just look at logs; set up automated alerts. If your LangChain app experien
 *   **Performance Threshold Alerts**: Be notified if response times exceed a certain limit for more than a few minutes.
 *   **LangChain Specific Alerts**: Alert if your LLM API calls consistently fail or if token usage spikes unexpectedly.
 
-Create clear dashboards that show the most important health metrics at a glance. [Discover powerful post-deployment monitoring tools to keep your LangChain app healthy!](https://affiliate.example.com/monitoring-tools) (Affiliate Link)
+Create clear dashboards that show the most important health metrics at a glance. [Discover powerful post-deployment monitoring tools to keep your LangChain app healthy!](https://www.datadoghq.com/)
 
 ### H3.3. Incident Response and Emergency Procedures
 
@@ -292,7 +292,7 @@ Even with the best planning, things can go wrong. Having clear `emergency proced
 *   **Communication Plan**: How will you communicate with users if there's an outage?
 *   **Rollback Readiness**: Ensure your `rollback planning` is still fresh in your mind and you can execute it quickly if needed.
 
-[Download a comprehensive emergency response guide for your team!](https://affiliate.example.com/emergency-response-guide) (Affiliate Link) Being prepared reduces panic and speeds up recovery.
+[Download a comprehensive emergency response guide for your team!](https://www.fema.gov/business) Being prepared reduces panic and speeds up recovery.
 
 ### H3.4. Gathering User Feedback
 

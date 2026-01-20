@@ -313,9 +313,9 @@ print(calculator_tool_validated.run("import os; os.system('rm -rf /')")) # Malic
 print(calculator_tool_validated.run("10/0"))
 ```
 
-In this example, the `safe_calculator` tool uses `re.fullmatch` to ensure the input expression only contains numbers and basic math symbols. This is a simple form of **malicious input prevention**. It directly rejects anything that looks suspicious. For more complex validation, especially for structured data, you can use powerful libraries like Pydantic. [Pydantic is a great input validation library (affiliate link)](https://example.com/pydantic-affiliate-link) that lets you define exactly what your data should look like.
+In this example, the `safe_calculator` tool uses `re.fullmatch` to ensure the input expression only contains numbers and basic math symbols. This is a simple form of **malicious input prevention**. It directly rejects anything that looks suspicious. For more complex validation, especially for structured data, you can use powerful libraries like Pydantic. [Pydantic is a great input validation library](https://pydantic-docs.helpmanual.io/) that lets you define exactly what your data should look like.
 
-For more advanced security, you might consider getting a [security best practices guide (affiliate link)](https://example.com/security-best-practices-guide) to understand common attack vectors and defenses.
+For more advanced security, you might consider getting a [security best practices guide](https://owasp.org/) to understand common attack vectors and defenses.
 
 #### Output Sanitization
 
@@ -356,7 +356,7 @@ web_content_processor_tool = Tool(
     description="Fetches web content and sanitizes it to prevent security issues. Input should be a URL.",
 )
 
-print(web_content_processor_tool.run("https://example.com/malicious-page"))
+print(web_content_processor_tool.run("https://httpbin.org/html"))
 ```
 
 In this snippet, `html.escape` turns characters like `<` into `&lt;`, making them harmless text instead of active HTML code. This **output sanitization** prevents malicious code from being executed by a browser or misused by other systems. Always clean up data from unknown sources.
@@ -423,7 +423,7 @@ for i in range(10):
     print(rate_limited_tool.run(f"Item-{i+1}"))
 ```
 
-This example shows a tool that tries to fetch data, but if it gets a "Too Many Requests" (429) error, it waits. It uses an **exponential backoff** strategy, meaning it waits longer with each failed attempt. This prevents the tool from repeatedly hitting the rate limit. You can also use [rate limiting services (affiliate link)](https://example.com/rate-limiting-service) or libraries to help manage this across many tools and agents.
+This example shows a tool that tries to fetch data, but if it gets a "Too Many Requests" (429) error, it waits. It uses an **exponential backoff** strategy, meaning it waits longer with each failed attempt. This prevents the tool from repeatedly hitting the rate limit. You can also use [rate limiting services](https://redis.io/docs/data-types/probabilistic/count-min-sketch/) or libraries to help manage this across many tools and agents.
 
 #### Security Considerations
 
@@ -431,8 +431,8 @@ Beyond specific input/output issues, there are broader **security considerations
 
 *   **Least Privilege Principle**: Your agent and its tools should only have the minimum permissions they need to do their job. If a tool only needs to read a file, it shouldn't have permission to delete files. This minimizes the damage if a tool is compromised.
 *   **Secure API Key Management**: API keys and other secrets should never be hardcoded directly into your code. Use environment variables, secure vaults, or secret management services. Treat them like your house keys.
-*   **Regular Security Audits**: Regularly check your agent's code and its dependencies for vulnerabilities. This is where [security scanning tools (affiliate link)](https://example.com/security-scanning-tool) can be very helpful. These tools automatically look for known weaknesses in your code.
-*   **Penetration Testing**: For critical applications, consider **penetration testing tools** or services. [Penetration testing (affiliate link)](https://example.com/penetration-testing-tool) involves simulating cyberattacks to find weaknesses before real attackers do.
+*   **Regular Security Audits**: Regularly check your agent's code and its dependencies for vulnerabilities. This is where [security scanning tools](https://bandit.readthedocs.io/) can be very helpful. These tools automatically look for known weaknesses in your code.
+*   **Penetration Testing**: For critical applications, consider **penetration testing tools** or services. [Penetration testing](https://www.owasp.org/) involves simulating cyberattacks to find weaknesses before real attackers do.
 *   **Monitoring and Alerting**: Keep an eye on your agent's activity. If something unusual happens (like many failed tool calls or access attempts to sensitive areas), you should be alerted immediately.
 
 These practices ensure your agent isn't just functional but also resistant to attacks and misuse. Building with security in mind from the start is much easier than trying to fix it later.
@@ -495,7 +495,7 @@ For large-scale, critical LangChain agent deployments, you might adopt **product
 
 Concepts from Site Reliability Engineering (SRE) are highly relevant here. SRE focuses on applying software engineering principles to operations to create highly reliable and scalable systems. This includes error budgets, incident management, and post-mortems.
 
-Adopting such frameworks helps you move beyond ad-hoc error handling to a systematic approach to operational safety. It makes your agent part of a well-managed, resilient ecosystem. You can learn more about these practices through [reliability engineering courses (affiliate link)](https://example.com/reliability-engineering-course) or by exploring specific [production safety frameworks (affiliate link)](https://example.com/production-safety-framework).
+Adopting such frameworks helps you move beyond ad-hoc error handling to a systematic approach to operational safety. It makes your agent part of a well-managed, resilient ecosystem. You can learn more about these practices through [reliability engineering courses](https://www.coursera.org/browse/information-technology/systems-operations) or by exploring specific [production safety frameworks](https://sre.google/resources/).
 
 ### Putting It All Together: A Comprehensive Example
 
@@ -510,10 +510,10 @@ from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_excep
 from langchain.tools import Tool
 
 # --- Affiliate Link Placeholders for context ---
-# [Error Handling Best Practices Course (affiliate link)](https://example.com/error-handling-course)
-# [Secure Input Validation Library (affiliate link)](https://example.com/input-validation-library)
-# [API Rate Limiting Service (affiliate link)](https://example.com/rate-limiting-service)
-# [Cybersecurity Best Practices Guide (affiliate link)](https://example.com/cybersecurity-guide)
+# [Error Handling Best Practices Course](https://www.coursera.org/browse/computer-science/software-development)
+# [Secure Input Validation Library](https://pydantic-docs.helpmanual.io/)
+# [API Rate Limiting Service](https://redis.io/docs/data-types/probabilistic/count-min-sketch/)
+# [Cybersecurity Best Practices Guide](https://owasp.org/)
 # --- End Affiliate Link Placeholders ---
 
 # 1. Mock External Services (with potential for errors/delays)
@@ -723,7 +723,7 @@ By carefully crafting each tool with these protective layers, you build an agent
 
 Building robust and secure LangChain agents is an ongoing process. There's always more to learn about making your systems resilient and safe.
 
-To deepen your understanding of error handling strategies, consider an [error handling course (affiliate link)](https://example.com/advanced-error-handling-course-link). These courses often cover advanced topics like circuit breakers, bulkheads, and distributed tracing. For ensuring your systems can handle failures and recover quickly, exploring [reliability engineering courses (affiliate link)](https://example.com/reliability-engineering-deep-dive) can provide invaluable insights into building highly available applications.
+To deepen your understanding of error handling strategies, consider an [error handling course](https://www.coursera.org/browse/computer-science/software-development). These courses often cover advanced topics like circuit breakers, bulkheads, and distributed tracing. For ensuring your systems can handle failures and recover quickly, exploring [reliability engineering courses](https://www.udemy.com/topic/reliability-engineering/) can provide invaluable insights into building highly available applications.
 
 You can also refer to the [LangChain documentation](https://www.langchain.com/docs/) for the latest features and best practices directly from the source. Additionally, staying updated on general software development principles around security and resilience will always benefit your agent development.
 

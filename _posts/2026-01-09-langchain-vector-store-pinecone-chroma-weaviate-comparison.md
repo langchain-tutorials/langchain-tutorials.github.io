@@ -343,7 +343,7 @@ When we talk about `performance benchmarks`, we're looking at how fast a vector 
 
 Chroma, especially in a local deployment, offers good performance for its scale. For thousands to hundreds of thousands of vectors, it's very fast. However, as your dataset grows into millions or billions, a local Chroma instance might struggle or require significant local resources. Its performance greatly depends on your local hardware or the efficiency of your self-hosted setup.
 
-Weaviate is designed for high performance, utilizing various indexing techniques to deliver fast searches. It can handle large datasets effectively, particularly when deployed in a distributed cluster. Its ability to perform complex queries and filtering alongside vector search adds to its overall perceived performance for advanced use cases. For serious testing, consider using [performance testing tools](https://example.com/performance-testing-tools 'Affiliate Link to Performance Testing Tools').
+Weaviate is designed for high performance, utilizing various indexing techniques to deliver fast searches. It can handle large datasets effectively, particularly when deployed in a distributed cluster. Its ability to perform complex queries and filtering alongside vector search adds to its overall perceived performance for advanced use cases. For serious testing, consider using [performance testing tools](https://locust.io/).
 
 In summary, Pinecone generally leads in raw, managed large-scale performance. Weaviate offers strong performance with more features. Chroma provides excellent performance for local and smaller-scale use cases.
 
@@ -355,7 +355,7 @@ The `cost comparison analysis` is often a major deciding factor for projects.
 
 **Chroma:** The base Chroma vector store is free if you run it locally or self-host. Your only costs would be for the computing resources (servers, storage) you provide. If you opt for `Chroma hosting services` from a third party, those services will have their own pricing models, which vary widely. It offers the most cost-effective entry point for experimentation and small-scale projects.
 
-**Weaviate:** Similar to Chroma, self-hosting Weaviate is free, incurring only your infrastructure costs. The `Weaviate cloud` (WCS) offering provides a managed service with its own pricing tiers, which typically scale with data volume and query load. Weaviate's cost-effectiveness depends heavily on your deployment choice. For a thorough review, you can use [cost calculator templates](https://example.com/cost-calculator-templates 'Affiliate Link to Cost Calculator Templates') to estimate expenses. These templates often cost between $19-39.
+**Weaviate:** Similar to Chroma, self-hosting Weaviate is free, incurring only your infrastructure costs. The `Weaviate cloud` (WCS) offering provides a managed service with its own pricing tiers, which typically scale with data volume and query load. Weaviate's cost-effectiveness depends heavily on your deployment choice. For a thorough review, you can use [cost calculator templates](https://aws.amazon.com/calculator/) to estimate expenses.
 
 For budgeting, remember that "free" self-hosting still means you pay for servers, electricity, and human effort. A managed service, though seemingly more expensive, bundles these hidden costs.
 
@@ -433,13 +433,13 @@ For example, if you start with Chroma locally and then want to move to Pinecone,
 1.  Load documents and their original content from your Chroma instance.
 2.  Use LangChain's Pinecone integration to re-embed and upload this data to your new Pinecone index.
 
-This process can be automated with scripts. For complex migrations, especially with large datasets or intricate metadata, you might consider using specialized [database migration services](https://example.com/database-migration-services 'Affiliate Link to Database Migration Services'). They can help ensure data integrity and minimize downtime. You can also refer to our blog post on [best practices for data migration](internal-link-to-data-migration-best-practices.md) for more tips.
+This process can be automated with scripts. For complex migrations, especially with large datasets or intricate metadata, you might consider using specialized [database migration services](https://www.gartner.com/en/information-technology/consulting). They can help ensure data integrity and minimize downtime. You can also refer to our blog post on [best practices for data migration](internal-link-to-data-migration-best-practices.md) for more tips.
 
 ### Choosing the Right Vector Store for You
 
 The "best" vector store isn't a one-size-fits-all answer. It truly depends on your specific project needs, budget, and desired scalability. For instance, a small personal project won't need the same resources as a large enterprise search engine. This `langchain pinecone chroma weaviate comparison` aims to equip you with the knowledge to make an informed decision.
 
-Think about your current requirements and also where your project might go in the future. Will your data grow exponentially? Do you need strict data control or are you comfortable with a managed cloud service? Answering these questions will guide your choice. If you're unsure, seeking advice from [database selection consulting](https://example.com/database-selection-consulting 'Affiliate Link to Database Selection Consulting') can be highly beneficial.
+Think about your current requirements and also where your project might go in the future. Will your data grow exponentially? Do you need strict data control or are you comfortable with a managed cloud service? Answering these questions will guide your choice. If you're unsure, seeking advice from [database selection consulting](https://www.gartner.com/en/information-technology/consulting) can be highly beneficial.
 
 ### Conclusion
 

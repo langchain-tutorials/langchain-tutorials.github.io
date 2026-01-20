@@ -430,7 +430,7 @@ Once you have all your logs collected, stored, and maybe even structured, how do
 
 If you want to dive deeper into `observability setup` and `log analysis techniques`, there are many great resources. Online courses can provide structured learning.
 
-*Affiliate Link: Consider investing in an [Observability Fundamentals Course ($149-299)](https://www.example.com/observability-course-link?ref=my_blog_name) to master these critical skills and make your LangChain applications more robust.*
+*Affiliate Link: Consider investing in an [Observability Fundamentals Course](https://www.coursera.org/browse/computer-science/software-development) to master these critical skills and make your LangChain applications more robust.*
 
 For enterprise-level security and compliance, `SIEM tools` are essential. These tools collect security-related logs from all sources, including your LangChain applications, and analyze them for threats. They help ensure your AI systems are not only performant but also secure.
 

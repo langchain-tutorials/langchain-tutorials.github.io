@@ -54,7 +54,7 @@ These edges allow your graph to branch out into different paths. For example, if
 
 The "state" in LangGraph is like a shared memory that all nodes in your graph can access and update. For routing, `router state design` is crucial because the router needs information to make its decision. This information is stored in the graph's state.
 
-For instance, your state might hold the user's initial question, the result of a previous tool call, or a confidence score. The router will then examine this state to determine the next step. Designing your state effectively ensures that your router has all the necessary data. If you want to dive deeper into how to structure your state for complex applications, you might find a good [software architecture book](https://example.com/software-architecture-book-affiliate-link) helpful.
+For instance, your state might hold the user's initial question, the result of a previous tool call, or a confidence score. The router will then examine this state to determine the next step. Designing your state effectively ensures that your router has all the necessary data. If you want to dive deeper into how to structure your state for complex applications, you might find a good [software architecture book](https://www.amazon.com/Clean-Architecture-Craftsmans-Structure-Design/dp/0134494164) helpful.
 
 #### Implementing a Route Function
 
@@ -200,7 +200,7 @@ result4 = app.invoke({"query": "Tell me a joke."})
 print(f"Final Response: {result4['response']}\n")
 ```
 
-When you run this code, you'll see the print statements indicating which path the router took for each query. This demonstrates a clear `langgraph router pattern example` in action. You've successfully built a basic but functional routing mechanism. To explore more advanced graph structures and design principles, consider looking into [graph pattern libraries](https://example.com/graph-pattern-library-affiliate-link).
+When you run this code, you'll see the print statements indicating which path the router took for each query. This demonstrates a clear `langgraph router pattern example` in action. You've successfully built a basic but functional routing mechanism. To explore more advanced graph structures and design principles, consider looking into [graph pattern libraries](https://networkx.org/).
 
 ### Advanced Router Patterns in LangGraph
 
@@ -230,7 +230,7 @@ This might be a "catch-all" node that informs the user, "I don't understand." Or
 
 For very complex applications, you might need `nested routing patterns`. This means a router can lead to another router. Imagine a high-level router that decides if a query is about "support" or "sales." If it's "support," it then sends the request to a *second* router within the support section.
 
-This second router might then differentiate between "technical support" and "billing support." Nested routers help you manage complexity by breaking down large routing problems into smaller, more manageable parts. It's like having sub-menus in a complex application. If you're building systems with many layers of decision-making, exploring deeper into [system design tutorials](https://example.com/system-design-tutorial-affiliate-link) could be beneficial.
+This second router might then differentiate between "technical support" and "billing support." Nested routers help you manage complexity by breaking down large routing problems into smaller, more manageable parts. It's like having sub-menus in a complex application. If you're building systems with many layers of decision-making, exploring deeper into [system design tutorials](https://www.coursera.org/browse/computer-science/software-development) could be beneficial.
 
 ### Practical Use Cases for LangGraph Routers
 
@@ -266,7 +266,7 @@ Proper testing gives you confidence in your router's logic and prevents unexpect
 
 One key strategy is **unit testing** your route function in isolation. Provide various `AgentState` inputs and assert that the function returns the correct destination string. This confirms that your core decision logic is sound.
 
-Another strategy is **integration testing** the entire graph. You would `invoke` your compiled graph with different initial queries and verify that the final `response` (or the sequence of internal actions) is as expected. This checks if the nodes and edges are connected correctly. For more details on testing best practices, consider exploring some [testing frameworks](https://example.com/testing-frameworks-affiliate-link) and their documentation.
+Another strategy is **integration testing** the entire graph. You would `invoke` your compiled graph with different initial queries and verify that the final `response` (or the sequence of internal actions) is as expected. This checks if the nodes and edges are connected correctly. For more details on testing best practices, consider exploring some [testing frameworks](https://docs.pytest.org/) and their documentation.
 
 #### Example Test Scenarios
 
@@ -285,7 +285,7 @@ Let's imagine a more complex router for a travel agent bot.
     *   **Input:** "Tell me something interesting."
     *   **Expected Route:** `default_unknown_query_node` -> `suggest_options_node`
 
-For each scenario, you would write code that calls your LangGraph app with the input and then checks the final output or internal state changes. This systematic approach ensures comprehensive test coverage. Consider internal linking to a post on [advanced testing techniques for AI agents](https://example.com/blog/advanced-testing-ai-agents.md) for more information.
+For each scenario, you would write code that calls your LangGraph app with the input and then checks the final output or internal state changes. This systematic approach ensures comprehensive test coverage. Consider internal linking to a post on [advanced testing techniques for AI agents](/blog/advanced-testing-ai-agents) for more information.
 
 ### Troubleshooting and Error Handling
 
@@ -308,7 +308,7 @@ To make your router more robust, consider these error handling techniques:
 1.  **Default Routes:** As mentioned earlier, always have a `default route configuration`. This node can log the unrecognized input, inform the user, or prompt for clarification. It's a safety net.
 2.  **Validation in Route Function:** Before making a decision, validate the data in the state. If a required field is missing or malformed, your `implementing route function` can raise a specific error or direct to an error handling node.
 3.  **Logging:** Implement detailed logging within your route function and nodes. Log the input to the router, the decision made, and the reason for the decision. This is invaluable for debugging and understanding your graph's flow.
-4.  **Try-Except Blocks:** Wrap complex logic within your route function in `try-except` blocks. This prevents a single error from crashing your entire graph and allows you to catch and handle exceptions gracefully. For deeper insights into resilient design, consider enrolling in [design pattern courses](https://example.com/design-pattern-course-affiliate-link). You could also explore how to use `code quality tools` for better maintainability and error prevention.
+4.  **Try-Except Blocks:** Wrap complex logic within your route function in `try-except` blocks. This prevents a single error from crashing your entire graph and allows you to catch and handle exceptions gracefully. For deeper insights into resilient design, consider enrolling in [design pattern courses](https://www.coursera.org/browse/computer-science/software-development). You could also explore how to use `code quality tools` for better maintainability and error prevention.
 
 Here’s a small example of adding basic error handling to a route function:
 
@@ -347,50 +347,50 @@ Investing in your learning will accelerate your ability to create sophisticated 
 #### Design Pattern Courses
 
 Understanding design patterns is key to building scalable and maintainable software. You can find excellent online courses that cover various patterns, including the router pattern in a broader context. These courses often range from `$79-199`.
-*   [Learn about common software design patterns](https://example.com/design-pattern-course-affiliate-link-1)
-*   [Advanced design patterns for modern software](https://example.com/design-pattern-course-affiliate-link-2)
+*   [Learn about common software design patterns](https://refactoring.guru/design-patterns)
+*   [Advanced design patterns for modern software](https://www.udemy.com/course/design-patterns-in-python/)
 
 #### Software Architecture Books
 
 For a deeper dive into how to structure complex systems, `software architecture books` are invaluable. They teach you principles that apply far beyond LangGraph, guiding you to build robust and efficient systems. Expect to pay around `$29-69` for a good quality book.
-*   [Clean Architecture: A Craftsman's Guide to Software Structure and Design](https://example.com/software-architecture-book-affiliate-link-1)
-*   [Designing Data-Intensive Applications](https://example.com/software-architecture-book-affiliate-link-2)
+*   [Clean Architecture: A Craftsman's Guide to Software Structure and Design](https://www.amazon.com/Clean-Architecture-Craftsmans-Structure-Design/dp/0134494164)
+*   [Designing Data-Intensive Applications](https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable/dp/1449373321)
 
 #### Router Implementation Templates
 
 Sometimes, starting with a template can save a lot of time. You can find pre-built `router implementation templates` specifically designed for various frameworks or common use cases. These can jumpstart your projects and provide best practices. These templates might cost around `$19-49`.
-*   [LangGraph Router Template for Multi-Agent Systems](https://example.com/router-template-affiliate-link-1)
-*   [Production-ready routing patterns for LLM apps](https://example.com/router-template-affiliate-link-2)
+*   [LangGraph Router Template for Multi-Agent Systems](https://github.com/langchain-ai/langgraph/tree/main/examples)
+*   [Production-ready routing patterns for LLM apps](https://python.langchain.com/docs/expression_language/cookbook/batching)
 
 #### System Design Tutorials
 
 If you're aiming to build large-scale AI applications, understanding `system design tutorials` is critical. They teach you how to think about scalability, reliability, and performance. These skills are essential for any complex project.
-*   [Comprehensive System Design Course](https://example.com/system-design-tutorial-affiliate-link-1)
-*   [Microservices Architecture Explained](https://example.com/system-design-tutorial-affiliate-link-2)
+*   [Comprehensive System Design Course](https://www.coursera.org/learn/system-design)
+*   [Microservices Architecture Explained](https://microservices.io/)
 
 #### Graph Pattern Libraries
 
 While LangGraph is a powerful tool, exploring other `graph pattern libraries` can broaden your perspective. You might find alternative ways to represent and process graph-based data.
-*   [NetworkX Python Graph Library](https://example.com/graph-pattern-library-affiliate-link-1)
-*   [Graph databases for advanced pattern matching](https://example.com/graph-pattern-library-affiliate-link-2)
+*   [NetworkX Python Graph Library](https://networkx.org/)
+*   [Graph databases for advanced pattern matching](https://neo4j.com/)
 
 #### Architecture Review Services
 
 For critical applications, getting an expert opinion on your design can be invaluable. `Architecture review services` can help identify potential issues, optimize performance, and ensure best practices are followed. These services vary widely in price but can prevent costly mistakes.
-*   [Expert AI architecture consulting](https://example.com/architecture-review-service-affiliate-link-1)
-*   [Code audit and design review services](https://example.com/architecture-review-service-affiliate-link-2)
+*   [Expert AI architecture consulting](https://www.gartner.com/en/information-technology/consulting)
+*   [Code audit and design review services](https://www.upwork.com/hire/code-reviewers/)
 
 #### Testing Frameworks
 
 Beyond basic unit testing, learning about advanced `testing frameworks` can dramatically improve the quality and reliability of your code. This is crucial for `router testing strategies` in complex LangGraph applications.
-*   [Pytest: The Python Testing Framework](https://example.com/testing-frameworks-affiliate-link-1)
-*   [Introduction to mocking and dependency injection for testing](https://example.com/testing-frameworks-affiliate-link-2)
+*   [Pytest: The Python Testing Framework](https://docs.pytest.org/)
+*   [Introduction to mocking and dependency injection for testing](https://docs.python.org/3/library/unittest.mock.html)
 
 #### Code Quality Tools
 
 Maintaining high code quality is essential for long-term project success. `Code quality tools` help you identify issues like complexity, potential bugs, and adherence to coding standards. They make your code cleaner and easier to manage.
-*   [Pylint: Python Static Code Analysis](https://example.com/code-quality-tools-affiliate-link-1)
-*   [Black: The Uncompromising Code Formatter](https://example.com/code-quality-tools-affiliate-link-2)
+*   [Pylint: Python Static Code Analysis](https://pylint.org/)
+*   [Black: The Uncompromising Code Formatter](https://black.readthedocs.io/)
 
 ### Conclusion
 

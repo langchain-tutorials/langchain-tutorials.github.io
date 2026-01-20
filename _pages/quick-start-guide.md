@@ -334,7 +334,7 @@ from langchain_community.document_loaders import WebBaseLoader
 from langchain.chains.summarize import load_summarize_chain
 
 # Load web page
-loader = WebBaseLoader("https://example.com/article")
+loader = WebBaseLoader("https://python.langchain.com/docs/introduction/")
 docs = loader.load()
 
 # Summarize

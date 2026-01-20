@@ -148,7 +148,7 @@ You should strongly consider LangChain in several situations:
 
 Let's say you want to build a simple document Q&A system for your company's internal knowledge base. You have a folder full of PDFs and you want employees to ask questions and get answers. LangChain can quickly ingest those documents, create an index, and connect to an LLM to answer questions. This is a perfect example where LangChain saves a lot of time and money.
 
-You can also read more about making the best choice for your project by checking out our internal blog post, [Understanding Your AI Project Needs](https://www.example.com/blog/understanding-ai-project-needs), which dives into initial project planning.
+You can also read more about making the best choice for your project by checking out our internal blog post, [Understanding Your AI Project Needs](/blog/understanding-ai-project-needs), which dives into initial project planning.
 
 ### When to Go Custom
 

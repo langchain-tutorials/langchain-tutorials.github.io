@@ -80,7 +80,7 @@ Only use the 'search_web' tool if you cannot find the answer or if the question 
 Think step-by-step.
 ```
 
-By adding this constraint to your prompt, you encourage the agent to rely on its internal knowledge, which is generally cheaper than a tool call. This is a direct approach to reduce **tool calling expenses** by controlling the agent's decision-making process. For more detailed insights into crafting effective prompts, consider exploring a course on **Agent Optimization Courses** (affiliate link: [AI Agent Optimization Course](https://example.com/ai-agent-optimization-course) - imagine a course covering prompt design for cost efficiency, priced around $199).
+By adding this constraint to your prompt, you encourage the agent to rely on its internal knowledge, which is generally cheaper than a tool call. This is a direct approach to reduce **tool calling expenses** by controlling the agent's decision-making process. For more detailed insights into crafting effective prompts, consider exploring a course on **Agent Optimization Courses** (see: [AI Agent Optimization Course](https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/)).
 
 ##### 2. Smart Model Selection
 
@@ -135,7 +135,7 @@ agent_executor_cheap.invoke({"input": "What is the weather in Paris?"})
 # agent_executor_expensive.invoke({"input": "Analyze market trends for Q3 2023 across 5 industries."})
 ```
 
-By choosing `gpt-3.5-turbo` for a straightforward weather query, you save money compared to using `gpt-4`. This illustrates effective model selection. You can further refine your strategy by exploring different **agent design patterns** (affiliate link: [Advanced Agent Design Patterns](https://example.com/agent-design-patterns) - a guide or eBook on efficient agent architectures, priced around $79).
+By choosing `gpt-3.5-turbo` for a straightforward weather query, you save money compared to using `gpt-4`. This illustrates effective model selection. You can further refine your strategy by exploring different **agent design patterns** (affiliate link: [Advanced Agent Design Patterns](https://www.oreilly.com/library/view/thinking-in-systems) - a guide or eBook on efficient agent architectures, priced around $79).
 
 ##### 3. Agent Loop Optimization
 
@@ -271,7 +271,7 @@ time.sleep(65)
 get_current_weather_cached.invoke({"location": "London"})
 ```
 
-This simple caching decorator shows how you can save money by avoiding repeat calls to expensive tools. Imagine this applied to many **tool calling expenses**! If your workflow involves complex chains of tools, you might benefit from **workflow optimization services** (affiliate link: [AI Workflow Optimization Services](https://example.com/workflow-optimization-services) - services that help streamline agent processes, costing $999-$4999).
+This simple caching decorator shows how you can save money by avoiding repeat calls to expensive tools. Imagine this applied to many **tool calling expenses**! If your workflow involves complex chains of tools, you might benefit from **workflow optimization services** (affiliate link: [AI Workflow Optimization Services](https://www.gartner.com/en/information-technology/consulting) - services that help streamline agent processes, costing $999-$4999).
 
 ##### 3. Efficient Tool Implementations
 
@@ -343,7 +343,7 @@ This is about making the agent's journey from problem to solution as direct as p
 *   **Tool Output Reformating**: If an external tool provides overly verbose or poorly formatted output, consider wrapping it in a custom LangChain tool that first processes and simplifies the output before returning it to the agent. This reduces the LLM's input tokens.
 *   **Pre-computation/Pre-analysis**: Can some parts of the task be done *before* the agent even starts? For example, if an agent needs to process data, you might use a standard Python script to filter or summarize large files first.
 
-Identifying bottlenecks in the execution path often requires detailed tracing. **Execution profiling tools** can help you pinpoint exactly where an agent spends most of its time and money. You can explore various **Execution Profiling Tools** (affiliate link: [AI Execution Profiling Solutions](https://example.com/execution-profiling-tools) - tools to analyze performance bottlenecks, priced around $499 for enterprise solutions).
+Identifying bottlenecks in the execution path often requires detailed tracing. **Execution profiling tools** can help you pinpoint exactly where an agent spends most of its time and money. You can explore various **Execution Profiling Tools** (affiliate link: [AI Execution Profiling Solutions](https://www.datadoghq.com/) - tools to analyze performance bottlenecks, priced around $499 for enterprise solutions).
 
 ##### 3. Parallelization and Batching
 
@@ -369,7 +369,7 @@ The ultimate goal is to reduce the average cost of completing a single task. Thi
 *   **Calculate Average**: Divide the total cost by the number of tasks. `Cost Per Task = Total Cost / Number of Tasks`.
 *   **Set Thresholds**: Establish acceptable cost thresholds for different types of tasks. If an agent consistently exceeds these, it's a signal for further investigation and optimization.
 
-Tools like LangSmith automatically help with this by providing cost breakdowns per trace, making **cost per task analysis** much easier. For granular cost tracking across different agent instances or projects, consider **Cost Attribution Tools** (affiliate link: [AI Cost Attribution Platform](https://example.com/cost-attribution-tools) - tools for detailed cost tracking and reporting, starting around $299/month for businesses).
+Tools like LangSmith automatically help with this by providing cost breakdowns per trace, making **cost per task analysis** much easier. For granular cost tracking across different agent instances or projects, consider **Cost Attribution Tools** (affiliate link: [AI Cost Attribution Platform](https://www.gartner.com/en/information-technology/finance) - tools for detailed cost tracking and reporting, starting around $299/month for businesses).
 
 #### Agent Monitoring Tools (Revisited)
 
@@ -391,7 +391,7 @@ The landscape of LLMs and agent capabilities is constantly changing. What's cost
 *   **A/B Testing**: When trying new optimization strategies (e.g., a new prompt or a different model), run A/B tests to compare their cost-effectiveness head-to-head.
 *   **Stay Updated**: Keep an eye on new LLM models or pricing changes from your providers. A new, cheaper model might be released that's perfect for your use case.
 
-This iterative approach to **agent loop optimization** ensures you maintain cost efficiency over time. If you need expert guidance on setting up these systems or optimizing complex agent workflows, **Agent Consulting Services** (affiliate link: [AI Agent Consulting Services](https://example.com/agent-consulting-services) - tailored expert advice, typically $2000-$10,000+ per engagement) can provide specialized support.
+This iterative approach to **agent loop optimization** ensures you maintain cost efficiency over time. If you need expert guidance on setting up these systems or optimizing complex agent workflows, **Agent Consulting Services** (affiliate link: [AI Agent Consulting Services](https://www.mckinsey.com/capabilities/operations) - tailored expert advice, typically $2000-$10,000+ per engagement) can provide specialized support.
 
 ### Conclusion
 

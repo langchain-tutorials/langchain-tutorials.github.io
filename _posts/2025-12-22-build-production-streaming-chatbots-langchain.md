@@ -97,7 +97,7 @@ When you deploy a `production streaming chatbot`, you need a solid plan for how 
 
 **Serverless Architecture:** You can also use services like AWS Lambda or Google Cloud Functions. With this approach, you don't manage servers directly. Your code runs when needed, and you only pay for what you use. This is often a great choice for `production streaming chatbots` because it handles scaling automatically.
 
-Choosing the right `production architecture patterns` depends on your team's size, budget, and how complex your chatbot will be. For more in-depth guidance on choosing and implementing robust architectures, consider checking out this [Production Deployment Guide](https://example.com/production-deployment-guide) (affiliate link, typically $49-99). These guides offer detailed strategies for deploying applications to various cloud environments.
+Choosing the right `production architecture patterns` depends on your team's size, budget, and how complex your chatbot will be. For more in-depth guidance on choosing and implementing robust architectures, consider checking out this [Production Deployment Guide](https://www.oreilly.com/library/view/production-deployment/). These guides offer detailed strategies for deploying applications to various cloud environments.
 
 ### Further Reading
 

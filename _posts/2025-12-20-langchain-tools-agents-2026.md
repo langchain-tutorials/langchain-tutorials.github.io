@@ -356,7 +356,7 @@ class WeatherAPIIntegrationTool(BaseTool):
         try:
             # Simulate an API call
             # In a real scenario, you would make an actual HTTP request:
-            # response = requests.get(f"https://api.example.com/weather?location={location}&api_key=YOUR_API_KEY")
+            # response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid=YOUR_API_KEY")
             # response.raise_for_status() # Raise an HTTPError for bad responses (4xx or 5xx)
             # data = response.json()
 

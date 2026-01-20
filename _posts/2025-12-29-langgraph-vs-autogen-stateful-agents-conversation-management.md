@@ -56,7 +56,7 @@ In LangGraph, you define a shared "state" that every part of your agent can acce
 
 This approach gives you direct control over state management approaches. You can decide exactly what gets remembered and when. This is great for keeping conversation history organized.
 
-It also makes it easier to debug problems, because you can see exactly how the state changes. If you want to learn more about managing state in complex applications, you might find this [State Management Course](https://example.com/statemanagement-course) helpful. (Affiliate Link: $99-249)
+It also makes it easier to debug problems, because you can see exactly how the state changes. If you want to learn more about managing state in complex applications, you might find this [State Management Course](https://www.coursera.org/browse/computer-science/software-development) helpful.
 
 #### Nodes and Edges: The Workflow Map
 
@@ -72,7 +72,7 @@ LangGraph has built-in ways to help agents remember things over time. It can sto
 
 A checkpoint is like taking a snapshot of your agent's memory. If something goes wrong, you can always go back to that snapshot. This is super useful for state recovery.
 
-It means your agent can pause a conversation and pick it up later right where it left off. This ensures great conversation persistence, even if the system restarts. Tools that help you manage these checkpoints are discussed in various [Checkpoint Frameworks](https://example.com/checkpoint-frameworks) guides. (Affiliate Link: $39-79)
+It means your agent can pause a conversation and pick it up later right where it left off. This ensures great conversation persistence, even if the system restarts. Tools that help you manage these checkpoints are discussed in various [checkpoint frameworks](https://docs.python.org/3/library/pickle.html) guides.
 
 #### Practical LangGraph Example: A Simple Order Assistant
 
@@ -127,7 +127,7 @@ AutoGen keeps a full log of all messages exchanged between agents. This conversa
 
 If an agent needs to refer to something said five messages ago, it can look back. This ensures that multi-turn conversations stay on track. This robust memory handling is built into the core design.
 
-It's like having a perfect transcript of every team meeting. This log allows agents to recover context if they get sidetracked. Learn more about effective conversation design with these [Conversation Design Tutorials](https://example.com/conversation-design-tutorials). (Affiliate Link: $99-249)
+It's like having a perfect transcript of every team meeting. This log allows agents to recover context if they get sidetracked. Learn more about effective conversation design with these [Conversation Design Tutorials](https://www.coursera.org/browse/computer-science/artificial-intelligence).
 
 #### Practical AutoGen Example: A Code Generation Team
 
@@ -138,7 +138,7 @@ Imagine you want to build an agent system that writes Python code. You can set u
 *   **Critic Agent:** This agent would review the Programmer's code. It might say, "This code is inefficient; it uses recursion without memoization."
 *   **Programmer Agent (revises):** Based on the Critic's feedback, the Programmer updates the code.
 
-The agents keep talking until the Critic is happy with the code. The entire conversation history is the state. This example shows excellent state synchronization between agents. If you're interested in structuring such systems, architectural guidance can be found through [Architecture Consulting](https://example.com/architecture-consulting) services. (Affiliate Link) To explore more advanced multi-agent systems, read our internal blog post: [Exploring Advanced Multi-Agent Systems with AutoGen](/blog/advanced-autogen-systems).
+The agents keep talking until the Critic is happy with the code. The entire conversation history is the state. This example shows excellent state synchronization between agents. If you're interested in structuring such systems, architectural guidance can be found through [architecture consulting](https://www.gartner.com/en/information-technology/consulting) services. To explore more advanced multi-agent systems, read our internal blog post: [Exploring Advanced Multi-Agent Systems with AutoGen](/blog/advanced-autogen-systems).
 
 ### Deep Dive: State Management Approaches
 
@@ -172,7 +172,7 @@ In AutoGen, state synchronization happens through continuous communication. Agen
 
 State recovery involves getting back to a previous point if something goes wrong. LangGraph's checkpoint mechanisms are perfect for this, allowing you to load an old snapshot. AutoGen relies on the full conversation history. You can simply replay or re-process the history to "recover" the state.
 
-Robust persistence solutions are essential for both. You might use tools like [Redis](https://example.com/redis-persistence) or [PostgreSQL](https://example.com/postgresql-persistence) to store your agent's memory securely. (Affiliate Link: Persistence Solutions)
+Robust persistence solutions are essential for both. You might use tools like [Redis](https://redis.io/) or [PostgreSQL](https://www.postgresql.org/) to store your agent's memory securely.
 
 #### The Importance of Conversation History for Multi-Turn Conversations
 
@@ -202,11 +202,11 @@ This means your agent can have long, ongoing relationships with users. It doesn'
 
 There are many ways to store an agent's memory, just like there are many ways to store your own notes.
 
-*   **Databases:** Like a big digital librarian, databases (like [PostgreSQL](https://example.com/postgresql-persistence)) are great for organized, long-term storage.
-*   **Key-Value Stores:** Faster, simpler storage, like [Redis](https://example.com/redis-persistence), is good for quick access to specific pieces of information.
+*   **Databases:** Like a big digital librarian, databases (like [PostgreSQL](https://www.postgresql.org/)) are great for organized, long-term storage.
+*   **Key-Value Stores:** Faster, simpler storage, like [Redis](https://redis.io/), is good for quick access to specific pieces of information.
 *   **Files:** Simple text files or JSON files can store conversation history for smaller applications.
 
-The choice depends on how much memory you need, how fast you need to access it, and how important it is for the memory to never be lost. You can find many [memory optimization guides](https://example.com/memory-optimization-guides) online to help you make these choices. (Affiliate Link: Memory Optimization Guides)
+The choice depends on how much memory you need, how fast you need to access it, and how important it is for the memory to never be lost. You can find many [memory optimization guides](https://docs.python.org/3/library/sys.html) online to help you make these choices.
 
 #### How Context Preservation Improves Interactions
 
@@ -248,7 +248,7 @@ LangGraph has native support for checkpointing its internal state. This is one o
 
 AutoGen agents, while not having a single explicit state to checkpoint, can use the conversation history as a form of checkpoint. Saving this history effectively acts as a checkpoint for the entire multi-agent interaction.
 
-For systems that require high availability and resilience, using external [session management tools](https://example.com/session-management-tools) can further enhance both frameworks. (Affiliate Link: Session Management Tools) These tools can ensure that every user's session, including their unique conversation state, is safely stored and retrieved.
+For systems that require high availability and resilience, using external [session management tools](https://www.npmjs.com/package/express-session) can further enhance both frameworks. These tools can ensure that every user's session, including their unique conversation state, is safely stored and retrieved.
 
 ### Practical Scenarios and Use Cases
 
@@ -355,7 +355,7 @@ When building agents that have long chats, some rules help:
 4.  **Keep Context:** Always refer back to previous parts of the chat to show the agent remembers.
 5.  **Design for Persistence:** Ensure the conversation can be picked up later, even after a break.
 
-Following these practices helps create a truly smart and helpful stateful agent. You can also explore [State Pattern Templates](https://example.com/state-pattern-templates) for structured ways to manage object states. (Affiliate Link: $39-79)
+Following these practices helps create a truly smart and helpful stateful agent. You can also explore [state pattern templates](https://refactoring.guru/design-patterns/state) for structured ways to manage object states.
 
 ### Conclusion
 

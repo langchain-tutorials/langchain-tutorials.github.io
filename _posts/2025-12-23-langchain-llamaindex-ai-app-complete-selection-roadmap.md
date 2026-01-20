@@ -78,7 +78,7 @@ Consider how many users your app might have and if it needs to handle many reque
 
 What skills do your current developers or team members already have? Are they familiar with Python, the main language for both LangChain and LlamaIndex? Do they have experience with AI concepts, prompt engineering, or working with large language models?
 
-The learning curve for a new tool can be significant. Picking a tool that aligns with your team's existing knowledge can speed up development. If you're looking for structured guidance on this process, consider exploring these [selection methodology courses](https://example.com/affiliate/selection-courses) which offer in-depth insights. These courses can equip your team with the knowledge needed to make informed decisions.
+The learning curve for a new tool can be significant. Picking a tool that aligns with your team's existing knowledge can speed up development. If you're looking for structured guidance on this process, consider exploring these [selection methodology courses](https://www.coursera.org/browse/business/operations-management) which offer in-depth insights. These courses can equip your team with the knowledge needed to make informed decisions.
 
 ### Phase 2: Initial Framework Comparison
 
@@ -124,13 +124,13 @@ For example, if your app needs to answer questions from a small set of documents
 
 For the specific tasks your AI app will perform, how do LangChain and LlamaIndex compare in terms of speed and accuracy? Set up some simple tests. Use a consistent set of data and queries for both frameworks.
 
-Measure how long it takes for each to process a request. Also, evaluate the quality and accuracy of the answers they provide. For example, if your app needs to summarize text, provide the same text to both frameworks and compare the summaries. Tools like those found in [comparison testing tools](https://example.com/affiliate/comparison-tools) can help you set up and analyze these benchmarks effectively. This helps you gather important data for your `decision checkpoints`.
+Measure how long it takes for each to process a request. Also, evaluate the quality and accuracy of the answers they provide. For example, if your app needs to summarize text, provide the same text to both frameworks and compare the summaries. Tools like those found in [comparison testing tools](https://www.g2.com/categories/testing-software) can help you set up and analyze these benchmarks effectively. This helps you gather important data for your `decision checkpoints`.
 
 #### Reviewing Documentation and Examples
 
 Good documentation is like a reliable map. How clear are the official guides and tutorials for each framework? Are there many practical examples that show you how to use different features? The quality of documentation greatly affects how quickly your team can learn and develop.
 
-Spend time browsing through their official websites, GitHub repos, and community resources. Easy-to-understand documentation means less time searching for answers and more time building. You can find comprehensive insights on this in various [evaluation phase guides](https://example.com/affiliate/evaluation-guides).
+Spend time browsing through their official websites, GitHub repos, and community resources. Easy-to-understand documentation means less time searching for answers and more time building. You can find comprehensive insights on this in various [evaluation phase guides](https://www.mckinsey.com/capabilities/operations-performance).
 
 #### Cost Implications
 
@@ -156,7 +156,7 @@ You might find that LlamaIndex is better for pure retrieval tasks with vast amou
 
 If you're still undecided, or if your project is large and complex, a pilot program is a smart next step. A pilot is like building a slightly bigger, more realistic test version of your app. It’s not the full app, but it includes more features than a simple Proof-of-Concept.
 
-Clearly define the goals for your pilot program. What specific problems should the pilot solve? What success criteria will you use to judge its performance? For example, if you're building a content generation tool, your pilot might aim to generate 10 articles on a specific topic within a certain time frame with a minimum quality score. You can find excellent resources and structures for this in dedicated [pilot program frameworks](https://example.com/affiliate/pilot-frameworks).
+Clearly define the goals for your pilot program. What specific problems should the pilot solve? What success criteria will you use to judge its performance? For example, if you're building a content generation tool, your pilot might aim to generate 10 articles on a specific topic within a certain time frame with a minimum quality score. You can find excellent resources and structures for this in dedicated [pilot program frameworks](https://www.projectmanagement.com/).
 
 #### Execute Pilot Testing
 
@@ -178,13 +178,13 @@ Congratulations, you've made your decision! Now it's time to plan how you'll bri
 
 With your chosen framework, it's time to plan the full development of your AI app. Break down the entire project into smaller, manageable tasks. Assign responsibilities to your team members and set realistic deadlines.
 
-Think about the architecture of your app, how different components will interact, and what infrastructure you'll need. This plan should be detailed and cover all aspects from coding to testing and deployment. You can find helpful structures and templates at [roadmap templates ($39-89)](https://example.com/affiliate/roadmap-templates) and specialized [implementation planning services](https://example.com/affiliate/planning-services) that can assist you in this crucial phase.
+Think about the architecture of your app, how different components will interact, and what infrastructure you'll need. This plan should be detailed and cover all aspects from coding to testing and deployment. You can find helpful structures and templates at [roadmap templates](https://www.atlassian.com/templates/project-management) and specialized [implementation planning services](https://www.bcg.com/offerings/operations) that can assist you in this crucial phase.
 
 #### Developing a Migration Strategy (If Applicable)
 
 Are you replacing an existing system or integrating your new AI app into an older one? If so, you'll need a `migration strategy`. This plan outlines how you will move existing data, refactor old code, and transition users to the new system without disruption.
 
-Consider data mapping, ensuring compatibility, and creating a rollback plan in case something goes wrong. User training is also a vital part of migration, ensuring everyone knows how to use the new AI app. Expert guidance from [migration consulting](https://example.com/affiliate/migration-consulting) can be very beneficial here.
+Consider data mapping, ensuring compatibility, and creating a rollback plan in case something goes wrong. User training is also a vital part of migration, ensuring everyone knows how to use the new AI app. Expert guidance from [migration consulting](https://www.deloitte.com/global/en/services/consulting) can be very beneficial here.
 
 #### Defining Success Metrics
 
@@ -196,7 +196,7 @@ Examples of success metrics include:
 *   **Time saved:** Is it reducing the time spent on certain tasks?
 *   **Cost reduction:** Is it saving money by automating processes?
 
-Regularly track these metrics to understand the value your AI app is providing. Platforms specializing in [success tracking platforms](https://example.com/affiliate/tracking-platforms) can provide the tools needed to monitor these KPIs effectively.
+Regularly track these metrics to understand the value your AI app is providing. Platforms specializing in [success tracking platforms](https://www.salesforce.com/products/analytics) can provide the tools needed to monitor these KPIs effectively.
 
 #### Continuous Improvement
 

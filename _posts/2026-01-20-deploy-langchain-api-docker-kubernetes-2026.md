@@ -30,7 +30,7 @@ Think of it as LEGO bricks for artificial intelligence; you can snap different A
 
 You've built your LangChain API on your computer, and it works perfectly there. But when you try to run it on another computer, suddenly things might break because of missing files or different software versions. Docker solves this problem by packaging everything your LangChain app needs into a neat little box. This process is called Docker containerization.
 
-This box, called a Docker container, contains your code, all the libraries it uses, and even the operating system bits it needs. It's like sending a perfectly packed gift; no matter where it goes, it will always be just as you wrapped it. This ensures your LangChain API runs exactly the same everywhere. You can learn more about how Docker works in various online courses, which often start from around [$79 for beginners](https://www.example.com/docker-course-beginner-affiliate).
+This box, called a Docker container, contains your code, all the libraries it uses, and even the operating system bits it needs. It's like sending a perfectly packed gift; no matter where it goes, it will always be just as you wrapped it. This ensures your LangChain API runs exactly the same everywhere. You can learn more about how Docker works in various online courses, which often start from around [$79 for beginners](https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/).
 
 #### How Docker Works Simply
 
@@ -80,7 +80,7 @@ Open your terminal in the same folder as your `Dockerfile` and run this command:
 docker build -t my-langchain-api:v1 .
 ```
 
-Here, `-t my-langchain-api:v1` gives your image a name (`my-langchain-api`) and a version (`v1`), which is very useful for tracking changes. The `.` at the end tells Docker to look for the `Dockerfile` in the current directory. After building, you can find your image ready to go. You can also explore options for storing your images securely, like using a [Docker Hub subscription](https://www.example.com/docker-hub-subscription-affiliate) for private repositories.
+Here, `-t my-langchain-api:v1` gives your image a name (`my-langchain-api`) and a version (`v1`), which is very useful for tracking changes. The `.` at the end tells Docker to look for the `Dockerfile` in the current directory. After building, you can find your image ready to go. You can also explore options for storing your images securely, like using a [Docker Hub subscription](https://hub.docker.com/pricing) for private repositories.
 
 #### Running Your Docker Container
 
@@ -96,7 +96,7 @@ The `-p 8000:8000` part is important. It tells Docker to link port 8000 on your 
 
 Running a single Docker container is great, but what if your LangChain API becomes super popular and thousands of people want to use it at the same time? Or what if the computer running your container suddenly breaks down? This is where Kubernetes, often shortened to K8s, comes to the rescue. Kubernetes is a powerful tool for `container orchestration`.
 
-Kubernetes is like a super-smart conductor for an orchestra of Docker containers. It makes sure your LangChain API is always running, even if one computer fails, and can automatically create more copies of your app if traffic increases. It handles `scaling pods` and making sure everything works smoothly. You can prepare for advanced usage with various `Kubernetes certifications`, ranging from [$199 to $499](https://www.example.com/kubernetes-certification-affiliate).
+Kubernetes is like a super-smart conductor for an orchestra of Docker containers. It makes sure your LangChain API is always running, even if one computer fails, and can automatically create more copies of your app if traffic increases. It handles `scaling pods` and making sure everything works smoothly. You can prepare for advanced usage with various `Kubernetes certifications`, ranging from [$199 to $499](https://www.coursera.org/browse/information-technology/cloud-computing).
 
 #### What is Kubernetes? Simply Explained
 
@@ -108,7 +108,7 @@ This means you don't have to manually start and stop your LangChain API on diffe
 
 Before you can deploy your LangChain API to Kubernetes, you need a Kubernetes cluster. A cluster is a group of computers that work together as one big computer, managed by Kubernetes. Setting up a cluster can be done in a few ways, but the most common and robust method in 2026 is using cloud providers.
 
-You can use managed Kubernetes services like Amazon EKS (Elastic Kubernetes Service), Google Kubernetes Engine (GKE), or Azure Kubernetes Service (AKS). These services take away the headache of managing the underlying computers for you. They offer easy ways to create and manage your cluster with just a few clicks or commands. You can get started with [AWS EKS here](https://www.example.com/aws-eks-link-affiliate) or explore other `container hosting` options.
+You can use managed Kubernetes services like Amazon EKS (Elastic Kubernetes Service), Google Kubernetes Engine (GKE), or Azure Kubernetes Service (AKS). These services take away the headache of managing the underlying computers for you. They offer easy ways to create and manage your cluster with just a few clicks or commands. You can get started with [AWS EKS here](https://aws.amazon.com/eks/) or explore other `container hosting` options.
 
 For learning purposes, you can also set up a local Kubernetes cluster on your own computer using tools like Minikube or Docker Desktop (which includes a Kubernetes option). However, for a production LangChain API, a cloud provider's managed service is always recommended for reliability and scalability. These platforms handle much of the complex setup for you, saving you valuable time and effort.
 
@@ -266,7 +266,7 @@ In 2026, deploying complex applications to Kubernetes often involves using Helm.
 
 Helm charts make it easy to define, install, and upgrade even the most complex Kubernetes applications. They are like pre-made templates for deploying your software, which you can customize easily. For instance, a single Helm chart could contain all the YAML files for your LangChain API, its database, and other related services.
 
-You can find many existing Helm charts for common software, or you can create your own custom chart for your LangChain API. This greatly simplifies the deployment and management process, especially for applications with many parts. There are excellent `Helm tutorials` available to help you master this tool, with comprehensive guides for various scenarios. You can find many valuable resources on `Helm tutorials` that help you manage your Kubernetes applications efficiently. A good starting point for learning Helm is often available through detailed [online Helm tutorials](https://www.example.com/helm-tutorial-affiliate).
+You can find many existing Helm charts for common software, or you can create your own custom chart for your LangChain API. This greatly simplifies the deployment and management process, especially for applications with many parts. There are excellent `Helm tutorials` available to help you master this tool, with comprehensive guides for various scenarios. You can find many valuable resources on `Helm tutorials` that help you manage your Kubernetes applications efficiently. A good starting point for learning Helm is often available through detailed [online Helm tutorials](https://helm.sh/docs/).
 
 ### Advanced Topics for Your LangChain API in 2026
 
@@ -312,8 +312,8 @@ By understanding `Docker containerization`, `creating Dockerfile`, `building ima
 
 **Relevant Affiliate Links:**
 
-*   **Docker Courses:** [Learn Docker Basics Here!](https://www.example.com/docker-course-beginner-affiliate) (Starting from $79)
-*   **Kubernetes Certifications:** [Become Kubernetes Certified!](https://www.example.com/kubernetes-certification-affiliate) (Certifications $199-499)
-*   **Container Hosting (AWS EKS):** [Get Started with AWS EKS!](https://www.example.com/aws-eks-link-affiliate)
-*   **Docker Hub Subscriptions:** [Explore Docker Hub for Private Repositories!](https://www.example.com/docker-hub-subscription-affiliate)
-*   **Helm Tutorials:** [Master Helm Charts for Kubernetes!](https://www.example.com/helm-tutorial-affiliate)
+*   **Docker Courses:** [Learn Docker Basics Here!](https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/) (Starting from $79)
+*   **Kubernetes Certifications:** [Become Kubernetes Certified!](https://www.coursera.org/browse/information-technology/cloud-computing) (Certifications $199-499)
+*   **Container Hosting (AWS EKS):** [Get Started with AWS EKS!](https://aws.amazon.com/eks/)
+*   **Docker Hub Subscriptions:** [Explore Docker Hub for Private Repositories!](https://hub.docker.com/pricing)
+*   **Helm Tutorials:** [Master Helm Charts for Kubernetes!](https://helm.sh/docs/)

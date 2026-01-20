@@ -77,7 +77,7 @@ Both frameworks offer comprehensive `quickstart quality` guides. LangChain excel
 
 Haystack's quickstarts often involve setting up a small document store and indexing some data before you can ask questions. While this is crucial for its intended purpose, it means the very first runnable example might be a bit longer. However, once you complete it, you have a more robust system from the get-go.
 
-For a deeper dive into Python environment management, which is key for both tools, you might find a [coding bootcamp](https://www.example.com/coding-bootcamp-python) very helpful. They often cover setting up virtual environments and managing dependencies efficiently.
+For a deeper dive into Python environment management, which is key for both tools, you might find a [coding bootcamp](https://www.coursera.org/browse/computer-science/software-development) very helpful. They often cover setting up virtual environments and managing dependencies efficiently.
 
 ## Getting Started: Quickstart Quality and Tutorials
 
@@ -132,7 +132,7 @@ result = basic_pipeline.run(data={"prompt_builder": {"question": "What is the la
 print(result["generator"]["replies"][0])
 ```
 
-This example, though simple, already introduces the concept of components and pipelines. While slightly more verbose for a basic LLM call, it lays a strong foundation for building sophisticated RAG systems. The initial learning curve might feel a little steeper, but it leads to a more organized application. You can find many structured lessons on platforms like [Developer Tutorials Hub](https://www.example.com/developer-tutorials-hub) that explain these concepts in detail.
+This example, though simple, already introduces the concept of components and pipelines. While slightly more verbose for a basic LLM call, it lays a strong foundation for building sophisticated RAG systems. The initial learning curve might feel a little steeper, but it leads to a more organized application. You can find many structured lessons on platforms like [Developer Tutorials Hub](https://www.udemy.com/topic/development-tools/) that explain these concepts in detail.
 
 ## The Code Itself: API Design Quality and Code Readability
 
@@ -270,7 +270,7 @@ result = pipeline.run(data={"pb": {"question": "Hello?"}})
 
 The clear definition of `run` methods with expected inputs and outputs for each component means that `autocomplete support` for `pipeline.run(data={...})` is typically very good. This makes it easier to correctly pass data between components without constantly consulting the documentation.
 
-To further enhance your coding experience, consider investing in an [IDE extension for Python development](https://www.example.com/python-ide-extension) or a subscription to a powerful editor like [PyCharm Professional](https://www.example.com/pycharm-pro-subscription), which offers top-tier `type hints` and `autocomplete support`.
+To further enhance your coding experience, consider investing in an [IDE extension for Python development](https://marketplace.visualstudio.com/items?itemName=ms-python.python) or a subscription to a powerful editor like [PyCharm Professional](https://www.jetbrains.com/pycharm/), which offers top-tier `type hints` and `autocomplete support`.
 
 ## When Things Go Wrong: Debugging Experience and Error Messages
 
@@ -369,7 +369,7 @@ except Exception as e:
     # Haystack often gives clearer component-level error messages
 ```
 
-Haystack's `error messages` are typically very helpful, often indicating which component failed and what input it received. This direct feedback significantly reduces the time spent on debugging. For more in-depth debugging strategies, consider a [debugging skills course for developers](https://www.example.com/debugging-course).
+Haystack's `error messages` are typically very helpful, often indicating which component failed and what input it received. This direct feedback significantly reduces the time spent on debugging. For more in-depth debugging strategies, consider a [debugging skills course for developers](https://www.coursera.org/browse/computer-science/software-development).
 
 ## Boosting Your Workflow: IDE Support and Productivity Tools
 
@@ -382,14 +382,14 @@ Both LangChain and Haystack, being Python libraries, benefit immensely from mode
 *   **VS Code:** With the Python extension, you get excellent `autocomplete support`, `type hints`, linting, and a powerful debugger for both frameworks. The ability to run Jupyter notebooks directly in VS Code is also a huge plus for iterative LLM development.
 *   **PyCharm:** PyCharm's deep understanding of Python code makes it a fantastic choice. Its refactoring capabilities, intelligent code completion, and robust debugger make working with complex LangChain chains or Haystack pipelines a breeze. `Type hints` are leveraged extensively, significantly improving `development velocity`.
 
-For a truly optimized experience, a subscription to [VS Code Pro](https://www.example.com/vscode-pro-subscription) or [PyCharm Professional](https://www.example.com/pycharm-pro-subscription) can unlock advanced features that enhance `IDE support` for LLM development.
+For a truly optimized experience, a subscription to [VS Code Pro](https://code.visualstudio.com/) or [PyCharm Professional](https://www.jetbrains.com/pycharm/) can unlock advanced features that enhance `IDE support` for LLM development.
 
 ### Developer Productivity Tools
 
 Beyond the IDE, several tools can further boost your efficiency:
 
 *   **Version Control (Git):** Essential for any project. Both frameworks integrate seamlessly with standard Git workflows.
-*   **Containerization (Docker):** For complex Haystack deployments involving Elasticsearch or other services, Docker simplifies `setup complexity` by providing consistent environments. LangChain deployments can also benefit for consistency. Consider pre-configured [development environment templates](https://www.example.com/dev-env-templates) to get started quickly with Docker.
+*   **Containerization (Docker):** For complex Haystack deployments involving Elasticsearch or other services, Docker simplifies `setup complexity` by providing consistent environments. LangChain deployments can also benefit for consistency. Consider pre-configured [development environment templates](https://github.com/docker/awesome-compose) to get started quickly with Docker.
 *   **Experiment Tracking (MLflow, Weights & Biases):** As you fine-tune LLMs or experiment with different RAG configurations, tracking your experiments is crucial. Both frameworks can be integrated with these tools.
 *   **Linting and Formatting (Black, Flake8):** Maintaining `code readability` across a team is vital. These tools enforce consistent code style, freeing you to focus on logic.
 

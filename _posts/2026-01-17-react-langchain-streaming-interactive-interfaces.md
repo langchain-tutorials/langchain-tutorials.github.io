@@ -30,9 +30,9 @@ This approach greatly improves the user experience, keeping you engaged and info
 
 To begin, you'll need some basic tools installed on your computer. Make sure you have Node.js and either npm or yarn ready. These are essential for any React project you'll be working on.
 
-Let's set up a new React project, which is your first step in creating a "React streaming setup." You can use `create-react-app` for a quick start, or consider Next.js for a more powerful framework that's excellent for full-stack applications and server-side rendering. Next.js offers fantastic capabilities for handling API routes, making it a strong choice for integrating with LangChain. You can find some excellent [Next.js templates here](https://example.com/nextjs-templates-affiliate) to jumpstart your development.
+Let's set up a new React project, which is your first step in creating a "React streaming setup." You can use `create-react-app` for a quick start, or consider Next.js for a more powerful framework that's excellent for full-stack applications and server-side rendering. Next.js offers fantastic capabilities for handling API routes, making it a strong choice for integrating with LangChain. You can find some excellent [Next.js templates](https://vercel.com/templates) to jumpstart your development.
 
-Once your project is created, you have the foundation for your interactive AI interface. For hosting your application, platforms like [Vercel](https://vercel.com/affiliate) or Netlify provide seamless deployment options. These services make it incredibly easy to get your React app online for everyone to see.
+Once your project is created, you have the foundation for your interactive AI interface. For hosting your application, platforms like [Vercel](https://vercel.com/) or Netlify provide seamless deployment options. These services make it incredibly easy to get your React app online for everyone to see.
 
 #### Setting Up Your React Project
 
@@ -112,7 +112,7 @@ export default async function handler(req: Request) {
 }
 ```
 
-This snippet shows how LangChain works with an OpenAI model and prepares a stream. The `StreamingTextResponse` comes from the [Vercel AI SDK](https://sdk.vercel.ai/docs/introduction), which simplifies integrating AI streaming into your applications. This SDK is a fantastic resource for this "react langchain streaming tutorial" and offers various [Vercel AI SDK templates here](https://example.com/vercel-ai-sdk-templates-affiliate).
+This snippet shows how LangChain works with an OpenAI model and prepares a stream. The `StreamingTextResponse` comes from the [Vercel AI SDK](https://sdk.vercel.ai/docs/introduction), which simplifies integrating AI streaming into your applications. This SDK is a fantastic resource for this "react langchain streaming tutorial" and offers various [Vercel AI SDK templates](https://vercel.com/templates/ai).
 
 ### Connecting React and LangChain: The Backend API
 
@@ -265,7 +265,7 @@ function Chatbot() {
 export default Chatbot;
 ```
 
-This component sets up the basic chat interface. You'll notice `isLoading` state, which is crucial for "handling loading states" and giving users feedback. The next step is to actually handle the incoming stream and update `currentStream` and `messages`. For better looking UIs, consider exploring [React component libraries here](https://example.com/react-component-libraries-affiliate) or specialized [streaming UI kits here](https://example.com/streaming-ui-kits-affiliate). These can greatly enhance your "streaming components design."
+This component sets up the basic chat interface. You'll notice `isLoading` state, which is crucial for "handling loading states" and giving users feedback. The next step is to actually handle the incoming stream and update `currentStream` and `messages`. For better looking UIs, consider exploring [React component libraries here](https://mui.com/material-ui/) or specialized [streaming UI kits here](https://vercel.com/templates/ai). These can greatly enhance your "streaming components design."
 
 ### Handling Streaming Data in React
 
@@ -396,7 +396,7 @@ In this updated `Chatbot` component, `currentStreamText` now holds the dynamical
 
 A great streaming experience isn't just about the data; it's also about how you present it. Good UI/UX design makes your application delightful to use. For streaming applications, "streaming UX patterns" focus on making the real-time flow feel natural and responsive. You want your users to know exactly what's happening at all times.
 
-This includes proper "handling loading states" and ensuring readability. If you're interested in refining your UI/UX skills, consider taking some [UI/UX design courses here](https://example.com/ui-ux-design-courses-affiliate). They can help you craft even more engaging interfaces.
+This includes proper "handling loading states" and ensuring readability. If you're interested in refining your UI/UX skills, consider taking some [UI/UX design courses](https://www.coursera.org/browse/design-user-experience). They can help you craft even more engaging interfaces.
 
 #### Enhancing the User Experience
 
@@ -405,7 +405,7 @@ This includes proper "handling loading states" and ensuring readability. If you'
 3.  **Clear Visual Distinction:** You might want to style the streaming text differently while it's being generated. For instance, it could be slightly faded or italicized until the full response is received. This tells you the message is still being composed.
 4.  **Instant Feedback:** When you send your message, it should appear instantly in the chat. This confirms to you that your input was received.
 
-For more advanced and visually appealing "streaming components design," you might want to integrate a robust [React component library here](https://example.com/react-component-libraries-affiliate) or specialized [streaming UI kits here](https://example.com/streaming-ui-kits-affiliate). These resources provide pre-built, styled components that can significantly speed up your development and improve the look and feel of your chat interface. They often include ready-made solutions for spinners, message bubbles, and layout management, which are perfect for a smooth "react langchain streaming tutorial."
+For more advanced and visually appealing "streaming components design," you might want to integrate a robust [React component library here](https://mui.com/material-ui/) or specialized [streaming UI kits here](https://vercel.com/templates/ai). These resources provide pre-built, styled components that can significantly speed up your development and improve the look and feel of your chat interface. They often include ready-made solutions for spinners, message bubbles, and layout management, which are perfect for a smooth "react langchain streaming tutorial."
 
 ### Advanced Topics and Best Practices
 
@@ -441,7 +441,7 @@ try {
 
 Using TypeScript in your React and LangChain project adds a layer of safety and clarity. It helps you catch errors during development rather than at runtime. For complex streaming logic, defining "TypeScript streaming types" ensures that the data you expect matches the data you receive.
 
-If you're new to TypeScript, investing in [TypeScript courses here](https://example.com/typescript-courses-affiliate) can be incredibly beneficial. They will teach you how to leverage types effectively for your projects.
+If you're new to TypeScript, investing in [TypeScript courses](https://www.coursera.org/browse/computer-science/software-development) can be incredibly beneficial. They will teach you how to leverage types effectively for your projects.
 
 ```typescript
 // Example of TypeScript streaming types
@@ -811,7 +811,7 @@ This complete example brings together all the concepts covered in this "react la
 
 Once you've built your awesome streaming AI interface, it's super important to test it. Testing ensures that everything works as expected and that your users have a smooth experience. You want to make sure the AI streams correctly, messages appear in order, and errors are handled well.
 
-There are many great tools for testing React applications. For instance, you can use libraries like Jest and React Testing Library to write tests that check your components' behavior. If you want to dive deeper into testing, explore some [React testing tools here](https://example.com/react-testing-tools-affiliate). These tools can help you write robust tests for your "react langchain streaming tutorial" project.
+There are many great tools for testing React applications. For instance, you can use libraries like Jest and React Testing Library to write tests that check your components' behavior. If you want to dive deeper into testing, explore some [React testing tools](https://www.coursera.org/browse/computer-science/software-development). These tools can help you write robust tests for your "react langchain streaming tutorial" project.
 
 #### What to Test:
 
@@ -831,4 +831,4 @@ By leveraging "useEffect for streaming," "state management for streams," and "di
 
 The world of AI is rapidly evolving, and streaming is a fundamental part of creating engaging experiences. Now that you have a solid foundation, you can continue to explore more complex AI interactions and integrations.
 
-Ready to deepen your React skills and build even more amazing applications? Check out these comprehensive [React courses here](https://example.com/react-courses-affiliate) to take your development to the next level. Happy coding!
+Ready to deepen your React skills and build even more amazing applications? Check out these comprehensive [React courses](https://www.coursera.org/browse/computer-science/software-development) to take your development to the next level. Happy coding!

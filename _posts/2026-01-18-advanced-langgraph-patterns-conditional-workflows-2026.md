@@ -108,7 +108,7 @@ print("\n--- Running General Support Request ---")
 graph.invoke({"request_type": "question"})
 ```
 
-In this example, the `route_request` function decides the path. This is a simple but powerful way to direct your AI's actions. You can make these routing functions as smart as you need them to be. For more elaborate ready-made examples, consider exploring workflow templates for various industries, which can save you significant development time. These can often be found in the range of [$49-99 for specialized workflow templates](https://example.com/workflow-templates-affiliate).
+In this example, the `route_request` function decides the path. This is a simple but powerful way to direct your AI's actions. You can make these routing functions as smart as you need them to be. For more elaborate ready-made examples, consider exploring workflow templates for various industries, which can save you significant development time. These can often be found in the range of [$49-99 for specialized workflow templates](https://www.atlassian.com/templates/project-management).
 
 #### Dynamic Routing Logic: Beyond Simple Choices
 
@@ -209,7 +209,7 @@ print("\n--- Moderating Unknown Content (fallback) ---")
 graph.invoke({"content_type": "audio", "content_data": "audio_file.wav"})
 ```
 
-This dynamic routing is a hallmark of sophisticated AI systems. To truly master these complex logic patterns, consider enrolling in an [advanced Python course](https://example.com/advanced-python-course-affiliate). These courses often cover design patterns and advanced programming techniques that are directly applicable here.
+This dynamic routing is a hallmark of sophisticated AI systems. To truly master these complex logic patterns, consider enrolling in an [advanced Python course](https://www.coursera.org/browse/computer-science/software-development). These courses often cover design patterns and advanced programming techniques that are directly applicable here.
 
 ### Mastering Cycles: Repeating Actions
 
@@ -387,7 +387,7 @@ print("--- Running API Call with Retries ---")
 graph.invoke({"api_status": "failed", "retries": 0, "max_retries": 3})
 ```
 
-This ensures your API call retry mechanism won't run forever. Designing robust systems like this requires careful thought about error handling and loop termination. For guidance on how to deploy these robust systems reliably, refer to [production deployment guides](https://example.com/production-deployment-guide-affiliate) that cover best practices for LangGraph and similar tools.
+This ensures your API call retry mechanism won't run forever. Designing robust systems like this requires careful thought about error handling and loop termination. For guidance on how to deploy these robust systems reliably, refer to [production deployment guides](https://www.digitalocean.com/community/tutorials) that cover best practices for LangGraph and similar tools.
 
 ### Advanced Architectural Patterns
 
@@ -508,7 +508,7 @@ print("\n--- Running Main Graph: With Context Retrieval ---")
 main_graph.invoke({"query": "I need help with my account."})
 ```
 
-This method of using subgraphs (or composing runnables) is crucial for managing complexity in large AI systems. If you're building very large and intricate AI architectures, an [architecture review service](https://example.com/architecture-review-service-affiliate) can provide expert guidance. They help ensure your design is sound, scalable, and efficient.
+This method of using subgraphs (or composing runnables) is crucial for managing complexity in large AI systems. If you're building very large and intricate AI architectures, an [architecture review service](https://www.gartner.com/en/information-technology/consulting) can provide expert guidance. They help ensure your design is sound, scalable, and efficient.
 
 #### Human-in-the-Loop Workflows: When Humans Help
 
@@ -632,7 +632,7 @@ print("\n--- Simulating Human Approval after Revision ---")
 final_state = graph.invoke(initial_state, {"human_feedback": "Approved. Looks perfect now."})
 ```
 
-Implementing these workflows seamlessly often requires specialized knowledge in integrating AI with existing enterprise systems. This is where [enterprise LangChain consulting](https://example.com/enterprise-langchain-consulting-affiliate) can be invaluable, providing expertise to build robust human-AI collaboration tools.
+Implementing these workflows seamlessly often requires specialized knowledge in integrating AI with existing enterprise systems. This is where [enterprise LangChain consulting](https://www.mckinsey.com/capabilities/operations) can be invaluable, providing expertise to build robust human-AI collaboration tools.
 
 #### Retry Mechanisms for Robustness: Handling Glitches
 
@@ -984,7 +984,7 @@ print("--- Running Fan-out Fan-in Workflow ---")
 graph.invoke({"document": "This is a long document that needs various processing tasks."})
 ```
 
-This ensures that the final `collect_results` step only happens after all parallel tasks are truly complete. For deeper insights into optimizing concurrency and parallel processing in Python, access to [premium documentation](https://example.com/premium-langgraph-docs-affiliate) on LangGraph's advanced features can be incredibly beneficial.
+This ensures that the final `collect_results` step only happens after all parallel tasks are truly complete. For deeper insights into optimizing concurrency and parallel processing in Python, access to [premium documentation](https://python.langchain.com/docs/concepts/) on LangGraph's advanced features can be incredibly beneficial.
 
 ### Real-World Use Cases for Advanced LangGraph Patterns Python 2026
 

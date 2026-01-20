@@ -113,7 +113,7 @@ print("\n--- Question 2 ---")
 result2 = app.invoke({"question": "How do I reset my password?"})
 print(f"Bot response: {result2.answer}")
 ```
-In this example, the `decide_next_step` function is our `conditional routing` brain. It looks at the current state and directs the flow. This clearly shows how LangGraph makes managing `branching logic` straightforward. If you want to dive deeper into `workflow design patterns`, check out this [Advanced Workflow Design Course](https://www.example.com/workflow-design-course-affiliate-link) which covers state management in detail for $199.
+In this example, the `decide_next_step` function is our `conditional routing` brain. It looks at the current state and directs the flow. This clearly shows how LangGraph makes managing `branching logic` straightforward. If you want to dive deeper into `workflow design patterns`, check out this [Advanced Workflow Design Course](https://www.coursera.org/browse/computer-science/software-development) which covers state management in detail.
 
 ### Introducing AutoGen: Multi-Agent Conversations
 
@@ -192,7 +192,7 @@ user_proxy.initiate_chat(
     message="Plot a bar chart of monthly sales data for the last 6 months. Sales data: month1: 120, month2: 150, month3: 130, month4: 180, month5: 160, month6: 200. Make sure to label axes and add a title."
 )
 ```
-In this AutoGen example, agents `Planner`, `Engineer`, `Scientist`, and `Admin` talk to each other to generate and execute code. They engage in a dynamic `conversation pattern` to figure out the steps, write the code, and ensure it works. This demonstrates a flexible way to handle `complex AI workflows` where the exact path isn't known beforehand. For more hands-on practice with `conversation patterns` and multi-agent systems, you might find this [AI Architecture Consulting Service](https://www.example.com/ai-architecture-consulting-affiliate-link) helpful, priced from $500 for a detailed project review.
+In this AutoGen example, agents `Planner`, `Engineer`, `Scientist`, and `Admin` talk to each other to generate and execute code. They engage in a dynamic `conversation pattern` to figure out the steps, write the code, and ensure it works. This demonstrates a flexible way to handle `complex AI workflows` where the exact path isn't known beforehand. For more hands-on practice with `conversation patterns` and multi-agent systems, you might find this [AI Architecture Consulting Service](https://www.gartner.com/en/information-technology/consulting) helpful, priced from $500 for a detailed project review.
 
 ### LangGraph vs AutoGen: A Head-to-Head Comparison
 
@@ -235,8 +235,8 @@ Now that we know a bit about each, let's compare them directly across several im
 
 #### Workflow Complexity Management
 
-*   **LangGraph:** Manages `workflow complexity management` by breaking down large problems into smaller, connected nodes. The visual nature of the graph helps you see and understand complex flows. However, a very large graph can still become overwhelming if not designed carefully. `Workflow templates` can significantly help here. Get started with some pre-built `workflow templates` from [Template Library Pro](https://www.example.com/workflow-templates-affiliate-link) starting from $79.
-*   **AutoGen:** Handles `workflow complexity management` by distributing the intelligence and tasks among multiple agents. Each agent has a simpler job, and the overall complexity emerges from their interactions. This can simplify individual agent design but makes predicting emergent behavior harder. For general strategies on `complexity management`, this [Complexity Management Guide](https://www.example.com/complexity-management-guide-affiliate-link) offers great insights.
+*   **LangGraph:** Manages `workflow complexity management` by breaking down large problems into smaller, connected nodes. The visual nature of the graph helps you see and understand complex flows. However, a very large graph can still become overwhelming if not designed carefully. `Workflow templates` can significantly help here. Get started with some pre-built `workflow templates` from [Template Library Pro](https://github.com/topics/workflow-automation) starting from $79.
+*   **AutoGen:** Handles `workflow complexity management` by distributing the intelligence and tasks among multiple agents. Each agent has a simpler job, and the overall complexity emerges from their interactions. This can simplify individual agent design but makes predicting emergent behavior harder. For general strategies on `complexity management`, this [Complexity Management Guide](https://www.oreilly.com/library/view/managing-complexity) offers great insights.
 
 ### When to Choose LangGraph
 
@@ -336,7 +336,7 @@ Running `complex AI workflows` can be resource-intensive and costly, especially 
 *   **Caching:** Implement caching mechanisms for repeated LLM calls or computationally expensive operations.
 *   **Parallelism:** For independent steps in LangGraph, you might be able to run them in parallel. In AutoGen, agents can work on sub-tasks concurrently.
 *   **Model Selection:** Use smaller, cheaper models (e.g., GPT-3.5) for simpler tasks and larger, more powerful models (e.g., GPT-4) only when necessary.
-    *   To get a deeper understanding of cost-effective AI architecture, consider exploring `architecture consulting` services, like those offered by [AI Solutions Architects](https://www.example.com/ai-solutions-architects-affiliate-link).
+    *   To get a deeper understanding of cost-effective AI architecture, consider exploring `architecture consulting` services, like those offered by [AI Solutions Architects](https://www.gartner.com/en/information-technology/consulting).
 
 #### Managing Workflow Complexity
 
