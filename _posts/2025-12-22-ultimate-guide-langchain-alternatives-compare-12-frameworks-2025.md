@@ -69,16 +69,14 @@ While LangChain offers similar chaining capabilities, Semantic Kernel is deeply 
 
 ##### Quick Example (Snippet Idea)
 Imagine a simple email assistant that summarizes emails.
-```python
+```f python
 import semantic_kernel as sk
 from semantic_kernel.connectors.ai.open_ai import AzureTextCompletion, OpenAITextCompletion
-
 # Set up your AI model (e.g., OpenAI or Azure OpenAI)
 kernel = sk.Kernel()
 api_key = "YOUR_OPENAI_API_KEY"
 org_id = "YOUR_OPENAI_ORG_ID"
 kernel.add_text_completion_service("dv", OpenAITextCompletion("text-davinci-003", api_key, org_id))
-
 # Define an AI skill (e.g., summarizer)
 summarizer_skill = kernel.create_semantic_function(
     """
@@ -90,7 +88,6 @@ summarizer_skill = kernel.create_semantic_function(
     temperature=0.7,
     top_p=0.5
 )
-
 # Use the skill
 email_text = "Subject: Meeting Reminder. Hi team, just a reminder about our meeting tomorrow at 10 AM regarding project X. Please review the attached report. Thanks, John."
 summary = summarizer_skill(email_text)
