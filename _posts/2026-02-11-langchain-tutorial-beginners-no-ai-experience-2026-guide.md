@@ -170,7 +170,7 @@ llm = ChatOpenAI(model="gpt-3.5-turbo")
 # 3. Create a simple prompt template
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant. Be concise."),
-    ("user", "{question}")
+    ("user", "{% raw %}{question}{% endraw %}")
 ])
 
 # 4. Create an output parser
@@ -223,8 +223,8 @@ You just pick the right chain for your task and plug in your LLM. It's a key par
 # from langchain.chains import LLMChain
 # from langchain_core.prompts import PromptTemplate
 
-# translation_prompt = PromptTemplate.from_template("Translate the following text to Spanish: {text}")
-# summarization_prompt = PromptTemplate.from_template("Summarize the following Spanish text: {spanish_text}")
+# translation_prompt = PromptTemplate.from_template("Translate the following text to Spanish: {% raw %}{text}{% endraw %}")
+# summarization_prompt = PromptTemplate.from_template("Summarize the following Spanish text: {% raw %}{spanish_text}{% endraw %}")
 
 # translation_chain = LLMChain(llm=llm, prompt=translation_prompt)
 # summarization_chain = LLMChain(llm=llm, prompt=summarization_prompt)
@@ -414,9 +414,9 @@ prompt = ChatPromptTemplate.from_template("""
 Answer the user's question based on the provided context only.
 If you don't know the answer based on the context, politely say that you don't have enough information.
 
-Context: {context}
+Context: {% raw %}{context}{% endraw %}
 
-Question: {input}
+Question: {% raw %}{input}{% endraw %}
 """)
 
 # 8. Create a chain to combine documents and answer the question
@@ -511,7 +511,7 @@ Even with a simple guide, you might run into small bumps. Here are some common i
 *   **Read the Docs:** The official LangChain documentation is excellent and has many more examples. Once you're comfortable with the basics, it's a great resource: [visit LangChain Docs](https://www.langchain.com/docs/).
 *   **Break Down Problems:** If you're trying to build something complex, break it into smaller, manageable pieces. Build one small feature at a time, test it, and then move to the next.
 *   **Join Communities:** There are many online communities (forums, Discord servers) where people discuss LangChain and AI. Asking questions and seeing what others are building can be very helpful.
-*   **Internal Link Suggestion:** For more detailed explanations on how LLMs work, you could refer to our blog post "[What are LLMs and How Do They Work?](/blog/what-are-llms-how-they-work)". For a deep dive into using APIs, check out "[Mastering API Concepts for Beginners](/blog/mastering-api-concepts)". This keeps your learning journey connected.
+*   **Internal Link Suggestion:** For more detailed explanations on how LLMs work, you could refer to our blog post "[What are LLMs and How Do They Work?]({% raw %}{{ site.baseurl }}{% endraw %}/blog/what-are-llms-how-they-work)". For a deep dive into using APIs, check out "[Mastering API Concepts for Beginners]({% raw %}{{ site.baseurl }}{% endraw %}/blog/mastering-api-concepts)". This keeps your learning journey connected.
 
 ### Conclusion: Your AI Journey Has Just Begun!
 

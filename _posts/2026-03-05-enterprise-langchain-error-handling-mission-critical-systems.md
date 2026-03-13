@@ -60,10 +60,10 @@ def run_simple_langchain_call(query):
         chain = LLMChain(llm=llm, prompt=prompt)
         
         result = chain.run(query)
-        logging.info(f"LangChain call successful for query: '{query[:50]}'...")
+        logging.info(f"LangChain call successful for query: '{% raw %}{query[:50]}{% endraw %}'...")
         return result
     except Exception as e:
-        logging.error(f"An error occurred during LangChain call: {e}")
+        logging.error(f"An error occurred during LangChain call: {% raw %}{e}{% endraw %}")
         return "I am sorry, I am currently unable to process your request."
 
 # Example usage
@@ -145,19 +145,19 @@ def run_langchain_with_robust_logging(query, transaction_id="N/A"):
             raise ValueError("Simulated LLM API failure due to specific input")
         
         result = chain.run(query)
-        logger.info("LangChain call successful.", extra={"extra_data": extra_data, "result_snippet": result[:100]})
+        logger.info("LangChain call successful.", extra={"extra_data": extra_data, "result_snippet": {% raw %}{result[:100]}{% endraw %}})
         return result
     except OutputParserException as e:
         # Specific LangChain parsing error
-        logger.error(f"Output parsing failed: {e}", exc_info=True, extra={"extra_data": extra_data, "error_type": "OutputParsingError"})
+        logger.error(f"Output parsing failed: {% raw %}{e}{% endraw %}", exc_info=True, extra={"extra_data": extra_data, "error_type": "OutputParsingError"})
         return "I had trouble understanding the model's response."
     except ValueError as e:
         # Catch our simulated error or other value-related issues
-        logger.error(f"Input or internal value error: {e}", exc_info=True, extra={"extra_data": extra_data, "error_type": "ValueError"})
+        logger.error(f"Input or internal value error: {% raw %}{e}{% endraw %}", exc_info=True, extra={"extra_data": extra_data, "error_type": "ValueError"})
         return "There was a problem with the input provided."
     except Exception as e:
         # Catch any other unexpected errors
-        logger.critical(f"A critical, unexpected error occurred: {e}", exc_info=True, extra={"extra_data": extra_data, "error_type": "UnhandledException"})
+        logger.critical(f"A critical, unexpected error occurred: {% raw %}{e}{% endraw %}", exc_info=True, extra={"extra_data": extra_data, "error_type": "UnhandledException"})
         return "I am experiencing a severe internal issue and cannot process your request."
 
 # Practical examples
@@ -222,7 +222,7 @@ logger.addHandler(handler)
 class MockInventoryAPI:
     def get_stock(self, product_id):
         if product_id == "FAIL_PRODUCT_001":
-            logger.warning(f"Simulating failure for product {product_id}")
+            logger.warning(f"Simulating failure for product {% raw %}{product_id}{% endraw %}")
             raise ConnectionError("Inventory API is temporarily unavailable.")
         if product_id == "PRODUCT_001":
             return {"product_id": product_id, "stock": 50, "location": "Warehouse A"}
@@ -239,14 +239,14 @@ def get_product_stock_tool(product_id: str) -> str:
     try:
         data = inventory_api.get_stock(product_id)
         if data.get("stock") == "unknown":
-            return f"Could not find information for product ID: {product_id}. {data.get('message', '')}"
-        return f"Product {product_id} has {data['stock']} units in stock at {data['location']}."
+            return f"Could not find information for product ID: {% raw %}{product_id}{% endraw %}. {% raw %}{data.get('message', '')}{% endraw %}"
+        return f"Product {% raw %}{product_id}{% endraw %} has {% raw %}{data['stock']}{% endraw %} units in stock at {% raw %}{data['location']}{% endraw %}."
     except ConnectionError:
-        logger.error(f"Inventory API failed for product {product_id}. Providing fallback message.")
-        return f"I am unable to check the stock for {product_id} right now. Please try again later or contact support."
+        logger.error(f"Inventory API failed for product {% raw %}{product_id}{% endraw %}. Providing fallback message.")
+        return f"I am unable to check the stock for {% raw %}{product_id}{% endraw %} right now. Please try again later or contact support."
     except Exception as e:
-        logger.error(f"Unexpected error getting stock for {product_id}: {e}")
-        return f"An unexpected issue occurred while checking stock for {product_id}. Please try again."
+        logger.error(f"Unexpected error getting stock for {% raw %}{product_id}{% endraw %}: {% raw %}{e}{% endraw %}")
+        return f"An unexpected issue occurred while checking stock for {% raw %}{product_id}{% endraw %}. Please try again."
 
 tools = [
     Tool(
@@ -272,17 +272,17 @@ primary_agent = create_agent_with_fallback(primary_llm, tools, prompt)
 fallback_agent = create_agent_with_fallback(fallback_llm, tools, prompt)
 
 def run_agent_with_llm_fallback(query: str):
-    logger.info(f"Attempting to run query with primary LLM: {query}")
+    logger.info(f"Attempting to run query with primary LLM: {% raw %}{query}{% endraw %}")
     try:
         result = primary_agent.invoke({"input": query})
         return result["output"]
     except Exception as e:
-        logger.warning(f"Primary LLM agent failed: {e}. Falling back to simpler LLM.")
+        logger.warning(f"Primary LLM agent failed: {% raw %}{e}{% endraw %}. Falling back to simpler LLM.")
         try:
             result = fallback_agent.invoke({"input": query})
-            return f"Note: Using a simpler model due to primary system issues. Result: {result['output']}"
+            return f"Note: Using a simpler model due to primary system issues. Result: {% raw %}{result['output']}{% endraw %}"
         except Exception as fallback_e:
-            logger.error(f"Fallback LLM also failed: {fallback_e}. Returning generic error.")
+            logger.error(f"Fallback LLM also failed: {% raw %}{fallback_e}{% endraw %}. Returning generic error.")
             # Final fallback: a static message or human hand-off
             return "I am currently experiencing technical difficulties and cannot fulfill your request. Please try again later or contact support."
 
@@ -349,18 +349,18 @@ class MockOrderProcessor:
         self.processed_orders = {} # Stores transaction_id -> order_details
 
     def place_order(self, order_details: dict, transaction_id: str) -> dict:
-        logger.info(f"Received request to place order with transaction_id: {transaction_id}")
+        logger.info(f"Received request to place order with transaction_id: {% raw %}{transaction_id}{% endraw %}")
         
         # Simulate a transient network error 20% of the time
         if time.time() % 10 < 2: # Simple way to occasionally trigger
-             logger.warning(f"Simulating transient network issue for {transaction_id}")
+             logger.warning(f"Simulating transient network issue for {% raw %}{transaction_id}{% endraw %}")
              raise ConnectionError("Temporary network issue with order system.")
 
         if transaction_id in self.processed_orders:
-            logger.warning(f"Order with transaction_id {transaction_id} already processed. Returning existing result (idempotent).")
+            logger.warning(f"Order with transaction_id {% raw %}{transaction_id}{% endraw %} already processed. Returning existing result (idempotent).")
             return self.processed_orders[transaction_id]
 
-        logger.info(f"Processing new order {transaction_id}: {order_details}")
+        logger.info(f"Processing new order {% raw %}{transaction_id}{% endraw %}: {% raw %}{order_details}{% endraw %}")
         # Simulate actual processing time
         time.sleep(1)
         
@@ -372,7 +372,7 @@ class MockOrderProcessor:
             "transaction_id": transaction_id
         }
         self.processed_orders[transaction_id] = result
-        logger.info(f"Order {result['order_id']} successfully placed for transaction {transaction_id}.")
+        logger.info(f"Order {% raw %}{result['order_id']}{% endraw %} successfully placed for transaction {% raw %}{transaction_id}{% endraw %}.")
         return result
 
 mock_order_processor = MockOrderProcessor()
@@ -392,18 +392,18 @@ def place_order_idempotent_tool(product_name: str, quantity: int, customer_id: s
         response = mock_order_processor.place_order(order_details, idempotency_key)
         return json.dumps(response)
     except ConnectionError:
-        logger.error(f"Failed to place order for {idempotency_key} due to network error.")
-        return f"ERROR: Failed to place order due to temporary network issues. Please check order status with key '{idempotency_key}'."
+        logger.error(f"Failed to place order for {% raw %}{idempotency_key}{% endraw %} due to network error.")
+        return f"ERROR: Failed to place order due to temporary network issues. Please check order status with key '{% raw %}{idempotency_key}{% endraw %}'."
     except Exception as e:
-        logger.critical(f"Critical error placing order for {idempotency_key}: {e}", exc_info=True)
-        return f"CRITICAL ERROR: An unexpected error occurred while placing your order. Key: '{idempotency_key}'."
+        logger.critical(f"Critical error placing order for {% raw %}{idempotency_key}{% endraw %}: {% raw %}{e}{% endraw %}", exc_info=True)
+        return f"CRITICAL ERROR: An unexpected error occurred while placing your order. Key: '{% raw %}{idempotency_key}{% endraw %}'."
 
 # --- Integrate into a simple LangChain setup (for demonstration) ---
 # (Simplified from full agent for focus on the tool itself)
 llm_for_order_creation = OpenAI(temperature=0.0)
 order_prompt = PromptTemplate(
     input_variables=["product_name", "quantity", "customer_id", "idempotency_key"],
-    template="You are an order placement assistant. Use the 'place_order_idempotent_tool' to place an order for {quantity} units of {product_name} for customer {customer_id} using idempotency key {idempotency_key}."
+    template="You are an order placement assistant. Use the 'place_order_idempotent_tool' to place an order for {% raw %}{quantity}{% endraw %} units of {% raw %}{product_name}{% endraw %} for customer {% raw %}{customer_id}{% endraw %} using idempotency key {% raw %}{idempotency_key}{% endraw %}."
 )
 
 order_placement_chain = LLMChain(llm=llm_for_order_creation, prompt=order_prompt)
@@ -422,7 +422,7 @@ def run_order_placement(product_name, quantity, customer_id):
     # The LangChain agent would generate this idempotency key.
     # For a direct tool call, we generate it here.
     idempotency_key = str(uuid.uuid4())
-    logger.info(f"Agent generating idempotency key: {idempotency_key} for order.")
+    logger.info(f"Agent generating idempotency key: {% raw %}{idempotency_key}{% endraw %} for order.")
     
     # In a real agent, this would be part of the `agent.invoke` process.
     # Here, we're directly calling the tool's function, demonstrating its idempotent nature.
@@ -431,15 +431,15 @@ def run_order_placement(product_name, quantity, customer_id):
 # Practical Examples
 print("\n--- First Order Attempt ---")
 first_order_result = run_order_placement("Laptop Pro", 1, "CUST-001")
-print(f"Result 1: {first_order_result}")
+print(f"Result 1: {% raw %}{first_order_result}{% endraw %}")
 
 print("\n--- Retrying the SAME Order (with the same idempotency key, if agent knows to retry) ---")
 # To simulate a retry, we need to manually use the same idempotency key from the first attempt.
 # In a real agent, the agent's retry logic would pass this key automatically.
 idempotency_key_for_retry = json.loads(first_order_result)["transaction_id"]
-print(f"Manually retrying with key: {idempotency_key_for_retry}")
+print(f"Manually retrying with key: {% raw %}{idempotency_key_for_retry}{% endraw %}")
 retry_order_result = place_order_idempotent_tool("Laptop Pro", 1, "CUST-001", idempotency_key_for_retry)
-print(f"Result 2 (retry): {retry_order_result}")
+print(f"Result 2 (retry): {% raw %}{retry_order_result}{% endraw %}")
 
 print("\n--- Another NEW Order ---")
 print(run_order_placement("Mouse Wireless", 2, "CUST-002"))
@@ -451,10 +451,10 @@ try:
     # This call might fail with ConnectionError
     place_order_idempotent_tool("Keyboard Mechanical", 1, "CUST-003", temp_idempotency_key)
 except ConnectionError:
-    logger.info(f"Caught ConnectionError for {temp_idempotency_key}. Retrying...")
+    logger.info(f"Caught ConnectionError for {% raw %}{temp_idempotency_key}{% endraw %}. Retrying...")
     # The next call with the same key should succeed and be unique
     retry_result = place_order_idempotent_tool("Keyboard Mechanical", 1, "CUST-003", temp_idempotency_key)
-    print(f"Retry successful: {retry_result}")
+    print(f"Retry successful: {% raw %}{retry_result}{% endraw %}")
 
 # Further reading on transaction handling:
 # [Link to your blog post on distributed transaction patterns]
@@ -502,14 +502,14 @@ class UnreliableLLMService:
 
     def generate_text(self, prompt_text: str) -> str:
         self.call_count += 1
-        logger.info(f"Attempt {self.call_count}: Calling external LLM service for prompt '{prompt_text[:50]}...'")
+        logger.info(f"Attempt {% raw %}{self.call_count}{% endraw %}: Calling external LLM service for prompt '{% raw %}{prompt_text[:50]}{% endraw %}...'")
         
         if random.random() < self.failure_rate:
-            logger.warning(f"Attempt {self.call_count}: Simulated transient error from LLM service!")
+            logger.warning(f"Attempt {% raw %}{self.call_count}{% endraw %}: Simulated transient error from LLM service!")
             raise ConnectionError("LLM API temporarily unavailable or timed out.")
         
-        logger.info(f"Attempt {self.call_count}: LLM service call successful.")
-        return f"Generated text for: '{prompt_text}' successfully."
+        logger.info(f"Attempt {% raw %}{self.call_count}{% endraw %}: LLM service call successful.")
+        return f"Generated text for: '{% raw %}{prompt_text}{% endraw %}' successfully."
 
 unreliable_llm_service = UnreliableLLMService()
 
@@ -537,8 +537,8 @@ class CustomReliableLLM(OpenAI): # Inherit to override _call method
             return reliable_llm_call_with_retry(prompt)
         except RetryError as e:
             # If all retries failed, tenacity will re-raise the last exception.
-            logger.critical(f"All retries failed for LLM call: {e}. Returning fallback message.")
-            raise ConnectionError(f"LLM service permanently unavailable after multiple retries. Original error: {e}")
+            logger.critical(f"All retries failed for LLM call: {% raw %}{e}{% endraw %}. Returning fallback message.")
+            raise ConnectionError(f"LLM service permanently unavailable after multiple retries. Original error: {% raw %}{e}{% endraw %}")
 
 # Use our custom LLM that incorporates the retry logic
 llm_with_retry = CustomReliableLLM(temperature=0.0)
@@ -615,17 +615,17 @@ class MockPaymentGateway:
 
     def process_payment(self, amount: float, customer_id: str) -> dict:
         self.call_count += 1
-        logger.info(f"Payment attempt {self.call_count}: Processing payment for customer {customer_id}, amount {amount}")
+        logger.info(f"Payment attempt {% raw %}{self.call_count}{% endraw %}: Processing payment for customer {% raw %}{customer_id}{% endraw %}, amount {% raw %}{amount}{% endraw %}")
         
         if random.random() < self.failure_rate:
-            logger.error(f"Payment attempt {self.call_count}: Simulated payment gateway failure!")
+            logger.error(f"Payment attempt {% raw %}{self.call_count}{% endraw %}: Simulated payment gateway failure!")
             # Simulate different types of errors
             if random.random() < 0.5:
                 raise ConnectionError("Payment Gateway is unreachable.")
             else:
                 raise ValueError("Payment Gateway returned invalid response.")
         
-        logger.info(f"Payment attempt {self.call_count}: Payment successful.")
+        logger.info(f"Payment attempt {% raw %}{self.call_count}{% endraw %}: Payment successful.")
         return {"status": "success", "transaction_id": f"PAY-{random.randint(1000, 9999)}", "amount": amount}
 
 mock_payment_gateway = MockPaymentGateway()
@@ -653,7 +653,7 @@ def process_payment_tool(amount: float, customer_id: str) -> str:
         return json.dumps(response)
     except (ConnectionError, ValueError) as e:
         # These are the errors that `pybreaker` will count as failures
-        logger.error(f"Payment processing failed: {e}")
+        logger.error(f"Payment processing failed: {% raw %}{e}{% endraw %}")
         raise # Re-raise for the circuit breaker to count it
     except Exception as e:
         logger.critical(f"An unexpected error occurred in payment tool: {e}")
@@ -678,18 +678,18 @@ def run_payment_agent(query: str):
     logger.info(f"\n--- Running agent for query: '{query}' ---")
     try:
         response = agent_executor.invoke({"input": query})
-        print(f"Agent Output: {response['output']}")
+        print(f"Agent Output: {% raw %}{response['output']}{% endraw %}")
     except CircuitBreakerError:
         logger.error("Circuit breaker is OPEN! Payment gateway is currently unavailable. Please try again later.")
         print("Agent Output: I am sorry, the payment system is temporarily offline. Please try again in a few moments.")
     except Exception as e:
         logger.critical(f"An unexpected error occurred during agent execution: {e}")
-        print(f"Agent Output: An internal system error occurred. Please contact support. Error: {e}")
+        print(f"Agent Output: An internal system error occurred. Please contact support. Error: {% raw %}{e}{% endraw %}")
 
 # Practical Examples
 print("--- Initial attempts (likely to fail and trip the breaker) ---")
 for i in range(5): # Make a few calls to trip the breaker
-    run_payment_agent(f"Process a payment of 100.00 for customer CUST-ABC-00{i}.")
+    run_payment_agent(f"Process a payment of 100.00 for customer CUST-ABC-00{% raw %}{i}{% endraw %}.")
     time.sleep(1) # Small delay between attempts
 
 print(f"\nCircuit Breaker State: {payment_breaker.current_state}")
@@ -715,7 +715,7 @@ mock_payment_gateway.failure_rate = 0.1 # Make it more reliable for the next att
 
 print("\n--- More attempts (should eventually close the breaker if successful) ---")
 for i in range(3):
-    run_payment_agent(f"Process a small payment for CUST-ZXY-{i}.")
+    run_payment_agent(f"Process a small payment for CUST-ZXY-{% raw %}{i}{% endraw %}.")
     time.sleep(1)
 print(f"Circuit Breaker State: {payment_breaker.current_state}")
 
@@ -787,7 +787,7 @@ alert_service = AlertingService()
 # --- Define Error Escalation Procedure ---
 def handle_langchain_error(error_type: str, message: str, transaction_id: str, severity: str = "error"):
     timestamp = datetime.now().isoformat()
-    log_entry_message = f"[{severity.upper()}] LangChain Error: {error_type} - {message} (Transaction ID: {transaction_id})"
+    log_entry_message = f"[{% raw %}{severity.upper()}{% endraw %}] LangChain Error: {% raw %}{error_type}{% endraw %} - {% raw %}{message}{% endraw %} (Transaction ID: {% raw %}{transaction_id}{% endraw %})"
     
     # Log the error regardless of severity
     if severity == "debug":

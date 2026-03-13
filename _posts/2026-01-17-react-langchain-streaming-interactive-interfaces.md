@@ -618,6 +618,7 @@ import Chatbot from '../components/Chatbot'; // Adjust path as needed
 
 function HomePage() {
   return (
+{% raw %}
     <div style={{
       fontFamily: 'Arial, sans-serif',
       display: 'flex',
@@ -627,6 +628,8 @@ function HomePage() {
       backgroundColor: '#f0f2f5',
       padding: '20px'
     }}>
+{% endraw %}
+{% raw %}
       <div style={{
         backgroundColor: '#fff',
         borderRadius: '8px',
@@ -637,6 +640,8 @@ function HomePage() {
         flexDirection: 'column',
         maxHeight: '90vh'
       }}>
+{% endraw %}
+{% raw %}
         <h2 style={{
           textAlign: 'center',
           color: '#333',
@@ -644,10 +649,12 @@ function HomePage() {
           borderBottom: '1px solid #eee',
           margin: 0
         }}>
+{% endraw %}
           Interactive AI Chat
         </h2>
         <Chatbot />
       </div>
+{% raw %}
       <style jsx global>{`
         body { margin: 0; padding: 0; box-sizing: border-box; }
         .chat-container {
@@ -739,6 +746,7 @@ function HomePage() {
           100% { opacity: 0.8; }
         }
       `}</style>
+{% endraw %}
     </div>
   );
 }

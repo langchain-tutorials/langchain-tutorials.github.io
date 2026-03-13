@@ -257,7 +257,7 @@ jobs:
         # For this example, we'll run a simple 'smoke test' by starting the container
         # and checking if it responds.
         # You would replace this with Python unit/integration tests for your API logic.
-        docker run -d -p 8000:8000 --name test-api -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} langchain-api:latest
+        docker run -d -p 8000:8000 --name test-api -e OPENAI_API_KEY={% raw %}${{ secrets.OPENAI_API_KEY }}{% endraw %} langchain-api:latest
         sleep 10 # Give the API time to start
         
         # Simple health check
@@ -339,23 +339,29 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
+{% raw %}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+{% endraw %}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
+{% raw %}
         tags: ${{ secrets.DOCKER_USERNAME }}/langchain-api:latest
         # You might also want to tag with commit SHA: ${{ secrets.DOCKER_USERNAME }}/langchain-api:${{ github.sha }}
+{% endraw %}
 
     - name: Deploy to Server (using SSH for demonstration)
       uses: appleboy/ssh-action@v1.0.0
       with:
+{% raw %}
         host: ${{ secrets.DEPLOY_HOST }}
         username: ubuntu # Or your server's SSH username
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+{% endraw %}
         script: |
           # --- Zero-Downtime Deployment Strategy: Blue-Green/Rolling Update Simulation ---
           # This is a simplified example. In a real scenario, you'd use a load balancer
@@ -364,15 +370,17 @@ jobs:
           # but ensuring the old container is only stopped after the new one is confirmed healthy.
 
           # 1. Pull the new Docker image
-          docker pull ${{ secrets.DOCKER_USERNAME }}/langchain-api:latest
+          docker pull {% raw %}${{ secrets.DOCKER_USERNAME }}{% endraw %}/langchain-api:latest
 
           # 2. Start the new container on a different port (e.g., 8001) for health checks
           # If this is a real blue-green, you'd have a separate set of resources.
           # For a single server, we simulate by running on a different port first.
           echo "Starting new container on port 8001..."
           docker run -d --name langchain-api-new -p 8001:8000 \
+{% raw %}
             -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
             ${{ secrets.DOCKER_USERNAME }}/langchain-api:latest
+{% endraw %}
           
           # 3. Wait for the new container to become healthy
           echo "Waiting for new container on port 8001 to become healthy..."
@@ -425,8 +433,10 @@ jobs:
 
           echo "Starting production container on port 8000..."
           docker run -d --name langchain-api-production -p 8000:8000 \
+{% raw %}
             -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
             ${{ secrets.DOCKER_USERNAME }}/langchain-api:latest
+{% endraw %}
 
           echo "Deployment successful for LangChain API!"
 ```
@@ -481,17 +491,21 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
+{% raw %}
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+{% endraw %}
 
     - name: Deploy specified image to Server
       uses: appleboy/ssh-action@v1.0.0
       with:
+{% raw %}
         host: ${{ secrets.DEPLOY_HOST }}
         username: ubuntu # Or your server's SSH username
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+{% endraw %}
         script: |
-          IMAGE_TO_DEPLOY="${{ github.event.inputs.image_tag }}"
+          IMAGE_TO_DEPLOY="{% raw %}${{ github.event.inputs.image_tag }}{% endraw %}"
           echo "Rolling back to image: $IMAGE_TO_DEPLOY"
 
           docker pull $IMAGE_TO_DEPLOY
@@ -499,7 +513,7 @@ jobs:
           # Simulate zero-downtime swap as before
           echo "Starting rollback container on port 8001..."
           docker run -d --name langchain-api-rollback -p 8001:8000 \
-            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+            -e OPENAI_API_KEY={% raw %}${{ secrets.OPENAI_API_KEY }}{% endraw %} \
             $IMAGE_TO_DEPLOY
 
           echo "Waiting for rollback container on port 8001 to become healthy..."
@@ -534,7 +548,7 @@ jobs:
           docker rm langchain-api-production # Remove it to re-create
 
           docker run -d --name langchain-api-production -p 8000:8000 \
-            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+            -e OPENAI_API_KEY={% raw %}${{ secrets.OPENAI_API_KEY }}{% endraw %} \
             $IMAGE_TO_DEPLOY
 
           echo "Rollback to $IMAGE_TO_DEPLOY successful!"

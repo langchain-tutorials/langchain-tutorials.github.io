@@ -264,7 +264,7 @@ with get_openai_callback() as cb:
 print("\n--- Q&A Response ---")
 print(qa_response['text'])
 ```
-By summarizing first, you drastically reduce the tokens sent to the `gpt-4` model for the Q&A. This is a prime example of `langchain token management cost optimization` in action. You're using AI smarter, not harder. You can also refer to our detailed post on [mastering LangChain summarization]({{ site.baseurl }}/blog/mastering-langchain-summarization-techniques) for more in-depth strategies.
+By summarizing first, you drastically reduce the tokens sent to the `gpt-4` model for the Q&A. This is a prime example of `langchain token management cost optimization` in action. You're using AI smarter, not harder. You can also refer to our detailed post on [mastering LangChain summarization]({% raw %}{{ site.baseurl }}{% endraw %}/blog/mastering-langchain-summarization-techniques) for more in-depth strategies.
 
 ### Chunking and Retrieval
 
@@ -360,7 +360,7 @@ for i, doc in enumerate(retrieved_docs):
     print(f"Document {i+1} (approx {count_tokens_openai(doc.page_content, 'gpt-3.5-turbo')} tokens):\n{doc.page_content[:200]}...\n")
 
 ```
-Notice how only a few relevant chunks (instead of the whole long document) are sent to the LLM. This is a powerful `langchain token management cost optimization` technique. For more details on building efficient RAG systems, see our post on [building advanced RAG applications with LangChain]({{ site.baseurl }}/blog/building-advanced-rag-with-langchain).
+Notice how only a few relevant chunks (instead of the whole long document) are sent to the LLM. This is a powerful `langchain token management cost optimization` technique. For more details on building efficient RAG systems, see our post on [building advanced RAG applications with LangChain]({% raw %}{{ site.baseurl }}{% endraw %}/blog/building-advanced-rag-with-langchain).
 
 ### Dynamic Prompt Engineering
 
@@ -985,7 +985,7 @@ Do your users often ask the same questions or make similar requests? If so, you'
 
 LangChain has built-in caching mechanisms that can be easily enabled. This is a powerful form of `langchain token management cost optimization`. It drastically reduces token usage for repetitive queries.
 
-You save money because you only pay for the AI's response once. This is particularly effective for static or frequently asked questions. Learn more about it in our guide on [mastering LangChain caching]({{ site.baseurl }}/blog/mastering-langchain-caching).
+You save money because you only pay for the AI's response once. This is particularly effective for static or frequently asked questions. Learn more about it in our guide on [mastering LangChain caching]({% raw %}{{ site.baseurl }}{% endraw %}/blog/mastering-langchain-caching).
 
 #### Practical Example: `LLMCache`
 

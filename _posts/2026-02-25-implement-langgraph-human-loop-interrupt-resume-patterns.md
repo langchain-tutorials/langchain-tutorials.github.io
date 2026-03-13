@@ -106,20 +106,20 @@ def generate_plan_node(state: AgentState):
 def human_approval_node(state: AgentState):
     # This node is where the human would normally interact.
     # For a simple interrupt, we just set needs_approval to True to trigger the pause.
-    print(f"Agent: Reached human approval node. Waiting for approval for plan: '{state['current_plan']}'")
+    print(f"Agent: Reached human approval node. Waiting for approval for plan: '{state['{% raw %}{current_plan}{% endraw %}']}'")
     # In a real system, the graph would pause here.
     # The 'needs_approval' flag helps us identify where to pause from outside.
     return state # No direct state change here, just a "stop" point.
 
 def execute_plan_node(state: AgentState):
     if state["approved"]:
-        print(f"Agent: Plan '{state['current_plan']}' approved. Executing now!")
+        print(f"Agent: Plan '{state['{% raw %}{current_plan}{% endraw %}']}' approved. Executing now!")
         # Simulate execution
-        executed_result = f"Summary report drafted for: '{state['current_plan']}'"
+        executed_result = f"Summary report drafted for: '{state['{% raw %}{current_plan}{% endraw %}']}'"
         print(f"Agent: Execution complete: {executed_result}")
         return {"current_plan": executed_result, "needs_approval": False}
     else:
-        print(f"Agent: Plan '{state['current_plan']}' was not approved. Halting.")
+        print(f"Agent: Plan '{state['{% raw %}{current_plan}{% endraw %}']}' was not approved. Halting.")
         return {"current_plan": "Plan rejected, process halted.", "needs_approval": False}
 
 # 3. Build the graph
@@ -217,12 +217,12 @@ class AgentState(TypedDict):
 def generate_plan_node(state: AgentState):
     plan = "Research market trends for Q3 and draft a summary report."
     print(f"Agent: Proposed plan: '{plan}'")
-    return {"current_plan": plan, "history": [AIMessage(content=f"Proposed plan: {plan}")]}
+    return {"current_plan": plan, "history": [AIMessage(content=f"Proposed plan: {% raw %}{plan}{% endraw %}")]}
 
 def human_approval_tool(plan: str):
     """Call this tool to get human approval for a given plan."""
     print(f"\n--- HUMAN INTERVENTION REQUIRED ---")
-    print(f"Agent needs your approval for plan: '{plan}'")
+    print(f"Agent needs your approval for plan: '{% raw %}{plan}{% endraw %}'")
     decision = input("Do you approve the plan? (yes/no): ").lower()
     print(f"--- HUMAN RESPONSE RECEIVED ---")
     return {"approved": True if decision == "yes" else False}
@@ -234,7 +234,7 @@ from langchain_core.tools import tool
 def human_review_tool(plan_to_review: str) -> dict:
     """Provides a plan to a human for review and returns their decision."""
     print(f"\n--- HUMAN INTERVENTION REQUIRED ---")
-    print(f"Agent needs your approval for plan: '{plan_to_review}'")
+    print(f"Agent needs your approval for plan: '{% raw %}{plan_to_review}{% endraw %}'")
     decision = input("Do you approve the plan? (yes/no): ").lower()
     return {"approved": True if decision == "yes" else False, "review_plan": plan_to_review}
 
@@ -248,7 +248,7 @@ def call_human_review_node(state: AgentState):
             {
                 "id": "human_review_123",
                 "name": human_review_tool.name,
-                "args": {"plan_to_review": state["current_plan"]}
+                "args": {"plan_to_review": state["{% raw %}{current_plan}{% endraw %}"]}
             }
         ]
     )
@@ -404,7 +404,7 @@ def draft_message_node(state: PersonalizationState):
         print("Agent: Realized user name is missing. Requesting it.")
         return {"message_draft": "", "needs_user_name": True}
     else:
-        draft = f"Hello {state['user_name']},\n\nWelcome to our service! We're excited to have you."
+        draft = f"Hello {% raw %}{state['user_name']}{% endraw %},\n\nWelcome to our service! We're excited to have you."
         print(f"Agent: Drafted message: '{draft}'")
         return {"message_draft": draft, "needs_user_name": False,
                 "history": [AIMessage(content=f"Drafted message: {draft}")]}
@@ -432,8 +432,8 @@ def call_get_user_name_node(state: PersonalizationState):
     return {"history": [tool_call_message]}
 
 def finalize_message_node(state: PersonalizationState):
-    print(f"Agent: Finalizing message: {state['message_draft']}")
-    final_message = state['message_draft'] + "\n\nBest regards,\nYour AI Assistant"
+    print(f"Agent: Finalizing message: {% raw %}{state['message_draft']}{% endraw %}")
+    final_message = state['{% raw %}{message_draft}{% endraw %}'] + "\n\nBest regards,\nYour AI Assistant"
     print(f"Agent: Final message: {final_message}")
     return {"message_draft": final_message,
             "history": [AIMessage(content=f"Finalized message: {final_message}")]}
@@ -669,7 +669,7 @@ workflow.add_conditional_edges(
     }
 )
 ```
-This pattern allows for smarter, more efficient use of human resources, leveraging `Graph interruption mechanics` only when truly necessary. You can also explore `[our detailed post on LangGraph conditional routing](/blog/langgraph-conditional-routing.md)` for more insights.
+This pattern allows for smarter, more efficient use of human resources, leveraging `Graph interruption mechanics` only when truly necessary. You can also explore `[our detailed post on LangGraph conditional routing]({% raw %}{{ site.baseurl }}{% endraw %}/blog/langgraph-conditional-routing.md)` for more insights.
 
 ### Practical Examples & Code Walkthroughs
 
@@ -716,7 +716,7 @@ class SupportTicketState(TypedDict):
 def receive_ticket_node(state: SupportTicketState):
     query = state["customer_query"]
     ticket_id = state.get("ticket_id", f"TICKET_{hash(query) % 10000}")
-    print(f"Agent: Received ticket {ticket_id} with query: '{query}'")
+    print(f"Agent: Received ticket {% raw %}{ticket_id}{% endraw %} with query: '{% raw %}{query}{% endraw %}'")
     return {"ticket_id": ticket_id, "history": [HumanMessage(content=query)]}
 
 def analyze_sentiment_node(state: SupportTicketState):
@@ -739,10 +739,10 @@ def draft_response_node(state: SupportTicketState):
 @tool
 def human_agent_review_tool(ticket_id: str, query: str, ai_draft: str, sentiment: float, confidence: float) -> dict:
     """A human agent reviews the AI's draft and decides on the next action."""
-    print(f"\n--- HUMAN AGENT INTERVENTION REQUIRED (Ticket: {ticket_id}) ---")
-    print(f"Query: {query}")
-    print(f"AI Draft: {ai_draft}")
-    print(f"Sentiment: {sentiment}, Confidence: {confidence}")
+    print(f"\n--- HUMAN AGENT INTERVENTION REQUIRED (Ticket: {% raw %}{ticket_id}{% endraw %}) ---")
+    print(f"Query: {% raw %}{query}{% endraw %}")
+    print(f"AI Draft: {% raw %}{ai_draft}{% endraw %}")
+    print(f"Sentiment: {% raw %}{sentiment}{% endraw %}, Confidence: {% raw %}{confidence}{% endraw %}")
 
     action = input("Action (approve/edit/escalate): ").lower()
     edited_response = ""
@@ -797,7 +797,7 @@ def send_response_node(state: SupportTicketState):
     else:
         print("Agent: Sending default AI-drafted response (no human action specified).")
 
-    print(f"Agent: Final response sent for {state['ticket_id']}: '{final_response}'")
+    print(f"Agent: Final response sent for {% raw %}{state['ticket_id']}{% endraw %}: '{% raw %}{final_response}{% endraw %}'")
     return {"history": [AIMessage(content=f"Final response sent: {final_response}")],
             "ai_draft_response": final_response}
 
@@ -908,7 +908,7 @@ class ContentState(TypedDict):
     history: Annotated[List[BaseMessage], operator.add]
 
 def generate_draft_content_node(state: ContentState):
-    print(f"Agent: Generating draft content for topic: '{state['topic']}'")
+    print(f"Agent: Generating draft content for topic: '{% raw %}{state['topic']}{% endraw %}'")
     draft = f"Initial draft about {state['topic']}:\n\n" \
             f"This is a placeholder content. The AI would write an extensive article here.\n" \
             f"It covers key points and structure for the topic. " \
@@ -920,8 +920,8 @@ def generate_draft_content_node(state: ContentState):
 def human_editor_tool(topic: str, draft_content: str) -> dict:
     """Human editor reviews and edits the AI-generated content."""
     print(f"\n--- HUMAN EDITOR INTERVENTION REQUIRED ---")
-    print(f"Topic: {topic}")
-    print(f"AI Draft:\n{draft_content}")
+    print(f"Topic: {% raw %}{topic}{% endraw %}")
+    print(f"AI Draft:\n{% raw %}{draft_content}{% endraw %}")
     edited = input("Enter your edited content (or type 'approve' to use AI draft as is): ")
     action = "approve" if edited.lower() == "approve" else "edited"
     final_content = edited if action == "edited" else draft_content
@@ -962,7 +962,7 @@ def finalize_content_node(state: ContentState):
     if state["approved_for_publish"]:
         print("Agent: Finalizing content for publishing...")
         final_version = state["human_edited_content"] + "\n\n-- Published --"
-        print(f"Agent: Final Content:\n{final_version}")
+        print(f"Agent: Final Content:\n{% raw %}{final_version}{% endraw %}")
         return {"human_edited_content": final_version,
                 "history": [AIMessage(content=f"Content finalized and published.")]}
     else:

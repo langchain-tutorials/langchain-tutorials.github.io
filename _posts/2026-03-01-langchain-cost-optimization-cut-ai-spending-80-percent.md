@@ -92,11 +92,11 @@ complex_model = get_model_for_task("complex")
 
 simple_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant."),
-    ("user", "Summarize this: {text}")
+    ("user", "Summarize this: {% raw %}{text}{% endraw %}")
 ])
 complex_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are an expert problem solver."),
-    ("user", "Explain quantum entanglement in simple terms and its implications for future technology: {topic}")
+    ("user", "Explain quantum entanglement in simple terms and its implications for future technology: {% raw %}{topic}{% endraw %}")
 ])
 
 # Assuming you have text and topic variables
@@ -170,7 +170,7 @@ llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7)
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant."),
-    ("user", "What is the capital of {country}?")
+    ("user", "What is the capital of {% raw %}{country}{% endraw %}?")
 ])
 
 chain = prompt | llm
@@ -287,11 +287,11 @@ items_to_summarize = [
 # We structure the prompt to handle multiple items
 batch_summary_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant that summarizes product reviews."),
-    ("user", "Please summarize the following product reviews, one summary per review, clearly separated:\n\n{reviews_text}")
+    ("user", "Please summarize the following product reviews, one summary per review, clearly separated:\n\n{% raw %}{reviews_text}{% endraw %}")
 ])
 
 # Combine all items into a single string for batch processing
-reviews_combined = "\n---\n".join([f"Review {i+1}: {item}" for i, item in enumerate(items_to_summarize)])
+reviews_combined = "\n---\n".join([f"Review {% raw %}{i+1}{% endraw %}: {% raw %}{item}{% endraw %}" for i, item in enumerate(items_to_summarize)])
 
 # Create the chain for batch processing
 batch_chain = batch_summary_prompt | llm
@@ -320,7 +320,7 @@ llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7)
 
 prompt_template = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant."),
-    ("user", "Explain {topic} in one sentence.")
+    ("user", "Explain {% raw %}{topic}{% endraw %} in one sentence.")
 ])
 
 # Create multiple chains for different topics
@@ -336,7 +336,7 @@ async def run_async_tasks():
     responses = await asyncio.gather(*[chain.ainvoke(input_data) for chain, input_data in zip(chains, inputs)])
     
     for i, response in enumerate(responses):
-        print(f"Topic '{topics[i]}': {response.content}")
+        print(f"Topic '{% raw %}{topics[i]}{% endraw %}': {% raw %}{response.content}{% endraw %}")
 
 # To run the async function
 if __name__ == "__main__":

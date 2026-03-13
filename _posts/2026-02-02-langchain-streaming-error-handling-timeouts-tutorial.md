@@ -99,7 +99,7 @@ try:
     print(response)
 except Exception as e:
     # Code to run if an error occurs
-    print(f"Oops, something went wrong: {e}")
+    print(f"Oops, something went wrong: {% raw %}{e}{% endraw %}")
 ```
 
 This is a good start for general errors that stop the entire operation. However, for streaming, errors can happen at different points. They might even happen after some data has already been received. This is where LangChain's callbacks become very useful.
@@ -143,9 +143,9 @@ class StreamingErrorCallback(BaseCallbackHandler):
         self.error_occurred = True
         print("\n--- LLM Error Detected ---")
         print(f"Error type: {type(error).__name__}")
-        print(f"Error message: {error}")
+        print(f"Error message: {% raw %}{error}{% endraw %}")
         if self.partial_response:
-            print(f"Partial response received before error: {self.partial_response[:100]}...")
+            print(f"Partial response received before error: {% raw %}{self.partial_response[:100]}{% endraw %}...")
         print("Please try again or contact support if the issue persists.")
 
     def on_chain_error(self, error: Union[Exception, KeyboardInterrupt], **kwargs: Any) -> None:
@@ -209,7 +209,7 @@ try:
     for chunk in chain.stream({"question": "Tell me a very long story about a brave knight and a dragon, but make it take longer than 5 seconds to start."}):
         print(chunk, end="", flush=True)
 except Exception as e:
-    print(f"\nError: {e}")
+    print(f"\nError: {% raw %}{e}{% endraw %}")
     print("The LLM response timed out!")
 ```
 
@@ -241,10 +241,10 @@ async def get_streaming_response_with_timeout(question: str, timeout_seconds: in
             full_response += chunk
         return full_response
     except asyncio.TimeoutError:
-        print(f"\nError: The streaming response timed out after {timeout_seconds} seconds.")
+        print(f"\nError: The streaming response timed out after {% raw %}{timeout_seconds}{% endraw %} seconds.")
         return full_response + "\n[Response interrupted due to timeout]"
     except Exception as e:
-        print(f"\nAn unexpected error occurred during streaming: {e}")
+        print(f"\nAn unexpected error occurred during streaming: {% raw %}{e}{% endraw %}")
         return full_response + "\n[Response interrupted due to error]"
 
 # To run this async function:
@@ -346,7 +346,7 @@ def get_response_with_retries(question: str, max_retries: int = 3):
             print(f"Attempt {attempt + 1}: Success!")
             return response
         except Exception as e:
-            print(f"Attempt {attempt + 1}: Failed with error: {e}")
+            print(f"Attempt {attempt + 1}: Failed with error: {% raw %}{e}{% endraw %}")
             if attempt < max_retries - 1:
                 print("Retrying in 2 seconds...")
                 time.sleep(2) # Wait for a bit before retrying
@@ -406,7 +406,7 @@ def robust_streaming_call(question: str):
     """
     Attempts to stream a response, retrying with exponential backoff on failure.
     """
-    print(f"\nAttempting streaming for: '{question}'...")
+    print(f"\nAttempting streaming for: '{% raw %}{question}{% endraw %}'...")
     return might_fail_stream(question)
 
 # Example Usage:
@@ -420,7 +420,7 @@ def robust_streaming_call(question: str):
 
 In this example, `@retry` is the magic part. `wait_exponential` tells `tenacity` to wait longer each time. `min=4, max=10` means it will wait at least 4 seconds, but no more than 10 seconds, before the next retry. `stop_after_attempt(5)` means it will try a maximum of 5 times.
 
-For a deeper dive into retries with exponential backoff, you can read our other blog post on [Deep Dive into Retries with Exponential Backoff](https://example.com/blog/retries-exponential-backoff).
+For a deeper dive into retries with exponential backoff, you can read our other blog post on [Deep Dive into Retries with Exponential Backoff](blog/retries-exponential-backoff).
 
 ### Advanced Error Handling Patterns
 
@@ -480,9 +480,9 @@ def call_llm_with_breaker(question: str):
 #         print(f"Request {i+1}: Circuit is OPEN! Not attempting call. Skipping...")
 #         time.sleep(1) # Wait a bit before trying again
 #     except ConnectionError as e:
-#         print(f"Request {i+1}: FAILED with {e}. Breaker's failure count increased.")
+#         print(f"Request {i+1}: FAILED with {% raw %}{e}{% endraw %}. Breaker's failure count increased.")
 #     except Exception as e:
-#         print(f"Request {i+1}: Unexpected error: {e}")
+#         print(f"Request {i+1}: Unexpected error: {% raw %}{e}{% endraw %}")
 #     time.sleep(0.5) # Small delay between requests
 #
 # print("\n--- Circuit Breaker Demo Finished ---")
@@ -490,7 +490,7 @@ def call_llm_with_breaker(question: str):
 
 This demo shows how a circuit breaker can protect your application. When the LLM service consistently fails, the circuit breaker opens. It then quickly rejects subsequent requests. This is very useful for graceful error messages and overall stability.
 
-To learn more about implementing circuit breakers in Python, you can check out our post on [Implementing Circuit Breakers in Python](https://example.com/blog/circuit-breakers-python).
+To learn more about implementing circuit breakers in Python, you can check out our post on [Implementing Circuit Breakers in Python](blog/circuit-breakers-python).
 
 #### Idempotency
 
@@ -674,7 +674,7 @@ async def robust_langchain_stream(question: str, llm_timeout: int = 20):
     Performs a LangChain streaming call with robust error handling,
     including timeouts, retries, and custom callbacks.
     """
-    logging.info(f"Starting robust streaming for: '{question}' (LLM timeout: {llm_timeout}s)")
+    logging.info(f"Starting robust streaming for: '{% raw %}{question}{% endraw %}' (LLM timeout: {% raw %}{llm_timeout}{% endraw %}s)")
     callback_handler = AdvancedStreamingErrorCallback()
     
     # Configure LLM with streaming and the custom callback, plus a direct timeout
@@ -696,11 +696,11 @@ async def robust_langchain_stream(question: str, llm_timeout: int = 20):
         return callback_handler.full_response_content
     except asyncio.TimeoutError:
         callback_handler.error_occurred = True
-        timeout_msg = f"Overall streaming operation timed out after {llm_timeout + 5} seconds."
+        timeout_msg = f"Overall streaming operation timed out after {% raw %}{llm_timeout + 5}{% endraw %} seconds."
         logging.error(timeout_msg)
         print(f"\n--- {timeout_msg} ---")
         if callback_handler.full_response_content:
-            print(f"Partial response: {callback_handler.full_response_content[:200]}...")
+            print(f"Partial response: {% raw %}{callback_handler.full_response_content[:200]}{% endraw %}...")
         raise asyncio.TimeoutError(timeout_msg) # Re-raise for tenacity
     except Exception as e:
         # Any other unexpected error that wasn't caught by the callback or tenacity

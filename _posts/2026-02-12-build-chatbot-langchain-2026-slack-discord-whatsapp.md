@@ -120,7 +120,7 @@ def send_slack_message(channel, text, bot_token):
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"Hello from your LangChain bot: *{text}*"
+                    "text": f"Hello from your LangChain bot: *{% raw %}{text}{% endraw %}*"
                 }
             },
             {
@@ -401,7 +401,7 @@ def send_whatsapp_interactive_message(to_number, header, body, buttons, access_t
             "body": {"text": body},
             "action": {
                 "buttons": [
-                    {"type": "reply", "reply": {"id": f"id_{i}", "title": button}}
+                    {"type": "reply", "reply": {"id": f"id_{% raw %}{i}{% endraw %}", "title": button}}
                     for i, button in enumerate(buttons)
                 ]
             }
@@ -582,7 +582,7 @@ def process_message(platform_name, user_id, message_text, conversation_history):
         }
         # Add Discord components if needed
     elif platform_name == "whatsapp":
-        formatted_response = {"type": "text", "text": {"body": langchain_output_text}}
+        formatted_response = {"type": "text", "text": {"body": {% raw %}{langchain_output_text}{% endraw %}}}
         # Add WhatsApp interactive elements if within 24hr window or using template
     else:
         formatted_response = f"Generic response: {langchain_output_text}"

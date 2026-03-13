@@ -212,7 +212,7 @@ ensemble_retriever = EnsembleRetriever(
 
 # Now, let's test our hybrid search!
 query = "Explain how to make search better"
-print(f"\n--- Hybrid Search for: '{query}' ---")
+print(f"\n--- Hybrid Search for: '{% raw %}{query}{% endraw %}' ---")
 hybrid_results = ensemble_retriever.invoke(query)
 
 for i, doc in enumerate(hybrid_results):
@@ -359,7 +359,7 @@ vector_retriever_filtered_author = vectorstore_rich.as_retriever(
 )
 
 query_filtered_author = "latest developments in AI"
-print(f"\n--- Vector Search with Author Filter ('Dr. Kim') for: '{query_filtered_author}' ---")
+print(f"\n--- Vector Search with Author Filter ('Dr. Kim') for: '{% raw %}{query_filtered_author}{% endraw %}' ---")
 results_filtered_author = vector_retriever_filtered_author.invoke(query_filtered_author)
 
 for i, doc in enumerate(results_filtered_author):
@@ -374,7 +374,7 @@ vector_retriever_filtered_year = vectorstore_rich.as_retriever(
 )
 
 query_filtered_year = "programming languages"
-print(f"\n--- Vector Search with Year Filter (2022) for: '{query_filtered_year}' ---")
+print(f"\n--- Vector Search with Year Filter (2022) for: '{% raw %}{query_filtered_year}{% endraw %}' ---")
 results_filtered_year = vector_retriever_filtered_year.invoke(query_filtered_year)
 
 for i, doc in enumerate(results_filtered_year):
@@ -401,7 +401,7 @@ vector_retriever_filtered_complex = vectorstore_rich.as_retriever(
         "k": 5,
         "where": {
             "category": "AI",
-            "tags": {"$contains": "LLM"} # Chroma specific operator for list containment
+            "tags": {"{% raw %}$contains{% endraw %}": "LLM"} # Chroma specific operator for list containment
         }
     }
 )
@@ -414,7 +414,7 @@ ensemble_retriever_filtered = EnsembleRetriever(
 
 # Perform the hybrid search with metadata filtering
 query_hybrid_filtered = "latest advances in generative AI models"
-print(f"\n--- Hybrid Search with Metadata Filter (Category: AI, Tag: LLM) for: '{query_hybrid_filtered}' ---")
+print(f"\n--- Hybrid Search with Metadata Filter (Category: AI, Tag: LLM) for: '{% raw %}{query_hybrid_filtered}{% endraw %}' ---")
 hybrid_results_filtered = ensemble_retriever_filtered.invoke(query_hybrid_filtered)
 
 for i, doc in enumerate(hybrid_results_filtered):
@@ -462,7 +462,7 @@ ensemble_retriever_biased_semantic = EnsembleRetriever(
 )
 
 query_biased = "what are the latest trends in machine learning"
-print(f"\n--- Hybrid Search (Semantic Biased) for: '{query_biased}' ---")
+print(f"\n--- Hybrid Search (Semantic Biased) for: '{% raw %}{query_biased}{% endraw %}' ---")
 results_biased = ensemble_retriever_biased_semantic.invoke(query_biased)
 
 for i, doc in enumerate(results_biased):
@@ -516,7 +516,7 @@ vector_retriever_complex_filter = vectorstore_rich.as_retriever(
     search_kwargs={
         "k": 5,
         "where": {
-            "$and": [
+            "{% raw %}$and{% endraw %}": [
                 {"category": "AI"},
                 {"year": 2023}
             ]
@@ -531,7 +531,7 @@ ensemble_retriever_complex = EnsembleRetriever(
 )
 
 query_complex = "new developments in artificial intelligence"
-print(f"\n--- Hybrid Search with Complex Metadata Filter (Category: AI AND Year: 2023) for: '{query_complex}' ---")
+print(f"\n--- Hybrid Search with Complex Metadata Filter (Category: AI AND Year: 2023) for: '{% raw %}{query_complex}{% endraw %}' ---")
 results_complex = ensemble_retriever_complex.invoke(query_complex)
 
 for i, doc in enumerate(results_complex):

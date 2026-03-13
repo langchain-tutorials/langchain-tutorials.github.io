@@ -435,7 +435,7 @@ if __name__ == '__main__':
 
 ```
 
-Running this test file (e.g., `python -m unittest test_divide_numbers.py`) would tell you if your tool's logic is sound. This systematic approach to `tool testing strategies` ensures high quality when you `create custom tools langchain agents`. For integration testing, you would create a minimal agent with your tool and prompt it to use it. You can learn more about agent testing by reading [this internal blog post on effective agent testing strategies](/blog/effective-agent-testing-strategies).
+Running this test file (e.g., `python -m unittest test_divide_numbers.py`) would tell you if your tool's logic is sound. This systematic approach to `tool testing strategies` ensures high quality when you `create custom tools langchain agents`. For integration testing, you would create a minimal agent with your tool and prompt it to use it. You can learn more about agent testing by reading [this internal blog post on effective agent testing strategies]({% raw %}{{ site.baseurl }}{% endraw %}/blog/effective-agent-testing-strategies).
 
 ### Integrating Custom Tools with LangChain Agents
 
@@ -452,7 +452,7 @@ The agent's decision-making process often involves:
 4.  **Observation (Tool Output)**: Reading the tool's result.
 5.  **Thought (Again)**: Deciding the next step based on the tool's output, or formulating a final answer.
 
-This cycle continues until the agent believes it has completed the task. You can read more about how agents decide which tools to use in [this guide on LangChain Agent Architectures and Decision Making](/blog/langchain-agent-architectures-decision-making).
+This cycle continues until the agent believes it has completed the task. You can read more about how agents decide which tools to use in [this guide on LangChain Agent Architectures and Decision Making]({% raw %}{{ site.baseurl }}{% endraw %}/blog/langchain-agent-architectures-decision-making).
 
 #### Example: A Custom Inventory Management Agent
 
@@ -606,7 +606,7 @@ Beyond the `description` for the agent, good `tool documentation best practices`
 *   **README files**: If you have many tools, a README file in your tools directory can explain the overall purpose and how to set them up.
 *   **Examples**: Include small code examples demonstrating how to use your tools directly.
 
-Well-documented tools are easier to maintain, debug, and expand. You can find more comprehensive advice on this topic in [our guide on how to document your Python code effectively](/blog/how-to-document-python-code-effectively).
+Well-documented tools are easier to maintain, debug, and expand. You can find more comprehensive advice on this topic in [our guide on how to document your Python code effectively]({% raw %}{{ site.baseurl }}{% endraw %}/blog/how-to-document-python-code-effectively).
 
 ### Troubleshooting Common Issues
 

@@ -418,7 +418,7 @@ class SupportState(TypedDict):
 
 def categorize_query(state: SupportState):
     state["category"] = "billing" # Simplified for example
-    print(f"Categorized: {state['category']}")
+    print(f"Categorized: {% raw %}{state['category']}{% endraw %}")
     return state
 
 def check_faq(state: SupportState):
@@ -426,7 +426,7 @@ def check_faq(state: SupportState):
         state["faq_answer"] = "Please check your recent statements."
     else:
         state["faq_answer"] = ""
-    print(f"FAQ check: {state['faq_answer']}")
+    print(f"FAQ check: {% raw %}{state['faq_answer']}{% endraw %}")
     return state
 
 def decide_next_step(state: SupportState) -> Literal["respond", "request_more_info"]:
@@ -537,9 +537,9 @@ You set up the team, give them a goal, and they go to work. This showcases the p
 
 #### Internal Linking Suggestions:
 
-*   For more on state machines: [Understanding Agent Orchestration: State Machines vs. Dynamic Chains]({{ site.baseurl }}/blog/understanding-agent-orchestration)
-*   For deeper dive into API design: [Choosing the Right LLM Framework: An API Design Deep Dive]({{ site.baseurl }}/blog/llm-framework-api-design-deep-dive)
-*   Comparing broader frameworks: [The Ultimate LLM Framework Comparison 2026]({{ site.baseurl }}/blog/ultimate-llm-framework-comparison-2026)
+*   For more on state machines: [Understanding Agent Orchestration: State Machines vs. Dynamic Chains]({% raw %}{{ site.baseurl }}{% endraw %}/blog/understanding-agent-orchestration)
+*   For deeper dive into API design: [Choosing the Right LLM Framework: An API Design Deep Dive]({% raw %}{{ site.baseurl }}{% endraw %}/blog/llm-framework-api-design-deep-dive)
+*   Comparing broader frameworks: [The Ultimate LLM Framework Comparison 2026]({% raw %}{{ site.baseurl }}{% endraw %}/blog/ultimate-llm-framework-comparison-2026)
 
 ### Use Cases and Best Fits
 

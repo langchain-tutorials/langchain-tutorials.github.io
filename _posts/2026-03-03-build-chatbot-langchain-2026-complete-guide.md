@@ -196,7 +196,7 @@ Imagine you want your chatbot to answer simple facts.
 from langchain.prompts import PromptTemplate
 
 # A simple prompt template
-simple_template = "What is the capital of {country}?"
+simple_template = "What is the capital of {% raw %}{country}{% endraw %}?"
 simple_prompt = PromptTemplate.from_template(simple_template)
 
 # Now, you can use this prompt with a specific country
@@ -219,7 +219,7 @@ from langchain.schema.messages import HumanMessage, SystemMessage
 travel_agent_template = ChatPromptTemplate.from_messages(
     [
         SystemMessage(content="You are a friendly and helpful travel agent. Your goal is to suggest exciting travel destinations based on user preferences. Always ask for their budget and preferred travel style (e.g., adventure, relaxation)."),
-        HumanMessage(content="I want to plan a trip for {destination_type}. What are some ideas?")
+        HumanMessage(content="I want to plan a trip for {% raw %}{destination_type}{% endraw %}. What are some ideas?")
     ]
 )
 
@@ -366,13 +366,13 @@ tools = [
 prompt = PromptTemplate.from_template("""
 You are an AI assistant. You have access to the following tools:
 
-{tools}
+{% raw %}{tools}{% endraw %}
 
 Use the following format:
 
 Question: the input question you must answer
 Thought: you should always think about what to do
-Action: the action to take, should be one of [{tool_names}]
+Action: the action to take, should be one of [{% raw %}{tool_names}{% endraw %}]
 Action Input: the input to the action
 Observation: the result of the action
 ... (this Thought/Action/Action Input/Observation can repeat N times)
@@ -381,8 +381,8 @@ Final Answer: the final answer to the original input question
 
 Begin!
 
-Question: {input}
-Thought:{agent_scratchpad}
+Question: {% raw %}{input}{% endraw %}
+Thought:{% raw %}{agent_scratchpad}{% endraw %}
 """)
 
 # Create the agent

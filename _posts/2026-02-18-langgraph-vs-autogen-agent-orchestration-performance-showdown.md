@@ -52,7 +52,7 @@ In LangGraph, you define a graph where each node can be an agent, a tool, or a f
 
 This structured approach is excellent for tasks that have a clear, sequential flow or specific decision points. For instance, processing an order often follows a set series of steps, making it a good fit for LangGraph.
 
-You can learn more about the basic ideas of LangChain in our other post: [What is LangChain? A Beginner's Guide](/blog/what-is-langchain-beginner-guide).
+You can learn more about the basic ideas of LangChain in our other post: [What is LangChain? A Beginner's Guide]({% raw %}{{ site.baseurl }}{% endraw %}/blog/what-is-langchain-beginner-guide).
 
 #### Practical Example: LangGraph for a Data Analysis Pipeline
 
@@ -102,7 +102,7 @@ AutoGen thrives on flexibility. Agents engage in back-and-forth `message passing
 
 This conversational approach is great for open-ended problems where the exact steps aren't known beforehand. It allows for emergent behavior, meaning agents can discover solutions dynamically.
 
-To get started with AutoGen and see it in action, check out our guide: [Getting Started with AutoGen: Your First Multi-Agent System](/blog/getting-started-autogen-multi-agent-system).
+To get started with AutoGen and see it in action, check out our guide: [Getting Started with AutoGen: Your First Multi-Agent System]({% raw %}{{ site.baseurl }}{% endraw %}/blog/getting-started-autogen-multi-agent-system).
 
 #### Practical Example: AutoGen for a Coding Assistant Team
 
@@ -462,6 +462,7 @@ You want your agents to work as smoothly and quickly as possible, using just the
 
 LangGraph's structured nature allows for targeted `performance optimization`:
 *   **Node Efficiency:** Each function or agent within a node should be highly optimized. Avoid unnecessary computations or redundant API calls.
+This pattern allows for smarter, more efficient use of human resources, leveraging `Graph interruption mechanics` only when truly necessary. You can also explore `[our detailed post on LangGraph conditional routing]({% raw %}{{ site.baseurl }}{% endraw %}/blog/langgraph-conditional-routing.md)` for more insights.
 *   **Conditional Edges (Pruning):** Use conditional edges (`add_conditional_edges`) to skip irrelevant parts of the graph. If a condition is not met, that entire branch of work is `pruned`, saving time and `resource utilization`.
 *   **State Compression:** If your state object becomes very large over many cycles, consider what absolutely needs to be stored. Can some information be summarized or fetched only when needed?
 *   **Parallel Graph Branches:** Design your graph to fork into parallel paths when possible. For example, fetching data from two different sources can happen concurrently. This directly improves `latency analysis`.

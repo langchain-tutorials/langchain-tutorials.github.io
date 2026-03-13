@@ -100,14 +100,14 @@ def my_langchain_api_call(query: str):
     with tracer.start_as_current_span("LangChain_API_Request"):
         # Simulate LangChain setup
         llm = ChatOpenAI(temperature=0.7)
-        prompt = PromptTemplate.from_template("What is a good name for a company that makes {product}?")
+        prompt = PromptTemplate.from_template("What is a good name for a company that makes {% raw %}{product}{% endraw %}?")
         chain = LLMChain(llm=llm, prompt=prompt)
 
         with tracer.start_as_current_span("LLM_Chain_Execution"):
-            response = chain.invoke({"product": query})
+            response = chain.invoke({"product": {% raw %}{query}{% endraw %}})
             # Add attributes to the span
             trace.get_current_span().set_attribute("llm.model", "gpt-3.5-turbo")
-            trace.get_current_span().set_attribute("query", query)
+            trace.get_current_span().set_attribute("query", {% raw %}{query}{% endraw %})
             return response
 
 if __name__ == "__main__":
@@ -138,8 +138,8 @@ groups:
     labels:
       severity: critical
     annotations:
-      summary: "LangChain API {{ $labels.instance }} has a high error rate."
-      description: "The LangChain API instance {{ $labels.instance }} is experiencing an error rate exceeding 10% over the last 5 minutes. This indicates a potential issue with the API service or backend LLM calls. Please investigate immediately."
+      summary: "{% raw %}LangChain API {{ $labels.instance }} has a high error rate.{% endraw %}"
+      description: "{% raw %}The LangChain API instance {{ $labels.instance }} is experiencing an error rate exceeding 10% over the last 5 minutes. This indicates a potential issue with the API service or backend LLM calls. Please investigate immediately.{% endraw %}"
 ```
 
 This rule checks the sum of specific HTTP error codes (like 5xx server errors or 429 too many requests) over a 5-minute period. If this rate is higher than 0.1 (meaning more than 10% of requests are errors), it triggers a "critical" alert. This alert will then be sent to your configured notification channels. This allows for quick bottleneck identification and resolution.
@@ -178,8 +178,8 @@ logger.setLevel(logging.INFO)
 class JsonFormatter(logging.Formatter):
     def format(self, record):
         log_entry = {
-            "timestamp": datetime.fromtimestamp(record.created).isoformat(),
-            "level": record.levelname,
+            "timestamp": datetime.fromtimestamp({% raw %}{record.created}{% endraw %}).isoformat(),
+            "level": {% raw %}{record.levelname}{% endraw %},
             "message": record.getMessage(),
             "service": "langchain-api",
             "request_id": getattr(record, 'request_id', 'N/A'),
@@ -210,12 +210,12 @@ def process_query(user_query: str, user_id: str):
             response = "It's sunny today!"
         else:
             logger.info("Calling general LLM", extra={**extra_data, "chain_step": "llm_call"})
-            response = f"Hello {user_id}, your query '{user_query}' was processed."
+            response = f"Hello {% raw %}{user_id}{% endraw %}, your query '{% raw %}{user_query}{% endraw %}' was processed."
 
         logger.info("Finished processing query", extra={**extra_data, "response_length": len(response)})
         return response
     except Exception as e:
-        logger.error(f"Error processing query: {e}", exc_info=True, extra=extra_data)
+        logger.error(f"Error processing query: {% raw %}{e}{% endraw %}", exc_info=True, extra=extra_data)
         raise
 
 if __name__ == "__main__":

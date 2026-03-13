@@ -162,7 +162,7 @@ def agent_decide(state: AgentState):
 def chat_node(state: AgentState):
     print("---CHAT NODE---")
     query = state["query"]
-    response = f"I received your question about: '{query}'. This is a general response."
+    response = f"I received your question about: '{% raw %}{query}{% endraw %}'. This is a general response."
     print(f"Chat Response: {response}")
     return {"output": response, "tool_executed": False}
 
@@ -189,11 +189,11 @@ def calculator_node(state: AgentState):
         else:
             raise ValueError("Unsupported operator")
         
-        response = f"The calculation '{query}' results in: {result}"
+        response = f"The calculation '{% raw %}{query}{% endraw %}' results in: {% raw %}{result}{% endraw %}"
         print(f"Calculator Response: {response}")
         return {"output": response, "tool_executed": True}
     except Exception as e:
-        response = f"Sorry, I couldn't calculate that. Error: {e}"
+        response = f"Sorry, I couldn't calculate that. Error: {% raw %}{e}{% endraw %}"
         print(f"Calculator Error: {response}")
         return {"output": response, "tool_executed": True}
 
@@ -235,19 +235,19 @@ print("\n--- Running with a general question ---")
 config = {"recursion_limit": 100}
 inputs_chat = {"query": "What is the capital of France?"}
 result_chat = app.invoke(inputs_chat, config=config)
-print(f"Final Output (Chat): {result_chat['output']}")
+print(f"Final Output (Chat): {% raw %}{result_chat['output']}{% endraw %}")
 print("-" * 30)
 
 print("\n--- Running with a calculation question ---")
 inputs_calc = {"query": "calculate 5 * 10"}
 result_calc = app.invoke(inputs_calc, config=config)
-print(f"Final Output (Calc): {result_calc['output']}")
+print(f"Final Output (Calc): {% raw %}{result_calc['output']}{% endraw %}")
 print("-" * 30)
 
 print("\n--- Running with another calculation question ---")
 inputs_calc_add = {"query": "What is 15 + 7?"}
 result_calc_add = app.invoke(inputs_calc_add, config=config)
-print(f"Final Output (Calc Add): {result_calc_add['output']}")
+print(f"Final Output (Calc Add): {% raw %}{result_calc_add['output']}{% endraw %}")
 print("-" * 30)
 ```
 

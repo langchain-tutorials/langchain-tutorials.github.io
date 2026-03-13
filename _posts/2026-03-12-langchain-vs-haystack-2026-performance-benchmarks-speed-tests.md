@@ -71,7 +71,7 @@ The table below shows the average query latency for a complex RAG (Retrieval Aug
 | LangChain | 850 ms |
 | Haystack | 780 ms |
 
-Haystack generally showed slightly lower query latency, especially for well-defined pipelines. Its optimized component execution contributes to this speed advantage for sequential tasks. LangChain, while slightly higher, offered more flexibility in dynamic chain construction which could sometimes add a tiny overhead. For more on optimizing latency, you might find our post on [optimizing RAG systems]({{ site.baseurl }}/blog/optimizing-rag-systems-for-speed.md) useful.
+Haystack generally showed slightly lower query latency, especially for well-defined pipelines. Its optimized component execution contributes to this speed advantage for sequential tasks. LangChain, while slightly higher, offered more flexibility in dynamic chain construction which could sometimes add a tiny overhead. For more on optimizing latency, you might find our post on [optimizing RAG systems]({{site.baseurl}}/blog/optimizing-rag-systems-for-speed.md) useful.
 
 **Practical Example:** Imagine building a customer service chatbot. If a customer asks a question, they expect an immediate response. A difference of 70 milliseconds might seem small, but across thousands of interactions, it adds up and impacts the user's perception of responsiveness. Haystack's slightly faster query latency means your chatbot replies just a blink faster.
 
@@ -123,7 +123,7 @@ While accuracy is also a part of retrieval, here we are specifically looking at 
 | LangChain | 210 ms |
 | Haystack | 195 ms |
 
-Haystack slightly outperformed LangChain in raw retrieval speed. Its dedicated Retriever nodes are highly optimized for common search patterns and integrations with various vector databases. LangChain's flexible approach allows for more complex retrieval strategies, which sometimes adds a small amount of overhead, though its performance was still excellent. Our internal benchmarks on [vector database performance]({{ site.baseurl }}/blog/vector-db-performance-review.md) can offer more insights here.
+Haystack slightly outperformed LangChain in raw retrieval speed. Its dedicated Retriever nodes are highly optimized for common search Search patterns and integrations with various vector databases. LangChain's flexible approach allows for more complex retrieval strategies, which sometimes adds a small amount of overhead, though its performance was still excellent. Our internal benchmarks on [vector database performance]({% raw %}{{ site.baseurl }}{% endraw %}/blog/vector-db-performance-review.md) can offer more insights here.
 
 **Practical Example:** Imagine you are a researcher needing to find specific data points across millions of scientific papers. You don't want to wait minutes for the search results. Fast retrieval performance means you get the relevant papers almost instantly, saving valuable time. Haystack's slight edge here means faster access to critical information.
 
@@ -142,6 +142,7 @@ This benchmark is crucial for cost-effective deployment and understanding resour
 
 Haystack generally demonstrated more optimized memory usage. Its structured pipeline approach often allows for better memory management by clearly defining data flow and minimizing redundant object creation. LangChain's dynamic nature, while powerful, can sometimes lead to slightly higher memory consumption depending on the complexity of the chains.
 
+{% raw %}
 ```python
 # Snippet showing typical memory footprint for a RAG pipeline in 2026
 # (Illustrative, actual values depend on implementation details)
@@ -163,6 +164,7 @@ def run_memory_test_haystack():
 run_memory_test_langchain()
 run_memory_test_haystack()
 ```
+{% endraw %}
 
 **Practical Example:** If you are deploying your AI application on cloud servers, memory is a direct cost. Lower memory usage means you can use smaller, cheaper servers or fit more applications onto a single server. Haystack's lower memory footprint could translate into significant cost savings over time, making these *langchain haystack performance benchmarks 2026* very important for your budget.
 
@@ -220,11 +222,11 @@ This test is vital for interactive applications where multiple users might trigg
 
 Haystack showed superior performance in handling a large burst of concurrent requests. Its asynchronous processing capabilities and optimized queue management within pipelines allowed it to process requests with lower average latency and more consistent response times (lower standard deviation). LangChain also performed well, especially when configured with an asynchronous agent executor, but showed slightly more variability under extreme bursts.
 
-```python
+
+```f python
 # Illustrative snippet for concurrent request handling
 import time
 import asyncio
-
 async def simulate_concurrent_requests(framework_name, num_requests):
     start_time = time.monotonic()
     tasks = []
@@ -234,17 +236,16 @@ async def simulate_concurrent_requests(framework_name, num_requests):
             tasks.append(asyncio.create_task(run_langchain_query()))
         else: # Haystack
             tasks.append(asyncio.create_task(run_haystack_query()))
-    
     await asyncio.gather(*tasks)
     end_time = time.monotonic()
-    print(f"{framework_name} - Time for {num_requests} requests: {int((end_time - start_time) * 1000)}ms")
-
+    print(f"{% raw %}{framework_name}{% endraw %} - Time for {% raw %}{num_requests}{% endraw %} requests: {% raw %}{int((end_time - start_time) * 1000)}{% endraw %}ms")
 # Assuming run_langchain_query and run_haystack_query are defined elsewhere
 # as async functions simulating query execution
 
 # asyncio.run(simulate_concurrent_requests("LangChain", 500))
 # asyncio.run(simulate_concurrent_requests("Haystack", 500))
 ```
+
 
 **Practical Example:** Consider an application where users can instantly generate short stories based on prompts. If a popular author shares your app, hundreds of fans might try to generate stories at the same time. The ability to handle these concurrent requests smoothly, as seen in the *langchain haystack performance benchmarks 2026*, ensures a good experience for everyone. Haystack's better consistency means fewer users will experience frustrating delays.
 
@@ -309,7 +310,7 @@ Haystack, with its pipeline-centric design, also provides powerful ways to optim
 *   **Efficient Data Handling:** Using optimized data loaders and preprocessors that handle large batches of documents efficiently is key for indexing and throughput. This means making sure data flows smoothly and quickly into the system.
 *   **Asynchronous Execution for Nodes:** Many Haystack nodes support asynchronous execution, allowing pipelines to process multiple documents or queries concurrently. This is similar to LangChain's parallel processing but integrated more deeply into the pipeline structure.
 *   **Batching Strategies:** Implementing smart batching for embedding generation and LLM inference calls can significantly improve throughput by reducing the number of API calls and increasing GPU utilization. This means sending many requests at once instead of one by one.
-*   **Resource Allocation for Distributed Systems:** When deploying Haystack in a distributed environment, careful allocation of resources (CPU, GPU, memory) to different nodes in the pipeline can lead to optimal performance and scalability. For insights into distributed systems, check out our post on [scaling AI applications]({{ site.baseurl }}/blog/scaling-your-ai-app-in-the-cloud.md).
+*   **Resource Allocation for Distributed Systems:** When deploying Haystack in a distributed environment, careful allocation of resources (CPU, GPU, memory) to different nodes in the pipeline can lead to optimal performance and scalability. For insights into distributed systems, check out our post on [scaling AI applications]({% raw %}{{ site.baseurl }}{% endraw %}/blog/scaling-your-ai-app-in-the-cloud.md).
 
 Both frameworks offer great potential for optimization. The choice often comes down to whether you prefer LangChain's flexible, modular approach or Haystack's structured, pipeline-driven methodology for performance tuning.
 

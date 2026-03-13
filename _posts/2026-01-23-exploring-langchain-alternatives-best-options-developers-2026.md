@@ -187,7 +187,7 @@ kernel.add_text_completion_service("dv", OpenAIChatCompletion("gpt-4", api_key, 
 
 # 3. Define your "skill" in a folder (e.g., "SummarizationSkill")
 # Inside "SummarizationSkill/Summarize/skprompt.txt" you'd put:
-# "Summarize the following text:\n{{$input}}"
+# "Summarize the following text:\n{% raw %}{{$input}}{% endraw %}"
 # And in "SummarizationSkill/Summarize/config.json" you'd set parameters.
 
 # 4. Import your skill
@@ -335,6 +335,7 @@ class MockLLM:
 guidance.llm = MockLLM()
 
 
+{% raw %}
 # Define your Guidance program (mixing text and Python logic)
 program = guidance("""
 Extract the name and age from the following text:
@@ -344,6 +345,7 @@ Output JSON:
     "name": "{{gen 'name'}}",
     "age": {{gen 'age', pattern='[0-9]+'}}
 }""")
+{% endraw %}
 
 # Run the program with your input text
 output = program(text="My friend Alice is 30 years old.")

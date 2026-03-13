@@ -125,7 +125,7 @@ print(conversation.invoke({"input": "How about Germany?"}))
 # History now has: Human: How about Germany? -> Assistant: (response 3)
 # The "What is the capital..." exchange is now forgotten.
 ```
-This is a great starting point for `token window optimization`. You define the "window" of memory. If you want to dive deeper into controlling context, you might find our blog post on `{% post_link advanced-context-management-langchain %}` helpful.
+
 
 ### ConversationSummaryMemory: Achieving `Summary Memory Savings`
 
@@ -393,7 +393,6 @@ print("\n--- Memory Buffer with Facts ---")
 # The next time, the 'history' passed to the LLM will include these facts
 print(memory.buffer)
 ```
-This method drastically reduces token usage by only sending key pieces of information, leading to excellent `selective memory retention` for `langchain memory cost optimization tokens`. For more on custom memory, see our guide on `{% post_link creating-custom-langchain-memory %}`.
 
 <h3>Memory Compression: Condensing Information</h3>
 

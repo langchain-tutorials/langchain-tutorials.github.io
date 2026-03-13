@@ -22,7 +22,7 @@ This guide will help you understand the best LangChain alternatives, looking at 
 
 ### Understanding LangChain and Why Alternatives Matter
 
-LangChain is like a helpful assistant for building apps that use AI language models. It helps you link different AI steps together, talk to various data sources, and even choose the best AI model for your task. This makes it easier to create complex AI tools, like chatbots that can answer questions using information from the internet. You can learn more about how LangChain works in our other post, "[Understanding LLM Orchestration Tools]({{ site.baseurl }}/blog/understanding-llm-orchestration-tools)".
+LangChain is like a helpful assistant for building apps that use AI language models. It helps you link different AI steps together, talk to various data sources, and even choose the best AI model for your task. This makes it easier to create complex AI tools, like chatbots that can answer questions using information from the internet. You can learn more about how LangChain works in our other post, "[Understanding LLM Orchestration Tools]({% raw %}{{ site.baseurl }}{% endraw %}/blog/understanding-llm-orchestration-tools)".
 
 However, even the best tools sometimes aren't a perfect fit for everyone. Maybe you need something simpler, or perhaps you require advanced features that LangChain doesn't offer easily. As we look towards 2026, new technologies and needs will drive the search for different solutions. These might be faster, cheaper, more specialized, or simply better suited for your specific project.
 
@@ -76,6 +76,7 @@ This approach gives you maximum `customization options` and `flexibility analysi
 
 **Practical Example:** Let's say you need an AI to summarize specific articles from a website and then email them to you. Instead of a full framework, you could write a Python script that scrapes the article, sends it to an OpenAI (or local `open source model`) API for summarization, and then uses a `smtplib` for emailing. This custom script is a tailored `langchain alternative` for your specific purpose.
 
+{% raw %}
 ```python
 # Simple Python snippet for a custom LLM interaction
 import requests
@@ -95,6 +96,7 @@ def get_llm_summary(text_to_summarize, model_url):
 # summary = get_llm_summary("Long article text...", "http://localhost:8000/v1/chat/completions")
 # print(summary)
 ```
+{% endraw %}
 
 **Pros:** Unmatched `flexibility analysis` and `customization options`, minimal `cost implications` for software, complete control over `deployment considerations`. You can tailor it perfectly to `enterprise features` if you have the internal development team.
 
@@ -295,7 +297,7 @@ You should seriously consider `open source options` as `langchain alternatives` 
 *   **You have strong internal technical talent:** Your team can handle `deployment considerations`, maintenance, and `community vs vendor support`.
 *   **You prioritize `flexibility analysis`:** You want full control over your technology stack and avoid vendor lock-in.
 *   **Your project is experimental or non-critical:** You can afford a slower support cycle.
-For startups or research projects, the freedom and innovation of `open source options` can be a huge advantage. You can find more advice on this in our article: "[Building LLM Apps on a Budget]({{ site.baseurl }}/blog/building-llm-apps-on-a-budget)".
+For startups or research projects, the freedom and innovation of `open source options` can be a huge advantage. You can find more advice on this in our article: "[Building LLM Apps on a Budget]({% raw %}{{ site.baseurl }}{% endraw %}/blog/building-llm-apps-on-a-budget)".
 
 #### When to Pick Commercial Platforms
 
@@ -305,7 +307,7 @@ For startups or research projects, the freedom and innovation of `open source op
 *   **Your team has limited DevOps resources:** You prefer the vendor to handle `deployment considerations` and infrastructure.
 *   **You require robust `enterprise features`:** Security, compliance, and guaranteed scalability are paramount.
 *   **Your `cost implications` favor predictable operational expenses:** You prefer subscription fees over hidden internal development costs.
-Large enterprises, regulated industries, or companies with complex `enterprise features` often find the benefits of `commercial platforms` outweigh the higher direct costs. Check out our guide: "[Enterprise AI Solutions Guide]({{ site.baseurl }}/blog/enterprise-ai-solutions-guide)".
+Large enterprises, regulated industries, or companies with complex `enterprise features` often find the benefits of `commercial platforms` outweigh the higher direct costs. Check out our guide: "[Enterprise AI Solutions Guide]({% raw %}{{ site.baseurl }}{% endraw %}/blog/enterprise-ai-solutions-guide)".
 
 #### Hybrid Approaches
 

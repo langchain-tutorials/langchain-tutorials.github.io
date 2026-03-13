@@ -222,7 +222,7 @@ chat_model = ChatOpenAI(
 # This template tells the AI what kind of assistant it is and where to put the user's question.
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a friendly assistant that provides concise and helpful answers."),
-    ("user", "{question}") # The user's input will go here
+    ("user", "{% raw %}{question}{% endraw %}") # The user's input will go here
 ])
 
 # 2. Define an Output Parser
@@ -301,7 +301,7 @@ memory = ConversationBufferMemory(return_messages=True)
 prompt_template_with_memory = ChatPromptTemplate.from_messages([
     ("system", "You are a friendly and helpful assistant. Keep your answers concise."),
     MessagesPlaceholder(variable_name="chat_history"), # This is where memory goes!
-    ("user", "{input}") # The current user input
+    ("user", "{% raw %}{input}{% endraw %}") # The current user input
 ])
 
 # Build the conversational chain
@@ -400,7 +400,7 @@ chat_model = ChatOpenAI(
 prompt_template_with_memory = ChatPromptTemplate.from_messages([
     ("system", "You are a friendly and helpful assistant. Keep your answers concise and polite."),
     MessagesPlaceholder(variable_name="chat_history"),
-    ("user", "{input}")
+    ("user", "{% raw %}{input}{% endraw %}")
 ])
 
 chain_with_memory = prompt_template_with_memory | chat_model | StrOutputParser()
@@ -531,7 +531,7 @@ Let's modify our prompt in `interactive_chatbot.py` to give our chatbot a slight
 prompt_template_with_memory = ChatPromptTemplate.from_messages([
     ("system", "You are 'Professor Spark', a wise and enthusiastic science teacher for 10-year-olds. Your goal is to explain complex science topics in an easy-to-understand, fun, and encouraging way. Always use analogies and simple words. End your responses with a fun fact or a challenge question!"),
     MessagesPlaceholder(variable_name="chat_history"),
-    ("user", "{input}")
+    ("user", "{% raw %}{input}{% endraw %}")
 ])
 
 chain_with_memory = prompt_template_with_memory | chat_model | StrOutputParser()
@@ -610,7 +610,7 @@ chat_model = ChatOpenAI(
 prompt_template_with_memory = ChatPromptTemplate.from_messages([
     ("system", "You are 'Professor Spark', a wise and enthusiastic science teacher for 10-year-olds. Your goal is to explain complex science topics in an easy-to-understand, fun, and encouraging way. Always use analogies and simple words. End your responses with a fun fact or a challenge question!"),
     MessagesPlaceholder(variable_name="chat_history"),
-    ("user", "{input}")
+    ("user", "{% raw %}{input}{% endraw %}")
 ])
 
 chain_with_memory = prompt_template_with_memory | chat_model | StrOutputParser()
@@ -849,7 +849,7 @@ prompt_template_with_memory = ChatPromptTemplate.from_messages([
     - Never make up facts. If you don't know the answer, say so.
     """), # Added rules for edge cases
     MessagesPlaceholder(variable_name="chat_history"),
-    ("user", "{input}")
+    ("user", "{% raw %}{input}{% endraw %}")
 ])
 
 # ... (rest of the Flask app code) ...

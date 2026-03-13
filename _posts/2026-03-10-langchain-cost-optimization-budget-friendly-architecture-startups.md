@@ -87,7 +87,7 @@ def lambda_handler(event, context):
     llm = OpenAI(temperature=0.7)
     prompt = PromptTemplate(
         input_variables=["question"],
-        template="Answer the following question: {question}"
+        template="Answer the following question: {% raw %}{question}{% endraw %}"
     )
     chain = LLMChain(llm=llm, prompt=prompt)
 
@@ -100,7 +100,7 @@ def lambda_handler(event, context):
     except Exception as e:
         return {
             'statusCode': 500,
-            'body': f"Error processing request: {str(e)}"
+            'body': f"Error processing request: {% raw %}{str(e)}{% endraw %}"
         }
 
 ```
@@ -146,11 +146,11 @@ llm = OpenAI(temperature=0)
 
 # The first call will hit the LLM
 result1 = llm.predict("Tell me a simple joke.")
-print(f"First call: {result1}")
+print(f"First call: {% raw %}{result1}{% endraw %}")
 
 # The second call will retrieve from cache if the prompt is identical
 result2 = llm.predict("Tell me a simple joke.")
-print(f"Second call (from cache): {result2}")
+print(f"Second call (from cache): {% raw %}{result2}{% endraw %}")
 
 # Resetting cache for demonstration
 langchain.llm_cache = None
@@ -392,7 +392,7 @@ def process_feedback_agent(feedback_text):
     llm_router = OpenAI(model_name="gpt-3.5-turbo", temperature=0) # Cheaper for routing
     routing_prompt = PromptTemplate(
         input_variables=["text"],
-        template="Classify the following customer feedback as 'issue', 'feature_request', or 'other': {text}"
+        template="Classify the following customer feedback as 'issue', 'feature_request', or 'other': {% raw %}{text}{% endraw %}"
     )
     routing_chain = LLMChain(llm=llm_router, prompt=routing_prompt)
     classification = routing_chain.run(feedback_text).strip().lower()
@@ -402,7 +402,7 @@ def process_feedback_agent(feedback_text):
         extraction_llm = CheapExtractionLLM() # Or actual API call to cheaper model
         extraction_prompt = PromptTemplate(
             input_variables=["text"],
-            template="Extract the product issue from the following feedback: {text}"
+            template="Extract the product issue from the following feedback: {% raw %}{text}{% endraw %}"
         )
         extraction_chain = LLMChain(llm=extraction_llm, prompt=extraction_prompt)
         extracted_data = extraction_chain.run(feedback_text)
@@ -411,7 +411,7 @@ def process_feedback_agent(feedback_text):
         extraction_llm = CheapExtractionLLM()
         extraction_prompt = PromptTemplate(
             input_variables=["text"],
-            template="Extract the feature request from the following feedback: {text}"
+            template="Extract the feature request from the following feedback: {% raw %}{text}{% endraw %}"
         )
         extraction_chain = LLMChain(llm=extraction_llm, prompt=extraction_prompt)
         extracted_data = extraction_chain.run(feedback_text)

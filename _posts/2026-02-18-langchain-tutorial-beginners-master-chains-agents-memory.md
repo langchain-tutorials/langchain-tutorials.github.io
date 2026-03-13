@@ -80,7 +80,7 @@ llm = OpenAI(temperature=0.7) # temperature controls creativity, 0.7 is a good s
 # 2. Create your prompt template (the instruction)
 prompt_template = PromptTemplate(
     input_variables=["topic"],
-    template="Tell me a fun fact about {topic}."
+    template="Tell me a fun fact about {% raw %}{topic}{% endraw %}."
 )
 
 # 3. Combine them into an LLMChain
@@ -107,7 +107,7 @@ my_llm = OpenAI(temperature=0.9)
 # Our prompt for greeting
 greeting_prompt = PromptTemplate(
     input_variables=["name"],
-    template="Hello {name}! How are you today?"
+    template="Hello {% raw %}{name}{% endraw %}! How are you today?"
 )
 
 # Our simple greeting chain
@@ -147,14 +147,14 @@ llm = OpenAI(temperature=0.9)
 # Chain 1: Generate a character name
 name_prompt = PromptTemplate(
     input_variables=["setting"],
-    template="Suggest a unique fantasy character name for a story set in {setting}."
+    template="Suggest a unique fantasy character name for a story set in {% raw %}{setting}{% endraw %}."
 )
 name_chain = LLMChain(llm=llm, prompt=name_prompt, output_key="character_name")
 
 # Chain 2: Write a story about the character
 story_prompt = PromptTemplate(
     input_variables=["character_name"],
-    template="Write a short, exciting story about a character named {character_name}. Make it about their first adventure."
+    template="Write a short, exciting story about a character named {% raw %}{character_name}{% endraw %}. Make it about their first adventure."
 )
 story_chain = LLMChain(llm=llm, prompt=story_prompt, output_key="story")
 
@@ -520,7 +520,7 @@ Next, you design a prompt that guides the LLM to answer questions effectively. I
 from langchain.prompts import PromptTemplate
 qa_prompt_template = PromptTemplate(
     input_variables=["chat_history", "question"],
-    template="You are a helpful AI assistant. Answer the user's question based on the following chat history and new question.\n\nChat History:\n{chat_history}\nUser: {question}\nAI:"
+    template="You are a helpful AI assistant. Answer the user's question based on the following chat history and new question.\n\nChat History:\n{% raw %}{chat_history}{% endraw %}\nUser: {% raw %}{question}{% endraw %}\nAI:"
 )
 ```
 
@@ -580,7 +580,7 @@ Starting with LangChain can feel a bit overwhelming, but don't worry! Here are s
 6.  **Practice with Examples:** The `practical examples` provided in this tutorial are a great starting point. Try changing them, breaking them, and fixing them. This hands-on experience is invaluable.
 7.  **Join the Community:** There's a big LangChain community online. Don't be afraid to ask questions in forums or on social media. Many `langchain beginners` help each other out.
 8.  **Explore the LangChain Hub:** The LangChain Hub (`[LangChain Hub]`) has many pre-built prompts, chains, and agents that you can use or learn from. It's a great resource for seeing how others build things.
-9.  **Basic Python Knowledge:** Ensure you have a good grasp of basic Python programming. If not, consider reviewing fundamental Python concepts first. `[Link to your 'Getting Started with Python' post]` could be helpful here.
+9.  **Basic Python Knowledge:** Ensure you have a good grasp of basic Python programming. If not, consider reviewing fundamental Python concepts first. `[Link to your 'Getting Started with Python' post]` could be helpful here. Consider reading our guide on [Python for AI development](blog/python-for-ai).
 
 ### Conclusion
 

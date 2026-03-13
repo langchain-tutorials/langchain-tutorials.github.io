@@ -71,12 +71,12 @@ def ask_robot_brain(question):
         )
         return response.choices[0].message.content
     except Exception as e:
-        return f"Oops! The robot brain had a problem: {e}"
+        return f"Oops! The robot brain had a problem: {% raw %}{e}{% endraw %}"
 
 # Let's ask a question!
 my_question = "What is the capital of France?"
 answer = ask_robot_brain(my_question)
-print(f"Robot says: {answer}")
+print(f"Robot says: {% raw %}{answer}{% endraw %}")
 ```
 
 This approach gives you **fast execution** because there are fewer layers of code to go through. It's a very **performance-focused option** for when you need speed and control. You can build your own small helper functions for tasks like remembering past conversations or looking up facts.
@@ -119,10 +119,10 @@ def ask_any_robot(question, model_name="gpt-3.5-turbo"):
         )
         return response['choices'][0]['message']['content']
     except Exception as e:
-        return f"Oops! Couldn't talk to {model_name}: {e}"
+        return f"Oops! Couldn't talk to {% raw %}{model_name}{% endraw %}: {% raw %}{e}{% endraw %}"
 
 # Ask OpenAI's robot brain
-print(f"OpenAI Robot: {ask_any_robot('Tell me a short story about a brave mouse.')}")
+print(f"OpenAI Robot: {% raw %}{ask_any_robot('Tell me a short story about a brave mouse.')}{% endraw %}")
 
 # Ask Anthropic's robot brain (if you have the key)
 # print(f"Anthropic Robot: {ask_any_robot('What is the best way to learn programming?', model_name='claude-2')}")
@@ -180,7 +180,7 @@ def get_structured_info(text_about_person):
         )
         return user_info
     except Exception as e:
-        print(f"Error extracting info: {e}")
+        print(f"Error extracting info: {% raw %}{e}{% endraw %}")
         return None
 
 # Let's try it!
@@ -188,7 +188,7 @@ person_text = "John Doe is 30 years old and loves the color blue. He lives in Ne
 info = get_structured_info(person_text)
 
 if info:
-    print(f"Name: {info.name}, Age: {info.age}, Favorite Color: {info.favorite_color}")
+    print(f"Name: {% raw %}{info.name}{% endraw %}, Age: {% raw %}{info.age}{% endraw %}, Favorite Color: {% raw %}{info.favorite_color}{% endraw %}")
 ```
 
 Instructor's **developer-first design** focuses on making the output from AI models predictable and usable. It helps create **streamlined workflows** by reducing the need for complex text processing after the AI has responded. This is an excellent example of **speed optimized solutions** when data quality is key.
@@ -314,12 +314,14 @@ async def run_sk_example():
     prompt_config = sk.PromptTemplateConfig.from_completion_parameters(
         max_tokens=200, temperature=0.7, top_p=0.5
     )
+{% raw %}
     prompt_template = sk.PromptTemplate("Tell me a fun fact about {{topic}}.", kernel, prompt_config)
+{% endraw %}
     fun_fact_function = kernel.create_semantic_function(prompt_template, "FunFacts", "TellFact")
 
     # 4. Use the skill!
     result = await kernel.run_async(fun_fact_function(topic="ocean"))
-    print(f"Robot says: {result}")
+    print(f"Robot says: {% raw %}{result}{% endraw %}")
 
 # To run this, you would typically use asyncio:
 # import asyncio
@@ -360,6 +362,7 @@ gpt = guidance.models.OpenAI("gpt-3.5-turbo")
 
 # Define your guided generation program
 # You're telling the robot to write a story but fill in parts.
+{% raw %}
 story_writer = guidance("""
 The following is a story about a brave knight named {{knight_name}}.
 He lived in a kingdom called {{kingdom_name}}.
@@ -367,6 +370,7 @@ He lived in a kingdom called {{kingdom_name}}.
 The knight bravely fought against a {{select "dragon" "goblin" "wizard"}}
 and after a fierce battle, he {{select "won" "lost"}}.
 """)
+{% endraw %}
 
 # Run the program with your choices
 # This is like giving the robot some starting ideas.
@@ -379,6 +383,7 @@ executed_story = gpt(
 print(executed_story)
 
 # You can also use it for structured extraction!
+{% raw %}
 extractor = guidance("""
 Given the following text:
 "My name is Alice, I am 25 years old and I love to hike."
@@ -388,6 +393,7 @@ Name: {{gen "name" stop=","}}
 Age: {{gen "age" stop=" "}}
 Hobby: {{gen "hobby" stop="."}}
 """)
+{% endraw %}
 
 extracted_info = gpt(extractor)
 print(extracted_info)

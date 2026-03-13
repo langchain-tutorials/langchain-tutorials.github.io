@@ -226,11 +226,11 @@ def extract_data_from_postgres():
             data.append({"id": row[0], "content": row[1]})
         
         cur.close()
-        print(f"Extracted {len(data)} documents from PostgreSQL.")
+        print(f"Extracted {% raw %}{len(data)}{% endraw %} documents from PostgreSQL.")
         return data
 
     except (Exception, psycopg2.Error) as error:
-        print(f"Error while connecting to PostgreSQL or extracting data: {error}")
+        print(f"Error while connecting to PostgreSQL or extracting data: {% raw %}{error}{% endraw %}")
         return []
     finally:
         if conn:
@@ -288,20 +288,20 @@ def generate_embeddings_for_documents(documents, embedding_model_name="openai"):
     all_embeddings = []
     batch_size = 100 # Process in batches to avoid API limits and manage memory
     
-    print(f"Generating embeddings using {embedding_model_name}...")
+    print(f"Generating embeddings using {% raw %}{embedding_model_name}{% endraw %}...")
     for i in range(0, len(texts_to_embed), batch_size):
         batch_texts = texts_to_embed[i:i + batch_size]
         try:
             batch_embeddings = embeddings.embed_documents(batch_texts)
             for j, embed in enumerate(batch_embeddings):
                 all_embeddings.append({"id": ids[i + j], "content": batch_texts[j], "embedding": embed})
-            print(f"Processed batch {i // batch_size + 1}/{(len(texts_to_embed) + batch_size - 1) // batch_size}")
+            print(f"Processed batch {% raw %}{i // batch_size + 1}{% endraw %}/{% raw %}{(len(texts_to_embed) + batch_size - 1) // batch_size}{% endraw %}")
             time.sleep(1) # Be respectful of API rate limits
         except Exception as e:
-            print(f"Error embedding batch starting at index {i}: {e}")
+            print(f"Error embedding batch starting at index {% raw %}{i}{% endraw %}: {% raw %}{e}{% endraw %}")
             # Implement retry logic if needed
 
-    print(f"Generated embeddings for {len(all_embeddings)} documents.")
+    print(f"Generated embeddings for {% raw %}{len(all_embeddings)}{% endraw %} documents.")
     return all_embeddings
 
 # Example usage (assuming extracted_documents from previous step)
@@ -341,7 +341,7 @@ def load_into_chroma(embedded_documents, collection_name="my_documents_collectio
     # For simplicity, assuming OpenAI embeddings for this example.
     embeddings_model = OpenAIEmbeddings() 
 
-    print(f"Loading {len(lc_documents)} documents into Chroma...")
+    print(f"Loading {% raw %}{len(lc_documents)}{% endraw %} documents into Chroma...")
     # Initialize Chroma with embeddings and persist directory
     db = Chroma.from_documents(
         documents=lc_documents,
@@ -350,7 +350,7 @@ def load_into_chroma(embedded_documents, collection_name="my_documents_collectio
         collection_name=collection_name,
         persist_directory=persist_directory
     )
-    print(f"Successfully loaded documents into Chroma collection '{collection_name}' at '{persist_directory}'.")
+    print(f"Successfully loaded documents into Chroma collection '{% raw %}{collection_name}{% endraw %}' at '{% raw %}{persist_directory}{% endraw %}'.")
     return db
 
 # Example usage:
@@ -405,11 +405,11 @@ def load_into_pinecone(embedded_documents, index_name="my-langchain-index"):
             metric="cosine", # Or "euclidean", "dotproduct"
             spec=ServerlessSpec(cloud='aws', region='us-east-1') # Adjust cloud/region
         )
-        print(f"Created new Pinecone index: {index_name}")
+        print(f"Created new Pinecone index: {% raw %}{index_name}{% endraw %}")
     else:
-        print(f"Pinecone index '{index_name}' already exists.")
+        print(f"Pinecone index '{% raw %}{index_name}{% endraw %}' already exists.")
 
-    print(f"Loading {len(lc_documents)} documents into Pinecone...")
+    print(f"Loading {% raw %}{len(lc_documents)}{% endraw %} documents into Pinecone...")
     # Initialize LangChain's PineconeVectorStore and add documents
     vectorstore = PineconeVectorStore.from_documents(
         documents=lc_documents,
@@ -417,7 +417,7 @@ def load_into_pinecone(embedded_documents, index_name="my-langchain-index"):
         index_name=index_name,
         ids=ids
     )
-    print(f"Successfully loaded documents into Pinecone index '{index_name}'.")
+    print(f"Successfully loaded documents into Pinecone index '{% raw %}{index_name}{% endraw %}'.")
     return vectorstore
 
 # Example usage:

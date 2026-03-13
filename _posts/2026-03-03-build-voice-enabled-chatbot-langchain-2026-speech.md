@@ -64,7 +64,7 @@ def get_text_from_voice_input():
     print("Listening for your voice...")
     audio_data = capture_audio_from_microphone() # This would be a real function
     text_input = stt_tool.run(audio_data)
-    print(f"You said: {text_input}")
+    print(f"You said: {% raw %}{text_input}{% endraw %}")
     return text_input
 ```
 
@@ -105,7 +105,7 @@ from langchain_community.tools.text_to_speech import AdvancedTTSTool
 tts_tool = AdvancedTTSTool(voice_id="neural-female-1", api_key="YOUR_TTS_API_KEY")
 
 def speak_response(text_to_speak):
-    print(f"Chatbot says: {text_to_speak}")
+    print(f"Chatbot says: {% raw %}{text_to_speak}{% endraw %}")
     audio_response = tts_tool.run(text_to_speak)
     play_audio(audio_response) # This would be a real function to play sound
 ```
@@ -170,7 +170,7 @@ def capture_audio_from_microphone(duration=4, samplerate=16000, filename="temp_a
     Captures audio from the microphone for a given duration.
     Returns the audio data and saves it to a WAV file.
     """
-    print(f"Recording for {duration} seconds...")
+    print(f"Recording for {% raw %}{duration}{% endraw %} seconds...")
     # Record audio
     audio_data = sd.rec(int(duration * samplerate), samplerate=samplerate, channels=1, dtype='int16')
     sd.wait() # Wait until recording is finished
@@ -187,7 +187,7 @@ def play_audio(audio_file_path):
         sd.play(data, samplerate)
         sd.wait() # Wait until playback is finished
     except Exception as e:
-        print(f"Error playing audio: {e}")
+        print(f"Error playing audio: {% raw %}{e}{% endraw %}")
 ```
 
 This code helps manage the **audio processing pipeline**. It takes your voice from the microphone and prepares it for the next step, which is sending it to an STT service. This makes your chatbot capable of **voice command handling**.
@@ -225,7 +225,7 @@ class MySTTServiceTool: # This would inherit from a LangChain BaseTool in a real
                 print("Whisper not installed. Please install 'openai-whisper'.")
                 return "Error: Whisper not available."
             except Exception as e:
-                print(f"Error with local Whisper: {e}")
+                print(f"Error with local Whisper: {% raw %}{e}{% endraw %}")
                 return "Error during speech-to-text processing."
         else:
             # Placeholder for cloud STT API call
@@ -278,7 +278,7 @@ def get_current_weather(location: str) -> str:
     elif "new york" in location.lower():
         return "Sunny and warm in New York, 25°C."
     else:
-        return f"Sorry, I don't have weather data for {location}."
+        return f"Sorry, I don't have weather data for {% raw %}{location}{% endraw %}."
 
 # Let's add another tool for general knowledge
 @tool
@@ -292,7 +292,7 @@ def get_fact_about(topic: str) -> str:
     elif "cats" in topic.lower():
         return "Cats can make over 100 different sounds, whereas dogs can only make about 10."
     else:
-        return f"I can tell you a lot of facts, but I don't have one specifically for {topic} right now."
+        return f"I can tell you a lot of facts, but I don't have one specifically for {% raw %}{topic}{% endraw %} right now."
 
 tools = [get_current_weather, get_fact_about]
 
@@ -312,30 +312,34 @@ TOOLS:
 ------
 You have access to the following tools:
 
-{tools}
+{% raw %}{tools}{% endraw %}
 
 To use a tool, please use the following format:
 
+{% raw %}
 ```json
 {{
     "action": string, \ // The name of the tool to use.
     "action_input": string \ // The input to the tool.
 }}
 ```
+{% endraw %}
 
 When you have a response for the user, or if you cannot use a tool, respond in the following format:
 
+{% raw %}
 ```json
 {{
     "action": "Final Answer",
     "action_input": string \ // The final response to the user.
 }}
 ```
+{% endraw %}
 
 Begin!
 
-Question: {input}
-{agent_scratchpad}
+Question: {% raw %}{input}{% endraw %}
+{% raw %}{agent_scratchpad}{% endraw %}
 """)
 
 # 4. Create the agent
@@ -386,7 +390,7 @@ class MyTTSServiceTool: # This would inherit from a LangChain BaseTool in a real
                 print("gTTS not installed. Please install 'gtts'.")
                 return "Error: gTTS not available."
             except Exception as e:
-                print(f"Error with gTTS: {e}")
+                print(f"Error with gTTS: {% raw %}{e}{% endraw %}")
                 return "Error during text-to-speech generation."
         elif "elevenlabs" in tts_provider:
             try:
@@ -399,11 +403,11 @@ class MyTTSServiceTool: # This would inherit from a LangChain BaseTool in a real
                 print("Eleven Labs client not installed. Please install 'elevenlabs'.")
                 return "Error: Eleven Labs not available."
             except Exception as e:
-                print(f"Error with Eleven Labs TTS: {e}")
+                print(f"Error with Eleven Labs TTS: {% raw %}{e}{% endraw %}")
                 return "Error during text-to-speech generation."
         else:
             # Placeholder for other cloud TTS API call or simple print
-            print(f"Placeholder: Chatbot would speak: {text_to_speak}")
+            print(f"Placeholder: Chatbot would speak: {% raw %}{text_to_speak}{% endraw %}")
             return "Placeholder: Spoken response using a hypothetical TTS service."
 
 # Now you can use this tool to speak the agent's final answer
@@ -445,7 +449,7 @@ def turn_on_light(room: str) -> str:
     if room.lower() == "living room":
         return "Lights in the living room are now on."
     else:
-        return f"Sorry, I can't find lights in the {room}."
+        return f"Sorry, I can't find lights in the {% raw %}{room}{% endraw %}."
 
 @tool
 def set_timer(duration: str, task: str = "") -> str:
@@ -454,7 +458,7 @@ def set_timer(duration: str, task: str = "") -> str:
     Duration should be in a format like '5 minutes' or '1 hour'.
     """
     # In a real app, this would interact with a system timer
-    return f"Timer set for {duration} for the task: {task if task else 'general reminder'}."
+    return f"Timer set for {% raw %}{duration}{% endraw %} for the task: {% raw %}{task if task else 'general reminder'}{% endraw %}."
 
 # Add these new tools to your agent's tool list
 # You would redefine `tools` to include these:
@@ -547,7 +551,7 @@ def run_voice_chatbot():
             audio_file, _ = capture_audio_from_microphone(duration=4) # Capture short bursts of speech
             user_input_text = my_stt_tool.run(audio_file)
         except Exception as e:
-            print(f"Error during speech-to-text: {e}")
+            print(f"Error during speech-to-text: {% raw %}{e}{% endraw %}")
             my_tts_tool.run("Sorry, I didn't catch that. Could you please repeat?")
             continue
 
@@ -556,7 +560,7 @@ def run_voice_chatbot():
             # my_tts_tool.run("Please say something.") # Optional: prompt if no speech
             continue
 
-        print(f"You said: {user_input_text}")
+        print(f"You said: {% raw %}{user_input_text}{% endraw %}")
 
         if user_input_text.lower() in ["exit", "stop", "quit", "goodbye"]:
             my_tts_tool.run("Goodbye! Have a great day!")
@@ -568,7 +572,7 @@ def run_voice_chatbot():
             # We need to ensure the agent's invoke method expects a dictionary with "input"
             agent_response = voice_chatbot_agent_executor.invoke({"input": user_input_text})
             final_answer = agent_response["output"] if "output" in agent_response else "I'm not sure how to respond to that."
-            print(f"Chatbot's text response: {final_answer}")
+            print(f"Chatbot's text response: {% raw %}{final_answer}{% endraw %}")
         except Exception as e:
             print(f"Error during LangChain processing: {e}")
             final_answer = "I'm having trouble thinking right now. Please try again."
@@ -577,9 +581,9 @@ def run_voice_chatbot():
         try:
             my_tts_tool.run(final_answer)
         except Exception as e:
-            print(f"Error during text-to-speech: {e}")
+            print(f"Error during text-to-speech: {% raw %}{e}{% endraw %}")
             # Fallback if TTS fails
-            print(f"Chatbot tried to say: {final_answer}")
+            print(f"Chatbot tried to say: {% raw %}{final_answer}{% endraw %}")
             print("Sorry, I can't speak my response right now.")
             time.sleep(1) # Give a short pause
 

@@ -82,7 +82,7 @@ What happens when your application gets even more popular? You need to handle mo
 
 Scaling means increasing your `compute requirements` and potentially your `storage costs`. It also means your API usage and embedding costs will go up. Planning for scale from the beginning can save you headaches and money later on. It's a key part of `cost optimization strategies`.
 
-You can learn more about general cloud scaling strategies in our other post: [Scaling Your AI Application: Best Practices]( {{ site.baseurl }}/blog/scaling-ai-applications-best-practices).
+You can learn more about general cloud scaling strategies in our other post: [Scaling Your AI Application: Best Practices]( {% raw %}{{ site.baseurl }}{% endraw %}/blog/scaling-ai-applications-best-practices).
 
 ### Setting Up Our Scenario: 100K Monthly Queries
 
@@ -172,7 +172,7 @@ For 100,000 queries per month, using Pinecone's serverless tier, we need to esti
 
 **Total Monthly Vector Database Cost (LangChain): $50.40 (storage) + $0.15 (reads) + $0.0025 (writes) = ~$50.55**
 
-This component highlights that `vector database expenses` can be a significant part of the `infrastructure costs`. For more details on vector databases, check out our guide: [Choosing the Right Vector Database for Your AI App]( {{ site.baseurl }}/blog/choosing-vector-database).
+This component highlights that `vector database expenses` can be a significant part of the `infrastructure costs`. For more details on vector databases, check out our guide: [Choosing the Right Vector Database for Your AI App]( {% raw %}{{ site.baseurl }}{% endraw %}/blog/choosing-vector-database).
 
 #### 4. Infrastructure Costs (Application Server)
 

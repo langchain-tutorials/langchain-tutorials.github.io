@@ -118,8 +118,8 @@ def greet_node(state: AgentState) -> dict:
     """
     print("---EXECUTING GREET NODE---")
     user_input = state["user_query"]
-    greeting_message = f"Hello! You asked: '{user_input}'. Let me think about that."
-    return {"messages": [AIMessage(content=greeting_message)]}
+    greeting_message = f"Hello! You asked: '{% raw %}{user_input}{% endraw %}'. Let me think about that."
+    return {"messages": [AIMessage(content={% raw %}{greeting_message}{% endraw %})]}
 ```
 
 This `greet_node` takes the `user_query` from the state. It then creates a greeting message and adds it to the `messages` list in the state. Each node needs to be added to our `StateGraph`.
@@ -211,8 +211,8 @@ def research_node(state: AgentState) -> dict:
     print("---EXECUTING RESEARCH NODE---")
     user_query = state["user_query"]
     # In a real agent, this would call a search tool
-    research_result = f"Fake research result for '{user_query}': It's sunny with a high of 75°F."
-    return {"tool_output": research_result, "messages": [AIMessage(content="I've performed some research.")]}
+    research_result = f"Fake research result for '{% raw %}{user_query}{% endraw %}': It's sunny with a high of 75°F."
+    return {"tool_output": {% raw %}{research_result}{% endraw %}, "messages": [AIMessage(content="I've performed some research.")]}
 
 def respond_node(state: AgentState) -> dict:
     """
@@ -222,12 +222,12 @@ def respond_node(state: AgentState) -> dict:
     current_messages = state["messages"]
     tool_output = state["tool_output"]
     # Combine previous messages and tool output for the AI model
-    prompt = f"Based on the conversation and the following information: {tool_output}, please answer the user's query."
+    prompt = f"Based on the conversation and the following information: {% raw %}{tool_output}{% endraw %}, please answer the user's query."
     full_prompt_messages = current_messages + [HumanMessage(content=prompt)]
     
     # Use the LLM to generate a response
     response = llm.invoke(full_prompt_messages)
-    return {"messages": [AIMessage(content=response.content)]}
+    return {"messages": [AIMessage(content={% raw %}{response.content}{% endraw %})]}
 ```
 
 Here we added `research_node` and `respond_node`. The `research_node` simulates finding information. The `respond_node` takes all the info and crafts a final answer.
@@ -586,8 +586,8 @@ def check_for_learning_node(state: LearningAgentState) -> dict:
     
     if "learn about" in last_human_message.lower():
         fact_to_learn = last_human_message.split("learn about", 1)[1].strip()
-        print(f"---Identified fact to learn: {fact_to_learn}---")
-        return {"facts_learned": [f"Learned: {fact_to_learn}"]}
+        print(f"---Identified fact to learn: {% raw %}{fact_to_learn}{% endraw %}---")
+        return {"facts_learned": [f"Learned: {% raw %}{fact_to_learn}{% endraw %}"]}
     else:
         print("---No new fact to learn---")
         return {} # No change to state, or an empty dict
@@ -604,7 +604,7 @@ def generate_response_node(state: LearningAgentState) -> dict:
     
     context = ""
     if facts:
-        context = f"Here are some facts I know: {'; '.join(facts)}. "
+        context = f"Here are some facts I know: {% raw %}{'; '.join(facts)}{% endraw %}. "
     
     # Get the last human message for a concise prompt
     last_human_message = ""
@@ -613,10 +613,10 @@ def generate_response_node(state: LearningAgentState) -> dict:
             last_human_message = msg.content
             break
 
-    prompt = f"{context}Based on the conversation, respond to: '{last_human_message}'."
+    prompt = f"{% raw %}{context}{% endraw %}Based on the conversation, respond to: '{% raw %}{last_human_message}{% endraw %}'."
     
     response = llm.invoke(current_messages + [HumanMessage(content=prompt)])
-    return {"messages": [AIMessage(content=response.content)]}
+    return {"messages": [AIMessage(content={% raw %}{response.content}{% endraw %})]}
 ```
 
 ##### Router for Learning Agent
@@ -657,7 +657,7 @@ learning_workflow.add_node("generate_response", generate_response_node)
 def acknowledge_learning_node(state: LearningAgentState) -> dict:
     print("---ACKNOWLEDGING LEARNING---")
     last_learned_fact = state["facts_learned"][-1] if state["facts_learned"] else "something new"
-    return {"messages": [AIMessage(content=f"Understood! I've noted down: {last_learned_fact}.")]}
+    return {"messages": [AIMessage(content=f"Understood! I've noted down: {% raw %}{last_learned_fact}{% endraw %}.")]}
 
 learning_workflow.add_node("acknowledge_learning", acknowledge_learning_node)
 

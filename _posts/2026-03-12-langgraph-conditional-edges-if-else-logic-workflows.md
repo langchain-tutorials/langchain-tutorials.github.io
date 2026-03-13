@@ -124,7 +124,7 @@ Now, here's the magic conditional function. It looks at the `mood` in the state 
 ```python
 # This is our conditional function
 def decide_next_path(state: MoodState) -> str:
-    print(f"Deciding next path based on mood: {state.mood}")
+    print(f"Deciding next path based on mood: {% raw %}{state.mood}{% endraw %}")
     if state.mood == "happy":
         return "happy_response"
     else:
@@ -196,7 +196,7 @@ def get_user_input(state: InputState) -> InputState:
     return state
 
 def identify_input_type(state: InputState) -> InputState:
-    print(f"AI is identifying input type for: '{state.user_input}'")
+    print(f"AI is identifying input type for: '{% raw %}{state.user_input}{% endraw %}'")
     if re.match(r"^\d+$", state.user_input): # Checks if it's only digits
         state.input_type = "number"
     else:
@@ -206,17 +206,17 @@ def identify_input_type(state: InputState) -> InputState:
 def process_number(state: InputState) -> InputState:
     print("AI is processing a number.")
     num = int(state.user_input)
-    state.processed_message = f"You gave me the number: {num}. Double it: {num * 2}!"
+    state.processed_message = f"You gave me the number: {% raw %}{num}{% endraw %}. Double it: {% raw %}{num * 2}{% endraw %}!"
     return state
 
 def process_text(state: InputState) -> InputState:
     print("AI is processing text.")
-    state.processed_message = f"You gave me the text: '{state.user_input}'. I can make it uppercase: {state.user_input.upper()}."
+    state.processed_message = f"You gave me the text: '{% raw %}{state.user_input}{% endraw %}'. I can make it uppercase: {% raw %}{state.user_input.upper()}{% endraw %}."
     return state
 
 # Conditional function
 def route_by_input_type(state: InputState) -> str:
-    print(f"Routing based on input type: {state.input_type}")
+    print(f"Routing based on input type: {% raw %}{state.input_type}{% endraw %}")
     if state.input_type == "number":
         return "number_path"
     else:
@@ -299,14 +299,14 @@ class InputState(TypedDict):
 
 # Nodes
 def get_user_input_node(state: InputState) -> InputState:
-    print(f"AI is getting user input. Current input: {state.get('user_input')}")
+    print(f"AI is getting user input. Current input: {% raw %}{state.get('user_input')}{% endraw %}")
     # This node could get input from an external source or use initial state
     # For testing, we'll assume 'user_input' is already in the initial state
     return state # Just passes the state along
 
 def identify_input_type_node(state: InputState) -> InputState:
     user_input = state["user_input"]
-    print(f"AI is identifying input type for: '{user_input}'")
+    print(f"AI is identifying input type for: '{% raw %}{user_input}{% endraw %}'")
     if re.match(r"^\d+$", user_input):
         state["input_type"] = "number"
     else:
@@ -321,12 +321,12 @@ def process_number_node(state: InputState) -> InputState:
 
 def process_text_node(state: InputState) -> InputState:
     print("AI is processing text.")
-    state["processed_message"] = f"You gave me the text: '{state['user_input']}'. I can make it uppercase: {state['user_input'].upper()}."
+    state["processed_message"] = f"You gave me the text: '{% raw %}{state['user_input']}{% endraw %}'. I can make it uppercase: {% raw %}{state['user_input'].upper()}{% endraw %}."
     return state
 
 # Conditional function
 def route_by_input_type_func(state: InputState) -> str:
-    print(f"Routing based on input type: {state.get('input_type')}")
+    print(f"Routing based on input type: {% raw %}{state.get('input_type')}{% endraw %}")
     if state["input_type"] == "number":
         return "number_path"
     else:
@@ -393,7 +393,7 @@ class UserIntentState(TypedDict):
 # Nodes for different actions
 def analyze_intent(state: UserIntentState) -> UserIntentState:
     message = state["user_message"].lower()
-    print(f"AI analyzing intent for: '{message}'")
+    print(f"AI analyzing intent for: '{% raw %}{message}{% endraw %}'")
     if "hello" in message or "hi" in message:
         state["intent"] = "greeting"
     elif "?" in message:
@@ -426,7 +426,7 @@ def handle_unknown(state: UserIntentState) -> UserIntentState:
 
 # Conditional function for multiple choices
 def route_by_intent(state: UserIntentState) -> str:
-    print(f"Routing based on intent: {state.get('intent')}")
+    print(f"Routing based on intent: {% raw %}{state.get('intent')}{% endraw %}")
     if state["intent"] == "greeting":
         return "greet"
     elif state["intent"] == "question":
@@ -480,7 +480,7 @@ test_messages = [
 ]
 
 for msg in test_messages:
-    print(f"\n--- Testing with message: '{msg}' ---")
+    print(f"\n--- Testing with message: '{% raw %}{msg}{% endraw %}' ---")
     initial_state: UserIntentState = {"user_message": msg, "intent": None, "response": ""}
     final_state = app.invoke(initial_state)
     print(f"AI's final response: {final_state['response']}")

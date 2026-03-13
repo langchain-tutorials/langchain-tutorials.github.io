@@ -47,7 +47,7 @@ LangChain is like a superhero toolkit for building applications with large langu
 
 When you ask LangChain a question, it can talk to the AI model and start sending you the answer bit by bit, as soon as it gets them. This real-time flow is crucial for interactive apps, making your chatbots feel alive. LangChain provides built-in methods to easily tap into this streaming capability.
 
-For a deeper dive into LangChain's basic usage, you might want to check out our previous post on [Getting Started with LangChain Basics]({{ site.baseurl }}/blog/getting-started-langchain-basics).
+For a deeper dive into LangChain's basic usage, you might want to check out our previous post on [Getting Started with LangChain Basics]({% raw %}{{ site.baseurl }}{% endraw %}/blog/getting-started-langchain-basics).
 
 ### Why We Need to Optimize: Making Fast Even Faster
 
@@ -132,13 +132,13 @@ from langchain_core.messages import HumanMessage, SystemMessage
 # For example: model = ChatOpenAI(model="gpt-4", streaming=True)
 
 async def ask_ai_model(model_name: str, question: str):
-    print(f"[{model_name}] Starting query...")
+    print(f"[{% raw %}{model_name}{% endraw %}] Starting query...")
     # Simulate an AI model thinking and streaming
     # In a real LangChain app, you'd use model.astream_messages([HumanMessage(question)])
-    for char in f"Answer from {model_name} for '{question}': This is a streamed response. ":
+    for char in f"Answer from {% raw %}{model_name}{% endraw %} for '{% raw %}{question}{% endraw %}': This is a streamed response. ":
         await asyncio.sleep(0.05) # Simulate latency of streaming char by char
         yield char
-    print(f"[{model_name}] Query finished.")
+    print(f"[{% raw %}{model_name}{% endraw %}] Query finished.")
 
 # Helper to run a generator and collect its output
 async def collect_stream(model_name, question):
@@ -159,7 +159,7 @@ async def main_concurrent_ai_queries():
     )
 
     for i, res in enumerate(results):
-        print(f"\nResult from Model {chr(65+i)}:\n{res[:100]}...") # Show first 100 chars
+        print(f"\nResult from Model {% raw %}{chr(65+i)}{% endraw %}:\n{% raw %}{res[:100]}{% endraw %}...") # Show first 100 chars
 
 # To run this, you need an asyncio loop
 # asyncio.run(main_concurrent_ai_queries())
@@ -257,11 +257,11 @@ async def lang_chain_astream_events_example():
         if kind == "on_chat_model_stream":
             content = event["data"]["chunk"].content
             if content:
-                print(f"Model streamed: '{content}'")
+                print(f"Model streamed: '{% raw %}{content}{% endraw %}'")
         elif kind == "on_chain_end":
-            print(f"Chain finished with final output: {event['data']['output']}")
+            print(f"Chain finished with final output: {% raw %}{event['data']['output']}{% endraw %}")
         else:
-            print(f"Event: {kind}")
+            print(f"Event: {% raw %}{kind}{% endraw %}")
     print("\nEvents finished.")
 
 async def main_langchain_streaming():
@@ -296,23 +296,23 @@ class MyStreamingCallbackHandler(AsyncCallbackHandler):
 
     async def on_llm_new_token(self, token: str, **kwargs) -> None:
         """Runs on new LLM token. Use this to print tokens as they arrive."""
-        print(f"{self.prefix} Token: '{token}'", end="", flush=True)
+        print(f"{% raw %}{self.prefix}{% endraw %} Token: '{% raw %}{token}{% endraw %}'", end="", flush=True)
         self.full_response_content += token
 
     async def on_llm_end(self, response, **kwargs) -> None:
         """Runs at the end of LLM generation."""
-        print(f"\n{self.prefix} LLM finished. Total content: '{self.full_response_content}'")
+        print(f"\n{% raw %}{self.prefix}{% endraw %} LLM finished. Total content: '{% raw %}{self.full_response_content}{% endraw %}'")
         self.full_response_content = "" # Reset for next use
 
     async def on_chain_start(
         self, serialized: dict, tags: list[str] | None = None, **kwargs
     ) -> None:
         """Runs when a chain starts."""
-        print(f"\n{self.prefix} Chain '{serialized.get('name', 'Unknown')}' starting...")
+        print(f"\n{% raw %}{self.prefix}{% endraw %} Chain '{% raw %}{serialized.get('name', 'Unknown')}{% endraw %}' starting...")
 
     async def on_chain_end(self, outputs: dict, **kwargs) -> None:
         """Runs when a chain ends."""
-        print(f"{self.prefix} Chain ended.")
+        print(f"{% raw %}{self.prefix}{% endraw %} Chain ended.")
 
 async def run_with_custom_callback():
     print("\n--- Running with Custom Async Callback Handler ---")
@@ -368,7 +368,7 @@ async def run_stream_queries_sequentially(questions):
 
     start_time = time.monotonic()
     for i, q in enumerate(questions):
-        print(f"\nQuestion {i+1}: {q}")
+        print(f"\nQuestion {% raw %}{i+1}{% endraw %}: {% raw %}{q}{% endraw %}")
         print("Response: ", end="")
         async for chunk in chain.astream({"question": q}):
             print(chunk.content, end="", flush=True)
@@ -388,8 +388,8 @@ async def run_stream_queries_concurrently(questions):
         # print(f"Starting concurrent stream for Question {q_idx+1}: {question}")
         async for chunk in chain.astream({"question": question}):
             full_response += chunk.content
-        # print(f"Finished concurrent stream for Question {q_idx+1}")
-        return f"Response for Q{q_idx+1}: {full_response[:100]}..."
+        # print(f"Finished concurrent stream for Question {% raw %}{q_idx+1}{% endraw %}")
+        return f"Response for Q{% raw %}{q_idx+1}{% endraw %}: {% raw %}{full_response[:100]}{% endraw %}..."
 
     start_time = time.monotonic()
     # Create a list of async streaming tasks
@@ -413,7 +413,7 @@ async def run_batch_queries_concurrently(questions):
 
     async def get_batch_response(q_idx, question):
         response = await chain.ainvoke({"question": question})
-        return f"Batch Response for Q{q_idx+1}: {response.content[:100]}..."
+        return f"Batch Response for Q{% raw %}{q_idx+1}{% endraw %}: {% raw %}{response.content[:100]}{% endraw %}..."
 
     start_time = time.monotonic()
     # Create a list of async invoke tasks
@@ -497,16 +497,18 @@ async def stream_and_manage_memory():
     full_response_list = [] # Better for accumulating large responses
     start_memory_list = sys.getsizeof(full_response_list)
 
-    async for chunk in chain.astream({"input": "long story"}):
-        content = chunk.content
-        if content:
-            # Simulate displaying or processing the chunk immediately
-            # print(f"Chunk received (len={len(content)}): '{content}'")
-            total_chars_processed += len(content)
-            full_response_list.append(content) # Accumulate efficiently
-            chunk_count += 1
-            # Here, we only keep the current chunk in memory for processing,
-            # not the entire growing string that gets copied repeatedly.
+{% raw %}
+        async for chunk in chain.astream({"input": "long story"}):
+            content = chunk.content
+            if content:
+                # Simulate displaying or processing the chunk immediately
+                # print(f"Chunk received (len={len(content)}): '{content}'")
+                total_chars_processed += len(content)
+                full_response_list.append(content) # Accumulate efficiently
+                chunk_count += 1
+                # Here, we only keep the current chunk in memory for processing,
+                # not the entire growing string that gets copied repeatedly.
+{% endraw %}
 
     end_memory_list = sys.getsizeof(full_response_list)
     print(f"Total chunks processed: {chunk_count}")
@@ -641,10 +643,10 @@ class EnhancedStreamingCallbackHandler(AsyncCallbackHandler):
         self.task_id = task_id
         self.full_response_content = ""
         self.start_time = time.monotonic()
-        print(f"Task {self.task_id}: Handler initialized.")
+        print(f"Task {% raw %}{self.task_id}{% endraw %}: Handler initialized.")
 
     async def on_llm_start(self, serialized: dict, prompts: list[str], **kwargs) -> None:
-        print(f"Task {self.task_id}: LLM started processing prompt: '{prompts[0][:50]}...'")
+        print(f"Task {% raw %}{self.task_id}{% endraw %}: LLM started processing prompt: '{% raw %}{prompts[0][:50]}{% endraw %}...'")
 
     async def on_llm_new_token(self, token: str, **kwargs) -> None:
         # Simulate some quick processing or UI update for each token
@@ -655,26 +657,26 @@ class EnhancedStreamingCallbackHandler(AsyncCallbackHandler):
 
     async def on_llm_end(self, response, **kwargs) -> None:
         duration = time.monotonic() - self.start_time
-        print(f"Task {self.task_id}: LLM finished in {duration:.2f}s. Total chars: {len(self.full_response_content)}")
-        # print(f"Task {self.task_id} Final Response: {self.full_response_content[:100]}...") # Too verbose
+        print(f"Task {% raw %}{self.task_id}{% endraw %}: LLM finished in {% raw %}{duration:.2f}{% endraw %}s. Total chars: {% raw %}{len(self.full_response_content)}{% endraw %}")
+        # print(f"Task {% raw %}{self.task_id}{% endraw %} Final Response: {% raw %}{self.full_response_content[:100]}{% endraw %}...") # Too verbose
         self.full_response_content = "" # Reset
 
     async def on_chain_start(
         self, serialized: dict, tags: list[str] | None = None, **kwargs
     ) -> None:
-        print(f"Task {self.task_id}: Chain '{serialized.get('name', 'Unknown')}' starting...")
+        print(f"Task {% raw %}{self.task_id}{% endraw %}: Chain '{% raw %}{serialized.get('name', 'Unknown')}{% endraw %}' starting...")
 
     async def on_chain_end(self, outputs: dict, **kwargs) -> None:
-        print(f"Task {self.task_id}: Chain ended.")
+        print(f"Task {% raw %}{self.task_id}{% endraw %}: Chain ended.")
 
 
 # --- Async LangChain Runnable Function ---
 async def get_ai_stream_response(task_id: int, question: str, model: ChatOpenAI):
-    print(f"Task {task_id}: Initiating AI query for: '{question[:30]}...'")
+    print(f"Task {% raw %}{task_id}{% endraw %}: Initiating AI query for: '{% raw %}{question[:30]}{% endraw %}...'")
     
     prompt = ChatPromptTemplate.from_messages([
         ("system", "You are a helpful and concise AI assistant. Respond briefly."),
-        ("human", "{question}")
+        ("human", "{% raw %}{question}{% endraw %}")
     ])
     chain = prompt | model
     
@@ -685,19 +687,19 @@ async def get_ai_stream_response(task_id: int, question: str, model: ChatOpenAI)
     try:
         async for chunk in chain.astream(
             {"question": question}, 
-            config={"callbacks": [callback_handler], "tags": [f"task:{task_id}"]}
+            config={"callbacks": [callback_handler], "tags": [f"task:{% raw %}{task_id}{% endraw %}"]}
         ):
             full_response_chunks.append(chunk.content)
             # You could also add asyncio.sleep(0) here if the processing
             # within the loop (e.g., UI updates) is computation-heavy
             # await asyncio.sleep(0) # Yield control if necessary
     except Exception as e:
-        print(f"Task {task_id}: An error occurred during streaming: {e}")
-        return f"Error for {question}: {e}"
+        print(f"Task {% raw %}{task_id}{% endraw %}: An error occurred during streaming: {% raw %}{e}{% endraw %}")
+        return f"Error for {% raw %}{question}{% endraw %}: {% raw %}{e}{% endraw %}"
         
     final_response = "".join(full_response_chunks)
-    print(f"Task {task_id}: Full stream collected. Content length: {len(final_response)}")
-    return f"Task {task_id} Result: {final_response[:150]}..."
+    print(f"Task {% raw %}{task_id}{% endraw %}: Full stream collected. Content length: {% raw %}{len(final_response)}{% endraw %}")
+    return f"Task {% raw %}{task_id}{% endraw %} Result: {% raw %}{final_response[:150]}{% endraw %}..."
 
 
 # --- Main Orchestrator for Concurrent Streaming ---

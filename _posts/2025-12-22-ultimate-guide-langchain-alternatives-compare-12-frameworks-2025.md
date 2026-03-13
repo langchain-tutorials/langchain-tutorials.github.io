@@ -69,7 +69,8 @@ While LangChain offers similar chaining capabilities, Semantic Kernel is deeply 
 
 ##### Quick Example (Snippet Idea)
 Imagine a simple email assistant that summarizes emails.
-```f python
+{% raw %}
+```python
 import semantic_kernel as sk
 from semantic_kernel.connectors.ai.open_ai import AzureTextCompletion, OpenAITextCompletion
 # Set up your AI model (e.g., OpenAI or Azure OpenAI)
@@ -93,6 +94,7 @@ email_text = "Subject: Meeting Reminder. Hi team, just a reminder about our meet
 summary = summarizer_skill(email_text)
 print(summary) # Output: Meeting tomorrow at 10 AM for project X. Review attached report.
 ```
+{% endraw %}
 This example shows how easily you can add an AI skill like summarization to your code.
 
 ##### Learning Resources / Affiliate Link
@@ -446,7 +448,8 @@ While LangChain offers output parsers, Guidance integrates the output structure 
 
 ##### Quick Example (Snippet Idea)
 Generating structured JSON output.
-```f python
+{% raw %}
+```python
 import guidance
 
 # Set up your LLM (e.g., OpenAI)
@@ -476,6 +479,7 @@ print(extracted_info) # Output: {'name': 'Alice', 'age': '30'} (or similar struc
 # result = program_conditional()
 # print(result)
 ```
+{% endraw %}
 This shows how to get structured output directly from the LLM.
 
 ##### Learning Resources / Affiliate Link

@@ -231,7 +231,7 @@ llm = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=api_key)
 story_template = ChatPromptTemplate.from_messages(
     [
         ("system", "You are a helpful assistant that writes short, simple stories."),
-        ("user", "Write a very short story about a {animal} that learns to fly."),
+        ("user", "Write a very short story about a {% raw %}{animal}{% endraw %} that learns to fly."),
     ]
 )
 
@@ -302,7 +302,7 @@ parser = StrOutputParser() # This helps get the plain text out of the LLM's resp
 idea_template = ChatPromptTemplate.from_messages(
     [
         ("system", "You are a creative assistant. Come up with a unique story idea."),
-        ("user", "Suggest a short, fun story idea about a {creature}."),
+        ("user", "Suggest a short, fun story idea about a {% raw %}{creature}{% endraw %}."),
     ]
 )
 
@@ -310,7 +310,7 @@ idea_template = ChatPromptTemplate.from_messages(
 story_writer_template = ChatPromptTemplate.from_messages(
     [
         ("system", "You are a skilled storyteller. Write a very short story based on the following idea."),
-        ("user", "Here is the story idea: {idea}\n\nWrite the story."),
+        ("user", "Here is the story idea: {% raw %}{idea}{% endraw %}\n\nWrite the story."),
     ]
 )
 
@@ -384,7 +384,7 @@ This app is simple enough for a beginner but powerful enough to show LangChain's
 Before coding, let's think about the prompts we'll need. We need to tell the AI its role and what information we'll provide.
 
 *   **System Message:** "You are a creative storyteller who writes short, happy stories."
-*   **User Message:** "Write a short story about a {character} in a {setting}."
+*   **User Message:** "Write a short story about a {% raw %}{character}{% endraw %} in a {% raw %}{setting}{% endraw %}."
 
 This single prompt template will be enough for our simple story generator. We'll combine it directly with the LLM.
 
@@ -466,9 +466,9 @@ while True:
         time_taken = (end_time - start_time).total_seconds()
         print("\n--- Your Generated Story ---")
         print(story)
-        print(f"\n(Story generated in {time_taken:.2f} seconds)")
+        print(f"\n(Story generated in {% raw %}{time_taken:.2f}{% endraw %} seconds)")
     except Exception as e:
-        print(f"\nOops! Something went wrong: {e}")
+        print(f"\nOops! Something went wrong: {% raw %}{e}{% endraw %}")
         print("Please check your API key and internet connection.")
 
     print("\n---")
@@ -596,7 +596,7 @@ def generate_story_gradio(character, setting):
         story = story_chain.invoke({"character": character, "setting": setting})
         return story
     except Exception as e:
-        return f"Oops! Something went wrong: {e}\nPlease check your API key and internet connection."
+        return f"Oops! Something went wrong: {% raw %}{e}{% endraw %}\nPlease check your API key and internet connection."
 
 # Create the Gradio interface
 iface = gr.Interface(
@@ -673,11 +673,11 @@ with st.form("story_form"):
                 try:
                     story = story_chain.invoke({"character": character_input, "setting": setting_input})
                     st.success("Here is your story!")
-                    st.markdown(f"**Character:** {character_input}")
-                    st.markdown(f"**Setting:** {setting_input}")
+                    st.markdown(f"**Character:** {% raw %}{character_input}{% endraw %}")
+                    st.markdown(f"**Setting:** {% raw %}{setting_input}{% endraw %}")
                     st.write(story)
                 except Exception as e:
-                    st.error(f"Oops! Something went wrong: {e}\nPlease check your API key and internet connection.")
+                    st.error(f"Oops! Something went wrong: {% raw %}{e}{% endraw %}\nPlease check your API key and internet connection.")
 
 st.sidebar.markdown("---")
 st.sidebar.info("This app uses LangChain and OpenAI to generate stories.")

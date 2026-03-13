@@ -52,7 +52,7 @@ from langchain.prompts import PromptTemplate
 llm = OpenAI(temperature=0) # temperature=0 means it tries to give the same answer each time
 prompt = PromptTemplate(
     input_variables=["topic"],
-    template="Tell me a fun fact about {topic}.",
+    template="Tell me a fun fact about {% raw %}{topic}{% endraw %}.",
 )
 
 # See the magic here! verbose=True
@@ -90,19 +90,19 @@ from langchain.prompts import PromptTemplate
 llm = OpenAI(temperature=0)
 prompt = PromptTemplate(
     input_variables=["animal"],
-    template="What sound does a {animal} make?",
+    template="What sound does a {% raw %}{animal}{% endraw %} make?",
 )
 
 chain = LLMChain(llm=llm, prompt=prompt)
 
 animal_input = "dog"
-print(f"--- Input for the chain: {animal_input} ---") # Print statement 1
+print(f"--- Input for the chain: {% raw %}{animal_input}{% endraw %} ---") # Print statement 1
 
 try:
     result = chain.run(animal_input)
-    print(f"--- Output from the chain: {result} ---") # Print statement 2
+    print(f"--- Output from the chain: {% raw %}{result}{% endraw %} ---") # Print statement 2
 except Exception as e:
-    print(f"--- An error occurred: {e} ---") # Print statement 3 for errors
+    print(f"--- An error occurred: {% raw %}{e}{% endraw %} ---") # Print statement 3 for errors
 ```
 
 Here, you use print statements to track the input you're giving to the chain and the output you get back. If an error happens, the `except` block catches it and prints the error message. This helps you narrow down where the problem is.
@@ -138,53 +138,53 @@ import time
 class MyDebugCallback(BaseCallbackHandler):
     def on_llm_start(self, serialized: dict, prompts: list, **kwargs) -> None:
         """Run when LLM starts running."""
-        print(f"\n--- LLM START (Prompts: {prompts}) ---")
+        print(f"\n--- LLM START (Prompts: {% raw %}{prompts}{% endraw %}) ---")
 
     def on_llm_end(self, response, **kwargs) -> None:
         """Run when LLM ends running."""
-        print(f"--- LLM END (Response: {response.generations[0][0].text.strip()[:50]}...) ---")
+        print(f"--- LLM END (Response: {% raw %}{response.generations[0][0].text.strip()[:50]}{% endraw %}...) ---")
 
     def on_chain_start(self, serialized: dict, **kwargs) -> None:
         """Run when chain starts running."""
-        print(f"\n--- CHAIN START (Type: {serialized['lc_kwargs']['name']}) ---")
+        print(f"\n--- CHAIN START (Type: {% raw %}{serialized['lc_kwargs']['name']}{% endraw %}) ---")
 
     def on_chain_end(self, outputs: dict, **kwargs) -> None:
         """Run when chain ends running."""
-        print(f"--- CHAIN END (Outputs: {outputs}) ---\n")
+        print(f"--- CHAIN END (Outputs: {% raw %}{outputs}{% endraw %}) ---\n")
 
     def on_tool_start(self, serialized: dict, input_str: str, **kwargs) -> None:
         """Run when tool starts running."""
-        print(f"\n--- TOOL START (Tool: {serialized['name']}, Input: {input_str}) ---")
+        print(f"\n--- TOOL START (Tool: {% raw %}{serialized['name']}{% endraw %}, Input: {% raw %}{input_str}{% endraw %}) ---")
 
     def on_tool_end(self, output: str, **kwargs) -> None:
         """Run when tool ends running."""
-        print(f"--- TOOL END (Output: {output}) ---")
+        print(f"--- TOOL END (Output: {% raw %}{output}{% endraw %}) ---")
 
     def on_agent_action(self, action, **kwargs) -> None:
         """Run on agent action."""
-        print(f"\n--- AGENT ACTION (Action: {action.log}) ---")
+        print(f"\n--- AGENT ACTION (Action: {% raw %}{action.log}{% endraw %}) ---")
 
     def on_agent_finish(self, finish, **kwargs) -> None:
         """Run on agent finish."""
-        print(f"\n--- AGENT FINISH (Finish: {finish.log}) ---")
+        print(f"\n--- AGENT FINISH (Finish: {% raw %}{finish.log}{% endraw %}) ---")
 
     def on_llm_error(self, error: Exception, **kwargs) -> None:
         """Run when LLM errors."""
-        print(f"\n--- LLM ERROR: {error} ---")
+        print(f"\n--- LLM ERROR: {% raw %}{error}{% endraw %} ---")
 
     def on_chain_error(self, error: Exception, **kwargs) -> None:
         """Run when chain errors."""
-        print(f"\n--- CHAIN ERROR: {error} ---")
+        print(f"\n--- CHAIN ERROR: {% raw %}{error}{% endraw %} ---")
 
     def on_tool_error(self, error: Exception, **kwargs) -> None:
         """Run when tool errors."""
-        print(f"\n--- TOOL ERROR: {error} ---")
+        print(f"\n--- TOOL ERROR: {% raw %}{error}{% endraw %} ---")
 
 
 llm = OpenAI(temperature=0)
 prompt = PromptTemplate(
     input_variables=["query"],
-    template="Explain {query} in simple terms.",
+    template="Explain {% raw %}{query}{% endraw %} in simple terms.",
 )
 
 # Pass your custom callback handler here
@@ -207,7 +207,7 @@ try:
     # chain_bad.run("quantum physics")
     print("--- Simulating an error here would trigger on_llm_error if an actual API error occurred ---")
 except Exception as e:
-    print(f"Caught an external error: {e}")
+    print(f"Caught an external error: {% raw %}{e}{% endraw %}")
 print("--- Finished Potential Error Scenario ---")
 ```
 
@@ -264,7 +264,7 @@ from langchain.prompts import PromptTemplate
 llm = OpenAI(temperature=0)
 prompt = PromptTemplate(
     input_variables=["topic"],
-    template="Write a short poem about {topic}.",
+    template="Write a short poem about {% raw %}{topic}{% endraw %}.",
 )
 
 chain = LLMChain(llm=llm, prompt=prompt)
@@ -286,7 +286,7 @@ try:
     print("\n--- Running LangChain with LangSmith (Simulated Error) ---")
     chain_error.run("ocean")
 except Exception as e:
-    print(f"--- Caught expected error: {e} ---")
+    print(f"--- Caught expected error: {% raw %}{e}{% endraw %} ---")
     # Even if caught here, LangSmith will record the trace and the error.
     print("Check LangSmith UI for the trace of this error.")
 
@@ -324,7 +324,7 @@ from langchain.prompts import PromptTemplate
 llm = OpenAI(temperature=0)
 prompt = PromptTemplate(
     input_variables=["animal"],
-    template="Tell me a joke about a {animal}.",
+    template="Tell me a joke about a {% raw %}{animal}{% endraw %}.",
 )
 
 chain = LLMChain(llm=llm, prompt=prompt)
@@ -333,7 +333,7 @@ try:
     print("--- Attempting to run with a potentially bad API key ---")
     chain.run("chicken")
 except Exception as e:
-    print(f"\n!!! Caught an API Key Error: {e} !!!")
+    print(f"\n!!! Caught an API Key Error: {% raw %}{e}{% endraw %} !!!")
     print("This usually means your OPENAI_API_KEY is missing, incorrect, or expired.")
     print("Please check your environment variables or OpenAI account.")
 
@@ -370,7 +370,7 @@ from langchain.prompts import PromptTemplate
 llm = OpenAI(temperature=0)
 prompt = PromptTemplate(
     input_variables=["name", "job"], # Expects 'name' and 'job'
-    template="My name is {name} and I am a {job}.",
+    template="My name is {% raw %}{name}{% endraw %} and I am a {% raw %}{job}{% endraw %}.",
 )
 
 chain = LLMChain(llm=llm, prompt=prompt)
@@ -381,7 +381,7 @@ try:
     # We only provide 'name', but 'job' is also expected
     chain.run({"name": "Alice"})
 except Exception as e:
-    print(f"!!! Caught a Missing Input Error: {e} !!!")
+    print(f"!!! Caught a Missing Input Error: {% raw %}{e}{% endraw %} !!!")
     print("The prompt expects 'job', but it was not provided.")
 
 # PROBLEM 2: Providing the wrong input format (e.g., a list instead of a dict)
@@ -391,16 +391,16 @@ try:
     # or a dict for multiple. Here, we try to pass a list.
     chain.run(["Bob", "Engineer"])
 except Exception as e:
-    print(f"!!! Caught a Formatting Error: {e} !!!")
+    print(f"!!! Caught a Formatting Error: {% raw %}{e}{% endraw %} !!!")
     print("The input should likely be a dictionary like {'name': 'Bob', 'job': 'Engineer'}.")
 
 # CORRECT WAY
 print("\n--- Correct Input Formatting ---")
 try:
     result = chain.run({"name": "Charlie", "job": "Scientist"})
-    print(f"Correct Output: {result}")
+    print(f"Correct Output: {% raw %}{result}{% endraw %}")
 except Exception as e:
-    print(f"Caught an unexpected error: {e}")
+    print(f"Caught an unexpected error: {% raw %}{e}{% endraw %}")
 ```
 
 These errors show you why `error isolation` is important. By checking the inputs and outputs at each stage, you can quickly find the part that's "talking the wrong language."
@@ -430,11 +430,11 @@ def add_numbers(num1: str, num2: str) -> str:
     """Adds two numbers together. Input must be two numbers separated by a comma, e.g., '1,2'"""
     try:
         n1, n2 = map(float, num1.split(',')) # Expects input like "1,2"
-        return str(n1 + n2)
+        return str({% raw %}{n1 + n2}{% endraw %})
     except ValueError:
         return "Error: Invalid input. Please provide two numbers separated by a comma."
     except Exception as e:
-        return f"An unexpected error occurred: {e}"
+        return f"An unexpected error occurred: {% raw %}{e}{% endraw %}"
 
 # A simple "tool" that just returns a fixed error
 def always_fails_tool(query: str) -> str:
@@ -465,13 +465,13 @@ print("\n--- Agent trying to use a working tool ---")
 try:
     agent.run("What is 5 plus 7?")
 except Exception as e:
-    print(f"Caught an unexpected error: {e}")
+    print(f"Caught an unexpected error: {% raw %}{e}{% endraw %}")
 
 print("\n--- Agent trying to use a failing tool ---")
 try:
     agent.run("Use the Failing Tool with any input.")
 except Exception as e:
-    print(f"\n!!! Caught an Agent/Tool Error: {e} !!!")
+    print(f"\n!!! Caught an Agent/Tool Error: {% raw %}{e}{% endraw %} !!!")
     print("The 'Failing Tool' was called and raised an error.")
     print("Check the verbose output above to see the agent's thought process.")
 
@@ -479,7 +479,7 @@ print("\n--- Agent with potential input format issue for tool ---")
 try:
     agent.run("Add these numbers: five and seven.") # Agent might struggle to format for tool
 except Exception as e:
-    print(f"\n!!! Caught a potential Agent/Tool Formatting Error: {e} !!!")
+    print(f"\n!!! Caught a potential Agent/Tool Formatting Error: {% raw %}{e}{% endraw %} !!!")
     print("The agent might try to call 'Add Two Numbers' but fails to provide valid input.")
     print("Review the agent's thoughts in verbose mode to see the input it tries to pass.")
 ```
@@ -510,12 +510,12 @@ llm = OpenAI(temperature=0)
 # Define prompts
 prompt1 = PromptTemplate(
     input_variables=["product"],
-    template="What is a good company name for a company that makes {product}?",
+    template="What is a good company name for a company that makes {% raw %}{product}{% endraw %}?",
 )
 
 prompt2 = PromptTemplate(
     input_variables=["company_name"], # This should match the output of chain1
-    template="Write a short slogan for the company called {company_name}.",
+    template="Write a short slogan for the company called {% raw %}{company_name}{% endraw %}."
 )
 
 # Chain 1: Generate company name
@@ -533,7 +533,7 @@ try:
     overall_chain_bad = SimpleSequentialChain(chains=[chain1_bad, chain2], verbose=True)
     overall_chain_bad.run("eco-friendly shoes")
 except Exception as e:
-    print(f"\n!!! Caught a Chain Configuration Error: {e} !!!")
+    print(f"\n!!! Caught a Chain Configuration Error: {% raw %}{e}{% endraw %} !!!")
     print("Chain2 needs 'company_name' as input, but Chain1 is not providing it via 'output_key'.")
     print("Check the 'output_key' of the previous chain and 'input_variables' of the next chain.")
 
@@ -542,13 +542,13 @@ print("\n--- Problem 2: Input variables mismatch (conceptual) ---")
 try:
     prompt_mismatch = PromptTemplate(
         input_variables=["wrong_key"], # Chain2 expects 'company_name', not 'wrong_key'
-        template="Write a slogan for {wrong_key}.",
+        template="Write a slogan for {% raw %}{wrong_key}{% endraw %}.",
     )
     chain2_mismatch = LLMChain(llm=llm, prompt=prompt_mismatch, output_key="slogan")
     overall_chain_mismatch = SimpleSequentialChain(chains=[chain1, chain2_mismatch], verbose=True)
     overall_chain_mismatch.run("organic food")
 except Exception as e:
-    print(f"\n!!! Caught a Chain Configuration Mismatch (conceptual): {e} !!!")
+    print(f"\n!!! Caught a Chain Configuration Mismatch (conceptual): {% raw %}{e}{% endraw %} !!!")
     print("Even though chain1 provides 'company_name', chain2_mismatch expects 'wrong_key'.")
     print("This would cause an input error in more complex chain setups.")
 
@@ -558,9 +558,9 @@ print("\n--- Correct Chain Configuration ---")
 overall_chain_correct = SimpleSequentialChain(chains=[chain1, chain2], verbose=True)
 try:
     result = overall_chain_correct.run("futuristic cars")
-    print(f"\nCorrect Output: {result}")
+    print(f"\nCorrect Output: {% raw %}{result}{% endraw %}")
 except Exception as e:
-    print(f"Caught an unexpected error: {e}")
+    print(f"Caught an unexpected error: {% raw %}{e}{% endraw %}")
 ```
 
 This example highlights how essential it is for outputs to correctly map to inputs in chained operations. `Verbose mode usage` here shows you exactly which variables are being passed between steps, making it much easier to `debug langchain error handling examples` related to chain structure.
@@ -599,7 +599,7 @@ try:
     chain = LLMChain(llm=llm, prompt=prompt_bad_var)
     chain.run({}) # Running with empty input, as 'animal' isn't used
 except Exception as e:
-    print(f"!!! Caught a PromptTemplate (conceptual) Error: {e} !!!")
+    print(f"!!! Caught a PromptTemplate (conceptual) Error: {% raw %}{e}{% endraw %} !!!")
     print("The variable 'animal' is defined but not used in the template.")
     print("This often leads to confusion or unused inputs.")
 
@@ -609,13 +609,13 @@ print("\n--- Problem 2: Template variable not in input_variables ---")
 try:
     prompt_missing_var = PromptTemplate(
         input_variables=["city"],
-        template="What is the capital of {country}?", # {country} is in template but not input_variables
+        template="What is the capital of {% raw %}{country}{% endraw %}?", # {country} is in template but not input_variables
     )
     # This will error when you try to use it with the chain
     chain = LLMChain(llm=llm, prompt=prompt_missing_var)
     chain.run({"city": "Paris"})
 except Exception as e:
-    print(f"\n!!! Caught a PromptTemplate Error: {e} !!!")
+    print(f"\n!!! Caught a PromptTemplate Error: {% raw %}{e}{% endraw %} !!!")
     print("The variable '{country}' is in the template but not in the 'input_variables' list.")
     print("LangChain doesn't know what to fill in for '{country}'.")
 
@@ -625,12 +625,12 @@ print("\n--- Problem 3: Missing runtime input ---")
 try:
     prompt_correct = PromptTemplate(
         input_variables=["city", "country"],
-        template="What is the capital of {country}? And what is the main language spoken in {city}?",
+        template="What is the capital of {% raw %}{country}{% endraw %}? And what is the main language spoken in {% raw %}{city}{% endraw %}?",
     )
     chain = LLMChain(llm=llm, prompt=prompt_correct)
     chain.run({"city": "Berlin"}) # Missing 'country'
 except Exception as e:
-    print(f"\n!!! Caught a Missing Input Error: {e} !!!")
+    print(f"\n!!! Caught a Missing Input Error: {% raw %}{e}{% endraw %} !!!")
     print("The prompt expects both 'city' and 'country', but 'country' was missing.")
 
 # CORRECT WAY
@@ -638,13 +638,13 @@ print("\n--- Correct Prompt Template Usage ---")
 try:
     prompt_correct = PromptTemplate(
         input_variables=["city", "country"],
-        template="What is the capital of {country}? And what is the main language spoken in {city}?",
+        template="What is the capital of {% raw %}{country}{% endraw %}? And what is the main language spoken in {% raw %}{city}{% endraw %}?",
     )
     chain = LLMChain(llm=llm, prompt=prompt_correct)
     result = chain.run({"city": "Rome", "country": "Italy"})
-    print(f"Correct Output: {result}")
+    print(f"Correct Output: {% raw %}{result}{% endraw %}")
 except Exception as e:
-    print(f"Caught an unexpected error: {e}")
+    print(f"Caught an unexpected error: {% raw %}{e}{% endraw %}")
 ```
 
 These errors show that the `PromptTemplate` expects a perfect match between its `input_variables` and the curly braces `{}` in its `template` string. Using `verbose=True` with your chain can also show you the final prompt sent to the LLM, helping you visually inspect for errors. This is a common part of `debug langchain error handling examples`.
@@ -680,7 +680,7 @@ try:
     bad_chain = ConversationChain(llm=llm, memory=bad_memory, verbose=True)
     bad_chain.run("Hi there!")
 except Exception as e:
-    print(f"\n!!! Caught a Memory Error (Key Mismatch): {e} !!!")
+    print(f"\n!!! Caught a Memory Error (Key Mismatch): {% raw %}{e}{% endraw %} !!!")
     print("The ConversationChain couldn't find its expected 'chat_history' because memory_key was 'wrong_key'.")
 
 # PROBLEM 2: Forgetting to pass memory to the chain (conceptual)
@@ -692,10 +692,10 @@ try:
     no_memory_chain.run("My favorite color is blue.")
     print("Second turn without memory:")
     result = no_memory_chain.run("What is my favorite color?")
-    print(f"Result (should be forgotten): {result}")
+    print(f"Result (should be forgotten): {% raw %}{result}{% endraw %}")
     print("Notice the AI doesn't remember the favorite color.")
 except Exception as e:
-    print(f"Caught an unexpected error: {e}")
+    print(f"Caught an unexpected error: {% raw %}{e}{% endraw %}")
 
 # CORRECT WAY
 print("\n--- Correct Memory Usage ---")
@@ -706,9 +706,9 @@ try:
     correct_chain.run("My favorite animal is a cat.")
     print("Second turn with correct memory:")
     result = correct_chain.run("What is my favorite animal?")
-    print(f"Correct Output (should remember): {result}")
+    print(f"Correct Output (should remember): {% raw %}{result}{% endraw %}")
 except Exception as e:
-    print(f"Caught an unexpected error: {e}")
+    print(f"Caught an unexpected error: {% raw %}{e}{% endraw %}")
 ```
 `Verbose mode usage` is again very helpful here. It will show you the entire prompt, including the history that's being sent to the LLM. If the history is empty or incorrect, you'll see it right there, helping you `debug langchain error handling examples` related to memory.
 
@@ -764,9 +764,9 @@ from langchain.llms import OpenAI
 try:
     llm = OpenAI(temperature=0)
     response = llm("Hello, world!")
-    print(f"LLM works: {response.strip()}")
+    print(f"LLM works: {% raw %}{response.strip()}{% endraw %}")
 except Exception as e:
-    print(f"LLM itself is failing: {e}")
+    print(f"LLM itself is failing: {% raw %}{e}{% endraw %}")
     # If it fails here, the problem is likely API key or OpenAI access.
 
 # Step 2: Does a simple Chain work?
@@ -777,9 +777,9 @@ try:
     prompt = PromptTemplate(input_variables=["topic"], template="Tell me about {topic}.")
     chain = LLMChain(llm=llm, prompt=prompt)
     response = chain.run("AI")
-    print(f"Simple chain works: {response.strip()}")
+    print(f"Simple chain works: {% raw %}{response.strip()}{% endraw %}")
 except Exception as e:
-    print(f"Simple chain is failing: {e}")
+    print(f"Simple chain is failing: {% raw %}{e}{% endraw %}")
     # If it fails here, the problem might be prompt formatting or chain setup.
 
 # Step 3: Does a specific Tool work on its own?
@@ -793,11 +793,11 @@ def simple_calculator(expression: str) -> str:
         return f"Error in calculation: {e}"
 try:
     result = simple_calculator("5+5")
-    print(f"Calculator tool works: {result}")
+    print(f"Calculator tool works: {% raw %}{result}{% endraw %}")
     result_fail = simple_calculator("abc")
-    print(f"Calculator tool (fail test): {result_fail}")
+    print(f"Calculator tool (fail test): {% raw %}{result_fail}{% endraw %}")
 except Exception as e:
-    print(f"Tool itself is failing: {e}")
+    print(f"Tool itself is failing: {% raw %}{e}{% endraw %}")
     # If it fails here, the tool's logic is the problem.
 
 # ... and so on for each component.
@@ -829,7 +829,7 @@ from langchain.prompts import PromptTemplate
 llm = OpenAI(temperature=0)
 prompt = PromptTemplate(
     input_variables=["thing"],
-    template="Explain {thing} in a fun way.",
+    template="Explain {% raw %}{thing}{% endraw %} in a fun way.",
 )
 
 def run_explanation_chain(item_to_explain: str):
@@ -837,7 +837,7 @@ def run_explanation_chain(item_to_explain: str):
     A function to run the explanation chain.
     You can set a breakpoint inside this function in your IDE.
     """
-    print(f"Attempting to explain: {item_to_explain}")
+    print(f"Attempting to explain: {% raw %}{item_to_explain}{% endraw %}")
     chain = LLMChain(llm=llm, prompt=prompt)
     
     # Set a breakpoint on the next line in your IDE!
@@ -852,9 +852,9 @@ if __name__ == "__main__":
     print("\n--- Running with IDE Debugger (Set a breakpoint!) ---")
     try:
         explanation = run_explanation_chain("black holes")
-        print(f"Result: {explanation}")
+        print(f"Result: {% raw %}{explanation}{% endraw %}")
     except Exception as e:
-        print(f"An error occurred during explanation: {e}")
+        print(f"An error occurred during explanation: {% raw %}{e}{% endraw %}")
 
     # Example of a potential error point that you could debug:
     # If prompt had a typo in input_variables or template,
@@ -864,9 +864,9 @@ if __name__ == "__main__":
         # If 'thing' was missing or misspelled in the prompt template,
         # 'chain.run' might fail here, and the debugger would show you.
         explanation_error = run_explanation_chain("quantum entanglement")
-        print(f"Result for quantum entanglement: {explanation_error}")
+        print(f"Result for quantum entanglement: {% raw %}{explanation_error}{% endraw %}")
     except Exception as e:
-        print(f"Caught an error in the second run: {e}")
+        print(f"Caught an error in the second run: {% raw %}{e}{% endraw %}")
 ```
 
 When you set a breakpoint on `final_result = chain.run(thing=item_to_explain)` and run your script in debug mode, your program will pause there. You can then inspect the `chain` object, the `prompt`, and the `item_to_explain` to ensure everything is correct before the LLM call. This helps immensely with `debugging tools integration`.
@@ -890,11 +890,11 @@ logger = logging.getLogger(__name__)
 llm = OpenAI(temperature=0)
 prompt = PromptTemplate(
     input_variables=["concept"],
-    template="What is the main idea behind {concept}?",
+    template="What is the main idea behind {% raw %}{concept}{% endraw %}?",
 )
 
 def get_concept_explanation(concept: str) -> str:
-    logger.info(f"Starting explanation for concept: '{concept}'")
+    logger.info(f"Starting explanation for concept: '{% raw %}{concept}{% endraw %}'")
     try:
         chain = LLMChain(llm=llm, prompt=prompt)
         # You can add more detailed logging here if needed
@@ -902,10 +902,10 @@ def get_concept_explanation(concept: str) -> str:
         # logger.debug(f"LLM temperature: {llm.temperature}")
 
         explanation = chain.run(concept)
-        logger.info(f"Successfully got explanation for '{concept}'.")
+        logger.info(f"Successfully got explanation for '{% raw %}{concept}{% endraw %}'.")
         return explanation
     except Exception as e:
-        logger.error(f"Error getting explanation for '{concept}': {e}", exc_info=True)
+        logger.error(f"Error getting explanation for '{% raw %}{concept}{% endraw %}': {% raw %}{e}{% endraw %}", exc_info=True)
         # exc_info=True adds traceback to the log
         raise # Re-raise the exception after logging
 
@@ -913,7 +913,7 @@ if __name__ == "__main__":
     print("\n--- Running with Python Logging ---")
     try:
         result1 = get_concept_explanation("recursion")
-        print(f"Explanation 1: {result1.strip()}")
+        print(f"Explanation 1: {% raw %}{result1.strip()}{% endraw %}")
     except Exception:
         print("Failed to get explanation 1. Check logs.")
 
@@ -922,7 +922,7 @@ if __name__ == "__main__":
         # Imagine 'concept' was actually 'missing_var_in_prompt'
         # or LLM had an issue
         result2 = get_concept_explanation("parallel computing") # This will likely run fine
-        print(f"Explanation 2: {result2.strip()}")
+        print(f"Explanation 2: {% raw %}{result2.strip()}{% endraw %}")
     except Exception:
         print("Failed to get explanation 2. Check logs.")
 
