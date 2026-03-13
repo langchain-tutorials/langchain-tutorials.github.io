@@ -446,7 +446,7 @@ While LangChain offers output parsers, Guidance integrates the output structure 
 
 ##### Quick Example (Snippet Idea)
 Generating structured JSON output.
-```python
+```f python
 import guidance
 
 # Set up your LLM (e.g., OpenAI)
