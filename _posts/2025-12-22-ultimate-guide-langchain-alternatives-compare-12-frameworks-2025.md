@@ -69,15 +69,16 @@ While LangChain offers similar chaining capabilities, Semantic Kernel is deeply 
 
 ##### Quick Example (Snippet Idea)
 Imagine a simple email assistant that summarizes emails.
-{% raw %}
 ```python
 import semantic_kernel as sk
 from semantic_kernel.connectors.ai.open_ai import AzureTextCompletion, OpenAITextCompletion
+
 # Set up your AI model (e.g., OpenAI or Azure OpenAI)
 kernel = sk.Kernel()
 api_key = "YOUR_OPENAI_API_KEY"
 org_id = "YOUR_OPENAI_ORG_ID"
 kernel.add_text_completion_service("dv", OpenAITextCompletion("text-davinci-003", api_key, org_id))
+
 # Define an AI skill (e.g., summarizer)
 summarizer_skill = kernel.create_semantic_function(
     """
@@ -89,12 +90,12 @@ summarizer_skill = kernel.create_semantic_function(
     temperature=0.7,
     top_p=0.5
 )
+
 # Use the skill
 email_text = "Subject: Meeting Reminder. Hi team, just a reminder about our meeting tomorrow at 10 AM regarding project X. Please review the attached report. Thanks, John."
 summary = summarizer_skill(email_text)
 print(summary) # Output: Meeting tomorrow at 10 AM for project X. Review attached report.
 ```
-{% endraw %}
 This example shows how easily you can add an AI skill like summarization to your code.
 
 ##### Learning Resources / Affiliate Link
@@ -448,7 +449,6 @@ While LangChain offers output parsers, Guidance integrates the output structure 
 
 ##### Quick Example (Snippet Idea)
 Generating structured JSON output.
-{% raw %}
 ```python
 import guidance
 
@@ -479,7 +479,6 @@ print(extracted_info) # Output: {'name': 'Alice', 'age': '30'} (or similar struc
 # result = program_conditional()
 # print(result)
 ```
-{% endraw %}
 This shows how to get structured output directly from the LLM.
 
 ##### Learning Resources / Affiliate Link
@@ -683,13 +682,13 @@ user_data: User = client.chat.completions.create(
     model="gpt-4",
     response_model=User, # Tell the LLM to respond with a User object
     messages=[
-        {"role": "user", "content": "Create a user named John Doe, aged 42, with email john.doe@company.com."}
+        {"role": "user", "content": "Create a user named John Doe, aged 42, with email john.doe@example.com."}
     ]
 )
 
 print(user_data.name)  # Output: John Doe
 print(user_data.age)   # Output: 42
-print(user_data.email) # Output: john.doe@company.com
+print(user_data.email) # Output: john.doe@example.com
 
 # If the LLM output is malformed, Instructor will try to fix it or raise an error.
 ```

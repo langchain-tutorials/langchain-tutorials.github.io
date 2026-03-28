@@ -84,7 +84,7 @@ pdf_path = "my_report.pdf"
 loader = PyPDFLoader(pdf_path)
 documents = loader.load()
 
-print(f"Loaded {% raw %}{len(documents)}{% endraw %} pages from the PDF.")
+print(f"Loaded {len(documents)} pages from the PDF.")
 # Each 'document' in the list represents a page from the PDF
 # You can see the content of the first page like this:
 if documents:
@@ -108,7 +108,7 @@ docx_path = "my_notes.docx"
 loader = Docx2txtLoader(docx_path)
 documents = loader.load()
 
-print(f"Loaded {% raw %}{len(documents)}{% endraw %} document from the DOCX file.")
+print(f"Loaded {len(documents)} document from the DOCX file.")
 # For DOCX, it usually loads the whole document as one entry
 if documents:
     print(documents[0].page_content[:200]) # Print first 200 characters
@@ -136,7 +136,7 @@ url = "https://www.paulgraham.com/greatwork.html" # Example public article
 loader = WebBaseLoader(url)
 documents = loader.load()
 
-print(f"Loaded {% raw %}{len(documents)}{% endraw %} document from the webpage.")
+print(f"Loaded {len(documents)} document from the webpage.")
 if documents:
     print(documents[0].page_content[:200]) # Print first 200 characters
 ```
@@ -197,11 +197,11 @@ text_splitter = RecursiveCharacterTextSplitter(
 # For a simple string:
 chunks = text_splitter.create_documents([document_content])
 
-print(f"Original text length: {% raw %}{len(document_content)}{% endraw %} characters")
-print(f"Number of chunks created: {% raw %}{len(chunks)}{% endraw %}")
+print(f"Original text length: {len(document_content)} characters")
+print(f"Number of chunks created: {len(chunks)}")
 for i, chunk in enumerate(chunks):
-    print(f"Chunk {% raw %}{i+1}{% endraw %} (length {% raw %}{len(chunk.page_content)}{% endraw %}):")
-    print(f"  '{% raw %}{chunk.page_content}{% endraw %}'")
+    print(f"Chunk {i+1} (length {len(chunk.page_content)}):")
+    print(f"  '{chunk.page_content}'")
 ```
 
 You can see how the text is broken into smaller parts, with a bit of overlap. This ensures that the context flows smoothly between chunks, which is very important for accurate retrieval. Choosing the right `chunk_size` and `chunk_overlap` is often an art, depending on your specific documents.
@@ -259,7 +259,7 @@ embeddings_model = HuggingFaceEmbeddings(model_name=model_name)
 text = "This is a test sentence for embeddings."
 query_result = embeddings_model.embed_query(text)
 
-print(f"Embedding vector length: {% raw %}{len(query_result)}{% endraw %}")
+print(f"Embedding vector length: {len(query_result)}")
 # print(query_result[:5]) # Print first 5 values of the embedding vector
 ```
 
@@ -277,7 +277,7 @@ For using OpenAI's embedding models, you would need an OpenAI API key.
 
 # # embeddings_model = OpenAIEmbeddings(model="text-embedding-ada-002")
 # # query_result = embeddings_model.embed_query(text)
-# # print(f"OpenAI Embedding vector length: {% raw %}{len(query_result)}{% endraw %}")
+# # print(f"OpenAI Embedding vector length: {len(query_result)}")
 ```
 
 You can see how LangChain makes it consistent to work with different embedding providers. This flexibility is key for our langchain rag tutorial 2026.
@@ -464,9 +464,9 @@ retriever = db.as_retriever(search_kwargs={"k": 3})
 query = "What is the capital of France and what can I see there?"
 retrieved_docs = retriever.invoke(query)
 
-print(f"Retrieved {% raw %}{len(retrieved_docs)}{% endraw %} documents for the query: '{% raw %}{query}{% endraw %}'")
+print(f"Retrieved {len(retrieved_docs)} documents for the query: '{query}'")
 for i, doc in enumerate(retrieved_docs):
-    print(f"\n--- Retrieved Document {% raw %}{i+1}{% endraw %} ---")
+    print(f"\n--- Retrieved Document {i+1} ---")
     print(doc.page_content)
 ```
 
@@ -543,7 +543,7 @@ llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0) # temperature=0 make
 # This prompt tells the LLM its role and how to use the context
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are an assistant for question-answering tasks. Use the following retrieved context to answer the question. If you don't know the answer, just say that you don't know. Keep the answer concise."),
-    ("human", "Question: {% raw %}{input}{% endraw %}\nContext: {% raw %}{context}{% endraw %}")
+    ("human", "Question: {input}\nContext: {context}")
 ])
 
 # 7. Create the document combining chain
@@ -564,12 +564,12 @@ print(f"Answer: {response['answer']}")
 question_2 = "What is LangChain?"
 response_2 = retrieval_chain.invoke({"input": question_2})
 print(f"\nQuestion: {question_2}")
-print(f"Answer: {% raw %}{response_2['answer']}{% endraw %}")
+print(f"Answer: {response_2['answer']}")
 
 question_3 = "When was the Earth formed?" # Not in our documents
 response_3 = retrieval_chain.invoke({"input": question_3})
 print(f"\nQuestion: {question_3}")
-print(f"Answer: {% raw %}{response_3['answer']}{% endraw %}")
+print(f"Answer: {response_3['answer']}") # Should respond with "I don't know" or similar
 ```
 
 This code sets up a complete RAG system. You provide the question, the system retrieves relevant facts, and the LLM uses those facts to give you an answer. Notice how the LLM correctly says "I don't know" for a question outside its provided documents. This is the power of RAG! You've built a fully functional system as part of this langchain rag tutorial 2026.
@@ -632,7 +632,7 @@ print("--- Step 1: Loading documents ---")
 # Use DirectoryLoader to load all .txt files from the 'documents' folder
 loader = DirectoryLoader('./documents', glob="**/*.txt", loader_cls=TextLoader)
 raw_documents = loader.load()
-print(f"Loaded {% raw %}{len(raw_documents)}{% endraw %} raw documents.")
+print(f"Loaded {len(raw_documents)} raw documents.")
 
 # --- 2. Split Documents into Chunks ---
 print("\n--- Step 2: Splitting documents into chunks ---")
@@ -642,8 +642,8 @@ text_splitter = RecursiveCharacterTextSplitter(
     length_function=len
 )
 document_chunks = text_splitter.split_documents(raw_documents)
-print(f"Split into {% raw %}{len(document_chunks)}{% endraw %} chunks.")
-print(f"Example chunk (first 200 chars): {% raw %}{document_chunks[0].page_content[:200]}{% endraw %}...")
+print(f"Split into {len(document_chunks)} chunks.")
+print(f"Example chunk (first 200 chars): {document_chunks[0].page_content[:200]}...")
 
 # --- 3. Create Embeddings and Store in Vector DB ---
 print("\n--- Step 3: Creating embeddings and storing in Chroma DB ---")
@@ -672,15 +672,15 @@ try:
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
     print("OpenAI LLM initialized successfully.")
 except Exception as e:
-    print(f"Error initializing OpenAI LLM: {% raw %}{e}{% endraw %}")
+    print(f"Error initializing OpenAI LLM: {e}")
     print("Please ensure your OPENAI_API_KEY environment variable is set correctly.")
     exit() # Exit if LLM can't be initialized
 
 # --- 6. Define the Prompt Template ---
 print("\n--- Step 6: Defining the prompt template ---")
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are an assistant for question-answering tasks. Use the following retrieved context to answer the question. If you don't know the answer, just say that you don't know. Keep the answer concise and based ONLY on the provided context.\nContext: {% raw %}{context}{% endraw %}"),
-    ("human", "Question: {% raw %}{input}{% endraw %}")
+    ("system", "You are an assistant for question-answering tasks. Use the following retrieved context to answer the question. If you don't know the answer, just say that you don't know. Keep the answer concise and based ONLY on the provided context.\nContext: {context}"),
+    ("human", "Question: {input}")
 ])
 print("Prompt template defined.")
 
@@ -701,9 +701,9 @@ questions = [
 ]
 
 for q in questions:
-    print(f"\n--- Question: {% raw %}{q}{% endraw %} ---")
+    print(f"\n--- Question: {q} ---")
     response = retrieval_chain.invoke({"input": q})
-    print(f"Answer: {% raw %}{response['answer']}{% endraw %}")
+    print(f"Answer: {response['answer']}")
     # You can also inspect the retrieved documents
     # print("\nRetrieved documents:")
     # for doc in response['context']:
