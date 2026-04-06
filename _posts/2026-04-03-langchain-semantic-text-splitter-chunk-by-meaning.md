@@ -46,7 +46,7 @@ Let's break down the process of how the **LangChain semantic text splitter** act
 
 The secret sauce for semantic splitting lies in something called "embeddings." Imagine you have a dictionary, and for every word, you assign a special set of numbers. Words that mean similar things would have numbers that are very close to each other. For example, the numbers for "cat" and "kitten" would be very similar, while "cat" and "bicycle" would be far apart.
 
-This is what embeddings do for words, sentences, and even entire paragraphs. A special computer program, called an embedding model, takes your text and turns it into a list of numbers. These numbers are a mathematical representation of the text's meaning. The closer the numbers are, the more similar the meanings are. You can learn more about choosing these models in our post on {% post_url 2023-02-15-choosing-embedding-models %}.
+This is what embeddings do for words, sentences, and even entire paragraphs. A special computer program, called an embedding model, takes your text and turns it into a list of numbers. These numbers are a mathematical representation of the text's meaning. The closer the numbers are, the more similar the meanings are. You can learn more about choosing these models in our post on {% post_url 2026-01-16-langchain-vector-store-embeddings-similarity-search %}.
 
 #### Finding the "Breaks"
 
@@ -106,7 +106,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 ```
 
-Choosing the right embedding model is important. Some models are better for specific kinds of text, like medical documents or legal papers. You can find more details about selecting the best embedding model for your needs in our guide on {% post_url 2023-02-15-choosing-embedding-models %}.
+Choosing the right embedding model is important. Some models are better for specific kinds of text, like medical documents or legal papers. You can find more details about selecting the best embedding model for your needs in our guide on {% post_url 2026-01-16-langchain-vector-store-embeddings-similarity-search %}.
 
 #### Initialize the SemanticChunker
 
@@ -286,7 +286,7 @@ By using **embedding-based splitting**, you ensure that each chunk is focused an
 
 LLMs work best when they receive clear, complete pieces of information. If a chunk is broken in the middle of a sentence or a core idea, the LLM has to try and piece together meaning from incomplete fragments. This makes its job harder and can lead to less accurate or less insightful responses.
 
-**Meaning-aware chunks** provide the LLM with full, self-contained ideas. This allows the LLM to understand the context much more easily and generate more comprehensive and accurate answers. It's like giving an artist a complete canvas instead of torn pieces. To dive deeper into how RAG works, check out our blog post on {% post_url 2023-01-01-understanding-rag %}.
+**Meaning-aware chunks** provide the LLM with full, self-contained ideas. This allows the LLM to understand the context much more easily and generate more comprehensive and accurate answers. It's like giving an artist a complete canvas instead of torn pieces. To dive deeper into how RAG works, check out our blog post on {% post_url 2026-02-05-build-rag-applications-langchain-vector-store-2026 %}.
 
 #### Efficiency
 
@@ -304,7 +304,7 @@ The performance of the `SemanticChunker` is highly dependent on the quality and 
 
 *   **Domain-Specific Models:** If your text is highly specialized (e.g., medical research, legal documents, financial reports), a generic embedding model like `all-MiniLM-L6-v2` might not capture the nuances as effectively. Consider using embedding models specifically trained on data from your domain. For example, there are models fine-tuned on biomedical text.
 *   **Performance vs. Accuracy:** Larger, more complex embedding models (e.g., `BAAI/bge-large-en-v1.5`) often provide higher quality embeddings but are slower and require more computational resources. Smaller models are faster but might be less precise. You need to balance these factors.
-*   **Commercial Options:** Besides open-source models from Hugging Face, you can also use powerful commercial embedding models like `OpenAIEmbeddings` or `CohereEmbeddings` through LangChain integrations. These often offer excellent general-purpose performance. Our guide on {% post_url 2023-02-15-choosing-embedding-models %} offers a comprehensive look at these choices.
+*   **Commercial Options:** Besides open-source models from Hugging Face, you can also use powerful commercial embedding models like `OpenAIEmbeddings` or `CohereEmbeddings` through LangChain integrations. These often offer excellent general-purpose performance. Our guide on {% post_url 2026-01-16-langchain-vector-store-embeddings-similarity-search %} offers a comprehensive look at these choices.
 
 #### Handling Very Long Documents
 

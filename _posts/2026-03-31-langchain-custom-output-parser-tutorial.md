@@ -296,6 +296,7 @@ Pydantic models are fantastic for defining data schemas with type hints and buil
 
 Let's say you want to extract not just fruit and color, but also whether it's "seasonal" and its "average weight" as a number.
 
+{% raw %}
 ```python
 from langchain_core.output_parsers import BaseOutputParser
 from langchain_core.prompts import PromptTemplate
@@ -376,6 +377,7 @@ Example:
 # Rest of the chain setup (omitted for brevity, similar to previous example)
 # You would use ComplexFruitParser instead of FruitColorParser
 ```
+{% endraw %}
 
 In this example, the `parse` method attempts to load the LLM's output as a JSON string and then validates each item against the `FruitDetail` Pydantic model. The `format_instructions` are even more robust because they use the actual Pydantic schema to guide the LLM, making it very precise. This is a powerful way to `LangChain extend` your parsing capabilities for sophisticated data.
 
@@ -442,6 +444,7 @@ Sometimes, the precise `format_instructions` needed by the LLM depend on the spe
 
 You can achieve dynamic `format_instructions` by making the property a method that takes arguments or by generating the instructions based on other inputs available to your parser or chain.
 
+{% raw %}
 ```python
 class DynamicSchemaParser(BaseOutputParser[Dict[str, Any]]):
     def __init__(self, schema_definition: Dict[str, str]):
@@ -487,6 +490,7 @@ dynamic_parser = DynamicSchemaParser(schema_definition=user_schema)
 # )
 # ... rest of the chain
 ```
+{% endraw %}
 
 Here, the `DynamicSchemaParser` takes a `schema_definition` during its initialization. The `get_format_instructions` method then uses this internal `schema_definition` to build the prompt instructions, making them dynamic. This way, your `custom LangChain output parser` can adapt its guidance to the LLM based on external parameters.
 

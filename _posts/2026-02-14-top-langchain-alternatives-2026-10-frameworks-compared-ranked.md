@@ -440,6 +440,7 @@ Imagine you have many product reviews, and you want an AI to extract the product
 
 You would write a prompt that tells the AI: "Extract 'product_name', 'rating' (1-5 stars), 'positives' (list), and 'negatives' (list) from this review." Guidance would then ensure the AI returns the information in exactly that structured format, making it easy to put into a database. This precision makes it one of the best LangChain alternatives 2026 for data extraction tasks.
 
+{% raw %}
 ```python
 # Simple idea of Guidance (pseudo-code)
 import guidance
@@ -463,6 +464,7 @@ Extract:
 # result = program()
 # print(result)
 ```
+{% endraw %}
 
 #### Pros & Cons of Guidance
 

@@ -318,6 +318,7 @@ Guidance has a solid and growing community, especially among developers who prio
 
 Let's say you want an LLM to extract information from text and always return it as a JSON object with specific keys. Guidance makes this very easy:
 
+{% raw %}
 ```python
 import guidance
 import os
@@ -335,7 +336,6 @@ class MockLLM:
 guidance.llm = MockLLM()
 
 
-{% raw %}
 # Define your Guidance program (mixing text and Python logic)
 program = guidance("""
 Extract the name and age from the following text:
@@ -345,7 +345,6 @@ Output JSON:
     "name": "{{gen 'name'}}",
     "age": {{gen 'age', pattern='[0-9]+'}}
 }""")
-{% endraw %}
 
 # Run the program with your input text
 output = program(text="My friend Alice is 30 years old.")
@@ -354,8 +353,9 @@ output = program(text="My friend Alice is 30 years old.")
 print(output["name"])
 print(output["age"])
 ```
+{% endraw %}
 
-In this example, the `program` defines a template. The `{{gen 'name'}}` and `{{gen 'age', pattern='[0-9]+'}}` parts tell the LLM to generate specific pieces of information. The `pattern='[0-9]+'` part even forces the 'age' to be a number. This ensures you get structured data every time, which is incredibly useful for integrating LLM output into your applications.
+In this example, the `program` defines a template. The {% raw %}`{{gen 'name'}}`{% endraw %} and {% raw %}`{{gen 'age', pattern='[0-9]+'}}`{% endraw %} parts tell the LLM to generate specific pieces of information. The `pattern='[0-9]+'` part even forces the 'age' to be a number. This ensures you get structured data every time, which is incredibly useful for integrating LLM output into your applications.
 
 #### Custom Solutions / Microframeworks
 

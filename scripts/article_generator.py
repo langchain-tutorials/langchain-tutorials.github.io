@@ -8,6 +8,17 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 
 def generate_article(title, focus_kw, permalink, semantic_kw, affiliate_links):
     """Generate SEO-optimized blog article"""
+    # List of recent valid 2026 posts for internal linking context
+    recent_posts = """
+    - 2026-04-06-langchain-google-gemini-function-calling-agent-custom-tools.md
+    - 2026-04-05-langgraph-stategraph-multi-step-ai-agent.md
+    - 2026-04-05-langchain-weaviate-hybrid-search-scalable-rag.md
+    - 2026-04-03-langchain-semantic-text-splitter-chunk-by-meaning.md
+    - 2026-03-31-langchain-custom-output-parser-tutorial.md
+    - 2026-02-14-top-langchain-alternatives-2026-10-frameworks-compared-ranked.md
+    - 2026-02-05-build-rag-applications-langchain-vector-store-2026.md
+    """
+
     prompt = f"""
 write an SEO-optimised blog on the title {title}. using the Focus keyword {focus_kw} and using LSI Keywords {semantic_kw}
 use the following
@@ -19,7 +30,14 @@ Rules:
 - if need link websites to refer to information
 - do not highlight keywords
 - Include practical examples related to {focus_kw}
-- do internal linking to other blog posts where relevant
+- IMPORTANT: Internal Linking:
+    - Use Jekyll format: [Link Text]({{% post_url yyyy-mm-dd-slug %}})
+    - Current Year is 2026. DO NOT use years before 2026 for links.
+    - Here are some valid recent posts you can link to if relevant:
+    {recent_posts}
+- IMPORTANT: Liquid Syntax & Code Blocks:
+    - If a code block contains double curly braces (e.g., {{{{ ... }}}}) or Liquid tags (e.g., {{% ... %}}), wrap the ENTIRE block in {{% raw %}} and {{% endraw %}} tags.
+    - Example: {{% raw %}} ```python \n print("{{{{var}}}}") \n ``` {{% endraw %}}
 - Use H2 and H3, h4, h5, h6 headings, no H1
 - Use lists, tables, snippets, and other data formats
 - Write more than 2000 words
@@ -37,10 +55,46 @@ Rules:
     # Remove any front matter that AI might have added
     content = remove_front_matter(response.text)
     
+    # Sanitize content for common Liquid/Jekyll errors
+    content = sanitize_liquid_syntax(content)
+    
     # Add custom front matter
     article = create_custom_front_matter(title, focus_kw, permalink) + "\n\n" + content
     
     return article
+
+def sanitize_liquid_syntax(content):
+    """
+    Sanitize generated content for common Liquid syntax errors:
+    1. Wrap code blocks containing {{ or {% in {% raw %} tags.
+    2. Fix malformed Liquid tags (e.g., {% - endif %}).
+    """
+    import re
+    
+    # 1. Wrap code blocks containing {{ or {% in {% raw %} if not already wrapped
+    # Match fenced code blocks
+    code_block_regex = r'```(.*?)\n(.*?)```'
+    
+    def wrap_raw(match):
+        lang = match.group(1)
+        code = match.group(2)
+        # Check if code contains suspicious Liquid-like syntax
+        if ('{{' in code or '{%' in code) and '{% raw %}' not in code:
+            return f'{{% raw %}}\n``` {lang}\n{code}```\n{{% endraw %}}'
+        return match.group(0)
+    
+    # Apply to all code blocks
+    content = re.sub(code_block_regex, wrap_raw, content, flags=re.DOTALL)
+    
+    # 2. Fix common malformed tags (e.g. spaces in the wrong places)
+    content = content.replace('{% -', '{%-').replace('- %}', '-%}')
+    content = content.replace('{%  endif %}', '{% endif %}')
+    content = content.replace('{% - endif %}', '{% endif %}')
+    
+    # 3. Final safety check for any remaining un-escaped double braces in text that look like Liquid
+    # (Optional: can be aggressive, but might break valid text. Let's stick to code blocks for now.)
+    
+    return content
 
 def remove_front_matter(content):
     """Remove any existing front matter from AI-generated content"""

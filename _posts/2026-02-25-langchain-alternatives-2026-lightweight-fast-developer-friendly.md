@@ -314,14 +314,12 @@ async def run_sk_example():
     prompt_config = sk.PromptTemplateConfig.from_completion_parameters(
         max_tokens=200, temperature=0.7, top_p=0.5
     )
-{% raw %}
     prompt_template = sk.PromptTemplate("Tell me a fun fact about {{topic}}.", kernel, prompt_config)
-{% endraw %}
     fun_fact_function = kernel.create_semantic_function(prompt_template, "FunFacts", "TellFact")
 
     # 4. Use the skill!
     result = await kernel.run_async(fun_fact_function(topic="ocean"))
-    print(f"Robot says: {% raw %}{result}{% endraw %}")
+    print(f"Robot says: {result}")
 
 # To run this, you would typically use asyncio:
 # import asyncio
@@ -347,6 +345,7 @@ Imagine you're telling a story to your robot helper, but you want it to fill in 
 
 Guidance uses a templating language that mixes regular text with special commands for the AI. This allows for **simple APIs** to control complex generation tasks. It promotes **quick setup** for specific scenarios where you need the AI to follow a pattern.
 
+{% raw %}
 ```python
 # Guidance code snippet for guided text generation
 # You'll need to install guidance: pip install guidance
@@ -362,7 +361,6 @@ gpt = guidance.models.OpenAI("gpt-3.5-turbo")
 
 # Define your guided generation program
 # You're telling the robot to write a story but fill in parts.
-{% raw %}
 story_writer = guidance("""
 The following is a story about a brave knight named {{knight_name}}.
 He lived in a kingdom called {{kingdom_name}}.
@@ -370,7 +368,6 @@ He lived in a kingdom called {{kingdom_name}}.
 The knight bravely fought against a {{select "dragon" "goblin" "wizard"}}
 and after a fierce battle, he {{select "won" "lost"}}.
 """)
-{% endraw %}
 
 # Run the program with your choices
 # This is like giving the robot some starting ideas.
@@ -383,7 +380,6 @@ executed_story = gpt(
 print(executed_story)
 
 # You can also use it for structured extraction!
-{% raw %}
 extractor = guidance("""
 Given the following text:
 "My name is Alice, I am 25 years old and I love to hike."
@@ -393,11 +389,11 @@ Name: {{gen "name" stop=","}}
 Age: {{gen "age" stop=" "}}
 Hobby: {{gen "hobby" stop="."}}
 """)
-{% endraw %}
 
 extracted_info = gpt(extractor)
 print(extracted_info)
 ```
+{% endraw %}
 
 Guidance truly has a **developer-first design** for fine-grained control over AI outputs. Its ability to interleave generation with control makes for highly **streamlined workflows**. This is one of the most **efficient alternatives** for ensuring the AI produces exactly what you need.
 
