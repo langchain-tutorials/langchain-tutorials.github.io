@@ -35,6 +35,7 @@ Rules:
     - Current Year is 2026. DO NOT use years before 2026 for links.
     - Here are some valid recent posts you can link to if relevant:
     {recent_posts}
+    - CRITICAL: DO NOT include the '.md' extension in the post_url tag.
 - IMPORTANT: Liquid Syntax & Code Blocks:
     - If a code block contains double curly braces (e.g., {{{{ ... }}}}) or Liquid tags (e.g., {{% ... %}}), wrap the ENTIRE block in {{% raw %}} and {{% endraw %}} tags.
     - Example: {{% raw %}} ```python \n print("{{{{var}}}}") \n ``` {{% endraw %}}
@@ -91,8 +92,8 @@ def sanitize_liquid_syntax(content):
     content = content.replace('{%  endif %}', '{% endif %}')
     content = content.replace('{% - endif %}', '{% endif %}')
     
-    # 3. Final safety check for any remaining un-escaped double braces in text that look like Liquid
-    # (Optional: can be aggressive, but might break valid text. Let's stick to code blocks for now.)
+    # 3. Fix broken post_url tags (remove .md extension)
+    content = re.sub(r'\{% post_url (.*?).md %\}', r'{% post_url \1 %}', content)
     
     return content
 

@@ -350,7 +350,7 @@ In this advanced example, the `LangChain bind_tools OpenAI` setup allowed the mo
 
 `bind_tools` fits seamlessly into the `LangChain LCEL` (LangChain Expression Language) paradigm, allowing you to create sophisticated pipelines. LCEL lets you chain together different components like prompts, models, and output parsers in a clear and efficient way. When you use `bind_tools`, your model becomes a smart component capable of interacting with the world.
 
-You can combine `bind_tools` with other LCEL features to build powerful agents. For example, you might have a prompt that gathers information, then an LLM with tools, and finally a custom output parser to format the results. This modular approach makes your applications robust and easy to maintain. For more details on building robust RAG applications, check out our guide on [Build RAG Applications with LangChain Vector Store in 2026]({% post_url 2026-02-05-build-rag-applications-langchain-vector-store-2026.md %}).
+You can combine `bind_tools` with other LCEL features to build powerful agents. For example, you might have a prompt that gathers information, then an LLM with tools, and finally a custom output parser to format the results. This modular approach makes your applications robust and easy to maintain. For more details on building robust RAG applications, check out our guide on [Build RAG Applications with LangChain Vector Store in 2026]({% post_url 2026-02-05-build-rag-applications-langchain-vector-store-2026 %}).
 
 Here’s a conceptual flow of how tools integrate into an LCEL chain:
 
@@ -359,7 +359,7 @@ Here’s a conceptual flow of how tools integrate into an LCEL chain:
 3.  **Tool Executor (Implicit in basic examples, explicit in agents):** If the LLM suggests a tool, this part actually runs the tool.
 4.  **Tool Output:** The result from the tool is fed back to the LLM.
 5.  **LLM (again):** Processes the tool's output to generate a final, coherent answer.
-6.  **Output Parser (Optional):** Structures the final response into a desired format. You can learn more about this in our [LangChain Custom Output Parser Tutorial]({% post_url 2026-03-31-langchain-custom-output-parser-tutorial.md %}).
+6.  **Output Parser (Optional):** Structures the final response into a desired format. You can learn more about this in our [LangChain Custom Output Parser Tutorial]({% post_url 2026-03-31-langchain-custom-output-parser-tutorial %}).
 
 Let's look at a more complete LCEL example that integrates tools and then processes their output. This is a common pattern for building interactive applications with `LangChain bind_tools OpenAI`.
 
@@ -511,9 +511,9 @@ This comprehensive LCEL example demonstrates a robust pattern for integrating to
 
 While `bind_tools` provides the foundational capability for an LLM to suggest tool calls, it's often just the first step. To build truly autonomous and conversational AI applications, you'll want to explore LangChain Agents. Agents use a loop where the LLM decides on a series of steps: observe, think, act. Each "act" often involves calling one or more tools.
 
-`bind_tools` is the core mechanism that equips the agent's LLM with its available actions. Without properly bound tools, an agent cannot interact with external systems. To dive deeper into building these advanced systems, you might find our articles on [LangGraph StateGraph Multi-Step AI Agent]({% post_url 2026-04-05-langgraph-stategraph-multi-step-ai-agent.md %}) and [LangChain Google Gemini Function Calling Agent Custom Tools]({% post_url 2026-04-06-langchain-google-gemini-function-calling-agent-custom-tools.md %}) very helpful.
+`bind_tools` is the core mechanism that equips the agent's LLM with its available actions. Without properly bound tools, an agent cannot interact with external systems. To dive deeper into building these advanced systems, you might find our articles on [LangGraph StateGraph Multi-Step AI Agent]({% post_url 2026-04-05-langgraph-stategraph-multi-step-ai-agent %}) and [LangChain Google Gemini Function Calling Agent Custom Tools]({% post_url 2026-04-06-langchain-google-gemini-function-calling-agent-custom-tools %}) very helpful.
 
-You can also create custom tools that interact with databases, perform web searches (like explained in [LangChain Weaviate Hybrid Search Scalable RAG]({% post_url 2026-04-05-langchain-weaviate-hybrid-search-scalable-rag.md %})), or even manage complex business logic. The flexibility of `LangChain bind_tools OpenAI` allows you to create highly specialized agents tailored to your specific needs. Understanding how to define and bind tools is essential for unlocking the full potential of these advanced AI systems.
+You can also create custom tools that interact with databases, perform web searches (like explained in [LangChain Weaviate Hybrid Search Scalable RAG]({% post_url 2026-04-05-langchain-weaviate-hybrid-search-scalable-rag %})), or even manage complex business logic. The flexibility of `LangChain bind_tools OpenAI` allows you to create highly specialized agents tailored to your specific needs. Understanding how to define and bind tools is essential for unlocking the full potential of these advanced AI systems.
 
 ### Tips for Success with `LangChain bind_tools OpenAI`
 
