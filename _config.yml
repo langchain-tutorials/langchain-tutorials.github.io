@@ -70,9 +70,9 @@ lunr:
   search_within_pages    : true # true, false (default)
 
 algolia:
-  application_id         : # YOUR_APPLICATION_ID (optional - for advanced search)
+  application_id         : CUSPHD195L
   index_name             : # YOUR_INDEX_NAME
-  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
+  search_only_api_key    : 7eafdf0e991669fa43b7b2272f5d0788
   powered_by             : true # true (default), false
 
 google:
