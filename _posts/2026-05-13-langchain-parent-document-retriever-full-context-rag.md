@@ -197,7 +197,6 @@ for i, doc in enumerate(retrieved_docs_2):
     print(doc.page_content[:500] + "...") # Print first 500 chars for brevity
     print(f"Metadata: {doc.metadata}")
 ```
-{% endraw %}
 
 In this example, when you query "What is the primary goal of Innovate AI Hub?", the retriever will first find small chunks that match this. Then, it will fetch the entire larger **parent chunk** (which could be the whole Chapter 1) that contained those small chunks. This gives the LLM more surrounding information to understand the context of the goal. Notice how we use `OpenAIEmbeddings` for the vector store; you can substitute this with any other embedding model you prefer.
 
@@ -309,7 +308,6 @@ for doc in response_2["context"]:
     print(doc.page_content[:300] + "...") # Print first 300 chars of context
     print("-" * 20)
 ```
-{% endraw %}
 
 In this RAG chain, the `ParentDocumentRetriever` acts as the first step, providing the LLM with enriched context. This allows the AI to generate more thorough and accurate answers. You can also explore how to build more complex multi-step AI agents using this retriever with frameworks like [LangGraph]({% post_url 2026-04-05-langgraph-stategraph-multi-step-ai-agent %}).
 

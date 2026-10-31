@@ -154,8 +154,6 @@ Imagine a chatbot that handles common customer questions about product features.
 5.  **Send Response:** The answer is sent back to the customer.
 
 Here's a simplified LangGraph structure for this:
-
-{% raw %}
 {% raw %}
 ``` python
 from langgraph.graph import StateGraph, END
@@ -212,7 +210,6 @@ inputs_faq = {"query": "How do I reset my password?"}
 for s in app.stream(inputs_faq):
     print(s)
 ```
-{% endraw %}
 {% endraw %}
 
 In this setup, once the `query` is fed in, the LangGraph autonomous agent runs through all steps without stopping. It's fully independent. This is ideal for high-volume, low-complexity interactions.

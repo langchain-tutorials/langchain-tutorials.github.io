@@ -337,7 +337,7 @@ In the `Pydantic` example, the node simply returns the new item. The `update` me
 
 Let's put everything together with a practical example. We'll create a very simple agent that takes a question, simulates a tool call, and then generates a final answer. We'll show how to define and update the state using both `TypedDict` and `Pydantic`.
 
-First, let's define our agent's nodes and edges. For simplicity, our nodes will be basic Python functions. For more advanced agents, you might integrate with LangChain tools or LLMs, as demonstrated in [LangChain Google Gemini Function Calling Agent with Custom Tools]({% post_url 2026-04-06-langchain-google-gemini-function-calling-agent-custom-tools.md}).
+First, let's define our agent's nodes and edges. For simplicity, our nodes will be basic Python functions. For more advanced agents, you might integrate with LangChain tools or LLMs, as demonstrated in [LangChain Google Gemini Function Calling Agent with Custom Tools]({% post_url 2026-04-06-langchain-google-gemini-function-calling-agent-custom-tools %}).
 
 #### Example with `TypedDict`
 

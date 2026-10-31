@@ -355,8 +355,7 @@ Let's walk through a complete flow for `LangChain React authentication security`
 5.  **Backend Verifies JWT:** The `/ask-ai` endpoint receives the request. It extracts the JWT and verifies it using the secret key. If valid, it confirms the user's identity.
 6.  **Backend Calls LangChain:** With a valid user, the backend then safely calls its internal LangChain agent. It passes the user's question to the agent.
     *   *Example LangChain Code (Backend)*:
-        {% raw %}
-        {% raw %}
+{% raw %}
 ``` python
         # Assuming your LangChain agent is already set up, e.g., in a function
         from langchain.agents import AgentExecutor
@@ -407,7 +406,6 @@ Let's walk through a complete flow for `LangChain React authentication security`
         #    return {"answer": ai_response}
         ```
 {% endraw %}
-        {% endraw %}
 7.  **Backend Sends Response:** The AI's answer is sent back to the React frontend.
 8.  **React Displays Answer:** React displays the AI's answer to the user.
 

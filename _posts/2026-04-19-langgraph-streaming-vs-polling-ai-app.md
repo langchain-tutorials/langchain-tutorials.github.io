@@ -102,8 +102,6 @@ The biggest advantage of `streaming` is low `latency`. Because information is se
 For an `AI chatbot` built with LangGraph, `streaming` allows you to show the AI's thoughts or answers as they are generated. For instance, if the AI is performing a multi-step task (like searching the web, then summarizing, then answering), you can show "Searching..." then "Found information..." then "Summarizing results..." and finally the answer, all in real-time.
 
 LangGraph often supports streaming out of the box, making it easier to implement. Here’s how a streaming call might conceptually look:
-
-{% raw %}
 {% raw %}
 ``` python
 from langgraph.graph import StateGraph, START, END
@@ -157,7 +155,6 @@ for s in app.stream({"messages": [HumanMessage(content="What is the capital of F
 # for chunk in app.stream({"messages": [HumanMessage(content="Explain LLMs.")]}):
 #     print(chunk) # This would be a dictionary of node outputs or LLM tokens
 ```
-{% endraw %}
 {% endraw %}
 
 This example shows how, with `streaming`, you get ongoing updates. This leads to a much more dynamic and satisfying `real-time UX`. The `response delivery` feels immediate and engaging.

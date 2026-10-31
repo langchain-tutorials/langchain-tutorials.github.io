@@ -114,8 +114,6 @@ Let's imagine you're building an AI for a company's internal knowledge base abou
 #### Setting up the Tools
 
 First, we'll need to set up our Large Language Model (LLM) and a retriever. We'll use LangChain for the components and LangGraph for orchestrating them.
-
-{% raw %}
 {% raw %}
 ``` python
 from langchain_core.prompts import ChatPromptTemplate
@@ -179,7 +177,6 @@ grader_prompt = ChatPromptTemplate.from_messages(
 generate_chain = generator_prompt | llm | StrOutputParser()
 grader_chain = grader_prompt | llm | StrOutputParser()
 ```
-{% endraw %}
 {% endraw %}
 
 #### Building the State and Nodes
@@ -390,8 +387,6 @@ The `LLM judge` then acts as an expert critic. It compares the answer to the doc
 #### Example Prompt for the `LLM Judge`
 
 The prompt for our `LLM judge` is crucial for its performance. Here's a more detailed example of what you might use:
-
-{% raw %}
 {% raw %}
 ``` python
 grader_detailed_prompt = ChatPromptTemplate.from_messages(
@@ -418,7 +413,6 @@ grader_detailed_prompt = ChatPromptTemplate.from_messages(
 # For simplicity, we used StrOutputParser and basic string parsing earlier.
 # For custom output parsing, see: [LangChain Custom Output Parser Tutorial]({% post_url 2026-03-31-langchain-custom-output-parser-tutorial %})
 ```
-{% endraw %}
 {% endraw %}
 
 This detailed prompt guides the `LLM judge` to be very precise in its evaluation, making our `faithfulness check` more reliable.

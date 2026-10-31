@@ -258,8 +258,6 @@ Let's use some example text that could be split into documents:
 #### Code Example
 
 Let's create a more comprehensive example using these documents. We'll compare the retrieved documents with and without reranking for a specific query.
-
-{% raw %}
 {% raw %}
 ``` python
 import os
@@ -389,7 +387,6 @@ result_reranked_2 = reranked_rag_chain.invoke({"input": query_2})
 print(result_reranked_2["answer"])
 print("-" * 50)
 ```
-{% endraw %}
 {% endraw %}
 
 #### Comparing Results: Before and After

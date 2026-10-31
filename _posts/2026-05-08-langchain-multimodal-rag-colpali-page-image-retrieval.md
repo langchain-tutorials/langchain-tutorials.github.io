@@ -263,8 +263,6 @@ Finally, we link everything together using `LangChain`'s "chains." The process g
 This is where `late interaction` becomes powerful. The LLM gets to see the raw visual data *after* retrieval, allowing it to perform deeper reasoning.
 
 Here's how a conceptual `LangChain` RAG chain might look:
-
-{% raw %}
 {% raw %}
 ``` python
 # Assuming multimodal_retriever and an LLM are initialized
@@ -336,7 +334,6 @@ def format_docs_for_multimodal_rag(docs):
 
 print("Multimodal RAG chain conceptualized with LangChain.")
 ```
-{% endraw %}
 {% endraw %}
 
 This chain would effectively take your question, use `ColPali` (via the `multimodal_retriever`) to fetch relevant `document images` and text, feed both to a `multimodal` LLM, and then get a comprehensive answer.

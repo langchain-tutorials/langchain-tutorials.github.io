@@ -136,8 +136,6 @@ The first step in your LangGraph workflow is to retrieve documents. You can use 
 You would define a "tool" or a function within your LangGraph agent that performs this hybrid search. This function will take the user's query and return a list of potentially relevant documents. This ensures your retrieval pipeline is robust from the start.
 
 Here’s a conceptual snippet of how a retriever might look:
-
-{% raw %}
 {% raw %}
 ``` python
 from langchain_community.vectorstores import Weaviate
@@ -167,7 +165,6 @@ def retrieve_documents(state):
 # The 'state' in LangGraph would carry the 'question'
 # and the output would update the 'documents' list
 ```
-{% endraw %}
 {% endraw %}
 
 This code shows how you might set up a retriever to fetch a larger initial set of documents. This larger set is then ready for the next crucial step: reranking. It forms the backbone of your retrieval pipeline.

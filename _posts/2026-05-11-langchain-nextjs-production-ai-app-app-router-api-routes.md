@@ -133,8 +133,6 @@ Server Actions are a newer feature in Next.js App Router that makes sending data
 Think of it like directly asking the server to do something without needing a separate "phone number" (API endpoint). Server actions are great for things like submitting forms, updating settings, or triggering small AI tasks. They simplify how your frontend talks to your LangChain backend.
 
 Here's how a Server Action might look in a React component file (`page.tsx` or a separate file `actions.ts`):
-
-{% raw %}
 {% raw %}
 ``` typescript
 // app/chat/page.tsx or app/actions.ts
@@ -239,7 +237,6 @@ export default function ChatPage() {
   );
 }
 ```
-{% endraw %}
 {% endraw %}
 
 Notice the `"use server";` at the top of the `getAIReply` function. This is what makes it a Server Action. This powerful feature simplifies your LangChain with Next.js development.
@@ -367,8 +364,6 @@ Now that your LangChain backend is ready, you need to make your Next.js frontend
 If you chose API Routes for your LangChain backend, your frontend code will use the standard `fetch` API. This sends a request to your API route and waits for a response.
 
 Here's a simple React component that sends a message to the `/api/chat` route we created earlier:
-
-{% raw %}
 {% raw %}
 ``` typescript
 // app/chat-api/page.tsx
@@ -432,7 +427,6 @@ export default function ChatApiPage() {
   );
 }
 ```
-{% endraw %}
 {% endraw %}
 
 This component manages the user's input and displays the AI's response. It shows how simple it is to integrate your LangChain with Next.js app's frontend and backend.

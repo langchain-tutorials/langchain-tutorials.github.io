@@ -383,8 +383,6 @@ A simple CI/CD flow might look like this:
 5.  **Deploy to Kubernetes:** The CD part updates your Kubernetes deployment to use the new image.
 
 Here's a snippet for GitHub Actions that builds and pushes a Docker image:
-
-{% raw %}
 {% raw %}
 ``` yaml
 # .github/workflows/deploy.yml
@@ -431,7 +429,6 @@ jobs:
         images: your-docker-username/langchain-agent:latest
         strategy: rollingUpdate
 ```
-{% endraw %}
 {% endraw %}
 
 This pipeline ensures that every time you update your LangChain code, your "LangChain with Kubernetes deployment" is automatically updated too.

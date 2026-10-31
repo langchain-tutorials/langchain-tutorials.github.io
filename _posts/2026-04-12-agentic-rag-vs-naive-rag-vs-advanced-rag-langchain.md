@@ -114,7 +114,7 @@ Advanced RAG aims to fix the problems of Naive RAG by making the "retrieval" par
 
 Advanced RAG introduces several steps to refine the retrieval process:
 
-1.  **Smarter Chunking:** Instead of just cutting documents into fixed sizes, it might use methods that chunk documents based on meaning. You can learn more about this with the [LangChain semantic text splitter]({% post_url 2026-04-03-langchain-semantic-text-splitter-chunk-by-meaning.md%}).
+1.  **Smarter Chunking:** Instead of just cutting documents into fixed sizes, it might use methods that chunk documents based on meaning. You can learn more about this with the [LangChain semantic text splitter]({% post_url 2026-04-03-langchain-semantic-text-splitter-chunk-by-meaning %}).
 2.  **Query Transformation:** The system might rewrite your question into several different versions to cover all angles. Or, it might ask itself hypothetical questions to find information better.
 3.  **Enriched Retrieval:** It can use more than just meaning-based search. It might combine keyword search with semantic search (called hybrid search) to get the best of both worlds. This is useful for [LangChain Weaviate hybrid search]({% post_url 2026-04-05-langchain-weaviate-hybrid-search-scalable-rag %}) and other advanced setups.
 4.  **Re-ranking:** After getting a first set of documents, a special model might look at them again and pick the *absolute best* ones, discarding less relevant ones. This ensures the LLM only sees the most important information.
