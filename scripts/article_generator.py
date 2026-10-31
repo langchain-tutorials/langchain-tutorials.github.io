@@ -1,136 +1,197 @@
-"""Generate blog articles using Gemini AI"""
-from google import genai
-from config import TEXT_MODEL, GEMINI_API_KEY
+"""Generate blog articles using Gemini AI with fallback models and retry handling"""
+import os
+import sys
 import re
+import glob
 
-client = genai.Client(api_key=GEMINI_API_KEY)
+# Ensure scripts dir is in path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from google import genai
+from config import TEXT_MODEL, GEMINI_API_KEY, POSTS_DIR
+
+client = None
+if GEMINI_API_KEY:
+    client = genai.Client(api_key=GEMINI_API_KEY)
 
 
-def generate_article(title, focus_kw, permalink, semantic_kw, affiliate_links):
+def get_genai_client():
+    global client
+    if client is None:
+        if not GEMINI_API_KEY:
+            raise ValueError("❌ GEMINI_API_KEY environment variable is not set")
+        client = genai.Client(api_key=GEMINI_API_KEY)
+    return client
+
+
+def generate_text_with_retry_and_fallback(contents, preferred_model=TEXT_MODEL):
+    """Generate content with automatic fallback across Gemini flash models and retry on rate limits"""
+    import time
+    ai_client = get_genai_client()
+    models_to_try = [preferred_model]
+    for m in ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-1.5-flash"]:
+        if m not in models_to_try:
+            models_to_try.append(m)
+
+    last_error = None
+    for model_name in models_to_try:
+        for attempt in range(2):
+            try:
+                response = ai_client.models.generate_content(
+                    model=model_name,
+                    contents=contents
+                )
+                return response
+            except Exception as e:
+                last_error = e
+                err_str = str(e)
+                if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
+                    print(f"ℹ️ Model {model_name} quota hit / rate-limited. Trying fallback model...")
+                    time.sleep(2)
+                    break
+                else:
+                    time.sleep(1)
+    raise last_error
+
+
+def get_recent_posts_context(limit=8):
+    """Dynamically get recent posts for contextual internal linking"""
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    posts_path = os.path.join(project_root, POSTS_DIR)
+    if not os.path.exists(posts_path):
+        posts_path = POSTS_DIR
+
+    if not os.path.exists(posts_path):
+        return "- 2026-04-06-langchain-google-gemini-function-calling-agent-custom-tools\n- 2026-04-05-langgraph-stategraph-multi-step-ai-agent"
+
+    post_files = sorted(glob.glob(os.path.join(posts_path, "*.md")), reverse=True)
+    recent_slugs = []
+    for pf in post_files[:limit]:
+        basename = os.path.basename(pf).replace('.md', '').replace('.markdown', '')
+        recent_slugs.append(f"- {basename}")
+
+    return "\n".join(recent_slugs)
+
+
+def generate_article(title, focus_kw, permalink, semantic_kw, affiliate_links="", hook_kw="", search_kw="", tags=""):
     """Generate SEO-optimized blog article"""
-    # List of recent valid 2026 posts for internal linking context
-    recent_posts = """
-    - 2026-04-06-langchain-google-gemini-function-calling-agent-custom-tools.md
-    - 2026-04-05-langgraph-stategraph-multi-step-ai-agent.md
-    - 2026-04-05-langchain-weaviate-hybrid-search-scalable-rag.md
-    - 2026-04-03-langchain-semantic-text-splitter-chunk-by-meaning.md
-    - 2026-03-31-langchain-custom-output-parser-tutorial.md
-    - 2026-02-14-top-langchain-alternatives-2026-10-frameworks-compared-ranked.md
-    - 2026-02-05-build-rag-applications-langchain-vector-store-2026.md
-    """
+    recent_posts = get_recent_posts_context()
 
     prompt = f"""
-write an SEO-optimised blog on the title {title}. using the Focus keyword {focus_kw} and using LSI Keywords {semantic_kw}
-use the following
+Write an in-depth, authoritative, SEO-optimised technical tutorial and developer guide on the title "{title}".
+Focus Keyword: {focus_kw}
+LSI / Semantic Keywords: {semantic_kw}
+Search Intent Queries: {search_kw}
 
-Rules:
-- Simple English, a 10 year old can understand
-- Don't write more than 3 sentences per paragraph, changes paragraph after 3 sentences
-- Use "you" to address the reader
-- if need link websites to refer to information
-- do not highlight keywords
-- Include practical examples related to {focus_kw}
-- IMPORTANT: Internal Linking:
+Rules & Guidelines:
+- Simple, clear, and practical English that any software developer can understand and implement immediately.
+- Don't write more than 3 sentences per paragraph; change paragraph after 3 sentences.
+- Hook: {hook_kw or "Master building production-ready AI agents and workflows with step-by-step guidance."}
+- Use "you" to address the reader directly.
+- Include complete, realistic, and runnable Python code snippets using modern LangChain (or LangGraph / AI frameworks).
+- Include architecture explanations, diagrams in text or markdown tables, and configuration options.
+- IMPORTANT Internal Linking:
     - Use Jekyll format: [Link Text]({{% post_url yyyy-mm-dd-slug %}})
-    - Current Year is 2026. DO NOT use years before 2026 for links.
-    - Here are some valid recent posts you can link to if relevant:
-    {recent_posts}
+    - Here are some valid recent posts in this blog you can link to where relevant:
+{recent_posts}
     - CRITICAL: DO NOT include the '.md' extension in the post_url tag.
-- IMPORTANT: Liquid Syntax & Code Blocks:
+- IMPORTANT Liquid Syntax & Code Blocks:
     - If a code block contains double curly braces (e.g., {{{{ ... }}}}) or Liquid tags (e.g., {{% ... %}}), wrap the ENTIRE block in {{% raw %}} and {{% endraw %}} tags.
-    - Example: {{% raw %}} ```python \n print("{{{{var}}}}") \n ``` {{% endraw %}}
-- Use H2 and H3, h4, h5, h6 headings, no H1
-- Use lists, tables, snippets, and other data formats
-- Write more than 2000 words
-- Write in Jekyll markdown format  artile filename extension .md only
-- Naturally include focused & semantic keywords
-- do not add any front matter or meta data
+- Do NOT use H1 in the markdown body. Use H2, H3, H4 headings with a clean logical structure.
+- Use bullet points, comparison tables, step-by-step code frameworks, and data callouts.
+- Write a comprehensive article of more than 2,000 words.
+- Include a dedicated "Frequently Asked Questions (FAQs)" section at the end.
+- Format cleanly in Jekyll Markdown.
+- Naturally weave in the focus keyword and semantic keywords.
+- Do NOT output any front matter, YAML, or metadata blocks in your response.
 """
-    
-    print("🤖 Generating article with Gemini...")
-    response = client.models.generate_content(
-        model=TEXT_MODEL,
-        contents=prompt
-    )
-    
+
+    print("🤖 Generating comprehensive technical tutorial with Gemini...")
+    response = generate_text_with_retry_and_fallback(prompt)
+
     # Remove any front matter that AI might have added
     content = remove_front_matter(response.text)
-    
+
     # Sanitize content for common Liquid/Jekyll errors
     content = sanitize_liquid_syntax(content)
-    
+
     # Add custom front matter
-    article = create_custom_front_matter(title, focus_kw, permalink) + "\n\n" + content
-    
+    article = create_custom_front_matter(title, focus_kw, permalink, tags=tags) + "\n\n" + content
+
     return article
+
 
 def sanitize_liquid_syntax(content):
     """
     Sanitize generated content for common Liquid syntax errors:
     1. Wrap code blocks containing {{ or {% in {% raw %} tags.
     2. Fix malformed Liquid tags (e.g., {% - endif %}).
+    3. Remove .md from post_url tags.
     """
-    import re
-    
-    # 1. Wrap code blocks containing {{ or {% in {% raw %} if not already wrapped
-    # Match fenced code blocks
     code_block_regex = r'```(.*?)\n(.*?)```'
-    
+
     def wrap_raw(match):
         lang = match.group(1)
         code = match.group(2)
-        # Check if code contains suspicious Liquid-like syntax
         if ('{{' in code or '{%' in code) and '{% raw %}' not in code:
-            return f'{{% raw %}}\n``` {lang}\n{code}```\n{{% endraw %}}'
+            return f'{{% raw %}}\n```{lang}\n{code}```\n{{% endraw %}}'
         return match.group(0)
-    
-    # Apply to all code blocks
+
     content = re.sub(code_block_regex, wrap_raw, content, flags=re.DOTALL)
-    
-    # 2. Fix common malformed tags (e.g. spaces in the wrong places)
     content = content.replace('{% -', '{%-').replace('- %}', '-%}')
     content = content.replace('{%  endif %}', '{% endif %}')
     content = content.replace('{% - endif %}', '{% endif %}')
-    
-    # 3. Fix broken post_url tags (remove .md extension)
     content = re.sub(r'\{% post_url (.*?).md %\}', r'{% post_url \1 %}', content)
-    
+
     return content
+
 
 def remove_front_matter(content):
     """Remove any existing front matter from AI-generated content"""
-    # Remove front matter between --- delimiters
     content = re.sub(r'^---\s*\n.*?\n---\s*\n', '', content, flags=re.DOTALL)
-    
-    # Remove any stray YAML-like lines at the beginning
+
     lines = content.split('\n')
     clean_lines = []
     skip_yaml = True
-    
+
     for line in lines:
-        # Stop skipping once we hit actual content (heading or paragraph)
-        if line.strip().startswith('#') or (line.strip() and not ':' in line):
+        if line.strip().startswith('#') or (line.strip() and ':' not in line):
             skip_yaml = False
-        
+
         if not skip_yaml:
             clean_lines.append(line)
         elif skip_yaml and line.strip() and ':' not in line:
-            # This is actual content, not YAML
             skip_yaml = False
             clean_lines.append(line)
-    
+
     return '\n'.join(clean_lines).strip()
 
 
-def create_custom_front_matter(title, focus_kw, permalink):
+def create_custom_front_matter(title, focus_kw, permalink, tags=""):
     """Create properly formatted Jekyll front matter"""
-    # Escape quotes in title
     escaped_title = title.replace('"', '\\"')
-    
-    # Generate description (you can make this dynamic)
+
+    # Generate meta description
     description = generate_description(title, focus_kw)
-    
-    # Create front matter - NO LEADING SPACES!
+
+    # Format tags
+    if tags:
+        if isinstance(tags, str):
+            tag_list = [t.strip().strip('"').strip("'") for t in tags.split(',') if t.strip()]
+        else:
+            tag_list = [str(t).strip() for t in tags if str(t).strip()]
+    else:
+        tag_list = [focus_kw.title(), "LangChain", "AI Agents", "Python", "Tutorial"]
+
+    # Ensure uniqueness while preserving order
+    seen = set()
+    unique_tags = []
+    for t in tag_list:
+        if t.lower() not in seen:
+            seen.add(t.lower())
+            unique_tags.append(t)
+
+    formatted_tags = ", ".join(f'"{t}"' for t in unique_tags[:6])
+
     front_matter = f"""---
 title: "{escaped_title}"
 description: "{description}"
@@ -142,69 +203,87 @@ related: true
 toc: true 
 toc_sticky: true 
 toc_icon: "list-ul"
-tags: [{focus_kw}]
+tags: [{formatted_tags}]
 featured: false
 image: '/assets/images/{permalink}.webp'
 ---"""
-       
+
     return front_matter
 
+
 def generate_description(title, focus_kw):
-    """Generate SEO-optimized meta description (160 characters)"""
+    """Generate SEO-optimized meta description (150-160 characters)"""
     prompt = f"""
-Generate a compelling meta description for this blog post.
+Generate a compelling meta description for this AI development tutorial.
 
 Title: {title}
 Focus Keyword: {focus_kw}
 
 Requirements:
-- EXACTLY 150-160 characters (this is critical)
+- EXACTLY 150-160 characters (critical)
 - Include the focus keyword naturally
-- Action-oriented and engaging
-- Make readers want to click
+- Action-oriented and engaging for Python and AI developers
 - No quotes or special characters
 - Complete sentence
 
 Return ONLY the description text, nothing else.
 """
-    
+
     print("📝 Generating meta description...")
-    response = client.models.generate_content(
-        model=TEXT_MODEL,
-        contents=prompt
-    )
-    
-    description = response.text.strip()
-    
-    # Ensure it's under 160 characters
+    response = generate_text_with_retry_and_fallback(prompt)
+
+    description = response.text.strip().replace('"', '').replace("'", "")
+
     if len(description) > 160:
-        description = description[:157] + "..."
-    
+        description = description[:157].rsplit(' ', 1)[0] + "..."
+
     print(f"✅ Description generated: {description} ({len(description)} chars)")
-    
     return description
 
 
-
-def generate_image_prompt(title):
-    """Generate image prompt for Freepik AI"""
+def generate_stock_photo_keywords(title, focus_kw=""):
+    """Generate clean, highly relevant stock photo search queries for Pexels and Unsplash"""
     prompt = f"""
-Create a photorealistic featured image prompt for this blog post:
-Title: {title}
+Given this AI tutorial title: "{title}" and focus keyword: "{focus_kw}"
+Generate 3 distinct, clean search queries (1-3 words each) suitable for finding authentic, high-quality developer or tech stock photos on Pexels or Unsplash.
 
-Requirements:
-- Professional, high-quality
-- NO text or words in the image
-- Suitable as a blog featured image
-- 16:9 aspect ratio
-- Relevant to the topic
+Examples of good queries:
+- For "LangGraph Multi-Agent Architecture": "developer programming, neural network, modern server room"
+- For "LangChain Function Calling": "python code screen, software engineer desk, cloud computing"
+- For "RAG Hybrid Search Tutorial": "big data analysis, cyber security code, modern tech workspace"
 
-Return ONLY the image prompt, nothing else.
+Return ONLY a comma-separated list of 3 queries. No quotes, no markdown, no explanations.
 """
-    
-    print("🎨 Generating image prompt...")
-    response = client.models.generate_content(
-        model=TEXT_MODEL,
-        contents=prompt
-    )
+    try:
+        print("🔍 Generating stock photo search queries...")
+        response = generate_text_with_retry_and_fallback(prompt)
+        queries = [q.strip().strip('"').strip("'") for q in response.text.strip().split(',') if q.strip()]
+        return queries if queries else [focus_kw, "software code", "artificial intelligence"]
+    except Exception as e:
+        print(f"⚠️ Stock query generation fallback: {e}")
+        return [focus_kw, "developer computer", "artificial intelligence"]
+
+
+def generate_image_prompt(title, focus_kw=""):
+    """Generate an ultra-relevant featured image prompt tailored for technical AI blogs"""
+    prompt = f"""
+You are an expert art director creating an ultra-realistic, modern featured image prompt for an AI developer publication (LangChain Tutorials).
+
+Article Title: "{title}"
+Focus Keyword: "{focus_kw}"
+
+CRITICAL RULES:
+1. MUST BE A CONCRETE MODERN TECH/DEVELOPER SCENE:
+   - Depict tangible, authentic elements: modern developer desk with mechanical keyboard, curved monitor with sleek syntax highlighted code terminal, subtle blue/violet ambient LED lighting, minimalist hardware chips, high-tech server racks, or conceptual clean glass neural nodes.
+   - STRICTLY FORBIDDEN: NO fantasy magical spells, NO glowing wizard hands, NO cartoon robots, NO childish sci-fi illustrations.
+   - AVOID CLICHÉS: Do NOT generate cheesy blue globe holograms or robotic handshakes.
+2. HIGH RELEVANCE: The aesthetic should immediately resonate with software engineers, AI developers, and tech builders.
+3. ABSOLUTE ZERO TEXT: NO text, NO letters, NO words, NO numbers, NO watermarks, NO brand logos anywhere.
+4. STYLE: Commercial editorial photography, 8K resolution, realistic natural & neon ambient lighting, cinematic shallow depth of field, 16:9 widescreen composition.
+
+Output ONLY the final image generation prompt (1-2 vivid sentences describing the setting, objects, lighting, and camera angle).
+"""
+
+    print("🎨 Generating contextual AI image prompt...")
+    response = generate_text_with_retry_and_fallback(prompt)
     return response.text.strip()

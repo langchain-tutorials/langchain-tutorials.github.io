@@ -24,7 +24,12 @@ codekit-config.json
 # macOS
 .DS_Store
 
-# Jekyll generated files
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
 .jekyll-cache
 .jekyll-metadata
 .sass-cache

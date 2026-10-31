@@ -22,11 +22,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install google-genai pillow requests google-auth google-api-python-client tweepy
+          pip install google-genai pillow requests beautifulsoup4 lxml google-auth google-api-python-client tweepy
 
       - name: Generate blog post
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
           FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_SPREADSHEET_ID: ${{ secrets.GOOGLE_SPREADSHEET_ID }}
@@ -48,7 +51,7 @@ jobs:
           git config user.name "gemini-blog-bot"
           git config user.email "bot@github.com"
 
-          git add _posts/ assets/images/ keywords.txt
+          git add _posts/ assets/images/ _data/
 
           TITLES=$(git diff --cached --name-only | grep "_posts/" | sed 's#.*/##' | sed 's/.md//' | tr '\n' ',')
 
