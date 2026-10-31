@@ -102,7 +102,43 @@ def generate_image_featured(prompt, output_path, keywords=None):
         except Exception as e:
             print(f"❌ Freepik API failed: {e}")
 
+    # Method 6: Procedural modern tech banner fallback
+    print("🚀 Trying Provider 6: Procedural Tech Banner fallback...")
+    res = generate_fallback_tech_image(output_path)
+    if res:
+        return output_path
+
     raise RuntimeError(f"All image providers failed for: {output_path}")
+
+
+def generate_fallback_tech_image(output_path):
+    """Fallback generator that creates a modern dark-themed developer banner using Pillow"""
+    try:
+        from PIL import ImageDraw
+        width, height = 1280, 720
+        # Dark tech background (#0f172a slate-900)
+        img = Image.new("RGB", (width, height), color=(15, 23, 42))
+        draw = ImageDraw.Draw(img)
+
+        # Draw subtle tech grid
+        for x in range(0, width, 40):
+            draw.line([(x, 0), (x, height)], fill=(30, 41, 59), width=1)
+        for y in range(0, height, 40):
+            draw.line([(0, y), (width, y)], fill=(30, 41, 59), width=1)
+
+        # Draw central glowing circuit node / geometric accents
+        cx, cy = width // 2, height // 2
+        for r in range(180, 40, -30):
+            draw.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(56, 189, 248), width=2)
+        draw.ellipse([cx - 40, cy - 40, cx + 40, cy + 40], fill=(14, 165, 233))
+
+        os.makedirs(os.path.dirname(output_path) or '.', exist_ok=True)
+        img.save(output_path, "WEBP", quality=85)
+        print(f"✅ Generated high-quality procedural tech banner: {output_path}")
+        return output_path
+    except Exception as e:
+        print(f"⚠️ Procedural banner error: {e}")
+        return None
 
 
 def fetch_image_pexels(keywords, output_path):

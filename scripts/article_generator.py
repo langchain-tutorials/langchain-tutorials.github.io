@@ -123,24 +123,34 @@ Rules & Guidelines:
 def sanitize_liquid_syntax(content):
     """
     Sanitize generated content for common Liquid syntax errors:
-    1. Wrap code blocks containing {{ or {% in {% raw %} tags.
-    2. Fix malformed Liquid tags (e.g., {% - endif %}).
-    3. Remove .md from post_url tags.
+    1. Wrap code blocks containing {{ or {% in {% raw %} tags if not already wrapped.
+    2. Eliminate duplicate or nested {% raw %} / {% endraw %} tags.
+    3. Fix malformed Liquid tags.
+    4. Remove .md extension from post_url tags.
     """
+    # Fix broken post_url tags first
+    content = re.sub(r'\{%\s*post_url\s+([^\s%]+)\.md\s*%\}', r'{% post_url \1 %}', content)
+
+    # Wrap code blocks that have {{ or {% with {% raw %} only if not already wrapped
     code_block_regex = r'```(.*?)\n(.*?)```'
 
     def wrap_raw(match):
         lang = match.group(1)
         code = match.group(2)
-        if ('{{' in code or '{%' in code) and '{% raw %}' not in code:
+        if ('{{' in code or '{%' in code) and '{% raw %}' not in code and '{% endraw %}' not in code:
             return f'{{% raw %}}\n```{lang}\n{code}```\n{{% endraw %}}'
         return match.group(0)
 
     content = re.sub(code_block_regex, wrap_raw, content, flags=re.DOTALL)
+
+    # Clean up any consecutive / nested raw tags that might cause Liquid parser crashes
+    content = re.sub(r'(\s*\{%\s*raw\s*%\}){2,}', r'\n{% raw %}', content)
+    content = re.sub(r'(\s*\{%\s*endraw\s*%\}){2,}', r'\n{% endraw %}', content)
+
+    # Fix common malformed tags
     content = content.replace('{% -', '{%-').replace('- %}', '-%}')
     content = content.replace('{%  endif %}', '{% endif %}')
     content = content.replace('{% - endif %}', '{% endif %}')
-    content = re.sub(r'\{% post_url (.*?).md %\}', r'{% post_url \1 %}', content)
 
     return content
 
