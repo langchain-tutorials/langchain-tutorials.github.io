@@ -18,5 +18,10 @@
     "title": "Build a LangChain RAG Chatbot in 30 Minutes with Python",
     "permalink": "langchain-rag-chatbot-tutorial",
     "date": "2026-11-01T17:01:56.335944"
+  },
+  "build production-ready langchain agents: avoid common failures": {
+    "title": "Build Production-Ready LangChain Agents: Avoid Common Failures",
+    "permalink": "build-production-ready-langchain-agents",
+    "date": "2026-11-02T01:18:01.435955"
   }
 }
