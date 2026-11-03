@@ -33,5 +33,10 @@
     "title": "LangGraph: Orchestrate Multi-Agent AI for Production Workflows",
     "permalink": "langgraph-multi-agent-orchestration",
     "date": "2026-11-03T03:19:26.845935"
+  },
+  "evaluate langchain agents: build a 12-metric ai evaluation harness": {
+    "title": "Evaluate LangChain Agents: Build a 12-Metric AI Evaluation Harness",
+    "permalink": "langchain-agent-evaluation-harness",
+    "date": "2026-11-03T18:14:55.808440"
   }
 }
