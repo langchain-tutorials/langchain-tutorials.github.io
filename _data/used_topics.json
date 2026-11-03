@@ -28,5 +28,10 @@
     "title": "Mastering LangChain Agent Evaluation: Tools, Tasks & Performance",
     "permalink": "mastering-langchain-agent-evaluation",
     "date": "2026-11-02T20:38:41.306027"
+  },
+  "langgraph: orchestrate multi-agent ai for production workflows": {
+    "title": "LangGraph: Orchestrate Multi-Agent AI for Production Workflows",
+    "permalink": "langgraph-multi-agent-orchestration",
+    "date": "2026-11-03T03:19:26.845935"
   }
 }
