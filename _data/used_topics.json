@@ -53,5 +53,10 @@
     "title": "Build LangChain CLI Agents with Python & Ollama: A Hands-On Guide",
     "permalink": "build-langchain-cli-agents-ollama",
     "date": "2026-11-05T02:00:42.266510"
+  },
+  "mastering langchain rag chunking: optimize retrieval for llms": {
+    "title": "Mastering LangChain RAG Chunking: Optimize Retrieval for LLMs",
+    "permalink": "mastering-langchain-rag-chunking",
+    "date": "2026-11-05T18:33:23.529983"
   }
 }
