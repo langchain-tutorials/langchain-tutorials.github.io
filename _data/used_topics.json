@@ -58,5 +58,10 @@
     "title": "Mastering LangChain RAG Chunking: Optimize Retrieval for LLMs",
     "permalink": "mastering-langchain-rag-chunking",
     "date": "2026-11-05T18:33:23.529983"
+  },
+  "master langchain observability: debug & evaluate llm apps with langsmith": {
+    "title": "Master LangChain Observability: Debug & Evaluate LLM Apps with LangSmith",
+    "permalink": "langchain-observability-langsmith",
+    "date": "2026-11-06T02:00:19.335231"
   }
 }
