@@ -73,5 +73,10 @@
     "title": "LangChain AI Agents: Serverless Data Lake Access with AWS Fargate",
     "permalink": "serverless-langchain-agents-data-lake-aws-fargate",
     "date": "2026-11-07T01:38:03.691280"
+  },
+  "langgraph multi-agent: build coordinated ai systems & prevent failures": {
+    "title": "LangGraph Multi-Agent: Build Coordinated AI Systems & Prevent Failures",
+    "permalink": "langgraph-multi-agent-coordination",
+    "date": "2026-11-07T16:45:16.255027"
   }
 }
