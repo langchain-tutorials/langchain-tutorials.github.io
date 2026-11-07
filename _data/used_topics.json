@@ -68,5 +68,10 @@
     "title": "Evaluate LangChain Agents: From Tool Calls to Task Completion in Python",
     "permalink": "evaluate-langchain-agents",
     "date": "2026-11-06T17:49:10.136261"
+  },
+  "langchain ai agents: serverless data lake access with aws fargate": {
+    "title": "LangChain AI Agents: Serverless Data Lake Access with AWS Fargate",
+    "permalink": "serverless-langchain-agents-data-lake-aws-fargate",
+    "date": "2026-11-07T01:38:03.691280"
   }
 }
