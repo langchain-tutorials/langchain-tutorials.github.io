@@ -83,5 +83,10 @@
     "title": "Build Multimodal AI Agents: LangChain, LangGraph & Gemini for Object Detection",
     "permalink": "build-multimodal-agents-langchain-gemini",
     "date": "2026-11-08T01:11:22.388450"
+  },
+  "langchain vs langgraph: build advanced ai workflows with python": {
+    "title": "LangChain vs LangGraph: Build Advanced AI Workflows with Python",
+    "permalink": "langchain-langgraph-ai-workflows",
+    "date": "2026-11-08T16:56:03.088633"
   }
 }
