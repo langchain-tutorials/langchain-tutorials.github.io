@@ -78,5 +78,10 @@
     "title": "LangGraph Multi-Agent: Build Coordinated AI Systems & Prevent Failures",
     "permalink": "langgraph-multi-agent-coordination",
     "date": "2026-11-07T16:45:16.255027"
+  },
+  "build multimodal ai agents: langchain, langgraph & gemini for object detection": {
+    "title": "Build Multimodal AI Agents: LangChain, LangGraph & Gemini for Object Detection",
+    "permalink": "build-multimodal-agents-langchain-gemini",
+    "date": "2026-11-08T01:11:22.388450"
   }
 }
