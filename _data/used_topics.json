@@ -93,5 +93,10 @@
     "title": "Build Robust LangChain Tool-Calling Agents: A Python Debugging Guide",
     "permalink": "langchain-agent-debugging-guide",
     "date": "2026-11-09T01:27:09.395360"
+  },
+  "craft autonomous dev agents: langgraph multi-agent workflows": {
+    "title": "Craft Autonomous Dev Agents: LangGraph Multi-Agent Workflows",
+    "permalink": "langgraph-autonomous-dev-agents",
+    "date": "2026-11-09T21:18:47.107766"
   }
 }
