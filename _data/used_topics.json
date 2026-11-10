@@ -103,5 +103,10 @@
     "title": "LangChain vs LangGraph: Build Advanced RAG Applications (Python Tutorial)",
     "permalink": "langchain-langgraph-rag-tutorial",
     "date": "2026-11-10T03:58:24.633049"
+  },
+  "mastering langgraph: build robust multi-agent ai systems": {
+    "title": "Mastering LangGraph: Build Robust Multi-Agent AI Systems",
+    "permalink": "langgraph-multi-agent-architectures",
+    "date": "2026-11-10T18:29:34.658387"
   }
 }
