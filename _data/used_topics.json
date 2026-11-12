@@ -123,5 +123,10 @@
     "title": "Monitor LangChain Apps with LangSmith & W&B: A Python Guide",
     "permalink": "langchain-langsmith-wandb-tutorial",
     "date": "2026-11-12T02:42:20.146011"
+  },
+  "master robust langchain tool agents: build & debug in python": {
+    "title": "Master Robust LangChain Tool Agents: Build & Debug in Python",
+    "permalink": "debug-langchain-tool-agents",
+    "date": "2026-11-12T18:42:13.504443"
   }
 }
