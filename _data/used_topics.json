@@ -118,5 +118,10 @@
     "title": "Master LangChain RAG: Advanced Text Chunking Strategies for Performance",
     "permalink": "langchain-rag-chunking-strategies",
     "date": "2026-11-11T18:24:26.783383"
+  },
+  "monitor langchain apps with langsmith & w&b: a python guide": {
+    "title": "Monitor LangChain Apps with LangSmith & W&B: A Python Guide",
+    "permalink": "langchain-langsmith-wandb-tutorial",
+    "date": "2026-11-12T02:42:20.146011"
   }
 }
