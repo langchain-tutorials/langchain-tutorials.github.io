@@ -133,5 +133,10 @@
     "title": "Develop LangChain Agents: Free Sandbox Tools & Gemini AI Integration",
     "permalink": "langchain-agents-free-sandbox",
     "date": "2026-11-13T02:24:33.919325"
+  },
+  "master langchain observability: debug & optimize with langsmith": {
+    "title": "Master LangChain Observability: Debug & Optimize with LangSmith",
+    "permalink": "langchain-observability-langsmith-tutorial",
+    "date": "2026-11-13T18:23:53.904779"
   }
 }
