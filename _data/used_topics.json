@@ -138,5 +138,10 @@
     "title": "Master LangChain Observability: Debug & Optimize with LangSmith",
     "permalink": "langchain-observability-langsmith-tutorial",
     "date": "2026-11-13T18:23:53.904779"
+  },
+  "build advanced llama-2 rag chatbot: langchain, qdrant & streamlit": {
+    "title": "Build Advanced LLaMA-2 RAG Chatbot: LangChain, Qdrant & Streamlit",
+    "permalink": "langchain-llama2-qdrant-rag-chatbot",
+    "date": "2026-11-14T01:59:01.404002"
   }
 }
