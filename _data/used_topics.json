@@ -143,5 +143,10 @@
     "title": "Build Advanced LLaMA-2 RAG Chatbot: LangChain, Qdrant & Streamlit",
     "permalink": "langchain-llama2-qdrant-rag-chatbot",
     "date": "2026-11-14T01:59:01.404002"
+  },
+  "build & observe arxiv rag chatbots: langchain, chainlit, literal ai": {
+    "title": "Build & Observe ArXiv RAG Chatbots: LangChain, Chainlit, Literal AI",
+    "permalink": "observable-arxiv-rag-langchain-chainlit",
+    "date": "2026-11-14T16:51:47.898156"
   }
 }
