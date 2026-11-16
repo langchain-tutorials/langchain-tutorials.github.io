@@ -163,5 +163,10 @@
     "title": "Fine-Tune LangChain Agents: Boost Tool-Calling Accuracy with SFT/DPO",
     "permalink": "langchain-tool-calling-fine-tuning",
     "date": "2026-11-16T01:35:52.069929"
+  },
+  "master langchain tool calling: build smarter ai agents with python": {
+    "title": "Master LangChain Tool Calling: Build Smarter AI Agents with Python",
+    "permalink": "langchain-tool-calling-ai-agents",
+    "date": "2026-11-16T20:48:53.921418"
   }
 }
