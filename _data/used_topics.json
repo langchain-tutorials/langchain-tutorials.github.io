@@ -158,5 +158,10 @@
     "title": "Scale AI Agents: LangGraph Multi-Agent Workflows Beyond A2A",
     "permalink": "langgraph-scalable-agents",
     "date": "2026-11-15T17:34:43.073466"
+  },
+  "fine-tune langchain agents: boost tool-calling accuracy with sft/dpo": {
+    "title": "Fine-Tune LangChain Agents: Boost Tool-Calling Accuracy with SFT/DPO",
+    "permalink": "langchain-tool-calling-fine-tuning",
+    "date": "2026-11-16T01:35:52.069929"
   }
 }
