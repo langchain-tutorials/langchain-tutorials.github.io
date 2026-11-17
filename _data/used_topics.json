@@ -173,5 +173,10 @@
     "title": "Build Your First AI Agent in Python with LangChain: A Step-by-Step Guide",
     "permalink": "build-langchain-ai-agent-python",
     "date": "2026-11-17T04:20:39.362424"
+  },
+  "control raspberry pi hardware with langchain llm agents & mcp": {
+    "title": "Control Raspberry Pi Hardware with LangChain LLM Agents & MCP",
+    "permalink": "langchain-raspberry-pi-llm-agents-mcp",
+    "date": "2026-11-17T19:37:51.572014"
   }
 }
