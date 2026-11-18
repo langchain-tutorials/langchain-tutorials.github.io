@@ -178,5 +178,10 @@
     "title": "Control Raspberry Pi Hardware with LangChain LLM Agents & MCP",
     "permalink": "langchain-raspberry-pi-llm-agents-mcp",
     "date": "2026-11-17T19:37:51.572014"
+  },
+  "langgraph multi-agent systems: build with mistral ai & python": {
+    "title": "LangGraph Multi-Agent Systems: Build with Mistral AI & Python",
+    "permalink": "langgraph-multi-agent-mistral-python",
+    "date": "2026-11-18T03:20:36.267179"
   }
 }
