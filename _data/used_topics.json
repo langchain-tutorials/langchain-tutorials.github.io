@@ -183,5 +183,10 @@
     "title": "LangGraph Multi-Agent Systems: Build with Mistral AI & Python",
     "permalink": "langgraph-multi-agent-mistral-python",
     "date": "2026-11-18T03:20:36.267179"
+  },
+  "optimize langchain llm costs & block risky tool calls with jev": {
+    "title": "Optimize LangChain LLM Costs & Block Risky Tool Calls with Jev",
+    "permalink": "langchain-jev-cost-security",
+    "date": "2026-11-18T19:15:25.870280"
   }
 }
