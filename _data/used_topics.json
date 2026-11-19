@@ -188,5 +188,10 @@
     "title": "Optimize LangChain LLM Costs & Block Risky Tool Calls with Jev",
     "permalink": "langchain-jev-cost-security",
     "date": "2026-11-18T19:15:25.870280"
+  },
+  "build autonomous ai dev agents: a langgraph & langchain tutorial": {
+    "title": "Build Autonomous AI Dev Agents: A LangGraph & LangChain Tutorial",
+    "permalink": "build-ai-dev-agents-langchain",
+    "date": "2026-11-19T02:56:53.591920"
   }
 }
