@@ -203,5 +203,10 @@
     "title": "LangChain Agent Authorization: Contextual Access with Human Feedback",
     "permalink": "langchain-agent-authorization",
     "date": "2026-11-20T02:51:01.077554"
+  },
+  "build production-ready multi-agent ai systems with langgraph": {
+    "title": "Build Production-Ready Multi-Agent AI Systems with LangGraph",
+    "permalink": "langgraph-multi-agent-production",
+    "date": "2026-11-20T18:58:39.163155"
   }
 }
