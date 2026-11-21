@@ -208,5 +208,10 @@
     "title": "Build Production-Ready Multi-Agent AI Systems with LangGraph",
     "permalink": "langgraph-multi-agent-production",
     "date": "2026-11-20T18:58:39.163155"
+  },
+  "building secure langchain ai agents: context protocol & guardrails": {
+    "title": "Building Secure LangChain AI Agents: Context Protocol & Guardrails",
+    "permalink": "secure-langchain-agents-context-protocol",
+    "date": "2026-11-21T02:59:42.015445"
   }
 }
