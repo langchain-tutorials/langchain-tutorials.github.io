@@ -223,5 +223,10 @@
     "title": "Build WhatsApp AI Agents with LangChain & Python: Hands-On Tutorial",
     "permalink": "build-whatsapp-ai-agents-langchain",
     "date": "2026-11-22T01:55:39.776670"
+  },
+  "langchain multi-agent orchestration for production-ready ai apps": {
+    "title": "LangChain Multi-Agent Orchestration for Production-Ready AI Apps",
+    "permalink": "langchain-multi-agent-orchestration",
+    "date": "2026-11-22T18:14:42.974014"
   }
 }
