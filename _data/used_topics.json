@@ -233,5 +233,10 @@
     "title": "Build Secure LangChain AI Agents: Context Management & Data Privacy",
     "permalink": "langchain-secure-context-protocol",
     "date": "2026-11-23T02:15:55.453223"
+  },
+  "turn research papers into interactive ai agents with langchain & rag": {
+    "title": "Turn Research Papers into Interactive AI Agents with LangChain & RAG",
+    "permalink": "interactive-research-paper-agent",
+    "date": "2026-11-23T22:28:05.748456"
   }
 }
