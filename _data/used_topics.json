@@ -228,5 +228,10 @@
     "title": "LangChain Multi-Agent Orchestration for Production-Ready AI Apps",
     "permalink": "langchain-multi-agent-orchestration",
     "date": "2026-11-22T18:14:42.974014"
+  },
+  "build secure langchain ai agents: context management & data privacy": {
+    "title": "Build Secure LangChain AI Agents: Context Management & Data Privacy",
+    "permalink": "langchain-secure-context-protocol",
+    "date": "2026-11-23T02:15:55.453223"
   }
 }
