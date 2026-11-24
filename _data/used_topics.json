@@ -238,5 +238,10 @@
     "title": "Turn Research Papers into Interactive AI Agents with LangChain & RAG",
     "permalink": "interactive-research-paper-agent",
     "date": "2026-11-23T22:28:05.748456"
+  },
+  "master langchain rag: build your own generative ai app step-by-step": {
+    "title": "Master LangChain RAG: Build Your Own Generative AI App Step-by-Step",
+    "permalink": "build-langchain-rag-app",
+    "date": "2026-11-24T21:00:35.506698"
   }
 }
