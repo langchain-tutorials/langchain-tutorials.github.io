@@ -248,5 +248,10 @@
     "title": "Master Multi-Agent Systems: LangGraph Supervisors Tutorial",
     "permalink": "langgraph-multi-agent-supervisors",
     "date": "2026-11-25T04:47:37.300753"
+  },
+  "langchain multi-agent systems: patterns, problems & solutions": {
+    "title": "LangChain Multi-Agent Systems: Patterns, Problems & Solutions",
+    "permalink": "langchain-multi-agent-systems",
+    "date": "2026-11-25T20:23:26.947741"
   }
 }
