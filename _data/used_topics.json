@@ -243,5 +243,10 @@
     "title": "Master LangChain RAG: Build Your Own Generative AI App Step-by-Step",
     "permalink": "build-langchain-rag-app",
     "date": "2026-11-24T21:00:35.506698"
+  },
+  "master multi-agent systems: langgraph supervisors tutorial": {
+    "title": "Master Multi-Agent Systems: LangGraph Supervisors Tutorial",
+    "permalink": "langgraph-multi-agent-supervisors",
+    "date": "2026-11-25T04:47:37.300753"
   }
 }
