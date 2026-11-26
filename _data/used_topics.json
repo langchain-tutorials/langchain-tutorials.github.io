@@ -253,5 +253,10 @@
     "title": "LangChain Multi-Agent Systems: Patterns, Problems & Solutions",
     "permalink": "langchain-multi-agent-systems",
     "date": "2026-11-25T20:23:26.947741"
+  },
+  "red team your llms: build ai pentesting tools with langchain": {
+    "title": "Red Team Your LLMs: Build AI Pentesting Tools with LangChain",
+    "permalink": "llm-red-teaming-langchain",
+    "date": "2026-11-26T03:57:51.937993"
   }
 }
