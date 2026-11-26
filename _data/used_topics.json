@@ -258,5 +258,10 @@
     "title": "Red Team Your LLMs: Build AI Pentesting Tools with LangChain",
     "permalink": "llm-red-teaming-langchain",
     "date": "2026-11-26T03:57:51.937993"
+  },
+  "mastering langsmith: debug, evaluate, & monitor langchain apps": {
+    "title": "Mastering LangSmith: Debug, Evaluate, & Monitor LangChain Apps",
+    "permalink": "mastering-langsmith-langchain-apps",
+    "date": "2026-11-26T20:00:14.151039"
   }
 }
