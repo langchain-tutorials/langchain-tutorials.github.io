@@ -268,5 +268,10 @@
     "title": "Build a Production-Ready RAG Application with LangChain & Python",
     "permalink": "langchain-rag-application-tutorial",
     "date": "2026-11-27T03:56:50.604170"
+  },
+  "langchain tool-calling agents: build, debug, & optimize in python": {
+    "title": "LangChain Tool-Calling Agents: Build, Debug, & Optimize in Python",
+    "permalink": "langchain-tool-calling-agent-debugging",
+    "date": "2026-11-27T19:48:58.703634"
   }
 }
