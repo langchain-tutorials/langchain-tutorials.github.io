@@ -263,5 +263,10 @@
     "title": "Mastering LangSmith: Debug, Evaluate, & Monitor LangChain Apps",
     "permalink": "mastering-langsmith-langchain-apps",
     "date": "2026-11-26T20:00:14.151039"
+  },
+  "build a production-ready rag application with langchain & python": {
+    "title": "Build a Production-Ready RAG Application with LangChain & Python",
+    "permalink": "langchain-rag-application-tutorial",
+    "date": "2026-11-27T03:56:50.604170"
   }
 }
