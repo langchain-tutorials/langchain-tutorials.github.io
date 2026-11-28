@@ -273,5 +273,10 @@
     "title": "LangChain Tool-Calling Agents: Build, Debug, & Optimize in Python",
     "permalink": "langchain-tool-calling-agent-debugging",
     "date": "2026-11-27T19:48:58.703634"
+  },
+  "langchain agents: optimize tool use & context for lower costs": {
+    "title": "LangChain Agents: Optimize Tool Use & Context for Lower Costs",
+    "permalink": "langchain-agent-optimize-tool-context-cost",
+    "date": "2026-11-28T03:43:57.389575"
   }
 }
